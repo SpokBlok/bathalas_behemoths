@@ -8,6 +8,7 @@ public class PlayerMovement : MonoBehaviour
     public float speed;
     private Vector2 move, mouseLook;
     private Vector3 rotationTarget;
+    public float minDistanceToLook = 0.1f; // Minimum distance to start rotating towards mouse pointer
 
     public void OnMove(InputAction.CallbackContext context)
     {
@@ -28,33 +29,35 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        RaycastHit hit;
+        updateRotationTarget();
+        movePlayer();
+    }
+
+    public void updateRotationTarget()
+    {
+        // Create a plane at the player's position, facing up
+        Plane playerPlane = new Plane(Vector3.up, transform.position);
         Ray ray = UnityEngine.Camera.main.ScreenPointToRay(mouseLook);
 
-        if(Physics.Raycast(ray, out hit))
+        // Calculate where the ray hits the plane
+        if (playerPlane.Raycast(ray, out float distance))
         {
-            // Check if the object hit has a BoxCollider
-            if (hit.collider != null && hit.collider.gameObject == gameObject)
-            {
-                // Your hover logic here
-                Debug.Log("Mouse is hovering over: " + hit.collider.gameObject.name);
-            }
-            rotationTarget = hit.point;
+            Vector3 targetPoint = ray.GetPoint(distance);
+            rotationTarget = targetPoint;
         }
-        movePlayer();
     }
 
     public void movePlayer()
     {
         var lookPos = rotationTarget - transform.position;
         lookPos.y = 0;
-        var rotation = Quaternion.LookRotation(lookPos);
 
         Vector3 aimDirection = new Vector3(rotationTarget.x, 0, rotationTarget.z);
 
 
-        if (aimDirection != Vector3.zero)
+        if (lookPos.magnitude > minDistanceToLook)
         {
+            Quaternion rotation = Quaternion.LookRotation(lookPos);
             transform.rotation = Quaternion.Slerp(transform.rotation, rotation, 0.15f);
         }
 

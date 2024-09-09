@@ -6,15 +6,20 @@ using UnityEngine.InputSystem;
 public class PlayerMovement : MonoBehaviour
 {
     public float speed = 3f;
+    public float pushBackDuration = 0.5f;
+    public float pushBackForce = 10f;
     private Vector2 move, mouseLook;
     private Vector3 rotationTarget;
-    public float minDistanceToLook = 0.1f; // Minimum distance to start rotating towards mouse pointer
+    public float minDistanceToLook = 0.1f;
+    private bool isBeingPushed = false;
 
     private CharacterController charControl;
+    private Collider playerCollider;
 
     private void Start()
     {
         charControl = GetComponent<CharacterController>();
+        playerCollider = GetComponent<Collider>();
     }
 
     public void OnMove(InputAction.CallbackContext context)
@@ -30,7 +35,14 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
         updateRotationTarget();
-        movePlayer();
+        if (!isBeingPushed)
+        {
+            movePlayer();
+        }
+        else
+        {
+            //capsule collider off
+        }
     }
 
     public void updateRotationTarget()
@@ -64,10 +76,29 @@ public class PlayerMovement : MonoBehaviour
     {
         if (hit.gameObject.CompareTag("Enemy"))
         {
-            Debug.Log("touchie enemy");
-            //Debug.Log("touchie");
-            //Vector3 direction = new Vector3(transform.position.x - collision.transform.position.x, 0, transform.position.z - collision.transform.position.z);
-            //rb.MovePosition(transform.position + direction.normalized * 2); // Use Rigidbody.MovePosition to handle movement
+            Debug.Log("touchie");
+            // Calculate direction to push player away from enemy`, Player - Enemy position
+            Vector3 direction = new Vector3(transform.position.x - hit.transform.position.x, 0, transform.position.z - hit.transform.position.z);
+            StartCoroutine(SmoothPushBack(direction.normalized));
         }
+    }
+
+    private IEnumerator SmoothPushBack(Vector3 direction)
+    {
+        isBeingPushed = true;
+        gameObject.layer = LayerMask.NameToLayer("Pushback");
+        float elapsedTime = 0f;
+
+        while (elapsedTime < pushBackDuration)
+        {
+            // Apply push-back force gradually
+            charControl.Move(direction * pushBackForce * Time.deltaTime);
+
+            elapsedTime += Time.deltaTime;
+            yield return null; // Wait for the next frame
+        }
+
+        gameObject.layer = LayerMask.NameToLayer("Default");
+        isBeingPushed = false;
     }
 }

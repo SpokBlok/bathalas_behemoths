@@ -734,6 +734,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 10
+  pushBackDuration: 0.5
+  pushBackForce: 10
   minDistanceToLook: 0.1
 --- !u!114 &1020746811
 MonoBehaviour:

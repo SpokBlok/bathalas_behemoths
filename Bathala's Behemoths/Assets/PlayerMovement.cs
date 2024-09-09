@@ -5,10 +5,17 @@ using UnityEngine.InputSystem;
 
 public class PlayerMovement : MonoBehaviour
 {
-    public float speed;
+    public float speed = 3f;
     private Vector2 move, mouseLook;
     private Vector3 rotationTarget;
     public float minDistanceToLook = 0.1f; // Minimum distance to start rotating towards mouse pointer
+
+    private CharacterController charControl;
+
+    private void Start()
+    {
+        charControl = GetComponent<CharacterController>();
+    }
 
     public void OnMove(InputAction.CallbackContext context)
     {
@@ -20,13 +27,6 @@ public class PlayerMovement : MonoBehaviour
         mouseLook = context.ReadValue<Vector2>();
     }
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
     void Update()
     {
         updateRotationTarget();
@@ -35,11 +35,9 @@ public class PlayerMovement : MonoBehaviour
 
     public void updateRotationTarget()
     {
-        // Create a plane at the player's position, facing up
         Plane playerPlane = new Plane(Vector3.up, transform.position);
         Ray ray = UnityEngine.Camera.main.ScreenPointToRay(mouseLook);
 
-        // Calculate where the ray hits the plane
         if (playerPlane.Raycast(ray, out float distance))
         {
             Vector3 targetPoint = ray.GetPoint(distance);
@@ -52,17 +50,24 @@ public class PlayerMovement : MonoBehaviour
         var lookPos = rotationTarget - transform.position;
         lookPos.y = 0;
 
-        Vector3 aimDirection = new Vector3(rotationTarget.x, 0, rotationTarget.z);
-
+        Vector3 moveDirection = new Vector3(move.x, 0f, move.y) * speed;
+        charControl.Move(moveDirection * Time.deltaTime);
 
         if (lookPos.magnitude > minDistanceToLook)
         {
-            Quaternion rotation = Quaternion.LookRotation(lookPos);
-            transform.rotation = Quaternion.Slerp(transform.rotation, rotation, 0.15f);
+            Quaternion targetRotation = Quaternion.LookRotation(lookPos);
+            transform.rotation =Quaternion.Slerp(transform.rotation, targetRotation, 0.15f);
         }
+    }
 
-        Vector3 movement = new Vector3(move.x, 0f, move.y);
-
-        transform.Translate(movement * speed * Time.deltaTime, Space.World);
+    private void OnControllerColliderHit(ControllerColliderHit hit)
+    {
+        if (hit.gameObject.CompareTag("Enemy"))
+        {
+            Debug.Log("touchie enemy");
+            //Debug.Log("touchie");
+            //Vector3 direction = new Vector3(transform.position.x - collision.transform.position.x, 0, transform.position.z - collision.transform.position.z);
+            //rb.MovePosition(transform.position + direction.normalized * 2); // Use Rigidbody.MovePosition to handle movement
+        }
     }
 }

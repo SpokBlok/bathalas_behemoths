@@ -27,6 +27,9 @@ public class PlayerMovement : MonoBehaviour
     public float pushBackDuration = 0.5f;
     public float pushBackForce = 10f;
 
+    //Attack variables
+    public bool isAttacking = false;
+
     // Character Conroller
     private CharacterController charControl;
     private Collider playerCollider;
@@ -64,9 +67,20 @@ public class PlayerMovement : MonoBehaviour
         mouseLook = context.ReadValue<Vector2>();
     }
 
+    public void OnBasicAttack(InputAction.CallbackContext context)
+    {
+        Debug.Log("Click");
+        if (context.performed && !isAttacking)
+        {
+            Debug.Log("Attack!");
+            ChangeState(PlayerState.Attacking);
+            StartCoroutine(BasicAttack());
+        }
+    }
+
     void Update()
     {
-        updateRotationTarget();
+        UpdateRotationTarget();
         switch (currentState)
         {
             case PlayerState.Idle:
@@ -74,11 +88,11 @@ public class PlayerMovement : MonoBehaviour
                 break;
 
             case PlayerState.Moving:
-                movePlayer();
+                MovePlayer();
                 break;
 
             case PlayerState.Attacking:
-                // Handle attacking behavior
+                MovePlayer();
                 break;
 
             case PlayerState.Knockback:
@@ -87,7 +101,7 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    public void updateRotationTarget()
+    public void UpdateRotationTarget()
     {
         //Create a plane on the player's position
         Plane playerPlane = new Plane(Vector3.up, transform.position);
@@ -112,7 +126,7 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    public void movePlayer()
+    public void MovePlayer()
     {
         Vector3 moveDirection = new Vector3(move.x, 0f, move.y) * speed;
         charControl.Move(moveDirection * Time.deltaTime);
@@ -148,6 +162,30 @@ public class PlayerMovement : MonoBehaviour
         ChangeState(PlayerState.Idle); // Return to Idle state after knockback
     }
 
+    private IEnumerator BasicAttack()
+    {
+        isAttacking = true;
+        yield return new WaitForSeconds(0.5f); // Wait for attack duration
+        BasicAttackHitboxTrigger();
+        yield return new WaitForSeconds(0.5f);
+        isAttacking = false;
+
+
+        if (move.magnitude == 0)
+        {
+            ChangeState(PlayerState.Idle);
+        }
+        else
+        {
+            ChangeState(PlayerState.Moving);
+        }
+    }
+
+    private void BasicAttackHitboxTrigger()
+    {
+        // Handle attack hitbox logic here
+    }
+
     private void ChangeState(PlayerState newState) //Logic for entering states (e.g. playing animations)
     {
         currentState = newState;
@@ -167,6 +205,7 @@ public class PlayerMovement : MonoBehaviour
 
             case PlayerState.Attacking:
                 // Enter Attacking logic
+                Debug.Log("Attack State");
                 break;
 
             case PlayerState.Knockback:

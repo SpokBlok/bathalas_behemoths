@@ -91,7 +91,7 @@ public class PlayerMovement : MonoBehaviour
     {
         //Create a plane on the player's position
         Plane playerPlane = new Plane(Vector3.up, transform.position);
-        Ray ray = UnityEngine.Camera.main.ScreenPointToRay(mouseLook);
+        Ray ray = Camera.main.ScreenPointToRay(mouseLook);
 
         //Get mouse pointer position
         if (playerPlane.Raycast(ray, out float distance))

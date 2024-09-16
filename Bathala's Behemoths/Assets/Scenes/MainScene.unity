@@ -733,10 +733,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa15a3e1dffa0b641a88b46afeb69f6d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  minDistanceToLook: 0.1
   speed: 10
   pushBackDuration: 0.5
   pushBackForce: 10
-  minDistanceToLook: 0.1
 --- !u!114 &1020746811
 MonoBehaviour:
   m_ObjectHideFlags: 0

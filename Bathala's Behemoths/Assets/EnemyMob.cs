@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class EnemyMob : MonoBehaviour
 {
+    public int health;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -16,8 +18,13 @@ public class EnemyMob : MonoBehaviour
         
     }
 
-    private void OnCollisionEnter(Collision collision)
+    public void takeDamage(int damage)
     {
-        Debug.Log("touchie enemy");
+        health -= damage;
+        if (health <= 0)
+        {
+            Debug.Log("Enemy killed!");
+            Destroy(gameObject);
+        }
     }
 }

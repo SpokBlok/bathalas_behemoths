@@ -34,6 +34,10 @@ public class PlayerMovement : MonoBehaviour
     private CharacterController charControl;
     private Collider playerCollider;
 
+    //Basic attack variables
+    private Collider basicAttackCollider;
+    public int basicAttackDamage;
+
     // FSM State
     private PlayerState currentState;
 
@@ -42,6 +46,13 @@ public class PlayerMovement : MonoBehaviour
         // Get references to char controller + collider
         charControl = GetComponent<CharacterController>();
         playerCollider = GetComponent<Collider>();
+
+        //Reference to basic attack hitbox
+        basicAttackCollider = transform.Find("BasicAttackHitBox").GetComponent<Collider>();
+        if (basicAttackCollider == null)
+        {
+            Debug.Log("Error, no basic attack hitbox");
+        }
 
         // Start with Idle state
         currentState = PlayerState.Idle;
@@ -184,6 +195,29 @@ public class PlayerMovement : MonoBehaviour
     private void BasicAttackHitboxTrigger()
     {
         // Handle attack hitbox logic here
+        Debug.Log("Hitbox check!");
+        basicAttackCollider.enabled = true;
+
+        // Define the hitbox's position and radius
+        Vector3 hitboxPosition = basicAttackCollider.transform.position;
+        Vector3 hitboxSize = basicAttackCollider.GetComponent<BoxCollider>().size / 2;
+
+        // Get all colliders within the hitbox
+        Collider[] hitEnemies = Physics.OverlapBox(hitboxPosition, hitboxSize, basicAttackCollider.transform.rotation);
+
+        // Process each object inside the hitbox
+        foreach (Collider enemy in hitEnemies)
+        {
+            if (enemy.CompareTag("Enemy"))
+            {
+                EnemyMob enemyScript = enemy.GetComponent<EnemyMob>();
+                enemyScript.takeDamage(basicAttackDamage);
+                Debug.Log("Enemy hit!");
+            }
+        }
+
+        // Optionally deactivate the hitbox after checking
+        basicAttackCollider.enabled = false;
     }
 
     private void ChangeState(PlayerState newState) //Logic for entering states (e.g. playing animations)

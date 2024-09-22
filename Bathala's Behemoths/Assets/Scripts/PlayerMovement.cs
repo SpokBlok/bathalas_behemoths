@@ -62,14 +62,21 @@ public class PlayerMovement : MonoBehaviour
     {
         move = context.ReadValue<Vector2>();
 
+        // Only act on the input when it is performed
         // If there is input, transition to the Moving state
-        if (move != Vector2.zero && currentState != PlayerState.Knockback)
+        if (context.performed)
         {
-            ChangeState(PlayerState.Moving);
+            if (move != Vector2.zero && currentState != PlayerState.Moving && currentState != PlayerState.Knockback)
+            {
+                ChangeState(PlayerState.Moving);
+            }
         }
-        else if (move == Vector2.zero && currentState != PlayerState.Knockback)
+        else if (context.canceled)
         {
-            ChangeState(PlayerState.Idle);
+            if (currentState != PlayerState.Idle && currentState != PlayerState.Knockback)
+            {
+                ChangeState(PlayerState.Idle);
+            }
         }
     }
 
@@ -80,12 +87,15 @@ public class PlayerMovement : MonoBehaviour
 
     public void OnBasicAttack(InputAction.CallbackContext context)
     {
-        Debug.Log("Click");
-        if (context.performed && !isAttacking)
+        if (context.performed)
         {
-            Debug.Log("Attack!");
-            ChangeState(PlayerState.Attacking);
-            StartCoroutine(BasicAttack());
+            Debug.Log("Click");
+            if (context.performed && !isAttacking)
+            {
+                Debug.Log("Attack!");
+                ChangeState(PlayerState.Attacking);
+                StartCoroutine(BasicAttack());
+            }
         }
     }
 

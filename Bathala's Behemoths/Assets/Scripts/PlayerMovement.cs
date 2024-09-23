@@ -21,7 +21,6 @@ public class PlayerMovement : MonoBehaviour
 
     // Movement variables
     private Vector2 move;
-    public float speed = 3f;
 
     // Knockback variables
     public float pushBackDuration = 0.5f;
@@ -36,7 +35,6 @@ public class PlayerMovement : MonoBehaviour
 
     //Basic attack variables
     private Collider basicAttackCollider;
-    public int basicAttackDamage;
 
     // FSM State
     private PlayerState currentState;
@@ -149,7 +147,7 @@ public class PlayerMovement : MonoBehaviour
 
     public void MovePlayer()
     {
-        Vector3 moveDirection = new Vector3(move.x, 0f, move.y) * speed;
+        Vector3 moveDirection = new Vector3(move.x, 0f, move.y) * PlayerStats.Instance.speed;
         charControl.Move(moveDirection * Time.deltaTime);
     }
 
@@ -221,7 +219,7 @@ public class PlayerMovement : MonoBehaviour
             if (enemy.CompareTag("Enemy"))
             {
                 EnemyMob enemyScript = enemy.GetComponent<EnemyMob>();
-                enemyScript.takeDamage(basicAttackDamage);
+                enemyScript.takeDamage(PlayerStats.Instance.basicAttackDamage);
                 Debug.Log("Enemy hit!");
             }
         }

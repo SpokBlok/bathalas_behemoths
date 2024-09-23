@@ -155,7 +155,6 @@ public class PlayerMovement : MonoBehaviour
     {
         if (hit.gameObject.CompareTag("Enemy"))
         {
-            Debug.Log("touchie");
             // Calculate direction to push player away from enemy`, Player - Enemy position
             Vector3 direction = new Vector3(transform.position.x - hit.transform.position.x, 0, transform.position.z - hit.transform.position.z);
             StartCoroutine(SmoothPushBack(direction.normalized));

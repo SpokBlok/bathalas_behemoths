@@ -7,6 +7,7 @@ public class BaseBuildingScript : MonoBehaviour
 {
 
     private bool isInTrigger = false;
+    private PlayerMovement player;
 
     private void Start()
     {
@@ -19,6 +20,9 @@ public class BaseBuildingScript : MonoBehaviour
         if (context.performed && isInTrigger)
         {
             Debug.Log("E key pressed while inside the trigger!");
+            //For demo purposes
+            //To do for demo + future proofing, convert to using Singleton pattern for player stats
+            player.speed *= 2;
         }
     }
 
@@ -29,6 +33,7 @@ public class BaseBuildingScript : MonoBehaviour
         {
             isInTrigger = true;
             Debug.Log("Player entered the trigger");
+            player = other.GetComponent<PlayerMovement>();
         }
     }
 

@@ -45,6 +45,6 @@ public class PlayerStats : MonoBehaviour
 
     public void AddBasicAttackDamage(int damageIncrease)
     {
-        speed += damageIncrease;
+        basicAttackDamage += damageIncrease;
     }
 }

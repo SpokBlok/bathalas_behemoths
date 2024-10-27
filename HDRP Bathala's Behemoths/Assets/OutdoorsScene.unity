@@ -494,7 +494,7 @@ GameObject:
   - component: {fileID: 911912712}
   - component: {fileID: 911912711}
   m_Layer: 0
-  m_Name: Postprocessing Volume
+  m_Name: Day Postprocessing Volume
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -516,7 +516,7 @@ MonoBehaviour:
   priority: 0
   blendDistance: 0
   weight: 1
-  sharedProfile: {fileID: 11400000, guid: 919e13bbc3393c144a2ece4ea36eafa8, type: 2}
+  sharedProfile: {fileID: 11400000, guid: 045b3c1f4eece5049840e0ee64098e65, type: 2}
 --- !u!4 &911912712
 Transform:
   m_ObjectHideFlags: 0
@@ -564,7 +564,7 @@ GameObject:
   - component: {fileID: 1216697500}
   - component: {fileID: 1216697499}
   m_Layer: 0
-  m_Name: Sky Volume
+  m_Name: Day Sky Volume
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -586,7 +586,7 @@ MonoBehaviour:
   priority: 0
   blendDistance: 0
   weight: 1
-  sharedProfile: {fileID: 11400000, guid: 5f0578d6bec14c84bb486950e8fb043f, type: 2}
+  sharedProfile: {fileID: 11400000, guid: 99a3866476df6d74eaa3952086d73951, type: 2}
 --- !u!4 &1216697500
 Transform:
   m_ObjectHideFlags: 0
@@ -1120,7 +1120,7 @@ GameObject:
   - component: {fileID: 2100252447}
   - component: {fileID: 2100252446}
   m_Layer: 0
-  m_Name: Fog Volume
+  m_Name: Morning Fog Volume
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1142,7 +1142,7 @@ MonoBehaviour:
   priority: 0
   blendDistance: 0
   weight: 1
-  sharedProfile: {fileID: 11400000, guid: 4169c148aecdf3848be686dd88ab23ad, type: 2}
+  sharedProfile: {fileID: 11400000, guid: b2164f7a94602794e997e3e55a40197e, type: 2}
 --- !u!4 &2100252447
 Transform:
   m_ObjectHideFlags: 0

@@ -368,7 +368,7 @@ GameObject:
   - component: {fileID: 466622884}
   - component: {fileID: 466622885}
   m_Layer: 0
-  m_Name: Markupo Sky Volume
+  m_Name: Morning Sky Volume 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -405,7 +405,7 @@ MonoBehaviour:
   priority: 0
   blendDistance: 0
   weight: 1
-  sharedProfile: {fileID: 11400000, guid: 94bb2411d159ddc47bfa1e71620310b5, type: 2}
+  sharedProfile: {fileID: 11400000, guid: 357bb26d95a75dd4b81d125e5ff77cbf, type: 2}
 --- !u!1 &513912735
 GameObject:
   m_ObjectHideFlags: 0
@@ -866,7 +866,7 @@ GameObject:
   - component: {fileID: 777722790}
   - component: {fileID: 777722791}
   m_Layer: 0
-  m_Name: Markupo Fog Volume
+  m_Name: Morning Fog Volume 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -903,7 +903,7 @@ MonoBehaviour:
   priority: 0
   blendDistance: 0
   weight: 1
-  sharedProfile: {fileID: 11400000, guid: 5252803721a48634eb6f661124072f29, type: 2}
+  sharedProfile: {fileID: 11400000, guid: a7e045b513ce81a4485356748625a081, type: 2}
 --- !u!1 &887964152
 GameObject:
   m_ObjectHideFlags: 0
@@ -1020,7 +1020,7 @@ GameObject:
   - component: {fileID: 1222273713}
   - component: {fileID: 1222273714}
   m_Layer: 0
-  m_Name: Markupo Postprocessing Volume
+  m_Name: Template Morning Postprocessing Volume 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1057,7 +1057,7 @@ MonoBehaviour:
   priority: 0
   blendDistance: 0
   weight: 1
-  sharedProfile: {fileID: 11400000, guid: f8a9123a4cb10f44f8703580802923e7, type: 2}
+  sharedProfile: {fileID: 11400000, guid: 035bf702e6a92884aa9674053e494e59, type: 2}
 --- !u!1 &1823688464
 GameObject:
   m_ObjectHideFlags: 0

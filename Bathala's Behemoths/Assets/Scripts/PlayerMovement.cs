@@ -99,6 +99,7 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
+        TerrainGravity();
         UpdateRotationTarget();
         switch (currentState)
         {
@@ -118,6 +119,21 @@ public class PlayerMovement : MonoBehaviour
                 // Knockback behavior is handled in coroutine (SmoothPushBack)
                 break;
         }
+    }
+
+    public void TerrainGravity(){
+        Vector3 position = charControl.transform.position;
+
+        // Get the terrain height at the character's current position (X, Z)
+        float terrainHeight = Terrain.activeTerrain.SampleHeight(position);
+
+        // Set the character's Y position to match the terrain height + 1
+        position.y = terrainHeight + 2;
+
+        charControl.enabled = false; // Temporarily disable to directly set position
+        charControl.transform.position = position;
+        charControl.enabled = true;
+
     }
 
     public void UpdateRotationTarget()

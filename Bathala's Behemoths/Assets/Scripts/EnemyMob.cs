@@ -7,6 +7,7 @@ public class EnemyMob : MonoBehaviour
 {
     private CharacterController enemyControl;
     private Transform playerTransform;
+    private Transform target;
 
     public int health;
     public bool playerInRange;
@@ -47,7 +48,8 @@ public class EnemyMob : MonoBehaviour
     public void ChasePlayer()
     {
         if (playerInRange){
-
+            target = playerTransform;
+            UpdateRotationTarget();
             //Get vector from enemy to player and assign to x and z axes
             Vector3 moveDirection = (playerTransform.position - transform.position).normalized;
             Vector3 terrainMoveDirection = new Vector3(moveDirection.x, 0f, moveDirection.z) * speed;
@@ -61,5 +63,20 @@ public class EnemyMob : MonoBehaviour
             newPosition.y = terrainHeight + 2;
             transform.position = newPosition;
         }
+    }
+
+    public void UpdateRotationTarget()
+    {
+        //Create a plane on the player's position
+        Plane playerPlane = new Plane(Vector3.up, transform.position);
+
+
+        //Create vector from player position to mouse pointer
+        var lookPos = (target.position - transform.position).normalized;
+        lookPos.y = 0;
+
+        //Rotate enemy toward player
+        Quaternion targetRotation = Quaternion.LookRotation(lookPos);
+        transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, 0.15f);
     }
 }

@@ -167,9 +167,9 @@ public class PlayerMovement : MonoBehaviour
         charControl.Move(moveDirection * Time.deltaTime);
     }
 
-    private void OnControllerColliderHit(ControllerColliderHit hit)
+    public void Knockback(GameObject hit)
     {
-        if (hit.gameObject.CompareTag("Enemy"))
+        if (hit.CompareTag("Enemy"))
         {
             // Calculate direction to push player away from enemy`, Player - Enemy position
             Vector3 direction = new Vector3(transform.position.x - hit.transform.position.x, 0, transform.position.z - hit.transform.position.z);

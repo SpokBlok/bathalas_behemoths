@@ -32,7 +32,6 @@ public class EnemyMob : MonoBehaviour
     void Update()
     {
         ChasePlayer();
-        TerrainGravity();
     }
 
     public void takeDamage(int damage)
@@ -48,26 +47,19 @@ public class EnemyMob : MonoBehaviour
     public void ChasePlayer()
     {
         if (playerInRange){
-            Vector3 moveDirection= (playerTransform.position - transform.position).normalized;
-            Vector3 terrainMoveDirection = new Vector3(moveDirection.x, 0f, moveDirection.y) * speed;
 
+            //Get vector from enemy to player and assign to x and z axes
+            Vector3 moveDirection = (playerTransform.position - transform.position).normalized;
+            Vector3 terrainMoveDirection = new Vector3(moveDirection.x, 0f, moveDirection.z) * speed;
+
+            // Move the enemy in the x and z direction
             enemyControl.Move(terrainMoveDirection * Time.deltaTime);
+
+            //Get terrain height + 2 and assign it to y axis position
+            float terrainHeight = Terrain.activeTerrain.SampleHeight(transform.position);
+            Vector3 newPosition = transform.position;
+            newPosition.y = terrainHeight + 2;
+            transform.position = newPosition;
         }
-    }
-
-    public void TerrainGravity()
-    {
-        Vector3 position = enemyControl.transform.position;
-
-        // Get the terrain height at the character's current position (X, Z)
-        float terrainHeight = Terrain.activeTerrain.SampleHeight(position);
-
-        // Set the character's Y position to match the terrain height + 1
-        position.y = terrainHeight + 2;
-
-        enemyControl.enabled = false; // Temporarily disable to directly set position
-        enemyControl.transform.position = position;
-        enemyControl.enabled = true;
-
     }
 }

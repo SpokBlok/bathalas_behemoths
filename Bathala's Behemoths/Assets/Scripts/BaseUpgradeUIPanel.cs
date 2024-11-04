@@ -25,4 +25,9 @@ public class BaseUpgradeUIPanel : MonoBehaviour
     {
         gameObject.SetActive(false);
     }
+
+    public void Skill1Upgrade()
+    {
+        PlayerStats.Instance.AddSpeed(10);
+    }
 }

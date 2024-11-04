@@ -45,4 +45,25 @@ public class BaseUpgradeUIPanel : MonoBehaviour
     {
         PlayerStats.Instance.AddSpeed(10);
     }
+
+    public void DisplaySkill2()
+    {
+        Transform panel = transform.Find("RightPanel");
+        foreach (Transform child in panel)
+        {
+            if (child.name == "Skill 2")
+            {
+                child.gameObject.SetActive(true);
+            }
+            else
+            {
+                child.gameObject.SetActive(false);
+            }
+        }
+    }
+
+    public void Skill2Upgrade()
+    {
+        PlayerStats.Instance.AddSpeed(-10);
+    }
 }

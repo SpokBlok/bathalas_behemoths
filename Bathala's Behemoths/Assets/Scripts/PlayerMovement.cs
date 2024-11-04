@@ -128,12 +128,9 @@ public class PlayerMovement : MonoBehaviour
         float terrainHeight = Terrain.activeTerrain.SampleHeight(position);
 
         // Set the character's Y position to match the terrain height + 1
-        position.y = terrainHeight + 2;
+        position.y = terrainHeight + 1.2f;
 
-        charControl.enabled = false; // Temporarily disable to directly set position
         charControl.transform.position = position;
-        charControl.enabled = true;
-
     }
 
     public void UpdateRotationTarget()
@@ -157,7 +154,7 @@ public class PlayerMovement : MonoBehaviour
         if (lookPos.magnitude > minDistanceToLook)
         {
             Quaternion targetRotation = Quaternion.LookRotation(lookPos);
-            transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, 0.15f);
+            transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, 1f);
         }
     }
 

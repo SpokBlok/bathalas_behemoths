@@ -5,6 +5,7 @@ using UnityEngine.InputSystem;
 
 public class BaseBuildingScript : MonoBehaviour
 {
+    public BaseUpgradeUIPanel upgradePanel;
 
     private bool isInTrigger = false;
 
@@ -15,12 +16,12 @@ public class BaseBuildingScript : MonoBehaviour
 
     public void OnInteract(InputAction.CallbackContext context)
     {
+        Debug.Log("E key e while inside the trigger!");
         // Check for the key press only when inside the trigger
         if (context.performed && isInTrigger)
         {
             Debug.Log("E key pressed while inside the trigger!");
-            //For demo purposes
-            PlayerStats.Instance.AddBasicAttackDamage(50);
+            upgradePanel.gameObject.SetActive(true);
         }
     }
 
@@ -40,6 +41,7 @@ public class BaseBuildingScript : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             isInTrigger = false;
+            upgradePanel.DisablePanel();
             Debug.Log("Player exited the trigger");
         }
     }

@@ -18,6 +18,7 @@ public class PlayerMovement : MonoBehaviour
     private Vector2 mouseLook;
     private Vector3 rotationTarget;
     public float minDistanceToLook = 0.1f;
+    public Vector3 lookPos;
 
     // Movement variables
     private Vector2 move;
@@ -38,6 +39,10 @@ public class PlayerMovement : MonoBehaviour
 
     // FSM State
     private PlayerState currentState;
+    private Coroutine activeCoroutine;
+
+    //InputManager
+    public PlayerInput playerInput;
 
     private void Start()
     {
@@ -52,8 +57,14 @@ public class PlayerMovement : MonoBehaviour
             Debug.Log("Error, no basic attack hitbox");
         }
 
+        //Refernece to PlayerInput
+        playerInput = GetComponent<PlayerInput>();
+
         // Start with Idle state
         currentState = PlayerState.Idle;
+
+        //Starting alignment with terrain
+        TerrainGravity();
     }
 
     public void OnMove(InputAction.CallbackContext context)
@@ -92,14 +103,27 @@ public class PlayerMovement : MonoBehaviour
             {
                 Debug.Log("Attack!");
                 ChangeState(PlayerState.Attacking);
-                StartCoroutine(BasicAttack());
+                activeCoroutine = StartCoroutine(BasicAttack());
+            }
+        }
+    }
+
+    public void OnSkillTrigger(InputAction.CallbackContext context) {
+        
+        if (context.performed)
+        {
+            Debug.Log("Right Click");
+            if (context.performed && !isAttacking)
+            {
+                Debug.Log("Skill!");
+                ChangeState(PlayerState.Attacking);
+                activeCoroutine = StartCoroutine(SkillTrigger());
             }
         }
     }
 
     void Update()
     {
-        TerrainGravity();
         UpdateRotationTarget();
         switch (currentState)
         {
@@ -109,6 +133,7 @@ public class PlayerMovement : MonoBehaviour
 
             case PlayerState.Moving:
                 MovePlayer();
+                TerrainGravity();
                 break;
 
             case PlayerState.Attacking:
@@ -147,7 +172,7 @@ public class PlayerMovement : MonoBehaviour
         }
 
         //Create vector from player position to mouse pointer
-        var lookPos = rotationTarget - transform.position;
+        lookPos = rotationTarget - transform.position;
         lookPos.y = 0;
 
         //Rotate player toward mouse pointer
@@ -210,6 +235,8 @@ public class PlayerMovement : MonoBehaviour
         {
             ChangeState(PlayerState.Moving);
         }
+
+        activeCoroutine = null;
     }
 
     private void BasicAttackHitboxTrigger()
@@ -238,6 +265,51 @@ public class PlayerMovement : MonoBehaviour
 
         // Optionally deactivate the hitbox after checking
         basicAttackCollider.enabled = false;
+    }
+
+    public IEnumerator SkillTrigger()
+    {
+        isAttacking = true;
+        StartCoroutine(DashSkill());
+        //else, do ranged attack
+        yield return new WaitForSeconds(0.5f);
+        isAttacking = false;
+
+
+        if (move.magnitude == 0)
+        {
+            ChangeState(PlayerState.Idle);
+        }
+        else
+        {
+            ChangeState(PlayerState.Moving);
+        }
+
+        activeCoroutine = null;
+    }
+
+    private IEnumerator DashSkill()
+    {
+        Debug.Log("Dashing");
+        Vector3 direction = -lookPos.normalized;
+        if (move.magnitude > 0)
+        {
+            direction = move.normalized;
+            direction.z = direction.y;
+            direction.y = 0;
+        }
+        playerInput.actions["Move"].Disable();//Prevent moving while dashing
+        float dashDuration = 0.4f; // Time for the dash
+
+        float elapsedTime = 0f;
+        while (elapsedTime < dashDuration)
+        {
+            charControl.Move(direction * PlayerStats.Instance.speed * Time.deltaTime * 2.5f);
+            TerrainGravity();
+            elapsedTime += Time.deltaTime;
+            yield return null; // Wait for the next frame
+        }
+        playerInput.actions["Move"].Enable();
     }
 
     private void ChangeState(PlayerState newState) //Logic for entering states (e.g. playing animations)

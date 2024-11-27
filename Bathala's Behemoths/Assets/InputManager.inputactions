@@ -33,6 +33,15 @@
                     "initialStateCheck": false
                 },
                 {
+                    "name": "SkillTrigger",
+                    "type": "Button",
+                    "id": "9783a0d7-ee70-4da7-8184-9922736c11aa",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
                     "name": "Interact",
                     "type": "Button",
                     "id": "5aa513a9-3e8a-4d7d-bee1-29735c9b57b2",
@@ -128,6 +137,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "Interact",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "6d9c5493-cd9c-4967-acc5-aee753b26628",
+                    "path": "<Mouse>/rightButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "SkillTrigger",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

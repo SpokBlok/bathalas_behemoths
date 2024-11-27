@@ -79,4 +79,11 @@ public class EnemyMob : MonoBehaviour
         Quaternion targetRotation = Quaternion.LookRotation(lookPos);
         transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, 0.15f);
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("Projectile")) { 
+            takeDamage(PlayerStats.Instance.basicAttackDamage);
+        }
+    }
 }

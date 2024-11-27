@@ -44,6 +44,9 @@ public class PlayerMovement : MonoBehaviour
     //InputManager
     public PlayerInput playerInput;
 
+    //Projectile Prefab
+    public GameObject projectilePrefab;
+
     private void Start()
     {
         // Get references to char controller + collider
@@ -110,7 +113,7 @@ public class PlayerMovement : MonoBehaviour
 
     public void OnSkillTrigger(InputAction.CallbackContext context) {
         
-        if (context.performed)
+        if (context.performed && !PlayerStats.Instance.noSkillEquipped)
         {
             Debug.Log("Right Click");
             if (context.performed && !isAttacking)
@@ -269,10 +272,17 @@ public class PlayerMovement : MonoBehaviour
 
     public IEnumerator SkillTrigger()
     {
-        isAttacking = true;
-        StartCoroutine(DashSkill());
-        //else, do ranged attack
-        yield return new WaitForSeconds(0.5f);
+        if (PlayerStats.Instance.dashSkillEquipped)
+        {
+            isAttacking = true;
+            StartCoroutine(DashSkill());
+        }
+        else if (PlayerStats.Instance.rangedSkillEquipped)
+        {
+            isAttacking = true;
+            StartCoroutine(RangedSkill());
+        }
+
         isAttacking = false;
 
 
@@ -286,6 +296,7 @@ public class PlayerMovement : MonoBehaviour
         }
 
         activeCoroutine = null;
+        yield break;
     }
 
     private IEnumerator DashSkill()
@@ -310,6 +321,14 @@ public class PlayerMovement : MonoBehaviour
             yield return null; // Wait for the next frame
         }
         playerInput.actions["Move"].Enable();
+    }
+
+    public IEnumerator RangedSkill()
+    {
+        GameObject projectile = Instantiate(projectilePrefab, gameObject.transform.position, Quaternion.identity);
+        ProjectileScript projectileScript = projectile.GetComponent<ProjectileScript>();
+        StartCoroutine(projectileScript.Move(lookPos.normalized));
+        yield break;
     }
 
     private void ChangeState(PlayerState newState) //Logic for entering states (e.g. playing animations)

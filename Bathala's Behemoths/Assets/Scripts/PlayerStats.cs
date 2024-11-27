@@ -21,6 +21,9 @@ public class PlayerStats : MonoBehaviour
 
     public int speed;
     public int basicAttackDamage;
+    public bool dashSkillEquipped;
+    public bool rangedSkillEquipped;
+    public bool noSkillEquipped;
 
     private void Awake()
     {
@@ -41,7 +44,10 @@ public class PlayerStats : MonoBehaviour
         // Set default values
         speed = 10;
         basicAttackDamage = 25;
-    }
+        dashSkillEquipped = false;
+        rangedSkillEquipped = false;
+        noSkillEquipped = true;
+}
 
     public void AddBasicAttackDamage(int damageIncrease)
     {

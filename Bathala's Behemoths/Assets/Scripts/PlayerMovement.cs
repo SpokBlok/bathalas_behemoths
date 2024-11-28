@@ -48,6 +48,9 @@ public class PlayerMovement : MonoBehaviour
     //Projectile Prefab
     public GameObject projectilePrefab;
 
+    //Berserk Ult bool
+    public bool isBerserk;
+
     private void Start()
     {
         // Get references to char controller + collider
@@ -170,8 +173,15 @@ public class PlayerMovement : MonoBehaviour
         // Get the terrain height at the character's current position (X, Z)
         float terrainHeight = Terrain.activeTerrain.SampleHeight(position);
 
-        // Set the character's Y position to match the terrain height + 1
-        position.y = terrainHeight + 1.2f;
+        // Set the character's Y position to match the terrain height + 1, more if berserk
+        if (isBerserk)
+        {
+            position.y = terrainHeight + 2.2f;
+        }
+        else
+        {
+            position.y = terrainHeight + 1.2f;
+        }
 
         charControl.transform.position = position;
     }
@@ -211,6 +221,10 @@ public class PlayerMovement : MonoBehaviour
     {
         if (hit.CompareTag("Enemy"))
         {
+            if (isBerserk)
+            {
+                hit.GetComponent<EnemyMob>().takeDamage(PlayerStats.Instance.basicAttackDamage);
+            }
             // Calculate direction to push player away from enemy`, Player - Enemy position
             Vector3 direction = new Vector3(transform.position.x - hit.transform.position.x, 0, transform.position.z - hit.transform.position.z);
             StartCoroutine(SmoothPushBack(direction.normalized));
@@ -279,7 +293,14 @@ public class PlayerMovement : MonoBehaviour
             if (enemy.CompareTag("Enemy"))
             {
                 EnemyMob enemyScript = enemy.GetComponent<EnemyMob>();
-                enemyScript.takeDamage(PlayerStats.Instance.basicAttackDamage);
+                if (isBerserk)
+                {
+                    enemyScript.takeDamage(PlayerStats.Instance.basicAttackDamage * 2);
+                }
+                else
+                {
+                    enemyScript.takeDamage(PlayerStats.Instance.basicAttackDamage);
+                }
                 Debug.Log("Enemy hit!");
             }
         }
@@ -387,7 +408,7 @@ public class PlayerMovement : MonoBehaviour
         }
         else if (PlayerStats.Instance.berserkUltEquipped)
         {
-            //berserk ult
+            StartCoroutine(BerserkUlt());
         }
 
         isAttacking = false;
@@ -423,6 +444,21 @@ public class PlayerMovement : MonoBehaviour
         {
             StartCoroutine(RangedSkill(direction));
         }
+        yield break;
+    }
+
+    public IEnumerator BerserkUlt()
+    {
+        isBerserk = true;
+        transform.localScale *= 2;
+        float elapsedTime = 0f;
+        while (elapsedTime < 5)
+        {
+            elapsedTime += Time.deltaTime;
+            yield return null; // Wait for the next frame
+        }
+        transform.localScale *= 0.5f;
+        isBerserk = false;
         yield break;
     }
 

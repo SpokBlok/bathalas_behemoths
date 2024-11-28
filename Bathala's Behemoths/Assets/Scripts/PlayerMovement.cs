@@ -212,7 +212,7 @@ public class PlayerMovement : MonoBehaviour
         {
             // Apply push-back force gradually
             charControl.Move(direction * pushBackForce * Time.deltaTime);
-
+            TerrainGravity();
             elapsedTime += Time.deltaTime;
             yield return null; // Wait for the next frame
         }

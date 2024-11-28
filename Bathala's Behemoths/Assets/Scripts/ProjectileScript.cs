@@ -23,7 +23,7 @@ public class ProjectileScript : MonoBehaviour
         float attackDuration = 0.5f;
         float elapsedTime = 0f;
         float projectileSpeed = 20f;
-        while (elapsedTime < attackDuration)
+        while ((elapsedTime < attackDuration))
         {
             charControl.Move(direction * projectileSpeed * Time.deltaTime);
             elapsedTime += Time.deltaTime;

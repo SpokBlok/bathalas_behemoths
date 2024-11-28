@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UIElements;
@@ -206,6 +207,8 @@ public class PlayerMovement : MonoBehaviour
     {
         ChangeState(PlayerState.Knockback); // Change to Knockback state
         gameObject.layer = LayerMask.NameToLayer("Pushback");
+        playerInput.actions["BasicAttack"].Disable();
+        playerInput.actions["SkillTrigger"].Disable();
         float elapsedTime = 0f;
 
         while (elapsedTime < pushBackDuration)
@@ -217,6 +220,7 @@ public class PlayerMovement : MonoBehaviour
             yield return null; // Wait for the next frame
         }
 
+        playerInput.actions.Enable();
         gameObject.layer = LayerMask.NameToLayer("Default");
         ChangeState(PlayerState.Idle); // Return to Idle state after knockback
     }
@@ -302,6 +306,10 @@ public class PlayerMovement : MonoBehaviour
     private IEnumerator DashSkill()
     {
         Debug.Log("Dashing");
+        //Disable children colliders
+        CollisionToggle();
+        gameObject.layer = LayerMask.NameToLayer("Pushback");
+
         Vector3 direction = -lookPos.normalized;
         if (move.magnitude > 0)
         {
@@ -309,6 +317,7 @@ public class PlayerMovement : MonoBehaviour
             direction.z = direction.y;
             direction.y = 0;
         }
+        
         playerInput.actions["Move"].Disable();//Prevent moving while dashing
         float dashDuration = 0.4f; // Time for the dash
 
@@ -321,6 +330,30 @@ public class PlayerMovement : MonoBehaviour
             yield return null; // Wait for the next frame
         }
         playerInput.actions["Move"].Enable();
+        EnemyTriggerCheck();
+        gameObject.layer = LayerMask.NameToLayer("Pushback");
+        //Enable children colliders
+        CollisionToggle();
+    }
+
+    public void CollisionToggle()
+    {
+        foreach (Collider col in gameObject.GetComponentsInChildren<Collider>())
+        {
+            if (col.transform != transform)  // Avoid disabling the parent collider
+            {
+                col.enabled = !col.enabled;
+            }
+        }
+    }
+
+    public void EnemyTriggerCheck()
+    {
+        EnemyRadiusTrigger[] enemyRadiusTriggers = GameObject.FindObjectsOfType<EnemyRadiusTrigger>();
+        foreach (EnemyRadiusTrigger trigger in enemyRadiusTriggers)
+        {
+            trigger.TriggerCheck();
+        }
     }
 
     public IEnumerator RangedSkill()

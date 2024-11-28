@@ -50,8 +50,8 @@ public class PlayerStats : MonoBehaviour
         speed = 10;
         basicAttackDamage = 25;
 
-        dashSkillEquipped = false;
-        rangedSkillEquipped = true;
+        dashSkillEquipped = true;
+        rangedSkillEquipped = false;
         noSkillEquipped = false;
 
         rangedUltEquipped = false;

@@ -902,6 +902,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4019675415513161508, guid: ee0c25d8eeb90eb4ab84806e3bbdb364,
         type: 3}
+      propertyPath: m_IsKinematic
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4019675415513161508, guid: ee0c25d8eeb90eb4ab84806e3bbdb364,
+        type: 3}
       propertyPath: m_ExcludeLayers.m_Bits
       value: 128
       objectReference: {fileID: 0}
@@ -960,10 +965,20 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5416653459061547166, guid: ee0c25d8eeb90eb4ab84806e3bbdb364,
+        type: 3}
+      propertyPath: m_ExcludeLayers.m_Bits
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8689285323826336792, guid: ee0c25d8eeb90eb4ab84806e3bbdb364,
         type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8761248543049757768, guid: ee0c25d8eeb90eb4ab84806e3bbdb364,
+        type: 3}
+      propertyPath: m_ExcludeLayers.m_Bits
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 0}
@@ -1837,6 +1852,11 @@ PrefabInstance:
       propertyPath: projectilePrefab
       value: 
       objectReference: {fileID: 1681637777}
+    - target: {fileID: 5062249865156880733, guid: e2befb3480872ac4d860e47a6b28741a,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5087459728827542308, guid: e2befb3480872ac4d860e47a6b28741a,
         type: 3}
       propertyPath: m_ActionEvents.Array.size
@@ -3860,11 +3880,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Projectile
-      objectReference: {fileID: 0}
-    - target: {fileID: 1190830937122899381, guid: ba21279a731ddbb4bacbc708576ea9f2,
-        type: 3}
-      propertyPath: m_Layer
-      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 6133569693782347489, guid: ba21279a731ddbb4bacbc708576ea9f2,
         type: 3}

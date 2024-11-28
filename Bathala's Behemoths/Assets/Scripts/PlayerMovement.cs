@@ -126,6 +126,20 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
+    public void OnUltTrigger(InputAction.CallbackContext context)
+    {
+        if (context.performed && !PlayerStats.Instance.noUltEquipped)
+        {
+            Debug.Log("F press");
+            if (context.performed && !isAttacking)
+            {
+                Debug.Log("Ult!");
+                ChangeState(PlayerState.Attacking);
+                activeCoroutine = StartCoroutine(UltTrigger());
+            }
+        }
+    }
+
     void Update()
     {
         UpdateRotationTarget();
@@ -284,7 +298,7 @@ public class PlayerMovement : MonoBehaviour
         else if (PlayerStats.Instance.rangedSkillEquipped)
         {
             isAttacking = true;
-            StartCoroutine(RangedSkill());
+            StartCoroutine(RangedSkill(lookPos.normalized));
         }
 
         isAttacking = false;
@@ -356,11 +370,59 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    public IEnumerator RangedSkill()
+    public IEnumerator RangedSkill(Vector3 target)
     {
         GameObject projectile = Instantiate(projectilePrefab, gameObject.transform.position, Quaternion.identity);
         ProjectileScript projectileScript = projectile.GetComponent<ProjectileScript>();
-        StartCoroutine(projectileScript.Move(lookPos.normalized));
+        StartCoroutine(projectileScript.Move(target));
+        yield break;
+    }
+
+    public IEnumerator UltTrigger()
+    {
+        if (PlayerStats.Instance.rangedUltEquipped)
+        {
+            isAttacking = true;
+            StartCoroutine(RangedUlt());
+        }
+        else if (PlayerStats.Instance.berserkUltEquipped)
+        {
+            //berserk ult
+        }
+
+        isAttacking = false;
+
+
+        if (move.magnitude == 0)
+        {
+            ChangeState(PlayerState.Idle);
+        }
+        else
+        {
+            ChangeState(PlayerState.Moving);
+        }
+
+        activeCoroutine = null;
+        yield break;
+    }
+
+    public IEnumerator RangedUlt()
+    {
+        Vector3[] directions = new Vector3[]{
+            new Vector3(0, 0, 1),                                // North
+            new Vector3(1, 0, 1).normalized,                     // Northeast
+            new Vector3(1, 0, 0),                                // East
+            new Vector3(1, 0, -1).normalized,                    // Southeast
+            new Vector3(0, 0, -1),                               // South
+            new Vector3(-1, 0, -1).normalized,                   // Southwest
+            new Vector3(-1, 0, 0),                               // West
+            new Vector3(-1, 0, 1).normalized                     // Northwest
+        };
+
+        foreach (Vector3 direction in directions)
+        {
+            StartCoroutine(RangedSkill(direction));
+        }
         yield break;
     }
 

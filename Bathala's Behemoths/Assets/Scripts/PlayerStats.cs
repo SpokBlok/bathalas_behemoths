@@ -54,9 +54,9 @@ public class PlayerStats : MonoBehaviour
         rangedSkillEquipped = false;
         noSkillEquipped = false;
 
-        rangedUltEquipped = false;
+        rangedUltEquipped = true;
         berserkUltEquipped = false;
-        noUltEquipped = true;
+        noUltEquipped = false;
 }
 
     public void AddBasicAttackDamage(int damageIncrease)

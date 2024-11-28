@@ -27,6 +27,12 @@ public class EnemyMob : MonoBehaviour
         }
 
         enemyControl = GetComponent<CharacterController>();
+
+        //Start off on terrain height
+        float terrainHeight = Terrain.activeTerrain.SampleHeight(transform.position);
+        Vector3 newPosition = transform.position;
+        newPosition.y = terrainHeight + 1.2f;
+        transform.position = newPosition;
     }
 
     // Update is called once per frame
@@ -38,6 +44,7 @@ public class EnemyMob : MonoBehaviour
     public void takeDamage(int damage)
     {
         health -= damage;
+        Debug.Log(health);
         if (health <= 0)
         {
             Debug.Log("Enemy killed!");
@@ -60,7 +67,7 @@ public class EnemyMob : MonoBehaviour
             //Get terrain height + 2 and assign it to y axis position
             float terrainHeight = Terrain.activeTerrain.SampleHeight(transform.position);
             Vector3 newPosition = transform.position;
-            newPosition.y = terrainHeight + 2;
+            newPosition.y = terrainHeight + 1.2f;
             transform.position = newPosition;
         }
     }
@@ -78,5 +85,13 @@ public class EnemyMob : MonoBehaviour
         //Rotate enemy toward player
         Quaternion targetRotation = Quaternion.LookRotation(lookPos);
         transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, 0.15f);
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        Debug.Log("Enteres");
+        if (other.gameObject.CompareTag("Projectile")) { 
+            takeDamage(PlayerStats.Instance.basicAttackDamage);
+        }
     }
 }

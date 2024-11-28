@@ -430,9 +430,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   minDistanceToLook: 0.1
+  lookPos: {x: 0, y: 0, z: 0}
   pushBackDuration: 0.5
   pushBackForce: 10
   isAttacking: 0
+  playerInput: {fileID: 0}
+  projectilePrefab: {fileID: 0}
 --- !u!114 &5087459728827542308
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -511,6 +514,10 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: 5aa513a9-3e8a-4d7d-bee1-29735c9b57b2
     m_ActionName: Player/Interact[/Keyboard/e]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 9783a0d7-ee70-4da7-8184-9922736c11aa
+    m_ActionName: Player/SkillTrigger[/Mouse/rightButton]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player

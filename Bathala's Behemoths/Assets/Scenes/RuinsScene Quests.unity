@@ -2012,12 +2012,32 @@ PrefabInstance:
       objectReference: {fileID: 62116802}
     - target: {fileID: 5087459728827542308, guid: e2befb3480872ac4d860e47a6b28741a,
         type: 3}
+      propertyPath: m_ActionEvents.Array.size
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 5087459728827542308, guid: e2befb3480872ac4d860e47a6b28741a,
+        type: 3}
+      propertyPath: m_ActionEvents.Array.data[5].m_ActionId
+      value: 10c2d24c-2ef8-4477-b8cf-6e12485958f8
+      objectReference: {fileID: 0}
+    - target: {fileID: 5087459728827542308, guid: e2befb3480872ac4d860e47a6b28741a,
+        type: 3}
+      propertyPath: m_ActionEvents.Array.data[5].m_ActionName
+      value: Player/UltTrigger[/Keyboard/f]
+      objectReference: {fileID: 0}
+    - target: {fileID: 5087459728827542308, guid: e2befb3480872ac4d860e47a6b28741a,
+        type: 3}
       propertyPath: m_ActionEvents.Array.data[3].m_PersistentCalls.m_Calls.Array.size
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5087459728827542308, guid: e2befb3480872ac4d860e47a6b28741a,
         type: 3}
       propertyPath: m_ActionEvents.Array.data[3].m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5087459728827542308, guid: e2befb3480872ac4d860e47a6b28741a,
+        type: 3}
+      propertyPath: m_ActionEvents.Array.data[3].m_PersistentCalls.m_Calls.Array.data[1].m_Mode
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5087459728827542308, guid: e2befb3480872ac4d860e47a6b28741a,
@@ -2027,7 +2047,17 @@ PrefabInstance:
       objectReference: {fileID: 1140790897}
     - target: {fileID: 5087459728827542308, guid: e2befb3480872ac4d860e47a6b28741a,
         type: 3}
+      propertyPath: m_ActionEvents.Array.data[3].m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 1978263692}
+    - target: {fileID: 5087459728827542308, guid: e2befb3480872ac4d860e47a6b28741a,
+        type: 3}
       propertyPath: m_ActionEvents.Array.data[3].m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5087459728827542308, guid: e2befb3480872ac4d860e47a6b28741a,
+        type: 3}
+      propertyPath: m_ActionEvents.Array.data[3].m_PersistentCalls.m_Calls.Array.data[1].m_CallState
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5087459728827542308, guid: e2befb3480872ac4d860e47a6b28741a,
@@ -2037,12 +2067,27 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5087459728827542308, guid: e2befb3480872ac4d860e47a6b28741a,
         type: 3}
+      propertyPath: m_ActionEvents.Array.data[3].m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: OnInteract
+      objectReference: {fileID: 0}
+    - target: {fileID: 5087459728827542308, guid: e2befb3480872ac4d860e47a6b28741a,
+        type: 3}
       propertyPath: m_ActionEvents.Array.data[3].m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: BaseBuildingScript, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 5087459728827542308, guid: e2befb3480872ac4d860e47a6b28741a,
         type: 3}
+      propertyPath: m_ActionEvents.Array.data[3].m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: QuestBoardScript, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 5087459728827542308, guid: e2befb3480872ac4d860e47a6b28741a,
+        type: 3}
       propertyPath: m_ActionEvents.Array.data[3].m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 5087459728827542308, guid: e2befb3480872ac4d860e47a6b28741a,
+        type: 3}
+      propertyPath: m_ActionEvents.Array.data[3].m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 5725552720055748903, guid: e2befb3480872ac4d860e47a6b28741a,
@@ -3450,6 +3495,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 0
   basicAttackDamage: 0
+  dashSkillEquipped: 0
+  rangedSkillEquipped: 0
+  noSkillEquipped: 0
+  rangedUltEquipped: 0
+  berserkUltEquipped: 0
+  noUltEquipped: 0
 --- !u!4 &1597588349
 Transform:
   m_ObjectHideFlags: 0
@@ -3844,7 +3895,7 @@ Transform:
   m_GameObject: {fileID: 1978263685}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 11.34, y: 9.69, z: 22.04}
+  m_LocalPosition: {x: 11.34, y: 7.98, z: 22.04}
   m_LocalScale: {x: 6, y: 6, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3862,6 +3913,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0df066024fd424439d4ac3a59d2dee9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  questUI: {fileID: 321068742}
 --- !u!1 &1980160050
 GameObject:
   m_ObjectHideFlags: 0

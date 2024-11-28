@@ -16,7 +16,6 @@ public class BaseBuildingScript : MonoBehaviour
 
     public void OnInteract(InputAction.CallbackContext context)
     {
-        Debug.Log("E key e while inside the trigger!");
         // Check for the key press only when inside the trigger
         if (context.performed && isInTrigger)
         {

@@ -7,7 +7,7 @@ public class QuestBoardScript : MonoBehaviour
 {
     public QuestUI questUI;
 
-    private bool isInTrigger = false;
+    private bool isInTrigger;
 
     // Start is called before the first frame update
     void Start()
@@ -23,12 +23,11 @@ public class QuestBoardScript : MonoBehaviour
 
     public void OnInteract(InputAction.CallbackContext context)
     {
-        Debug.Log("E key e while inside the trigger!");
         // Check for the key press only when inside the trigger
         if (context.performed && isInTrigger)
         {
             Debug.Log("E key pressed while inside the trigger!");
-            questUI.gameObject.SetActive(true);
+            questUI.transform.parent.gameObject.SetActive(true);
         }
     }
 

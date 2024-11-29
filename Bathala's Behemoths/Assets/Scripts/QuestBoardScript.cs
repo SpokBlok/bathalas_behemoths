@@ -7,6 +7,7 @@ using TMPro;
 public class QuestBoardScript : MonoBehaviour
 {
     public QuestUI questUI;
+    public KillQuestUI killUI;
     public TextMeshProUGUI popUp;
 
     private bool isInTrigger;
@@ -30,6 +31,7 @@ public class QuestBoardScript : MonoBehaviour
         {
             Debug.Log("E key pressed while inside the trigger!");
             questUI.transform.parent.gameObject.SetActive(true);
+            killUI.transform.parent.gameObject.SetActive(true);
         }
     }
 

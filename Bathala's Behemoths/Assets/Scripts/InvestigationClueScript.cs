@@ -6,15 +6,22 @@ using UnityEngine.InputSystem;
 
 public class InvestigationClueScript : MonoBehaviour
 {
-    public QuestUI questUI;
     public TextMeshProUGUI popUp;
 
     private bool isInTrigger;
     private bool itemActivated;
 
+    public QuestUI[] questUIList;
+    public QuestUI questUI;
+
     // Start is called before the first frame update
     void Start()
     {
+        questUIList = Resources.FindObjectsOfTypeAll<QuestUI>();
+        foreach (QuestUI UI in questUIList)
+        {
+            questUI = UI;
+        }
         isInTrigger = false;
         itemActivated = false;
     }

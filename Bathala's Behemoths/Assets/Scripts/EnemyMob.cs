@@ -13,9 +13,17 @@ public class EnemyMob : MonoBehaviour
     public bool playerInRange;
     public int speed;
 
+    public KillQuestUI[] killQuestUIList;
+    public KillQuestUI killQuestUI;
+
     // Start is called before the first frame update
     void Start()
     {
+        killQuestUIList = Resources.FindObjectsOfTypeAll<KillQuestUI>();
+        foreach (KillQuestUI UI in killQuestUIList)
+        {
+            killQuestUI = UI;
+        }
         health = 50;
         speed = 4;
 
@@ -47,6 +55,7 @@ public class EnemyMob : MonoBehaviour
         Debug.Log(health);
         if (health <= 0)
         {
+            killQuestUI.KillQuestCount += 1;
             Debug.Log("Enemy killed!");
             Destroy(gameObject);
         }

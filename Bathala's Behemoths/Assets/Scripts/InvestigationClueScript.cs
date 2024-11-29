@@ -1,35 +1,38 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using TMPro;
 
-public class QuestBoardScript : MonoBehaviour
+public class InvestigationClueScript : MonoBehaviour
 {
     public QuestUI questUI;
     public TextMeshProUGUI popUp;
 
     private bool isInTrigger;
+    private bool itemActivated;
 
     // Start is called before the first frame update
     void Start()
     {
-
+        isInTrigger = false;
+        itemActivated = false;
     }
 
     // Update is called once per frame
     void Update()
     {
-
+        
     }
 
     public void OnInteract(InputAction.CallbackContext context)
     {
         // Check for the key press only when inside the trigger
-        if (context.performed && isInTrigger)
+        if (context.performed && isInTrigger && !itemActivated)
         {
-            Debug.Log("E key pressed while inside the trigger!");
-            questUI.transform.parent.gameObject.SetActive(true);
+            Debug.Log("Item activated");
+            itemActivated = true;
+            questUI.QuestItemCount += 1;
         }
     }
 

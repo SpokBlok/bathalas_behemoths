@@ -237,6 +237,7 @@ public class PlayerMovement : MonoBehaviour
         gameObject.layer = LayerMask.NameToLayer("Pushback");
         playerInput.actions["BasicAttack"].Disable();
         playerInput.actions["SkillTrigger"].Disable();
+        playerInput.actions["UltTrigger"].Disable();
         float elapsedTime = 0f;
 
         while (elapsedTime < pushBackDuration)
@@ -366,7 +367,7 @@ public class PlayerMovement : MonoBehaviour
         }
         playerInput.actions["Move"].Enable();
         EnemyTriggerCheck();
-        gameObject.layer = LayerMask.NameToLayer("Pushback");
+        gameObject.layer = LayerMask.NameToLayer("Default");
         //Enable children colliders
         CollisionToggle();
     }

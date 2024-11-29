@@ -48,7 +48,9 @@ public class BaseUpgradeUIPanel : MonoBehaviour
 
     public void Skill1Upgrade()
     {
-        PlayerStats.Instance.AddSpeed(10);
+        PlayerStats.Instance.dashSkillEquipped = true;
+        PlayerStats.Instance.rangedSkillEquipped = false;
+        PlayerStats.Instance.noSkillEquipped = false;
     }
 
     public void DisplaySkill2()
@@ -69,6 +71,54 @@ public class BaseUpgradeUIPanel : MonoBehaviour
 
     public void Skill2Upgrade()
     {
-        PlayerStats.Instance.AddSpeed(-10);
+        PlayerStats.Instance.dashSkillEquipped = false;
+        PlayerStats.Instance.rangedSkillEquipped = true;
+        PlayerStats.Instance.noSkillEquipped = false;
+    }
+
+    public void DisplayUlt1()
+    {
+        Transform panel = transform.Find("RightPanel");
+        foreach (Transform child in panel)
+        {
+            if (child.name == "Ult 1")
+            {
+                child.gameObject.SetActive(true);
+            }
+            else
+            {
+                child.gameObject.SetActive(false);
+            }
+        }
+    }
+
+    public void Ult1Upgrade()
+    {
+        PlayerStats.Instance.rangedUltEquipped = true;
+        PlayerStats.Instance.berserkUltEquipped = false;
+        PlayerStats.Instance.noSkillEquipped = false;
+    }
+
+    public void DisplayUlt2()
+    {
+        Transform panel = transform.Find("RightPanel");
+        foreach (Transform child in panel)
+        {
+            if (child.name == "Ult 2")
+            {
+                child.gameObject.SetActive(true);
+            }
+            else
+            {
+                child.gameObject.SetActive(false);
+            }
+        }
+    }
+
+    public void Ult2Upgrade()
+    {
+        PlayerStats.Instance.rangedUltEquipped = false;
+        PlayerStats.Instance.berserkUltEquipped = true;
+        PlayerStats.Instance.noSkillEquipped = false;
     }
 }

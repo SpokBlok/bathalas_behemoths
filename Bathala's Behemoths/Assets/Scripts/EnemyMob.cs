@@ -54,7 +54,6 @@ public class EnemyMob : MonoBehaviour
     public void takeDamage(int damage)
     {
         health -= damage;
-        Debug.Log(health);
         if (health <= 0)
         {
             if (killQuestUI.gameObject.activeSelf)

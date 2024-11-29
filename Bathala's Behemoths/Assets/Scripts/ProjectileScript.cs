@@ -36,7 +36,8 @@ public class ProjectileScript : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Enemy")){
+        if (other.gameObject.CompareTag("Enemy") || other.gameObject.CompareTag("Boss"))
+        {
             Destroy(gameObject);
         }
     }

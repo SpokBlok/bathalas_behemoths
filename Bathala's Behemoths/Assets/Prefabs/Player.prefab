@@ -436,6 +436,7 @@ MonoBehaviour:
   isAttacking: 0
   playerInput: {fileID: 0}
   projectilePrefab: {fileID: 0}
+  isBerserk: 0
 --- !u!114 &5087459728827542308
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -515,9 +516,37 @@ MonoBehaviour:
     m_ActionId: 5aa513a9-3e8a-4d7d-bee1-29735c9b57b2
     m_ActionName: Player/Interact[/Keyboard/e]
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1304987194780425126}
+        m_TargetAssemblyTypeName: PlayerMovement, Assembly-CSharp
+        m_MethodName: OnSkillTrigger
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: 9783a0d7-ee70-4da7-8184-9922736c11aa
     m_ActionName: Player/SkillTrigger[/Mouse/rightButton]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1304987194780425126}
+        m_TargetAssemblyTypeName: PlayerMovement, Assembly-CSharp
+        m_MethodName: OnUltTrigger
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 10c2d24c-2ef8-4477-b8cf-6e12485958f8
+    m_ActionName: Player/UltTrigger[/Keyboard/f]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player

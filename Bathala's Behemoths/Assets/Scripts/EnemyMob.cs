@@ -16,6 +16,8 @@ public class EnemyMob : MonoBehaviour
     public KillQuestUI[] killQuestUIList;
     public KillQuestUI killQuestUI;
 
+    private GameObject bulletHit;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -55,7 +57,10 @@ public class EnemyMob : MonoBehaviour
         Debug.Log(health);
         if (health <= 0)
         {
-            killQuestUI.KillQuestCount += 1;
+            if (killQuestUI.gameObject.activeSelf)
+            {
+                killQuestUI.KillQuestCount += 1;
+            }
             Debug.Log("Enemy killed!");
             Destroy(gameObject);
         }
@@ -98,8 +103,8 @@ public class EnemyMob : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("Enteres");
-        if (other.gameObject.CompareTag("Projectile")) { 
+        if (bulletHit != other.gameObject && other.gameObject.CompareTag("Projectile")) {
+            bulletHit = other.gameObject;
             takeDamage(PlayerStats.Instance.basicAttackDamage);
         }
     }

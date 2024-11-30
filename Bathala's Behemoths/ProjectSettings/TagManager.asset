@@ -7,6 +7,8 @@ TagManager:
   - Enemy
   - Projectile
   - Boss
+  - Boss Mob
+  - Spawner
   layers:
   - Default
   - TransparentFX

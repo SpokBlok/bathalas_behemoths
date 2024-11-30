@@ -6,8 +6,10 @@ using UnityEngine.SceneManagement;
 
 public class MarkupoTimer : MonoBehaviour
 {
+    public SpawnerScript spawner;
     public float timerDuration = 240f; 
     private float timer;
+    private float spawnTimer = 5f;
 
     public TextMeshProUGUI timerText;
 
@@ -20,9 +22,16 @@ public class MarkupoTimer : MonoBehaviour
 
     void Update()
     {
-        if (timer > 0)
+        if (timer > 0f)
         {
-            timer -= Time.deltaTime; // Decrease timer by elapsed time
+            if (spawnTimer <= 0f)
+            {
+                spawner.SpawnEnemy();
+                spawner.SpawnEnemy();
+                spawnTimer = 5f;
+            }
+            timer -= Time.deltaTime;
+            spawnTimer -= Time.deltaTime; // Decrease timers by elapsed time
             UpdateTimerText();
         }
         else
@@ -35,8 +44,8 @@ public class MarkupoTimer : MonoBehaviour
 
     void UpdateTimerText()
     {
-        int minutes = Mathf.FloorToInt(timer / 60);
-        int seconds = Mathf.FloorToInt(timer % 60);
+        int minutes = Mathf.FloorToInt(timer / 60f);
+        int seconds = Mathf.FloorToInt(timer % 60f);
         timerText.text = $"{minutes:00}:{seconds:00}"; // Format as MM:ss
     }
 

@@ -51,6 +51,8 @@ public class PlayerMovement : MonoBehaviour
     //Berserk Ult bool
     public bool isBerserk;
 
+    public int health;
+
     private void Start()
     {
         // Get references to char controller + collider
@@ -72,6 +74,8 @@ public class PlayerMovement : MonoBehaviour
 
         //Starting alignment with terrain
         TerrainGravity();
+
+        health = 120;
     }
 
     public void OnMove(InputAction.CallbackContext context)
@@ -149,7 +153,6 @@ public class PlayerMovement : MonoBehaviour
         switch (currentState)
         {
             case PlayerState.Idle:
-                // Idle logic here
                 break;
 
             case PlayerState.Moving:
@@ -162,7 +165,6 @@ public class PlayerMovement : MonoBehaviour
                 break;
 
             case PlayerState.Knockback:
-                // Knockback behavior is handled in coroutine (SmoothPushBack)
                 break;
         }
     }
@@ -243,6 +245,7 @@ public class PlayerMovement : MonoBehaviour
 
     private IEnumerator SmoothPushBack(Vector3 direction)
     {
+        takeDamage(15);
         ChangeState(PlayerState.Knockback); // Change to Knockback state
         gameObject.layer = LayerMask.NameToLayer("Pushback");
         playerInput.actions["BasicAttack"].Disable();
@@ -313,7 +316,20 @@ public class PlayerMovement : MonoBehaviour
                     enemyScript.takeDamage(PlayerStats.Instance.basicAttackDamage);
                 }
                 Debug.Log("Enemy hit!");
-            } 
+            }
+            else if (enemy.CompareTag("Boss Mob"))
+            {
+                EnemyBossMob enemyScript = enemy.GetComponent<EnemyBossMob>();
+                if (isBerserk)
+                {
+                    enemyScript.takeDamage(PlayerStats.Instance.basicAttackDamage * 2);
+                }
+                else
+                {
+                    enemyScript.takeDamage(PlayerStats.Instance.basicAttackDamage);
+                }
+                Debug.Log("Enemy hit!");
+            }
             else if (enemy.CompareTag("Boss")) 
             {
                 MarkupoScript enemyScript = enemy.GetComponent<MarkupoScript>();
@@ -327,8 +343,6 @@ public class PlayerMovement : MonoBehaviour
                 }
             }
         }
-
-        // Optionally deactivate the hitbox after checking
         basicAttackCollider.enabled = false;
     }
 
@@ -376,7 +390,7 @@ public class PlayerMovement : MonoBehaviour
             direction.y = 0;
         }
         
-        playerInput.actions["Move"].Disable();//Prevent moving while dashing
+        playerInput.actions["Move"].Disable(); //Prevent moving while dashing
         float dashDuration = 0.4f; // Time for the dash
 
         float elapsedTime = 0f;
@@ -485,20 +499,31 @@ public class PlayerMovement : MonoBehaviour
         yield break;
     }
 
+    public void takeDamage(int damage)
+    {
+        health -= damage;
+        if (health < 0)
+        {
+            Debug.Log("Dead");
+            //trigger death cutscene
+        }
+    }
+
     private void ChangeState(PlayerState newState) //Logic for entering states (e.g. playing animations)
     {
         currentState = newState;
 
-        // Optional: Handle logic when entering or leaving specific states.
         switch (newState)
         {
             case PlayerState.Idle:
                 // Enter Idle logic
+                isAttacking = false;
                 Debug.Log("Idle State");
                 break;
 
             case PlayerState.Moving:
                 // Enter Moving logic
+                isAttacking = false;
                 Debug.Log("Moving State");
                 break;
 
@@ -509,6 +534,7 @@ public class PlayerMovement : MonoBehaviour
 
             case PlayerState.Knockback:
                 // Enter Knockback logic
+                isAttacking = false;
                 Debug.Log("Knockback State");
                 break;
         }

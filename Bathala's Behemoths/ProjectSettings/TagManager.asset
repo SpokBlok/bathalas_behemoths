@@ -9,6 +9,8 @@ TagManager:
   - Boss
   - Boss Mob
   - Spawner
+  - Fire
+  - Investigation Text
   layers:
   - Default
   - TransparentFX

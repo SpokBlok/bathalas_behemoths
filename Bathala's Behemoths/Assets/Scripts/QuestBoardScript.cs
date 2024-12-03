@@ -6,6 +6,8 @@ using TMPro;
 
 public class QuestBoardScript : MonoBehaviour
 {
+    public QuestUI[] questUIList;
+    public KillQuestUI[] killQuestUIList;
     public QuestUI questUI;
     public KillQuestUI killUI;
     public TextMeshProUGUI popUp;
@@ -15,7 +17,24 @@ public class QuestBoardScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        UpdateCanvas();
+    }
 
+    void UpdateCanvas()
+    {
+        questUIList = Resources.FindObjectsOfTypeAll<QuestUI>();
+
+        foreach (QuestUI UI in questUIList)
+        {
+            questUI = UI;
+        }
+
+        killQuestUIList = Resources.FindObjectsOfTypeAll<KillQuestUI>();
+
+        foreach (KillQuestUI UI in killQuestUIList)
+        {
+            killUI = UI;
+        }
     }
 
     // Update is called once per frame
@@ -29,6 +48,7 @@ public class QuestBoardScript : MonoBehaviour
         // Check for the key press only when inside the trigger
         if (context.performed && isInTrigger)
         {
+            UpdateCanvas();
             Debug.Log("E key pressed while inside the trigger!");
             questUI.transform.parent.gameObject.SetActive(true);
             killUI.transform.parent.gameObject.SetActive(true);

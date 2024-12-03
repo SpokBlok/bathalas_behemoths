@@ -7,6 +7,7 @@ public class QuestUI : MonoBehaviour
 {
     public TextMeshProUGUI QuestText;
     public int QuestItemCount;
+    public bool questComp;
 
     // Start is called before the first frame update
     void Start()
@@ -22,6 +23,7 @@ public class QuestUI : MonoBehaviour
         if (QuestItemCount == 3)
         {
             QuestText.text = "Markupo Investigation Clues Found: Complete!";
+            PlayerStats.Instance.questComp = true;
         }
         else
         {

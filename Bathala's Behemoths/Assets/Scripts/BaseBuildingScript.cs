@@ -6,6 +6,7 @@ using TMPro;
 
 public class BaseBuildingScript : MonoBehaviour
 {
+    public BaseUpgradeUIPanel[] uiList;
     public BaseUpgradeUIPanel upgradePanel;
     public TextMeshProUGUI popUp;
 
@@ -19,6 +20,17 @@ public class BaseBuildingScript : MonoBehaviour
         isInTrigger = false;
         isBuilt = false;
         gameObject.GetComponent<MeshRenderer>().enabled = false;
+        UpdateCanvas();
+    }
+
+    public void UpdateCanvas()
+    {
+        uiList = Resources.FindObjectsOfTypeAll<BaseUpgradeUIPanel>();
+
+        foreach (BaseUpgradeUIPanel UI in uiList)
+        {
+            upgradePanel = UI;
+        }
     }
 
     public void OnInteract(InputAction.CallbackContext context)
@@ -27,6 +39,8 @@ public class BaseBuildingScript : MonoBehaviour
         // Check for the key press only when inside the trigger
         if (context.performed && isInTrigger && !isPanelUp)
         {
+            
+            UpdateCanvas();
             isPanelUp = true;
             upgradePanel.EnablePanel();
             if (!isBuilt)

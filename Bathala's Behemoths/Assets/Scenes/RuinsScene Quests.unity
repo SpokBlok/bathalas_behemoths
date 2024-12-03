@@ -1863,7 +1863,7 @@ GameObject:
   - component: {fileID: 321068742}
   m_Layer: 5
   m_Name: Quest Text
-  m_TagString: Untagged
+  m_TagString: Investigation Text
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1934,8 +1934,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
-  m_fontSizeBase: 36
+  m_fontSize: 32
+  m_fontSizeBase: 32
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -1998,6 +1998,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   QuestText: {fileID: 0}
   QuestItemCount: 0
+  questComp: 0
 --- !u!1 &321205613
 GameObject:
   m_ObjectHideFlags: 0
@@ -7107,6 +7108,7 @@ MonoBehaviour:
   noUltEquipped: 0
   introDone: 0
   outdoorsScene: 0
+  questComp: 0
 --- !u!4 &1597588349
 Transform:
   m_ObjectHideFlags: 0

@@ -31,6 +31,7 @@ public class PlayerStats : MonoBehaviour
     public bool noUltEquipped;
     public bool introDone;
     public bool outdoorsScene;
+    public bool questComp;
 
     private void Awake()
     {

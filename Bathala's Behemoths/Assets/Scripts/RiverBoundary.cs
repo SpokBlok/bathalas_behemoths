@@ -22,8 +22,11 @@ public class RiverBoundary : MonoBehaviour
         {
             Debug.LogError("MeshFilter component not found on the object.");
         }
+    }
 
-        if (PlayerStats.Instance.introDone && PlayerStats.Instance.outdoorsScene)
+    void Update()
+    {
+        if (PlayerStats.Instance.questComp)
         {
             DisableBoxCollider();
         }

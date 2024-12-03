@@ -11,20 +11,29 @@ public class BaseBuildingScript : MonoBehaviour
 
     private bool isPanelUp;
     private bool isInTrigger;
+    private bool isBuilt;
 
     private void Start()
     {
         isPanelUp = false;
         isInTrigger = false;
-}
+        isBuilt = false;
+        gameObject.GetComponent<MeshRenderer>().enabled = false;
+    }
 
     public void OnInteract(InputAction.CallbackContext context)
     {
+
         // Check for the key press only when inside the trigger
         if (context.performed && isInTrigger && !isPanelUp)
         {
             isPanelUp = true;
             upgradePanel.EnablePanel();
+            if (!isBuilt)
+            {
+                gameObject.GetComponent<MeshRenderer>().enabled = true;
+                isBuilt = true;
+            }
         } 
         else if (context.performed && isInTrigger && isPanelUp)
         {

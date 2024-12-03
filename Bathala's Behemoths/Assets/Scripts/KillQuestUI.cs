@@ -12,7 +12,13 @@ public class KillQuestUI : MonoBehaviour
     void Start()
     {
         QuestText = GetComponent<TextMeshProUGUI>();
+        DontDestroyOnLoad(gameObject); //allows it to persist btw stages
         KillQuestCount = 0;
+    }
+
+    void Awake()
+    {
+        DontDestroyOnLoad(gameObject);
     }
 
     // Update is called once per frame

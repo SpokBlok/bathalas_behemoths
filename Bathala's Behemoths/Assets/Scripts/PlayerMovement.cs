@@ -76,6 +76,11 @@ public class PlayerMovement : MonoBehaviour
         TerrainGravity();
 
         health = 120;
+
+        if (PlayerStats.Instance.introDone && PlayerStats.Instance.outdoorsScene)
+        {
+            gameObject.transform.position = new Vector3(313.5f, 23.52272f, 195.11f);
+        }
     }
 
     public void OnMove(InputAction.CallbackContext context)

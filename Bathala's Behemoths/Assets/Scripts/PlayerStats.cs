@@ -29,6 +29,8 @@ public class PlayerStats : MonoBehaviour
     public bool rangedUltEquipped;
     public bool berserkUltEquipped;
     public bool noUltEquipped;
+    public bool introDone;
+    public bool outdoorsScene;
 
     private void Awake()
     {
@@ -57,6 +59,8 @@ public class PlayerStats : MonoBehaviour
         rangedUltEquipped = true;
         berserkUltEquipped = false;
         noUltEquipped = false;
+        introDone = false;
+        outdoorsScene = true;
 }
 
     public void AddBasicAttackDamage(int damageIncrease)

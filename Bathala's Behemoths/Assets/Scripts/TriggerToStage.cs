@@ -21,7 +21,8 @@ public class TriggerToStage : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            SceneManager.LoadScene("MainScene");
+            SceneManager.LoadScene("OutdoorsScene");
+            PlayerStats.Instance.outdoorsScene = true;
         }
     }
 }

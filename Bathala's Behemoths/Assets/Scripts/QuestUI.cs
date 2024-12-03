@@ -12,6 +12,7 @@ public class QuestUI : MonoBehaviour
     void Start()
     {
         QuestText = GetComponent<TextMeshProUGUI>();
+        DontDestroyOnLoad(gameObject); // allows it to persist btw scenes
         QuestItemCount = 0;
     }
 

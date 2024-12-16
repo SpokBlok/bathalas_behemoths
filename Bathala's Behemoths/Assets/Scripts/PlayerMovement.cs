@@ -156,6 +156,7 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
         UpdateRotationTarget();
+
         switch (currentState)
         {
             case PlayerState.Idle:

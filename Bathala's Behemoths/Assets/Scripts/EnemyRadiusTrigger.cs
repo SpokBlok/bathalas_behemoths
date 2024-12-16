@@ -20,7 +20,7 @@ public class EnemyRadiusTrigger : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player")){
-            GetComponentInParent<EnemyMob>().playerInRange = true;
+            GetComponentInParent<EnemyMob>().ChangeState(EnemyState.Moving);
         }
     }
 
@@ -28,7 +28,7 @@ public class EnemyRadiusTrigger : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            GetComponentInParent<EnemyMob>().playerInRange = false;
+            GetComponentInParent<EnemyMob>().ChangeState(EnemyState.Idle);
         }
     }
 
@@ -36,11 +36,11 @@ public class EnemyRadiusTrigger : MonoBehaviour
     {
         if (GetComponent<Collider>().bounds.Contains(player.transform.position))
         {
-            GetComponentInParent<EnemyMob>().playerInRange = true;
+            GetComponentInParent<EnemyMob>().ChangeState(EnemyState.Moving);
         }
         else
         {
-            GetComponentInParent<EnemyMob>().playerInRange = false;
+            GetComponentInParent<EnemyMob>().ChangeState(EnemyState.Idle);
         }
     }
 }

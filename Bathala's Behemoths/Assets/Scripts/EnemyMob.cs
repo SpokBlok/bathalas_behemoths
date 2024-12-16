@@ -3,6 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem.XR;
 
+public enum EnemyState
+{
+    Idle,
+    Moving,
+    Attacking,
+    Knockback
+}
+
 public class EnemyMob : MonoBehaviour
 {
     private CharacterController enemyControl;
@@ -17,6 +25,11 @@ public class EnemyMob : MonoBehaviour
     public KillQuestUI killQuestUI;
 
     private GameObject bulletHit;
+
+    //Enemy State Machine
+    private EnemyState enemyState;
+
+    private bool isAttacking = false;
 
     // Start is called before the first frame update
     void Start()
@@ -43,12 +56,36 @@ public class EnemyMob : MonoBehaviour
         Vector3 newPosition = transform.position;
         newPosition.y = terrainHeight + 1.2f;
         transform.position = newPosition;
+
+        //Starting state
+        enemyState = EnemyState.Idle;
     }
 
     // Update is called once per frame
     void Update()
     {
-        ChasePlayer();
+
+        switch (enemyState)
+        {
+            case EnemyState.Idle:
+                break;
+
+            case EnemyState.Moving:
+                ChasePlayer();
+                UpdateRotationTarget();
+                break;
+
+            case EnemyState.Attacking:
+                UpdateRotationTarget();
+                if (!isAttacking)
+                {
+                    //Attack
+                }
+                break;
+
+            case EnemyState.Knockback:
+                break;
+        }
     }
 
     public void takeDamage(int damage)
@@ -67,9 +104,8 @@ public class EnemyMob : MonoBehaviour
 
     public void ChasePlayer()
     {
-        if (playerInRange){
+        if (enemyState == EnemyState.Moving){
             target = playerTransform;
-            UpdateRotationTarget();
             //Get vector from enemy to player and assign to x and z axes
             Vector3 moveDirection = (playerTransform.position - transform.position).normalized;
             Vector3 terrainMoveDirection = new Vector3(moveDirection.x, 0f, moveDirection.z) * speed;
@@ -105,6 +141,30 @@ public class EnemyMob : MonoBehaviour
         if (bulletHit != other.gameObject && other.gameObject.CompareTag("Projectile")) {
             bulletHit = other.gameObject;
             takeDamage(PlayerStats.Instance.basicAttackDamage);
+        }
+    }
+
+    public void ChangeState(EnemyState newState) //Logic for entering states (e.g. playing animations)
+    {
+        enemyState = newState;
+
+        switch (newState)
+        {
+            case EnemyState.Idle:
+                // Enter Idle logic
+                break;
+
+            case EnemyState.Moving:
+                // Enter Moving logic
+                break;
+
+            case EnemyState.Attacking:
+                // Enter Attacking logic
+                break;
+
+            case EnemyState.Knockback:
+                // Enter Knockback logic
+                break;
         }
     }
 }

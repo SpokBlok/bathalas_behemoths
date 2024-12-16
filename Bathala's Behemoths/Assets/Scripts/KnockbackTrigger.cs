@@ -18,6 +18,6 @@ public class KnockbackTrigger : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        this.gameObject.GetComponentInParent<PlayerMovement>().Knockback(other.gameObject);
+        
     }
 }

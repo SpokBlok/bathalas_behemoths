@@ -30,6 +30,7 @@ public class PlayerMovement : MonoBehaviour
 
     //Attack variables
     public bool isAttacking = false;
+    public bool isSkillingOrUlting = false;
 
     // Character Conroller
     private CharacterController charControl;
@@ -221,7 +222,17 @@ public class PlayerMovement : MonoBehaviour
     public void MovePlayer()
     {
         Vector3 moveDirection = new Vector3(move.x, 0f, move.y) * PlayerStats.Instance.speed;
-        charControl.Move(moveDirection * Time.deltaTime);
+        if (isSkillingOrUlting)
+        {
+            charControl.Move(moveDirection * 0);
+        }
+        else if (isAttacking)
+        {
+            charControl.Move((moveDirection / 3) * Time.deltaTime);
+        } else
+        {
+            charControl.Move(moveDirection * Time.deltaTime);
+        }
     }
 
     public void Knockback(GameObject hit)
@@ -301,7 +312,7 @@ public class PlayerMovement : MonoBehaviour
 
         // Define the hitbox's position and radius
         Vector3 hitboxPosition = basicAttackCollider.transform.position;
-        Vector3 hitboxSize = basicAttackCollider.GetComponent<BoxCollider>().size / 2;
+        Vector3 hitboxSize = basicAttackCollider.GetComponent<BoxCollider>().size;
 
         // Get all colliders within the hitbox
         Collider[] hitEnemies = Physics.OverlapBox(hitboxPosition, hitboxSize, basicAttackCollider.transform.rotation);
@@ -356,14 +367,19 @@ public class PlayerMovement : MonoBehaviour
         if (PlayerStats.Instance.dashSkillEquipped)
         {
             isAttacking = true;
-            StartCoroutine(DashSkill());
+            isSkillingOrUlting = true;
+            yield return StartCoroutine(DashSkill());
         }
         else if (PlayerStats.Instance.rangedSkillEquipped)
         {
             isAttacking = true;
-            StartCoroutine(RangedSkill(lookPos.normalized));
+            isSkillingOrUlting = true;
+            yield return new WaitForSeconds(1.0f); // Skill charge up duration
+            yield return StartCoroutine(RangedSkill(lookPos.normalized));
         }
 
+        Debug.Log("Skill end");
+        isSkillingOrUlting = false;
         isAttacking = false;
 
 
@@ -446,13 +462,16 @@ public class PlayerMovement : MonoBehaviour
         if (PlayerStats.Instance.rangedUltEquipped)
         {
             isAttacking = true;
-            StartCoroutine(RangedUlt());
+            isSkillingOrUlting = true;
+            yield return new WaitForSeconds(1.5f); // Ult charge up duration
+            yield return StartCoroutine(RangedUlt());
         }
         else if (PlayerStats.Instance.berserkUltEquipped)
         {
-            StartCoroutine(BerserkUlt());
+            yield return StartCoroutine(BerserkUlt());
         }
 
+        isSkillingOrUlting = false;
         isAttacking = false;
 
 

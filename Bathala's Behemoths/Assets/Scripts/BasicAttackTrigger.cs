@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class BasicAttackTrigger : MonoBehaviour
 {
+    public GameObject enemyHit;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -16,11 +18,12 @@ public class BasicAttackTrigger : MonoBehaviour
         
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter(Collider other) //To prevent double damage triggers
     {
-        if (other.gameObject.CompareTag("Enemy")) // need to update for other enemy types
+        if (enemyHit != other.gameObject && other.gameObject.CompareTag("Enemy"))
         {
-            other.gameObject.GetComponent<EnemyMob>().takeDamage(PlayerStats.Instance.basicAttackDamage / 2);
+            enemyHit = other.gameObject;
+            other.GetComponent<EnemyMob>().takeDamage(PlayerStats.Instance.basicAttackDamage / 2);
         }
     }
 }

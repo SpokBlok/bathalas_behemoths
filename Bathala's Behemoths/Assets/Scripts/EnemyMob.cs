@@ -17,14 +17,14 @@ public class EnemyMob : MonoBehaviour
     private Transform playerTransform;
     private Transform target;
 
-    public int health;
+    public float health;
     public bool playerInRange;
     public int speed;
 
     public KillQuestUI[] killQuestUIList;
     public KillQuestUI killQuestUI;
 
-    private GameObject bulletHit;
+    private GameObject objectHit;
 
     //Enemy State Machine
     private EnemyState enemyState;
@@ -94,7 +94,7 @@ public class EnemyMob : MonoBehaviour
         }
     }
 
-    public void takeDamage(int damage)
+    public void takeDamage(float damage)
     {
         health -= damage;
         if (health <= 0)
@@ -141,8 +141,8 @@ public class EnemyMob : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (bulletHit != other.gameObject && other.gameObject.CompareTag("Projectile")) {
-            bulletHit = other.gameObject;
+        if (objectHit != other.gameObject && other.gameObject.CompareTag("Projectile")) {
+            objectHit = other.gameObject;
             takeDamage(PlayerStats.Instance.basicAttackDamage);
         }
     }

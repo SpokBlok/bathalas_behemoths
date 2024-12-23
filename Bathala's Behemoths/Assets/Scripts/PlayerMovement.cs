@@ -309,6 +309,8 @@ public class PlayerMovement : MonoBehaviour
         yield return new WaitForSeconds(0.1f);
         leftHook.position = leftAnchor.position;
         rightHook.position = rightAnchor.position;
+        leftHook.GetComponent<BasicAttackTrigger>().enemyHit = null;
+        rightHook.GetComponent<BasicAttackTrigger>().enemyHit = null; //From preventing double damage trigger
 
         if (move.magnitude == 0)
         {
@@ -346,64 +348,6 @@ public class PlayerMovement : MonoBehaviour
 
             yield return null;
         }     
-    }
-    
-    private void BasicAttackHitboxTrigger()
-    {
-        // Handle attack hitbox logic here
-        Debug.Log("Hitbox check!");
-        basicAttackCollider.enabled = true;
-
-        // Define the hitbox's position and radius
-        Vector3 hitboxPosition = basicAttackCollider.transform.position;
-        Vector3 hitboxSize = basicAttackCollider.GetComponent<BoxCollider>().size;
-
-        // Get all colliders within the hitbox
-        Collider[] hitEnemies = Physics.OverlapBox(hitboxPosition, hitboxSize, basicAttackCollider.transform.rotation);
-
-        // Process each object inside the hitbox
-        foreach (Collider enemy in hitEnemies)
-        {
-            if (enemy.CompareTag("Enemy"))
-            {
-                EnemyMob enemyScript = enemy.GetComponent<EnemyMob>();
-                if (isBerserk)
-                {
-                    enemyScript.takeDamage(PlayerStats.Instance.basicAttackDamage * 2);
-                }
-                else
-                {
-                    enemyScript.takeDamage(PlayerStats.Instance.basicAttackDamage);
-                }
-                Debug.Log("Enemy hit!");
-            }
-            else if (enemy.CompareTag("Boss Mob"))
-            {
-                EnemyBossMob enemyScript = enemy.GetComponent<EnemyBossMob>();
-                if (isBerserk)
-                {
-                    enemyScript.takeDamage(PlayerStats.Instance.basicAttackDamage * 2);
-                }
-                else
-                {
-                    enemyScript.takeDamage(PlayerStats.Instance.basicAttackDamage);
-                }
-                Debug.Log("Enemy hit!");
-            }
-            else if (enemy.CompareTag("Boss")) 
-            {
-                MarkupoScript enemyScript = enemy.GetComponent<MarkupoScript>();
-                if (isBerserk)
-                {
-                    enemyScript.takeDamage(PlayerStats.Instance.basicAttackDamage * 2);
-                }
-                else
-                {
-                    enemyScript.takeDamage(PlayerStats.Instance.basicAttackDamage);
-                }
-            }
-        }
-        basicAttackCollider.enabled = false;
     }
 
     public IEnumerator SkillTrigger()

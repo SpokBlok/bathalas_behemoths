@@ -8,7 +8,7 @@ public class EnemyBossMob : MonoBehaviour
     private Transform playerTransform;
     private Transform target;
 
-    public int health = 50;
+    public float health = 50;
 
     private GameObject bulletHit;
 
@@ -34,7 +34,7 @@ public class EnemyBossMob : MonoBehaviour
         ChasePlayer();
     }
 
-    public void takeDamage(int damage)
+    public void takeDamage(float damage)
     {
         health -= damage;
         if (health <= 0)
@@ -77,7 +77,7 @@ public class EnemyBossMob : MonoBehaviour
         transform.position = newPosition;
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter(Collider other) // update for basics
     {
         if (bulletHit != other.gameObject && other.gameObject.CompareTag("Projectile"))
         {

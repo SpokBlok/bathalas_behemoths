@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class MarkupoScript : MonoBehaviour
 {
-    public int health;
+    public float health;
     private GameObject bulletHit;
 
     // Start is called before the first frame update
@@ -25,7 +25,7 @@ public class MarkupoScript : MonoBehaviour
         
     }
 
-    public void takeDamage(int damage)
+    public void takeDamage(float damage)
     {
         health -= damage;
         if (health <= 0)

@@ -20,7 +20,7 @@ public class PlayerStats : MonoBehaviour
     public static PlayerStats Instance { get; private set; }
 
     public int speed;
-    public int basicAttackDamage;
+    public float basicAttackDamage;
 
     public bool dashSkillEquipped;
     public bool rangedSkillEquipped;

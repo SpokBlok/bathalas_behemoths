@@ -38,6 +38,10 @@ public class PlayerMovement : MonoBehaviour
 
     //Basic attack variables
     private Collider basicAttackCollider;
+    private Transform leftHook;
+    private Transform rightHook;
+    private Transform leftAnchor;
+    private Transform rightAnchor;
 
     // FSM State
     private PlayerState currentState;
@@ -61,10 +65,21 @@ public class PlayerMovement : MonoBehaviour
         playerCollider = GetComponent<Collider>();
 
         //Reference to basic attack hitbox
-        basicAttackCollider = transform.Find("BasicAttackHitBox").GetComponent<Collider>();
+        basicAttackCollider = transform.Find("Basic Attack/BasicAttackHitBox").GetComponent<Collider>();
         if (basicAttackCollider == null)
         {
             Debug.Log("Error, no basic attack hitbox");
+        }
+
+        //Reference to basic attack objects
+        leftHook = gameObject.transform.Find("Basic Attack/Left Hook");
+        rightHook = gameObject.transform.Find("Basic Attack/Right Hook");
+        leftAnchor = gameObject.transform.Find("Basic Attack/Left Anchor");
+        rightAnchor = gameObject.transform.Find("Basic Attack/Right Anchor");
+
+        if (leftAnchor == null)
+        {
+            Debug.Log("Error, no basic attack left hook");
         }
 
         //Refernece to PlayerInput
@@ -120,7 +135,7 @@ public class PlayerMovement : MonoBehaviour
             {
                 Debug.Log("Attack!");
                 ChangeState(PlayerState.Attacking);
-                activeCoroutine = StartCoroutine(BasicAttack());
+                StartCoroutine(BasicAttack());
             }
         }
     }
@@ -287,11 +302,13 @@ public class PlayerMovement : MonoBehaviour
     private IEnumerator BasicAttack()
     {
         isAttacking = true;
-        yield return new WaitForSeconds(0.5f); // Wait for attack duration
-        BasicAttackHitboxTrigger();
-        yield return new WaitForSeconds(0.5f);
-        isAttacking = false;
-
+        yield return new WaitForSeconds(0.1f); // Wait for attack duration
+        yield return StartCoroutine(MoveToPosition(rightHook, basicAttackCollider, 0.4f, true));
+        yield return new WaitForSeconds(0.1f);
+        yield return StartCoroutine(MoveToPosition(leftHook, basicAttackCollider, 0.4f, false));
+        yield return new WaitForSeconds(0.1f);
+        leftHook.position = leftAnchor.position;
+        rightHook.position = rightAnchor.position;
 
         if (move.magnitude == 0)
         {
@@ -301,10 +318,36 @@ public class PlayerMovement : MonoBehaviour
         {
             ChangeState(PlayerState.Moving);
         }
-
-        activeCoroutine = null;
+        isAttacking = false;
+        yield break;
     }
 
+    private IEnumerator MoveToPosition(Transform obj, Collider hitbox, float duration, bool toLeft)
+    {
+        float elapsedTime = 0f;
+        Vector3 targetPosition = new Vector3(0, 0, 0);
+
+        while (elapsedTime < duration)
+        {
+            elapsedTime += Time.deltaTime;
+
+            // Dynamically calculate the left or rightmost point
+            if (toLeft)
+            {
+                targetPosition = leftAnchor.position;
+            } 
+            else
+            {
+                targetPosition = rightAnchor.position;
+            }
+            
+            // Interpolate towards the updated target
+            obj.position = Vector3.Lerp(obj.position, targetPosition, elapsedTime / duration);
+
+            yield return null;
+        }     
+    }
+    
     private void BasicAttackHitboxTrigger()
     {
         // Handle attack hitbox logic here

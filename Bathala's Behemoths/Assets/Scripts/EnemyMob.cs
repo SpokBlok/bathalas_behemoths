@@ -31,6 +31,9 @@ public class EnemyMob : MonoBehaviour
 
     private bool isAttacking = false;
 
+    //Radius Trigger
+    private EnemyRadiusTrigger radius;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -59,6 +62,8 @@ public class EnemyMob : MonoBehaviour
 
         //Starting state
         enemyState = EnemyState.Idle;
+
+        radius = GetComponentInChildren<EnemyRadiusTrigger>();
     }
 
     // Update is called once per frame
@@ -79,7 +84,8 @@ public class EnemyMob : MonoBehaviour
                 UpdateRotationTarget();
                 if (!isAttacking)
                 {
-                    //Attack
+                    isAttacking = true;
+                    StartCoroutine(BasicAttack());
                 }
                 break;
 
@@ -104,28 +110,25 @@ public class EnemyMob : MonoBehaviour
 
     public void ChasePlayer()
     {
-        if (enemyState == EnemyState.Moving){
-            target = playerTransform;
-            //Get vector from enemy to player and assign to x and z axes
-            Vector3 moveDirection = (playerTransform.position - transform.position).normalized;
-            Vector3 terrainMoveDirection = new Vector3(moveDirection.x, 0f, moveDirection.z) * speed;
+        target = playerTransform;
+        //Get vector from enemy to player and assign to x and z axes
+        Vector3 moveDirection = (playerTransform.position - transform.position).normalized;
+        Vector3 terrainMoveDirection = new Vector3(moveDirection.x, 0f, moveDirection.z) * speed;
 
-            // Move the enemy in the x and z direction
-            enemyControl.Move(terrainMoveDirection * Time.deltaTime);
+        // Move the enemy in the x and z direction
+        enemyControl.Move(terrainMoveDirection * Time.deltaTime);
 
-            //Get terrain height + 2 and assign it to y axis position
-            float terrainHeight = Terrain.activeTerrain.SampleHeight(transform.position);
-            Vector3 newPosition = transform.position;
-            newPosition.y = terrainHeight + 1.2f;
-            transform.position = newPosition;
-        }
+        //Get terrain height + 2 and assign it to y axis position
+        float terrainHeight = Terrain.activeTerrain.SampleHeight(transform.position);
+        Vector3 newPosition = transform.position;
+        newPosition.y = terrainHeight + 1.2f;
+        transform.position = newPosition;
     }
 
     public void UpdateRotationTarget()
     {
         //Create a plane on the player's position
         Plane playerPlane = new Plane(Vector3.up, transform.position);
-
 
         //Create vector from player position to mouse pointer
         var lookPos = (target.position - transform.position).normalized;
@@ -142,6 +145,24 @@ public class EnemyMob : MonoBehaviour
             bulletHit = other.gameObject;
             takeDamage(PlayerStats.Instance.basicAttackDamage);
         }
+    }
+
+    private void OnControllerColliderHit(ControllerColliderHit hit)
+    {
+        if (hit.gameObject.CompareTag("Player"))
+        {
+            ChangeState(EnemyState.Attacking);
+        }
+    }
+
+    private IEnumerator BasicAttack()
+    {
+        yield return new WaitForSeconds(1.0f);
+        Debug.Log("Enemy Attack");
+        isAttacking = false;
+        radius.TriggerCheck();
+        yield return new WaitForSeconds(0.3f);
+        yield break;
     }
 
     public void ChangeState(EnemyState newState) //Logic for entering states (e.g. playing animations)

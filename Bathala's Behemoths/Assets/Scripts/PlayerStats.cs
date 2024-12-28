@@ -33,6 +33,8 @@ public class PlayerStats : MonoBehaviour
     public bool outdoorsScene;
     public bool questComp;
 
+    public float kapreCigars;
+
     private void Awake()
     {
         if (Instance == null)
@@ -62,6 +64,8 @@ public class PlayerStats : MonoBehaviour
         noUltEquipped = false;
         introDone = false;
         outdoorsScene = true;
+
+        kapreCigars = 0;
 }
 
     public void AddBasicAttackDamage(int damageIncrease)
@@ -72,5 +76,10 @@ public class PlayerStats : MonoBehaviour
     public void AddSpeed(int speedIncrease)
     {
         speed += speedIncrease;
+    }
+
+    public void AddKapreCigars(float addedCigars)
+    {
+        kapreCigars += addedCigars;
     }
 }

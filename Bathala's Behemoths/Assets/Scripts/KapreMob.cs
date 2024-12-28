@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem.XR;
 
-public enum EnemyState
+public enum KapreState
 {
     Idle,
     Moving,
@@ -11,9 +11,9 @@ public enum EnemyState
     Knockback
 }
 
-public class EnemyMob : MonoBehaviour
+public class KapreMob : MonoBehaviour
 {
-    private CharacterController enemyControl;
+    private CharacterController kapreControl;
     private Transform playerTransform;
     private Transform target;
 
@@ -21,17 +21,18 @@ public class EnemyMob : MonoBehaviour
     public bool playerInRange;
     public int speed;
 
+    //For intro kill quest tutorial maybe?
     public KillQuestUI[] killQuestUIList;
     public KillQuestUI killQuestUI;
 
     private GameObject objectHit;
 
-    //Enemy State Machine
-    private EnemyState enemyState;
+    //Kapre State Machine
+    private KapreState kapreState;
 
     private bool isAttacking = false;
 
-    //Radius Trigger
+    //Radius Trigger, maybe change to kapreRadius?
     private EnemyRadiusTrigger radius;
 
     // Start is called before the first frame update
@@ -42,6 +43,7 @@ public class EnemyMob : MonoBehaviour
         {
             killQuestUI = UI;
         }
+
         health = 50;
         speed = 4;
 
@@ -52,34 +54,32 @@ public class EnemyMob : MonoBehaviour
             playerTransform = player.transform;
         }
 
-        enemyControl = GetComponent<CharacterController>();
+        kapreControl = GetComponent<CharacterController>();
 
         //Start off on terrain height
-        float terrainHeight = Terrain.activeTerrain.SampleHeight(transform.position);
-        Vector3 newPosition = transform.position;
-        newPosition.y = terrainHeight + 1.2f;
-        transform.position = newPosition;
+        TerrainGravity();
 
         //Starting state
-        enemyState = EnemyState.Idle;
+        kapreState = KapreState.Idle;
 
+        //KapreRadius?
         radius = GetComponentInChildren<EnemyRadiusTrigger>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        switch (enemyState)
+        switch (kapreState)
         {
-            case EnemyState.Idle:
+            case KapreState.Idle:
                 break;
 
-            case EnemyState.Moving:
+            case KapreState.Moving:
                 ChasePlayer();
                 UpdateRotationTarget();
                 break;
 
-            case EnemyState.Attacking:
+            case KapreState.Attacking:
                 UpdateRotationTarget();
                 if (!isAttacking)
                 {
@@ -88,9 +88,16 @@ public class EnemyMob : MonoBehaviour
                 }
                 break;
 
-            case EnemyState.Knockback:
+            case KapreState.Knockback:
                 break;
         }
+    }
+    private void TerrainGravity()
+    {
+        float terrainHeight = Terrain.activeTerrain.SampleHeight(transform.position);
+        Vector3 newPosition = transform.position;
+        newPosition.y = terrainHeight + 1.2f;
+        transform.position = newPosition;
     }
 
     public void takeDamage(float damage)
@@ -100,7 +107,7 @@ public class EnemyMob : MonoBehaviour
         {
             PlayerStats.Instance.AddKapreCigars(1);
             //Disabled for now in lieu of having kapre cigar currency
-            //Might need to fully convert to separate kapre mob script
+            //Might need in for intro kill quest anyway?
             //if (killQuestUI.gameObject.activeSelf)
             //{
             //    killQuestUI.KillQuestCount += 1;
@@ -118,13 +125,9 @@ public class EnemyMob : MonoBehaviour
         Vector3 terrainMoveDirection = new Vector3(moveDirection.x, 0f, moveDirection.z) * speed;
 
         // Move the enemy in the x and z direction
-        enemyControl.Move(terrainMoveDirection * Time.deltaTime);
+        kapreControl.Move(terrainMoveDirection * Time.deltaTime);
 
-        //Get terrain height + 2 and assign it to y axis position
-        float terrainHeight = Terrain.activeTerrain.SampleHeight(transform.position);
-        Vector3 newPosition = transform.position;
-        newPosition.y = terrainHeight + 1.2f;
-        transform.position = newPosition;
+        TerrainGravity();
     }
 
     public void UpdateRotationTarget()
@@ -141,11 +144,19 @@ public class EnemyMob : MonoBehaviour
         transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, 0.15f);
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        if (objectHit != other.gameObject && other.gameObject.CompareTag("Projectile"))
+        {
+            objectHit = other.gameObject;
+            takeDamage(PlayerStats.Instance.basicAttackDamage);
+        }
+    }
     private void OnControllerColliderHit(ControllerColliderHit hit)
     {
         if (hit.gameObject.CompareTag("Player"))
         {
-            ChangeState(EnemyState.Attacking);
+            ChangeState(KapreState.Attacking);
         }
     }
 
@@ -159,25 +170,25 @@ public class EnemyMob : MonoBehaviour
         yield break;
     }
 
-    public void ChangeState(EnemyState newState) //Logic for entering states (e.g. playing animations)
+    public void ChangeState(KapreState newState) //Logic for entering states (e.g. playing animations)
     {
-        enemyState = newState;
+        kapreState = newState;
 
         switch (newState)
         {
-            case EnemyState.Idle:
+            case KapreState.Idle:
                 // Enter Idle logic
                 break;
 
-            case EnemyState.Moving:
+            case KapreState.Moving:
                 // Enter Moving logic
                 break;
 
-            case EnemyState.Attacking:
+            case KapreState.Attacking:
                 // Enter Attacking logic
                 break;
 
-            case EnemyState.Knockback:
+            case KapreState.Knockback:
                 // Enter Knockback logic
                 break;
         }

@@ -6,6 +6,8 @@ public class ProjectileScript : MonoBehaviour
 {
     public CharacterController charControl;
 
+    private GameObject objectHit;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -57,6 +59,12 @@ public class ProjectileScript : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Enemy") || other.gameObject.CompareTag("Boss"))
         {
+            //To prevent double damage triggering
+            if (objectHit != other.gameObject)
+            {
+                objectHit = other.gameObject;
+                objectHit.GetComponent<EnemyMob>().takeDamage(PlayerStats.Instance.basicAttackDamage);
+            }
             Destroy(gameObject);
         }
     }

@@ -147,14 +147,6 @@ public class KapreMob : MonoBehaviour
         transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, 0.15f);
     }
 
-    private void OnTriggerEnter(Collider other)
-    {
-        if (objectHit != other.gameObject && other.gameObject.CompareTag("Projectile"))
-        {
-            objectHit = other.gameObject;
-            takeDamage(PlayerStats.Instance.basicAttackDamage);
-        }
-    }
     private void OnControllerColliderHit(ControllerColliderHit hit)
     {
         if (hit.gameObject.CompareTag("Player"))

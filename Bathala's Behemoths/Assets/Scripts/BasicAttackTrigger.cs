@@ -18,12 +18,13 @@ public class BasicAttackTrigger : MonoBehaviour
         
     }
 
-    private void OnTriggerEnter(Collider other) //To prevent double damage triggers
+    private void OnTriggerEnter(Collider other)
     {
-        if (enemyHit != other.gameObject && other.gameObject.CompareTag("Enemy"))
+        //enemyHit is to prevent double damage triggers
+        if (enemyHit != other.gameObject && other.gameObject.CompareTag("Kapre"))
         {
             enemyHit = other.gameObject;
-            other.GetComponent<EnemyMob>().takeDamage(PlayerStats.Instance.basicAttackDamage / 2);
+            other.GetComponent<KapreMob>().takeDamage(PlayerStats.Instance.basicAttackDamage / 2);
         }
     }
 }

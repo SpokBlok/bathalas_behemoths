@@ -64,6 +64,9 @@ public class EnemyMob : MonoBehaviour
         enemyState = EnemyState.Idle;
 
         radius = GetComponentInChildren<EnemyRadiusTrigger>();
+
+        //Subscribe to trigger check event
+        PlayerMovement.OnDashComplete += radius.TriggerCheck;
     }
 
     // Update is called once per frame
@@ -105,6 +108,7 @@ public class EnemyMob : MonoBehaviour
             //{
             //    killQuestUI.KillQuestCount += 1;
             //}
+            PlayerMovement.OnDashComplete -= radius.TriggerCheck;
             Debug.Log("Enemy killed!");
             Destroy(gameObject);
         }

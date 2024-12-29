@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -57,6 +58,9 @@ public class PlayerMovement : MonoBehaviour
     public bool isBerserk;
 
     public int health;
+
+    //For checking if player is within all enemies ranges
+    public static event Action OnDashComplete;
 
     private void Start()
     {
@@ -430,11 +434,13 @@ public class PlayerMovement : MonoBehaviour
 
     public void EnemyTriggerCheck()
     {
-        EnemyRadiusTrigger[] enemyRadiusTriggers = GameObject.FindObjectsOfType<EnemyRadiusTrigger>();
-        foreach (EnemyRadiusTrigger trigger in enemyRadiusTriggers)
-        {
-            trigger.TriggerCheck();
-        }
+        OnDashComplete?.Invoke();
+        //Need to update for new enemy mob types/scripts
+        //EnemyRadiusTrigger[] enemyRadiusTriggers = GameObject.FindObjectsOfType<EnemyRadiusTrigger>();
+        //foreach (EnemyRadiusTrigger trigger in enemyRadiusTriggers)
+        //{
+        //    trigger.TriggerCheck();
+        //}
     }
 
     public IEnumerator RangedSkill(Vector3 target)

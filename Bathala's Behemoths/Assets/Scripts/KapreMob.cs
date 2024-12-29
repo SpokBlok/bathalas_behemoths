@@ -33,7 +33,7 @@ public class KapreMob : MonoBehaviour
     private bool isAttacking = false;
 
     //Radius Trigger, maybe change to kapreRadius?
-    private EnemyRadiusTrigger radius;
+    private KapreRadiusTrigger radius;
 
     // Start is called before the first frame update
     void Start()
@@ -62,8 +62,10 @@ public class KapreMob : MonoBehaviour
         //Starting state
         kapreState = KapreState.Idle;
 
-        //KapreRadius?
-        radius = GetComponentInChildren<EnemyRadiusTrigger>();
+        radius = GetComponentInChildren<KapreRadiusTrigger>();
+
+        //Subscribe to trigger check event
+        PlayerMovement.OnDashComplete += radius.TriggerCheck;
     }
 
     // Update is called once per frame
@@ -112,6 +114,7 @@ public class KapreMob : MonoBehaviour
             //{
             //    killQuestUI.KillQuestCount += 1;
             //}
+            PlayerMovement.OnDashComplete -= radius.TriggerCheck;
             Debug.Log("Enemy killed!");
             Destroy(gameObject);
         }

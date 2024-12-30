@@ -21,6 +21,8 @@ public class PlayerStats : MonoBehaviour
 
     public int speed;
     public float basicAttackDamage;
+    public float currentHealth;
+    public float maxHealth;
 
     public bool dashSkillEquipped;
     public bool rangedSkillEquipped;
@@ -54,6 +56,8 @@ public class PlayerStats : MonoBehaviour
         // Set default values
         speed = 10;
         basicAttackDamage = 25;
+        maxHealth = 50;
+        currentHealth = maxHealth;
 
         dashSkillEquipped = false;
         rangedSkillEquipped = true;

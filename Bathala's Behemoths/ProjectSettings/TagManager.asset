@@ -11,6 +11,7 @@ TagManager:
   - Spawner
   - Fire
   - Investigation Text
+  - Kapre
   layers:
   - Default
   - TransparentFX

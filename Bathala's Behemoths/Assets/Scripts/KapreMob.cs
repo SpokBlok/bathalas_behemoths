@@ -32,8 +32,12 @@ public class KapreMob : MonoBehaviour
 
     private bool isAttacking = false;
 
-    //Radius Trigger, maybe change to kapreRadius?
     private KapreRadiusTrigger radius;
+
+    //Basic attack variables
+    private Transform punch;
+    private Transform leftAnchor;
+    private Transform rightAnchor;
 
     // Start is called before the first frame update
     void Start()
@@ -66,6 +70,10 @@ public class KapreMob : MonoBehaviour
 
         //Subscribe to trigger check event
         PlayerMovement.OnDashComplete += radius.TriggerCheck;
+
+        punch = gameObject.transform.Find("Basic Attack/Punch");
+        leftAnchor = gameObject.transform.Find("Basic Attack/Left Anchor");
+        rightAnchor = gameObject.transform.Find("Basic Attack/Right Anchor");
     }
 
     // Update is called once per frame
@@ -82,9 +90,9 @@ public class KapreMob : MonoBehaviour
                 break;
 
             case KapreState.Attacking:
-                UpdateRotationTarget();
                 if (!isAttacking)
                 {
+                    UpdateRotationTarget();
                     isAttacking = true;
                     StartCoroutine(BasicAttack());
                 }
@@ -157,12 +165,28 @@ public class KapreMob : MonoBehaviour
 
     private IEnumerator BasicAttack()
     {
-        yield return new WaitForSeconds(1.0f);
         Debug.Log("Enemy Attack");
-        isAttacking = false;
+        yield return StartCoroutine(MoveToPosition(punch, 0.4f));
+        punch.position = rightAnchor.position;
+        yield return new WaitForSeconds(1.0f);
         radius.TriggerCheck();
-        yield return new WaitForSeconds(0.3f);
+        isAttacking = false;
         yield break;
+    }
+
+    private IEnumerator MoveToPosition(Transform obj, float duration)
+    {
+        float elapsedTime = 0f;
+
+        while (elapsedTime < duration)
+        {
+            elapsedTime += Time.deltaTime;
+
+            // Interpolate towards the updated target
+            obj.position = Vector3.Lerp(obj.position, leftAnchor.position, elapsedTime / duration);
+
+            yield return null;
+        }
     }
 
     public void ChangeState(KapreState newState) //Logic for entering states (e.g. playing animations)

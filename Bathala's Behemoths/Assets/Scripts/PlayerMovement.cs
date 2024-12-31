@@ -38,7 +38,6 @@ public class PlayerMovement : MonoBehaviour
     private Collider playerCollider;
 
     //Basic attack variables
-    private Collider basicAttackCollider;
     private Transform leftHook;
     private Transform rightHook;
     private Transform leftAnchor;
@@ -67,13 +66,6 @@ public class PlayerMovement : MonoBehaviour
         // Get references to char controller + collider
         charControl = GetComponent<CharacterController>();
         playerCollider = GetComponent<Collider>();
-
-        //Reference to basic attack hitbox
-        basicAttackCollider = transform.Find("Basic Attack/BasicAttackHitBox").GetComponent<Collider>();
-        if (basicAttackCollider == null)
-        {
-            Debug.Log("Error, no basic attack hitbox");
-        }
 
         //Reference to basic attack objects
         leftHook = gameObject.transform.Find("Basic Attack/Left Hook");
@@ -307,9 +299,9 @@ public class PlayerMovement : MonoBehaviour
     {
         isAttacking = true;
         yield return new WaitForSeconds(0.1f); // Wait for attack duration
-        yield return StartCoroutine(MoveToPosition(rightHook, basicAttackCollider, 0.4f, true));
+        yield return StartCoroutine(MoveToPosition(rightHook, 0.4f, true));
         yield return new WaitForSeconds(0.1f);
-        yield return StartCoroutine(MoveToPosition(leftHook, basicAttackCollider, 0.4f, false));
+        yield return StartCoroutine(MoveToPosition(leftHook, 0.4f, false));
         yield return new WaitForSeconds(0.1f);
         leftHook.position = leftAnchor.position;
         rightHook.position = rightAnchor.position;
@@ -328,7 +320,7 @@ public class PlayerMovement : MonoBehaviour
         yield break;
     }
 
-    private IEnumerator MoveToPosition(Transform obj, Collider hitbox, float duration, bool toLeft)
+    private IEnumerator MoveToPosition(Transform obj, float duration, bool toLeft)
     {
         float elapsedTime = 0f;
         Vector3 targetPosition = new Vector3(0, 0, 0);

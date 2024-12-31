@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BasicAttackTrigger : MonoBehaviour
+public class KapreBasicAttackTrigger : MonoBehaviour
 {
-    public GameObject enemyHit;
+    public GameObject playerHit;
 
     // Start is called before the first frame update
     void Start()
@@ -21,10 +21,10 @@ public class BasicAttackTrigger : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         //enemyHit is to prevent double damage triggers
-        if (enemyHit != other.gameObject && other.gameObject.CompareTag("Kapre"))
+        if (playerHit != other.gameObject && other.gameObject.CompareTag("Player"))
         {
-            enemyHit = other.gameObject;
-            other.GetComponent<KapreMob>().TakeDamage(PlayerStats.Instance.basicAttackDamage / 2);
+            playerHit = other.gameObject;
+            other.GetComponent<PlayerMovement>().TakeDamage(5);
         }
     }
 }

@@ -56,8 +56,6 @@ public class PlayerMovement : MonoBehaviour
     //Berserk Ult bool
     public bool isBerserk;
 
-    public int health;
-
     //For checking if player is within all enemies ranges
     public static event Action OnDashComplete;
 
@@ -86,8 +84,6 @@ public class PlayerMovement : MonoBehaviour
 
         //Starting alignment with terrain
         TerrainGravity();
-
-        health = 120;
 
         if (PlayerStats.Instance.introDone && PlayerStats.Instance.outdoorsScene)
         {
@@ -273,7 +269,7 @@ public class PlayerMovement : MonoBehaviour
 
     private IEnumerator SmoothPushBack(Vector3 direction)
     {
-        takeDamage(15);
+        TakeDamage(15);
         ChangeState(PlayerState.Knockback); // Change to Knockback state
         gameObject.layer = LayerMask.NameToLayer("Pushback");
         playerInput.actions["BasicAttack"].Disable();
@@ -509,10 +505,10 @@ public class PlayerMovement : MonoBehaviour
         yield break;
     }
 
-    public void takeDamage(int damage)
+    public void TakeDamage(int damage)
     {
-        health -= damage;
-        if (health < 0)
+        PlayerStats.Instance.currentHealth -= damage;
+        if (PlayerStats.Instance.currentHealth < 0)
         {
             Debug.Log("Dead");
             //trigger death cutscene

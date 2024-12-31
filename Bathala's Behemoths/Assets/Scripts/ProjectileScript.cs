@@ -63,7 +63,7 @@ public class ProjectileScript : MonoBehaviour
             if (objectHit != other.gameObject)
             {
                 objectHit = other.gameObject;
-                objectHit.GetComponent<KapreMob>().takeDamage(PlayerStats.Instance.basicAttackDamage);
+                objectHit.GetComponent<KapreMob>().TakeDamage(PlayerStats.Instance.basicAttackDamage);
             }
             Destroy(gameObject);
         }

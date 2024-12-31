@@ -110,7 +110,7 @@ public class KapreMob : MonoBehaviour
         transform.position = newPosition;
     }
 
-    public void takeDamage(float damage)
+    public void TakeDamage(float damage)
     {
         health -= damage;
         if (health <= 0)
@@ -171,6 +171,7 @@ public class KapreMob : MonoBehaviour
         yield return new WaitForSeconds(1.0f);
         radius.TriggerCheck();
         isAttacking = false;
+        punch.GetComponent<KapreBasicAttackTrigger>().playerHit = null;
         yield break;
     }
 

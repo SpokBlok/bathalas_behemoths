@@ -584,8 +584,8 @@ GameObject:
   - component: {fileID: 9162415236360418478}
   - component: {fileID: 4184815508662235994}
   - component: {fileID: 3510708044961156640}
+  - component: {fileID: 1409569301970184535}
   - component: {fileID: 7722173471425430663}
-  - component: {fileID: 3917169538122377493}
   m_Layer: 0
   m_Name: Punch
   m_TagString: Untagged
@@ -658,6 +658,18 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &1409569301970184535
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4151358072994679121}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b88c07785f8f114cb16ac5e70aad265, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!65 &7722173471425430663
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -679,19 +691,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &3917169538122377493
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4151358072994679121}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 03cdeeffb2633f44d8c32441c4dc7848, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  enemyHit: {fileID: 0}
 --- !u!1 &7100475827598242767
 GameObject:
   m_ObjectHideFlags: 0

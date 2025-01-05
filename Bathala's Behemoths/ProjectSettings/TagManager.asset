@@ -12,6 +12,7 @@ TagManager:
   - Fire
   - Investigation Text
   - Kapre
+  - Player Skills
   layers:
   - Default
   - TransparentFX

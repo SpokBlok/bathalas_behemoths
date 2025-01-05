@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerSkills : MonoBehaviour
 {
+    public BaseSkill MCSkill;
     // Start is called before the first frame update
     void Start()
     {
@@ -29,5 +30,10 @@ public class PlayerSkills : MonoBehaviour
         {
             Destroy(gameObject); // Destroy duplicate instance
         }
+    }
+
+    public void RunSkill()
+    {
+        StartCoroutine(MCSkill.RunSkill());
     }
 }

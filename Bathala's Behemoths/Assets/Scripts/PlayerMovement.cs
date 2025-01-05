@@ -138,7 +138,9 @@ public class PlayerMovement : MonoBehaviour
             {
                 Debug.Log("Skill!");
                 ChangeState(PlayerState.Attacking);
-                StartCoroutine(SkillTrigger());
+                GameObject skillManager = GameObject.FindGameObjectWithTag("Player Skills");
+                skillManager.GetComponent<PlayerSkills>().RunSkill();
+
             }
         }
     }
@@ -433,6 +435,19 @@ public class PlayerMovement : MonoBehaviour
         ProjectileScript projectileScript = projectile.GetComponent<ProjectileScript>();
         StartCoroutine(projectileScript.Move(target));
         yield break;
+    }
+
+    public void Heal(float percent)
+    {
+        percent *= 0.01f;
+
+        float currentHealth = PlayerStats.Instance.currentHealth;
+        float maxHealth = PlayerStats.Instance.maxHealth;
+
+        float healAmount = maxHealth * percent;
+        //Sets the current health as the smaller number between the current health + healed amount
+        //and the max possible health
+        PlayerStats.Instance.currentHealth = Mathf.Min(currentHealth + healAmount, maxHealth);
     }
 
     public IEnumerator UltTrigger()

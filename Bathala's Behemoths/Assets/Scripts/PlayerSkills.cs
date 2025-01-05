@@ -4,7 +4,13 @@ using UnityEngine;
 
 public class PlayerSkills : MonoBehaviour
 {
-    public BaseSkill MCSkill;
+    public BaseSkill mainCharacterSkill;
+    public bool mainCharacterSkillIsEquipped = false;
+    public bool mainCharacterSkillOnCooldown;
+    public int mainCharacterSkillCharges;
+    public bool mainCharacterSkillCharging;
+    public float mainCharacterSkillChargeTimer;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -14,7 +20,7 @@ public class PlayerSkills : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        MainCharacterSkillChargeTimer();
     }
 
     public static PlayerSkills Instance { get; private set; }
@@ -32,8 +38,48 @@ public class PlayerSkills : MonoBehaviour
         }
     }
 
-    public void RunSkill()
+    public void MainCharacterSkillChange(BaseSkill newSkill)
     {
-        StartCoroutine(MCSkill.RunSkill());
+        mainCharacterSkill = newSkill;
+        mainCharacterSkillChargeTimer = newSkill.cooldown;
+        mainCharacterSkillCharges = newSkill.maxCharges;
+    }
+
+    public void MainCharacterSkillChargeTimer()
+    {
+        if (!mainCharacterSkillIsEquipped)
+        {
+            return;
+        }
+        if (mainCharacterSkillCharges < mainCharacterSkill.maxCharges)
+        {
+            mainCharacterSkillCharging = true;
+        }
+
+        if (mainCharacterSkillCharging)
+        {
+            if (mainCharacterSkillChargeTimer <= 0)
+            {
+                mainCharacterSkillCharges++;
+                mainCharacterSkillChargeTimer = mainCharacterSkill.cooldown;
+                if (mainCharacterSkillCharges == mainCharacterSkill.maxCharges)
+                {
+                    mainCharacterSkillCharging = false;
+                }
+            }
+            else
+            {
+                mainCharacterSkillChargeTimer -= Time.deltaTime;
+            }
+        }
+    }
+
+    public void RunMainCharacterSkill()
+    {
+        if (mainCharacterSkillCharges > 0)
+        {
+            mainCharacterSkillCharges--;
+            StartCoroutine(mainCharacterSkill.RunSkill());
+        }
     }
 }

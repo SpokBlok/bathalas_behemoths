@@ -5,7 +5,7 @@ using UnityEngine;
 public abstract class BaseSkill : MonoBehaviour
 {
     public abstract IEnumerator RunSkill();
-    protected float cooldown;
-    protected int maxCharges;
+    public float cooldown;
+    public int maxCharges;
 
 }

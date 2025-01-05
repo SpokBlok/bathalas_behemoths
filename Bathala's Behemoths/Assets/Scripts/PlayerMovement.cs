@@ -139,7 +139,7 @@ public class PlayerMovement : MonoBehaviour
                 Debug.Log("Skill!");
                 ChangeState(PlayerState.Attacking);
                 GameObject skillManager = GameObject.FindGameObjectWithTag("Player Skills");
-                skillManager.GetComponent<PlayerSkills>().RunSkill();
+                skillManager.GetComponent<PlayerSkills>().RunMainCharacterSkill();
 
             }
         }

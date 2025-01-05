@@ -35,7 +35,6 @@ public class PlayerMovement : MonoBehaviour
 
     // Character Conroller
     private CharacterController charControl;
-    private Collider playerCollider;
 
     //Basic attack variables
     private Transform leftHook;
@@ -45,7 +44,6 @@ public class PlayerMovement : MonoBehaviour
 
     // FSM State
     private PlayerState currentState;
-    private Coroutine activeCoroutine;
 
     //InputManager
     public PlayerInput playerInput;
@@ -63,7 +61,6 @@ public class PlayerMovement : MonoBehaviour
     {
         // Get references to char controller + collider
         charControl = GetComponent<CharacterController>();
-        playerCollider = GetComponent<Collider>();
 
         //Reference to basic attack objects
         leftHook = gameObject.transform.Find("Basic Attack/Left Hook");
@@ -141,7 +138,7 @@ public class PlayerMovement : MonoBehaviour
             {
                 Debug.Log("Skill!");
                 ChangeState(PlayerState.Attacking);
-                activeCoroutine = StartCoroutine(SkillTrigger());
+                StartCoroutine(SkillTrigger());
             }
         }
     }
@@ -155,7 +152,7 @@ public class PlayerMovement : MonoBehaviour
             {
                 Debug.Log("Ult!");
                 ChangeState(PlayerState.Attacking);
-                activeCoroutine = StartCoroutine(UltTrigger());
+                StartCoroutine(UltTrigger());
             }
         }
     }
@@ -319,7 +316,7 @@ public class PlayerMovement : MonoBehaviour
     private IEnumerator MoveToPosition(Transform obj, float duration, bool toLeft)
     {
         float elapsedTime = 0f;
-        Vector3 targetPosition = new Vector3(0, 0, 0);
+        Vector3 targetPosition;
 
         while (elapsedTime < duration)
         {
@@ -372,7 +369,6 @@ public class PlayerMovement : MonoBehaviour
             ChangeState(PlayerState.Moving);
         }
 
-        activeCoroutine = null;
         yield break;
     }
 
@@ -466,7 +462,6 @@ public class PlayerMovement : MonoBehaviour
             ChangeState(PlayerState.Moving);
         }
 
-        activeCoroutine = null;
         yield break;
     }
 

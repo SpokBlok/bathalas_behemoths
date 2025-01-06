@@ -6,7 +6,6 @@ public class PlayerSkills : MonoBehaviour
 {
     public BaseSkill mainCharacterSkill;
     public bool mainCharacterSkillIsEquipped = false;
-    public bool mainCharacterSkillOnCooldown;
     public int mainCharacterSkillCharges;
     public bool mainCharacterSkillCharging;
     public float mainCharacterSkillChargeTimer;

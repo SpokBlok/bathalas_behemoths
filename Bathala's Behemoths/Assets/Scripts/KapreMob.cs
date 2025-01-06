@@ -8,7 +8,8 @@ public enum KapreState
     Idle,
     Moving,
     Attacking,
-    Knockback
+    Knockback,
+    Stunned
 }
 
 public class KapreMob : MonoBehaviour
@@ -100,6 +101,9 @@ public class KapreMob : MonoBehaviour
 
             case KapreState.Knockback:
                 break;
+
+            case KapreState.Stunned:
+                break;
         }
     }
     private void TerrainGravity()
@@ -190,6 +194,14 @@ public class KapreMob : MonoBehaviour
         }
     }
 
+    public IEnumerator Stun(float duration)
+    {
+        ChangeState(KapreState.Stunned);
+        yield return new WaitForSeconds(duration);
+        radius.TriggerCheck();
+        yield return null;
+    }
+
     public void ChangeState(KapreState newState) //Logic for entering states (e.g. playing animations)
     {
         kapreState = newState;
@@ -198,10 +210,12 @@ public class KapreMob : MonoBehaviour
         {
             case KapreState.Idle:
                 // Enter Idle logic
+                isAttacking = false;
                 break;
 
             case KapreState.Moving:
                 // Enter Moving logic
+                isAttacking = false;
                 break;
 
             case KapreState.Attacking:
@@ -210,6 +224,12 @@ public class KapreMob : MonoBehaviour
 
             case KapreState.Knockback:
                 // Enter Knockback logic
+                isAttacking = false;
+                break;
+
+            case KapreState.Stunned:
+                isAttacking = false;
+                Debug.Log("Got stunned");
                 break;
         }
     }

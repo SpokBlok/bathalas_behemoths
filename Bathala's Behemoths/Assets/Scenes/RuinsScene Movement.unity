@@ -2907,6 +2907,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7e63f8d5146ea94cb8aa9410b8a3e39, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cooldown: 0
+  maxCharges: 0
 --- !u!4 &457008992
 Transform:
   m_ObjectHideFlags: 0
@@ -2979,7 +2981,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1523d9e18a501d54699c867d03ae2ada, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MCSkill: {fileID: 457008991}
+  mainCharacterSkill: {fileID: 0}
+  mainCharacterSkillIsEquipped: 0
+  mainCharacterSkillOnCooldown: 0
+  mainCharacterSkillCharges: 0
+  mainCharacterSkillCharging: 0
+  mainCharacterSkillChargeTimer: 0
 --- !u!4 &514540710
 Transform:
   m_ObjectHideFlags: 0
@@ -2994,6 +3001,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 457008992}
+  - {fileID: 2011898193}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &552249867
@@ -8755,6 +8763,54 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1980160050}
   m_CullTransparentMesh: 1
+--- !u!1 &2011898192
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2011898193}
+  - component: {fileID: 2011898194}
+  m_Layer: 0
+  m_Name: MusicalFlute
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2011898193
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2011898192}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 514540710}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2011898194
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2011898192}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 94649c5e0385aa34b980e696d56acf30, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cooldown: 0
+  maxCharges: 0
+  radiusPrefab: {fileID: 6070490166674744888, guid: 980695c3d067fca45a44189393cfadbc,
+    type: 3}
 --- !u!1 &2013410473
 GameObject:
   m_ObjectHideFlags: 1

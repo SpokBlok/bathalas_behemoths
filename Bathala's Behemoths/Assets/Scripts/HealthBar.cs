@@ -12,10 +12,6 @@ public class HealthBar : MonoBehaviour
     {
         HPText = GetComponent<TextMeshProUGUI>();
     }
-    void Awake()
-    {
-        DontDestroyOnLoad(gameObject);
-    }
 
     // Update is called once per frame
     void Update()

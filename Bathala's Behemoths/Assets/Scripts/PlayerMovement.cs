@@ -57,6 +57,10 @@ public class PlayerMovement : MonoBehaviour
     //For checking if player is within all enemies ranges
     public static event Action OnDashComplete;
 
+    //For the passive health skill
+    public static event Action OnTakingDamage;
+    public static event Action OnFullHealth;
+
     private PlayerStats stats;
 
     private void Start()
@@ -452,6 +456,10 @@ public class PlayerMovement : MonoBehaviour
         //Sets the current health as the smaller number between the current health + healed amount
         //and the max possible health
         stats.currentHealth = Mathf.Min(currentHealth + healAmount, maxHealth);
+        if (stats.IsMaxHealth())
+        {
+            OnFullHealth?.Invoke();
+        }
     }
 
     public IEnumerator UltTrigger()
@@ -522,6 +530,7 @@ public class PlayerMovement : MonoBehaviour
     public void TakeDamage(int damage)
     {
         stats.currentHealth -= damage;
+        OnTakingDamage?.Invoke();
         if (stats.currentHealth < 0)
         {
             Debug.Log("Dead");

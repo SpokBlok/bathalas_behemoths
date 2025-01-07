@@ -7369,6 +7369,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 0
+  speedMultiplier: 0
   basicAttackDamage: 0
   currentHealth: 0
   maxHealth: 0

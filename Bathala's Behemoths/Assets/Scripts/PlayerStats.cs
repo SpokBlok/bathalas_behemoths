@@ -88,4 +88,9 @@ public class PlayerStats : MonoBehaviour
     {
         kapreCigars += addedCigars;
     }
+
+    public bool IsMaxHealth()
+    {
+        return (currentHealth == maxHealth);
+    }
 }

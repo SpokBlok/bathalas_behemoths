@@ -20,6 +20,7 @@ public class PlayerStats : MonoBehaviour
     public static PlayerStats Instance { get; private set; }
 
     public int speed;
+    public float speedMultiplier;
     public float basicAttackDamage;
     public float currentHealth;
     public float maxHealth;
@@ -55,6 +56,7 @@ public class PlayerStats : MonoBehaviour
     {
         // Set default values
         speed = 10;
+        speedMultiplier = 1;
         basicAttackDamage = 25;
         maxHealth = 50;
         currentHealth = maxHealth;

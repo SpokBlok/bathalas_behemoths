@@ -2909,6 +2909,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cooldown: 0
   maxCharges: 0
+  oneTimeUseAvailable: 0
 --- !u!4 &457008992
 Transform:
   m_ObjectHideFlags: 0
@@ -2983,7 +2984,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mainCharacterSkill: {fileID: 0}
   mainCharacterSkillIsEquipped: 0
-  mainCharacterSkillOnCooldown: 0
   mainCharacterSkillCharges: 0
   mainCharacterSkillCharging: 0
   mainCharacterSkillChargeTimer: 0
@@ -3002,6 +3002,7 @@ Transform:
   m_Children:
   - {fileID: 457008992}
   - {fileID: 2011898193}
+  - {fileID: 1054199322}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &552249867
@@ -4883,6 +4884,53 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &1054199321
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1054199322}
+  - component: {fileID: 1054199323}
+  m_Layer: 0
+  m_Name: BathalasBlessing
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1054199322
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1054199321}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 514540710}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1054199323
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1054199321}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e31527e512e1694682353b7a56d96dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cooldown: 0
+  maxCharges: 0
+  oneTimeUseAvailable: 0
 --- !u!1 &1072765896
 GameObject:
   m_ObjectHideFlags: 0
@@ -8809,8 +8857,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cooldown: 0
   maxCharges: 0
-  radiusPrefab: {fileID: 6070490166674744888, guid: 980695c3d067fca45a44189393cfadbc,
-    type: 3}
+  oneTimeUseAvailable: 0
 --- !u!1 &2013410473
 GameObject:
   m_ObjectHideFlags: 1

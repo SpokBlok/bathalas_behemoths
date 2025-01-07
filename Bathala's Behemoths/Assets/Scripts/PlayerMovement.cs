@@ -57,6 +57,8 @@ public class PlayerMovement : MonoBehaviour
     //For checking if player is within all enemies ranges
     public static event Action OnDashComplete;
 
+    private PlayerStats stats;
+
     private void Start()
     {
         // Get references to char controller + collider
@@ -82,7 +84,9 @@ public class PlayerMovement : MonoBehaviour
         //Starting alignment with terrain
         TerrainGravity();
 
-        if (PlayerStats.Instance.introDone && PlayerStats.Instance.outdoorsScene)
+        stats = PlayerStats.Instance;
+
+        if (stats.introDone && stats.outdoorsScene)
         {
             gameObject.transform.position = new Vector3(313.5f, 23.52272f, 195.11f);
         }
@@ -131,7 +135,7 @@ public class PlayerMovement : MonoBehaviour
 
     public void OnSkillTrigger(InputAction.CallbackContext context) {
         
-        if (context.performed && !PlayerStats.Instance.noSkillEquipped)
+        if (context.performed && !stats.noSkillEquipped)
         {
             Debug.Log("Right Click");
             if (context.performed && !isAttacking)
@@ -147,7 +151,7 @@ public class PlayerMovement : MonoBehaviour
 
     public void OnUltTrigger(InputAction.CallbackContext context)
     {
-        if (context.performed && !PlayerStats.Instance.noUltEquipped)
+        if (context.performed && !stats.noUltEquipped)
         {
             Debug.Log("F press");
             if (context.performed && !isAttacking)
@@ -228,17 +232,17 @@ public class PlayerMovement : MonoBehaviour
 
     public void MovePlayer()
     {
-        Vector3 moveDirection = new Vector3(move.x, 0f, move.y) * PlayerStats.Instance.speed;
+        Vector3 moveDirection = new Vector3(move.x, 0f, move.y) * stats.speed;
         if (isSkillingOrUlting)
         {
             charControl.Move(moveDirection * 0);
         }
         else if (isAttacking)
         {
-            charControl.Move((moveDirection / 3) * Time.deltaTime);
+            charControl.Move(((moveDirection / 3) * stats.speedMultiplier) * Time.deltaTime);
         } else
         {
-            charControl.Move(moveDirection * Time.deltaTime);
+            charControl.Move((moveDirection) * stats.speedMultiplier * Time.deltaTime);
         }
     }
 
@@ -248,7 +252,7 @@ public class PlayerMovement : MonoBehaviour
         {
             if (isBerserk)
             {
-                hit.GetComponent<EnemyMob>().takeDamage(PlayerStats.Instance.basicAttackDamage);
+                hit.GetComponent<EnemyMob>().takeDamage(stats.basicAttackDamage);
             }
             // Calculate direction to push player away from enemy`, Player - Enemy position
             Vector3 direction = new Vector3(transform.position.x - hit.transform.position.x, 0, transform.position.z - hit.transform.position.z);
@@ -258,7 +262,7 @@ public class PlayerMovement : MonoBehaviour
         {
             if (isBerserk)
             {
-                hit.GetComponent<MarkupoScript>().takeDamage(PlayerStats.Instance.basicAttackDamage);
+                hit.GetComponent<MarkupoScript>().takeDamage(stats.basicAttackDamage);
             }
             // Calculate direction to push player away from enemy`, Player - Enemy position
             Vector3 direction = new Vector3(transform.position.x - hit.transform.position.x, 0, transform.position.z - hit.transform.position.z);
@@ -293,11 +297,11 @@ public class PlayerMovement : MonoBehaviour
     private IEnumerator BasicAttack()
     {
         isAttacking = true;
-        yield return new WaitForSeconds(0.1f); // Wait for attack duration
-        yield return StartCoroutine(MoveToPosition(rightHook, 0.4f, true));
+        yield return new WaitForSeconds(0.1f / stats.speedMultiplier); // Wait for attack duration
+        yield return StartCoroutine(MoveToPosition(rightHook, 0.4f / stats.speedMultiplier, true));
         yield return new WaitForSeconds(0.1f);
-        yield return StartCoroutine(MoveToPosition(leftHook, 0.4f, false));
-        yield return new WaitForSeconds(0.1f);
+        yield return StartCoroutine(MoveToPosition(leftHook, 0.4f / stats.speedMultiplier, false));
+        yield return new WaitForSeconds(0.1f / stats.speedMultiplier);
         leftHook.position = leftAnchor.position;
         rightHook.position = rightAnchor.position;
         leftHook.GetComponent<BasicAttackTrigger>().enemyHit = null;
@@ -343,13 +347,13 @@ public class PlayerMovement : MonoBehaviour
 
     public IEnumerator SkillTrigger()
     {
-        if (PlayerStats.Instance.dashSkillEquipped)
+        if (stats.dashSkillEquipped)
         {
             isAttacking = true;
             isSkillingOrUlting = true;
             yield return StartCoroutine(DashSkill());
         }
-        else if (PlayerStats.Instance.rangedSkillEquipped)
+        else if (stats.rangedSkillEquipped)
         {
             isAttacking = true;
             isSkillingOrUlting = true;
@@ -395,7 +399,7 @@ public class PlayerMovement : MonoBehaviour
         float elapsedTime = 0f;
         while (elapsedTime < dashDuration)
         {
-            charControl.Move(direction * PlayerStats.Instance.speed * Time.deltaTime * 2.5f);
+            charControl.Move(direction * stats.speed * Time.deltaTime * 2.5f);
             TerrainGravity();
             elapsedTime += Time.deltaTime;
             yield return null; // Wait for the next frame
@@ -441,25 +445,25 @@ public class PlayerMovement : MonoBehaviour
     {
         percent *= 0.01f;
 
-        float currentHealth = PlayerStats.Instance.currentHealth;
-        float maxHealth = PlayerStats.Instance.maxHealth;
+        float currentHealth = stats.currentHealth;
+        float maxHealth = stats.maxHealth;
 
         float healAmount = maxHealth * percent;
         //Sets the current health as the smaller number between the current health + healed amount
         //and the max possible health
-        PlayerStats.Instance.currentHealth = Mathf.Min(currentHealth + healAmount, maxHealth);
+        stats.currentHealth = Mathf.Min(currentHealth + healAmount, maxHealth);
     }
 
     public IEnumerator UltTrigger()
     {
-        if (PlayerStats.Instance.rangedUltEquipped)
+        if (stats.rangedUltEquipped)
         {
             isAttacking = true;
             isSkillingOrUlting = true;
             yield return new WaitForSeconds(1.5f); // Ult charge up duration
             yield return StartCoroutine(RangedUlt());
         }
-        else if (PlayerStats.Instance.berserkUltEquipped)
+        else if (stats.berserkUltEquipped)
         {
             yield return StartCoroutine(BerserkUlt());
         }
@@ -517,8 +521,8 @@ public class PlayerMovement : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
-        PlayerStats.Instance.currentHealth -= damage;
-        if (PlayerStats.Instance.currentHealth < 0)
+        stats.currentHealth -= damage;
+        if (stats.currentHealth < 0)
         {
             Debug.Log("Dead");
             //trigger death cutscene

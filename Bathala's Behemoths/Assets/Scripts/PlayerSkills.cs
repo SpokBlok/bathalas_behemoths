@@ -75,7 +75,8 @@ public class PlayerSkills : MonoBehaviour
 
     public void RunMainCharacterSkill()
     {
-        if (mainCharacterSkillCharges > 0 || mainCharacterSkill.oneTimeUseAvailable)
+        if (mainCharacterSkillIsEquipped && (mainCharacterSkillCharges > 0 
+            || mainCharacterSkill.oneTimeUseAvailable))
         {
             mainCharacterSkillCharges--;
             mainCharacterSkill.oneTimeUseAvailable = false;

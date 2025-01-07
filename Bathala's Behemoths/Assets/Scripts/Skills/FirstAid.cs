@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class FirstAid : BaseSkill
 {
-    private GameObject player;
-
     // Start is called before the first frame update
     void Start()
     {
@@ -16,7 +14,6 @@ public class FirstAid : BaseSkill
 
     public override IEnumerator RunSkill()
     {
-        Debug.Log("SKILL ACTIVATED");
         player.GetComponent<PlayerMovement>().Heal(40);
         yield return null;
     }

@@ -5,8 +5,6 @@ using UnityEngine;
 
 public class MusicalFlute : BaseSkill
 {
-    private GameObject player;
-
     // Start is called before the first frame update
     void Start()
     {
@@ -27,8 +25,7 @@ public class MusicalFlute : BaseSkill
         Collider[] colliders = Physics.OverlapSphere(player.transform.position, detectionRadius);
         foreach (Collider collider in colliders)
         {
-            KapreMob mob = collider.GetComponent<KapreMob>();
-            if (mob != null)
+            if (collider.TryGetComponent<KapreMob>(out var mob))
             {
                 StartCoroutine(mob.Stun(5));
             }

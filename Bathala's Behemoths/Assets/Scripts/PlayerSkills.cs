@@ -42,6 +42,7 @@ public class PlayerSkills : MonoBehaviour
         mainCharacterSkill = newSkill;
         mainCharacterSkillChargeTimer = newSkill.cooldown;
         mainCharacterSkillCharges = newSkill.maxCharges;
+        mainCharacterSkillIsEquipped = true;
     }
 
     public void MainCharacterSkillChargeTimer()

@@ -6,6 +6,8 @@ using UnityEngine.EventSystems;
 
 public class MCSkillsUIPanel : MonoBehaviour
 {
+    public GameObject HPRegenPrefab;
+
     //Purchased bools
     private bool Skill1Purchased;
     private bool Skill2Purchased;
@@ -114,5 +116,78 @@ public class MCSkillsUIPanel : MonoBehaviour
         Skill1Text.text = "Equipped";
         FirstAid firstAid = PlayerSkills.Instance.GetComponentInChildren<FirstAid>();
         PlayerSkills.Instance.MainCharacterSkillChange(firstAid);
+    }
+
+    public void Skill2Upgrade()
+    {
+        if (!Skill2Purchased)
+        {
+            if (playerStats.kapreCigars < 5)
+            {
+                //message that not enough cigars
+                return;
+            }
+            playerStats.AddKapreCigars(-5);
+            Skill2Purchased = true;
+            Skill2Text.text = "Purchased";
+            playerStats.maxHealth *= 1.25f;
+            playerStats.currentHealth = playerStats.maxHealth;
+            EventManager.Instance.InvokeOnFullHealth();
+        }
+    }
+
+    public void Skill3Upgrade()
+    {
+        if (!Skill3Purchased)
+        {
+            if (playerStats.kapreCigars < 5)
+            {
+                //message that not enough cigars
+                return;
+            }
+            playerStats.AddKapreCigars(-5);
+            Skill3Purchased = true;
+        }
+
+        UnequipAll();
+        Skill3Text.text = "Equipped";
+        MusicalFlute musicalFlute = PlayerSkills.Instance.GetComponentInChildren<MusicalFlute>();
+        PlayerSkills.Instance.MainCharacterSkillChange(musicalFlute);
+    }
+
+    public void Skill4Upgrade()
+    {
+        if (!Skill4Purchased)
+        {
+            if (playerStats.kapreCigars < 10)
+            {
+                //message that not enough cigars
+                return;
+            }
+            playerStats.AddKapreCigars(-10);
+            Skill4Purchased = true;
+            Skill4Text.text = "Purchased";
+            GameObject instance = Instantiate(HPRegenPrefab, PlayerSkills.Instance.transform);
+            instance.name = HPRegenPrefab.name;
+        }
+    }
+
+    public void Skill5Upgrade()
+    {
+        if (!Skill5Purchased)
+        {
+            if (playerStats.kapreCigars < 10)
+            {
+                //message that not enough cigars
+                return;
+            }
+            playerStats.AddKapreCigars(-10);
+            Skill5Purchased = true;
+        }
+
+        UnequipAll();
+        Skill5Text.text = "Equipped";
+        BathalasBlessing bathalasBlessing = PlayerSkills.Instance.GetComponentInChildren<BathalasBlessing>();
+        PlayerSkills.Instance.MainCharacterSkillChange(bathalasBlessing);
     }
 }

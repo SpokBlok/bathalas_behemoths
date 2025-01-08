@@ -3788,6 +3788,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 588913140}
+  - component: {fileID: 588913141}
   m_Layer: 5
   m_Name: KapreCigars HUD
   m_TagString: Untagged
@@ -3816,6 +3817,19 @@ RectTransform:
   m_AnchoredPosition: {x: -1508, y: -135}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &588913141
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 588913139}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f0ac32eeccf2d874ba4b07c53f58cf17, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CigarText: {fileID: 0}
 --- !u!1 &593319268
 GameObject:
   m_ObjectHideFlags: 0
@@ -11278,7 +11292,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1733286531}
   - component: {fileID: 1733286534}
-  - component: {fileID: 1733286535}
   - component: {fileID: 1733286533}
   m_Layer: 5
   m_Name: Quest Text
@@ -11403,19 +11416,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1733286530}
   m_CullTransparentMesh: 1
---- !u!114 &1733286535
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1733286530}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f0ac32eeccf2d874ba4b07c53f58cf17, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  CigarText: {fileID: 0}
 --- !u!1 &1741874844
 GameObject:
   m_ObjectHideFlags: 0
@@ -11425,6 +11425,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1741874845}
+  - component: {fileID: 1741874846}
   m_Layer: 5
   m_Name: HP Bar HUD
   m_TagString: Untagged
@@ -11453,6 +11454,19 @@ RectTransform:
   m_AnchoredPosition: {x: -1508, y: -16}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1741874846
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1741874844}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2757475cc2106e345ae9c705bcfa00bd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HPText: {fileID: 0}
 --- !u!1 &1747987216
 GameObject:
   m_ObjectHideFlags: 0
@@ -11983,7 +11997,6 @@ GameObject:
   - component: {fileID: 1892718960}
   - component: {fileID: 1892718964}
   - component: {fileID: 1892718963}
-  - component: {fileID: 1892718961}
   m_Layer: 5
   m_Name: Quest Text
   m_TagString: Untagged
@@ -12010,19 +12023,6 @@ RectTransform:
   m_AnchoredPosition: {x: 679, y: 500}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1892718961
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1892718959}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2757475cc2106e345ae9c705bcfa00bd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  HPText: {fileID: 0}
 --- !u!114 &1892718963
 MonoBehaviour:
   m_ObjectHideFlags: 0

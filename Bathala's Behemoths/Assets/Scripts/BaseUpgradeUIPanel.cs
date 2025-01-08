@@ -47,11 +47,13 @@ public class BaseUpgradeUIPanel : MonoBehaviour
     public void EnablePanel()
     {
         gameObject.SetActive(true);
+        EventManager.Instance.InvokeOnEnteringUpgradeScreen();
     }
 
     public void DisablePanel()
     {
         gameObject.SetActive(false);
+        EventManager.Instance.InvokeOnExitingUpgradeScreen();
         Transform panel = transform.Find("RightPanel");
         foreach (Transform child in panel)
         {

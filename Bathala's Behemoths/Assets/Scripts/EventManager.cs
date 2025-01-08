@@ -14,6 +14,10 @@ public class EventManager : MonoBehaviour
     public static event Action OnTakingDamage;
     public static event Action OnFullHealth;
 
+    //For enabling/disabling the hp and currency HUDs when entering building upgrades
+    public static event Action OnEnteringUpgradeScreen;
+    public static event Action OnExitingUpgradeScreen;
+
     private void Awake()
     {
         if (Instance == null)
@@ -40,5 +44,15 @@ public class EventManager : MonoBehaviour
     public void InvokeOnFullHealth()
     {
         OnFullHealth?.Invoke();
+    }
+
+    public void InvokeOnEnteringUpgradeScreen()
+    {
+        OnEnteringUpgradeScreen?.Invoke();
+    }
+
+    public void InvokeOnExitingUpgradeScreen()
+    {
+        OnExitingUpgradeScreen?.Invoke();
     }
 }

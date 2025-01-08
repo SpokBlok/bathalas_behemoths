@@ -10,12 +10,24 @@ public class KapreCigarCurrency : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        CigarText = GetComponent<TextMeshProUGUI>();
+        EventManager.OnEnteringUpgradeScreen += DisableUI;
+        EventManager.OnExitingUpgradeScreen += EnableUI;
+        CigarText = GetComponentInChildren<TextMeshProUGUI>();
     }
 
     // Update is called once per frame
     void Update()
     {
         CigarText.text = "Kapre Cigars: " + PlayerStats.Instance.kapreCigars;
+    }
+
+    private void EnableUI()
+    {
+        gameObject.SetActive(true);
+    }
+
+    private void DisableUI()
+    {
+        gameObject.SetActive(false);
     }
 }

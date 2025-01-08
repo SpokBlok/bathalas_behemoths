@@ -10,12 +10,24 @@ public class HealthBar : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        HPText = GetComponent<TextMeshProUGUI>();
+        EventManager.OnEnteringUpgradeScreen += DisableUI;
+        EventManager.OnExitingUpgradeScreen += EnableUI;
+        HPText = GetComponentInChildren<TextMeshProUGUI>();
     }
 
     // Update is called once per frame
     void Update()
     {
         HPText.text = "HP: " + PlayerStats.Instance.currentHealth + "/" + PlayerStats.Instance.maxHealth;
+    }
+
+    private void EnableUI()
+    {
+        gameObject.SetActive(true);
+    }
+
+    private void DisableUI()
+    {
+        gameObject.SetActive(false);
     }
 }

@@ -12,8 +12,8 @@ public class HPPassiveRegen : MonoBehaviour
     void Start()
     {
         player = GameObject.FindWithTag("Player");
-        PlayerMovement.OnTakingDamage += Damaged;
-        PlayerMovement.OnFullHealth += MaxHealth;
+        EventManager.OnTakingDamage += Damaged;
+        EventManager.OnFullHealth += MaxHealth;
     }
 
     private IEnumerator PassiveRegen()

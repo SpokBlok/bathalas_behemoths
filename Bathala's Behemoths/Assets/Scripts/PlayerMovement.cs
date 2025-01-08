@@ -54,13 +54,6 @@ public class PlayerMovement : MonoBehaviour
     //Berserk Ult bool
     public bool isBerserk;
 
-    //For checking if player is within all enemies ranges
-    public static event Action OnDashComplete;
-
-    //For the passive health skill
-    public static event Action OnTakingDamage;
-    public static event Action OnFullHealth;
-
     private PlayerStats stats;
 
     private void Start()
@@ -428,7 +421,7 @@ public class PlayerMovement : MonoBehaviour
 
     public void EnemyTriggerCheck()
     {
-        OnDashComplete?.Invoke();
+        EventManager.Instance.InvokeOnDashComplete();
         //Need to update for new enemy mob types/scripts
         //EnemyRadiusTrigger[] enemyRadiusTriggers = GameObject.FindObjectsOfType<EnemyRadiusTrigger>();
         //foreach (EnemyRadiusTrigger trigger in enemyRadiusTriggers)
@@ -458,7 +451,7 @@ public class PlayerMovement : MonoBehaviour
         stats.currentHealth = Mathf.Min(currentHealth + healAmount, maxHealth);
         if (stats.IsMaxHealth())
         {
-            OnFullHealth?.Invoke();
+            EventManager.Instance.InvokeOnFullHealth();
         }
     }
 
@@ -530,7 +523,7 @@ public class PlayerMovement : MonoBehaviour
     public void TakeDamage(int damage)
     {
         stats.currentHealth -= damage;
-        OnTakingDamage?.Invoke();
+        EventManager.Instance.InvokeOnTakingDamage();
         if (stats.currentHealth < 0)
         {
             Debug.Log("Dead");

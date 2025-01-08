@@ -70,7 +70,7 @@ public class KapreMob : MonoBehaviour
         radius = GetComponentInChildren<KapreRadiusTrigger>();
 
         //Subscribe to trigger check event
-        PlayerMovement.OnDashComplete += radius.TriggerCheck;
+        EventManager.OnDashComplete += radius.TriggerCheck;
 
         punch = gameObject.transform.Find("Basic Attack/Punch");
         leftAnchor = gameObject.transform.Find("Basic Attack/Left Anchor");
@@ -126,7 +126,7 @@ public class KapreMob : MonoBehaviour
             //{
             //    killQuestUI.KillQuestCount += 1;
             //}
-            PlayerMovement.OnDashComplete -= radius.TriggerCheck;
+            EventManager.OnDashComplete -= radius.TriggerCheck;
             Debug.Log("Enemy killed!");
             Destroy(gameObject);
         }

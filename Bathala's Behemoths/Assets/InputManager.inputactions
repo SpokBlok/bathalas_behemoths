@@ -33,7 +33,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "SkillTrigger",
+                    "name": "MCSkillTrigger",
                     "type": "Button",
                     "id": "9783a0d7-ee70-4da7-8184-9922736c11aa",
                     "expectedControlType": "",
@@ -156,7 +156,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "SkillTrigger",
+                    "action": "MCSkillTrigger",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },

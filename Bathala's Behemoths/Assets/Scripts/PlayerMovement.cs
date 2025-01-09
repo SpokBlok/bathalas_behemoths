@@ -23,7 +23,7 @@ public class PlayerMovement : MonoBehaviour
     public Vector3 lookPos;
 
     // Movement variables
-    private Vector2 move;
+    public Vector2 move;
 
     // Knockback variables
     public float pushBackDuration = 0.5f;
@@ -34,7 +34,7 @@ public class PlayerMovement : MonoBehaviour
     public bool isSkillingOrUlting = false;
 
     // Character Conroller
-    private CharacterController charControl;
+    public CharacterController charControl;
 
     //Basic attack variables
     private Transform leftHook;
@@ -130,7 +130,7 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    public void OnSkillTrigger(InputAction.CallbackContext context) {
+    public void OnMCSkillTrigger(InputAction.CallbackContext context) {
         
         if (context.performed && !stats.noSkillEquipped)
         {

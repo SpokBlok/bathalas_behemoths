@@ -42,6 +42,24 @@
                     "initialStateCheck": false
                 },
                 {
+                    "name": "BehemothSkill1Trigger",
+                    "type": "Button",
+                    "id": "d82caa7a-c5f9-4d87-ab8e-57f3d88fe19b",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "BehemothSkill2Trigger",
+                    "type": "Button",
+                    "id": "b74d2807-8578-46a3-8158-c2c758dbc177",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
                     "name": "Interact",
                     "type": "Button",
                     "id": "5aa513a9-3e8a-4d7d-bee1-29735c9b57b2",
@@ -141,7 +159,7 @@
                 {
                     "name": "",
                     "id": "3620a4a2-1be2-4440-b5e6-76d7e50c4898",
-                    "path": "<Keyboard>/e",
+                    "path": "<Keyboard>/f",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -168,6 +186,28 @@
                     "processors": "",
                     "groups": "",
                     "action": "UltTrigger",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "1e895293-de08-469a-aced-c5ad0de78ac1",
+                    "path": "<Keyboard>/q",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "BehemothSkill1Trigger",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "6632854b-461c-4e16-a620-ef438c6bbc95",
+                    "path": "<Keyboard>/e",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "BehemothSkill2Trigger",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

@@ -45,9 +45,6 @@ public class PlayerMovement : MonoBehaviour
     // FSM State
     private PlayerState currentState;
 
-    //InputManager
-    public PlayerInput playerInput;
-
     //Projectile Prefab
     public GameObject projectilePrefab;
 
@@ -55,6 +52,8 @@ public class PlayerMovement : MonoBehaviour
     public bool isBerserk;
 
     private PlayerStats stats;
+
+    public Coroutine basicAttackCoroutine;
 
     private void Start()
     {
@@ -71,9 +70,6 @@ public class PlayerMovement : MonoBehaviour
         {
             Debug.Log("Error, no basic attack left hook");
         }
-
-        //Refernece to PlayerInput
-        playerInput = GetComponent<PlayerInput>();
 
         // Start with Idle state
         currentState = PlayerState.Idle;
@@ -125,14 +121,14 @@ public class PlayerMovement : MonoBehaviour
             {
                 Debug.Log("Attack!");
                 ChangeState(PlayerState.Attacking);
-                StartCoroutine(BasicAttack());
+                basicAttackCoroutine = StartCoroutine(BasicAttack());
             }
         }
     }
 
     public void OnMCSkillTrigger(InputAction.CallbackContext context) {
         
-        if (context.performed && !stats.noSkillEquipped)
+        if (context.performed)
         {
             Debug.Log("Right Click");
             if (context.performed && !isAttacking)
@@ -146,9 +142,24 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
+    public void OnBehemothSkill1Trigger(InputAction.CallbackContext context)
+    {
+
+        if (context.performed)
+        {
+            if (context.performed && !isAttacking)
+            {
+                ChangeState(PlayerState.Attacking);
+                GameObject skillManager = GameObject.FindGameObjectWithTag("Player Skills");
+                skillManager.GetComponent<PlayerSkills>().RunBehemothSkill1();
+
+            }
+        }
+    }
+
     public void OnUltTrigger(InputAction.CallbackContext context)
     {
-        if (context.performed && !stats.noUltEquipped)
+        if (context.performed)
         {
             Debug.Log("F press");
             if (context.performed && !isAttacking)
@@ -180,6 +191,18 @@ public class PlayerMovement : MonoBehaviour
 
             case PlayerState.Knockback:
                 break;
+        }
+    }
+
+    public void StateCheck()
+    {
+        if (move.magnitude == 0)
+        {
+            ChangeState(PlayerState.Idle);
+        }
+        else
+        {
+            ChangeState(PlayerState.Moving);
         }
     }
 
@@ -272,9 +295,9 @@ public class PlayerMovement : MonoBehaviour
         TakeDamage(15);
         ChangeState(PlayerState.Knockback); // Change to Knockback state
         gameObject.layer = LayerMask.NameToLayer("Pushback");
-        playerInput.actions["BasicAttack"].Disable();
-        playerInput.actions["SkillTrigger"].Disable();
-        playerInput.actions["UltTrigger"].Disable();
+        //playerInput.actions["BasicAttack"].Disable();
+        //playerInput.actions["SkillTrigger"].Disable();
+        //playerInput.actions["UltTrigger"].Disable();
         float elapsedTime = 0f;
 
         while (elapsedTime < pushBackDuration)
@@ -286,7 +309,7 @@ public class PlayerMovement : MonoBehaviour
             yield return null; // Wait for the next frame
         }
 
-        playerInput.actions.Enable();
+        //playerInput.actions.Enable();
         gameObject.layer = LayerMask.NameToLayer("Default");
         ChangeState(PlayerState.Idle); // Return to Idle state after knockback
     }
@@ -313,6 +336,8 @@ public class PlayerMovement : MonoBehaviour
             ChangeState(PlayerState.Moving);
         }
         isAttacking = false;
+        StopCoroutine(basicAttackCoroutine);
+        basicAttackCoroutine = null;
         yield break;
     }
 
@@ -344,19 +369,19 @@ public class PlayerMovement : MonoBehaviour
 
     public IEnumerator SkillTrigger()
     {
-        if (stats.dashSkillEquipped)
-        {
-            isAttacking = true;
-            isSkillingOrUlting = true;
-            yield return StartCoroutine(DashSkill());
-        }
-        else if (stats.rangedSkillEquipped)
-        {
-            isAttacking = true;
-            isSkillingOrUlting = true;
-            yield return new WaitForSeconds(1.0f); // Skill charge up duration
-            yield return StartCoroutine(RangedSkill(lookPos.normalized));
-        }
+        //if (stats.dashSkillEquipped)
+        //{
+        //    isAttacking = true;
+        //    isSkillingOrUlting = true;
+        //    yield return StartCoroutine(DashSkill());
+        //}
+        //else if (stats.rangedSkillEquipped)
+        //{
+        //    isAttacking = true;
+        //    isSkillingOrUlting = true;
+        //    yield return new WaitForSeconds(1.0f); // Skill charge up duration
+        //    yield return StartCoroutine(RangedSkill(lookPos.normalized));
+        //}
 
         Debug.Log("Skill end");
         isSkillingOrUlting = false;
@@ -390,7 +415,7 @@ public class PlayerMovement : MonoBehaviour
             direction.y = 0;
         }
         
-        playerInput.actions["Move"].Disable(); //Prevent moving while dashing
+        //playerInput.actions["Move"].Disable(); //Prevent moving while dashing
         float dashDuration = 0.4f; // Time for the dash
 
         float elapsedTime = 0f;
@@ -401,7 +426,7 @@ public class PlayerMovement : MonoBehaviour
             elapsedTime += Time.deltaTime;
             yield return null; // Wait for the next frame
         }
-        playerInput.actions["Move"].Enable();
+        //playerInput.actions["Move"].Enable();
         EnemyTriggerCheck();
         gameObject.layer = LayerMask.NameToLayer("Default");
         //Enable children colliders
@@ -457,17 +482,17 @@ public class PlayerMovement : MonoBehaviour
 
     public IEnumerator UltTrigger()
     {
-        if (stats.rangedUltEquipped)
-        {
-            isAttacking = true;
-            isSkillingOrUlting = true;
-            yield return new WaitForSeconds(1.5f); // Ult charge up duration
-            yield return StartCoroutine(RangedUlt());
-        }
-        else if (stats.berserkUltEquipped)
-        {
-            yield return StartCoroutine(BerserkUlt());
-        }
+        //if (stats.rangedUltEquipped)
+        //{
+        //    isAttacking = true;
+        //    isSkillingOrUlting = true;
+        //    yield return new WaitForSeconds(1.5f); // Ult charge up duration
+        //    yield return StartCoroutine(RangedUlt());
+        //}
+        //else if (stats.berserkUltEquipped)
+        //{
+        //    yield return StartCoroutine(BerserkUlt());
+        //}
 
         isSkillingOrUlting = false;
         isAttacking = false;
@@ -531,7 +556,7 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    private void ChangeState(PlayerState newState) //Logic for entering states (e.g. playing animations)
+    public void ChangeState(PlayerState newState) //Logic for entering states (e.g. playing animations)
     {
         currentState = newState;
 

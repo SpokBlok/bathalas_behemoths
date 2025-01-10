@@ -799,7 +799,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Press E to Upgrade
+  m_text: Press F to Upgrade
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -4366,6 +4366,16 @@ MonoBehaviour:
   mainCharacterSkillCharges: 0
   mainCharacterSkillCharging: 0
   mainCharacterSkillChargeTimer: 0
+  behemothSkill1: {fileID: 0}
+  behemothSkill1IsEquipped: 0
+  behemothSkill1Charges: 0
+  behemothSkill1Charging: 0
+  behemothSkill1ChargeTimer: 0
+  behemothSkill2: {fileID: 0}
+  behemothSkill2IsEquipped: 0
+  behemothSkill2Charges: 0
+  behemothSkill2Charging: 0
+  behemothSkill2ChargeTimer: 0
 --- !u!4 &514540710
 Transform:
   m_ObjectHideFlags: 0
@@ -4382,6 +4392,7 @@ Transform:
   - {fileID: 457008992}
   - {fileID: 2011898193}
   - {fileID: 1054199322}
+  - {fileID: 1669565656}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &552249867
@@ -9256,7 +9267,7 @@ GameObject:
   - component: {fileID: 1241431712}
   m_Layer: 0
   m_Name: InputManager
-  m_TagString: Untagged
+  m_TagString: Player Input
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9379,7 +9390,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 211558155}
         m_TargetAssemblyTypeName: PlayerMovement, Assembly-CSharp
-        m_MethodName: OnSkillTrigger
+        m_MethodName: OnMCSkillTrigger
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -9407,6 +9418,14 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 10c2d24c-2ef8-4477-b8cf-6e12485958f8
     m_ActionName: Player/UltTrigger[/Keyboard/f]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: d82caa7a-c5f9-4d87-ab8e-57f3d88fe19b
+    m_ActionName: Player/BehemothSkill1Trigger
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: b74d2807-8578-46a3-8158-c2c758dbc177
+    m_ActionName: Player/BehemothSkill2Trigger[/Keyboard/e]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -11703,6 +11722,53 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -2947974022876378490, guid: fd77590088e985343b322a468bafcb2b, type: 3}
+--- !u!1 &1669565655
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1669565656}
+  - component: {fileID: 1669565657}
+  m_Layer: 0
+  m_Name: Dash
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1669565656
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1669565655}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 514540710}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1669565657
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1669565655}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b7643895020fbb43b0ac3b07cc28b86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cooldown: 0
+  maxCharges: 0
+  oneTimeUseAvailable: 0
 --- !u!1 &1672298055 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 344931588109452228, guid: 75026c16fa631974782fbb3aeb24cc99,
@@ -14582,7 +14648,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Press E to Start Investigation
+  m_text: Press F to Upgrade
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -14698,7 +14764,7 @@ PrefabInstance:
     - target: {fileID: 5562768419259451210, guid: 1386be20f236ee44d9a89475913cbd88,
         type: 3}
       propertyPath: m_text
-      value: Press E to Start Investigation
+      value: Press F to Start Investigation
       objectReference: {fileID: 0}
     - target: {fileID: 5562768419259451210, guid: 1386be20f236ee44d9a89475913cbd88,
         type: 3}

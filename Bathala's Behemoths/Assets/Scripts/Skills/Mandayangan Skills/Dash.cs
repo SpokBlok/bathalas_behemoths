@@ -6,10 +6,13 @@ using UnityEngine.InputSystem;
 
 public class Dash : BaseSkill
 {
+    private PlayerInput input;
+
     // Start is called before the first frame update
     void Start()
     {
         player = GameObject.FindWithTag("Player");
+        input = GameObject.FindWithTag("Player Input").GetComponent<PlayerInput>();
         maxCharges = 3;
         cooldown = 6;
     }
@@ -30,7 +33,7 @@ public class Dash : BaseSkill
             direction.y = 0;
         }
 
-        playerMovement.playerInput.actions["Move"].Disable(); //Prevent moving while dashing
+        input.actions["Move"].Disable(); //Prevent moving while dashing
         float dashDuration = 0.4f; // Time for the dash
 
         float elapsedTime = 0f;
@@ -41,7 +44,7 @@ public class Dash : BaseSkill
             elapsedTime += Time.deltaTime;
             yield return null; // Wait for the next frame
         }
-        playerMovement.playerInput.actions["Move"].Enable();
+        input.actions["Move"].Enable();
         EventManager.Instance.InvokeOnDashComplete();
         gameObject.layer = LayerMask.NameToLayer("Default");
         //Enable children colliders

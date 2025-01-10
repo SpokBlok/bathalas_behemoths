@@ -81,9 +81,6 @@ public class BaseUpgradeUIPanel : MonoBehaviour
         if (Skill1Purchased)
         {
             Skill1Text.text = "Equipped";
-            PlayerStats.Instance.dashSkillEquipped = true;
-            PlayerStats.Instance.rangedSkillEquipped = false;
-            PlayerStats.Instance.noSkillEquipped = false;
             if (Skill2Purchased)
             {
                 Skill2Text.text = "Equip";
@@ -94,9 +91,6 @@ public class BaseUpgradeUIPanel : MonoBehaviour
             Skill1Purchased = true;
             PlayerStats.Instance.AddKapreCigars(-5);
             Skill1Text.text = "Equipped";
-            PlayerStats.Instance.dashSkillEquipped = true;
-            PlayerStats.Instance.rangedSkillEquipped = false;
-            PlayerStats.Instance.noSkillEquipped = false;
             if (Skill2Purchased)
             {
                 Skill2Text.text = "Equip";
@@ -125,9 +119,6 @@ public class BaseUpgradeUIPanel : MonoBehaviour
         if (Skill2Purchased)
         {
             Skill2Text.text = "Equipped";
-            PlayerStats.Instance.dashSkillEquipped = false;
-            PlayerStats.Instance.rangedSkillEquipped = true;
-            PlayerStats.Instance.noSkillEquipped = false;
             if (Skill1Purchased)
             {
                 Skill1Text.text = "Equip";
@@ -138,9 +129,6 @@ public class BaseUpgradeUIPanel : MonoBehaviour
             Skill2Purchased = true;
             PlayerStats.Instance.AddKapreCigars(-5);
             Skill2Text.text = "Equipped";
-            PlayerStats.Instance.dashSkillEquipped = false;
-            PlayerStats.Instance.rangedSkillEquipped = true;
-            PlayerStats.Instance.noSkillEquipped = false;
             if (Skill1Purchased)
             {
                 Skill1Text.text = "Equip";
@@ -168,9 +156,6 @@ public class BaseUpgradeUIPanel : MonoBehaviour
         if (Ult1Purchased)
         {
             Ult1Text.text = "Equipped";
-            PlayerStats.Instance.rangedUltEquipped = true;
-            PlayerStats.Instance.berserkUltEquipped = false;
-            PlayerStats.Instance.noSkillEquipped = false;
             if (Ult2Purchased)
             {
                 Ult2Text.text = "Equip";
@@ -181,9 +166,6 @@ public class BaseUpgradeUIPanel : MonoBehaviour
             Ult1Purchased = true;
             PlayerStats.Instance.AddKapreCigars(-5);
             Ult1Text.text = "Equipped";
-            PlayerStats.Instance.rangedUltEquipped = true;
-            PlayerStats.Instance.berserkUltEquipped = false;
-            PlayerStats.Instance.noSkillEquipped = false;
             if (Ult2Purchased)
             {
                 Ult2Text.text = "Equip";
@@ -212,9 +194,6 @@ public class BaseUpgradeUIPanel : MonoBehaviour
         if (Ult2Purchased)
         {
             Ult2Text.text = "Equipped";
-            PlayerStats.Instance.rangedUltEquipped = false;
-            PlayerStats.Instance.berserkUltEquipped = true;
-            PlayerStats.Instance.noSkillEquipped = false;
             if (Ult1Purchased)
             {
                 Ult1Text.text = "Equip";
@@ -225,9 +204,6 @@ public class BaseUpgradeUIPanel : MonoBehaviour
             Ult2Purchased = true;
             PlayerStats.Instance.AddKapreCigars(-5);
             Ult2Text.text = "Equipped";
-            PlayerStats.Instance.rangedUltEquipped = false;
-            PlayerStats.Instance.berserkUltEquipped = true;
-            PlayerStats.Instance.noSkillEquipped = false;
             if (Ult1Purchased)
             {
                 Ult1Text.text = "Equip";

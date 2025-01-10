@@ -25,13 +25,6 @@ public class PlayerStats : MonoBehaviour
     public float currentHealth;
     public float maxHealth;
 
-    public bool dashSkillEquipped;
-    public bool rangedSkillEquipped;
-    public bool noSkillEquipped;
-
-    public bool rangedUltEquipped;
-    public bool berserkUltEquipped;
-    public bool noUltEquipped;
     public bool introDone;
     public bool outdoorsScene;
     public bool questComp;
@@ -61,13 +54,6 @@ public class PlayerStats : MonoBehaviour
         maxHealth = 50;
         currentHealth = maxHealth;
 
-        dashSkillEquipped = false;
-        rangedSkillEquipped = true;
-        noSkillEquipped = false;
-
-        rangedUltEquipped = true;
-        berserkUltEquipped = false;
-        noUltEquipped = false;
         introDone = false;
         outdoorsScene = true;
 

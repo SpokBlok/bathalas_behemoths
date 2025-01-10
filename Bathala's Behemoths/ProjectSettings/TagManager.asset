@@ -13,6 +13,7 @@ TagManager:
   - Investigation Text
   - Kapre
   - Player Skills
+  - Player Input
   layers:
   - Default
   - TransparentFX

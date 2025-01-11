@@ -25,6 +25,8 @@ public class PlayerStats : MonoBehaviour
     public float currentHealth;
     public float maxHealth;
 
+    public bool hasMudArmor;
+
     public bool introDone;
     public bool outdoorsScene;
     public bool questComp;
@@ -53,6 +55,8 @@ public class PlayerStats : MonoBehaviour
         basicAttackDamage = 25;
         maxHealth = 50;
         currentHealth = maxHealth;
+
+        hasMudArmor = false;
 
         introDone = false;
         outdoorsScene = true;

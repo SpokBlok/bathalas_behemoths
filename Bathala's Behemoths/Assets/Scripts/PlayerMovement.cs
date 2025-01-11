@@ -136,7 +136,7 @@ public class PlayerMovement : MonoBehaviour
                 Debug.Log("Skill!");
                 ChangeState(PlayerState.Attacking);
                 GameObject skillManager = GameObject.FindGameObjectWithTag("Player Skills");
-                skillManager.GetComponent<PlayerSkills>().RunMainCharacterSkill();
+                StartCoroutine(skillManager.GetComponent<PlayerSkills>().RunMainCharacterSkill());
 
             }
         }
@@ -151,7 +151,7 @@ public class PlayerMovement : MonoBehaviour
             {
                 ChangeState(PlayerState.Attacking);
                 GameObject skillManager = GameObject.FindGameObjectWithTag("Player Skills");
-                skillManager.GetComponent<PlayerSkills>().RunBehemothSkill1();
+                StartCoroutine(skillManager.GetComponent<PlayerSkills>().RunBehemothSkill1());
 
             }
         }
@@ -547,7 +547,15 @@ public class PlayerMovement : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
-        stats.currentHealth -= damage;
+        if (PlayerStats.Instance.hasMudArmor)
+        {
+            stats.currentHealth -= damage / 1.5f;
+        } 
+        else
+        {
+            stats.currentHealth -= damage;
+        }
+
         EventManager.Instance.InvokeOnTakingDamage();
         if (stats.currentHealth < 0)
         {

@@ -1,11 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Drawing;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Windows;
+using static UnityEngine.GraphicsBuffer;
 
-public class MusicalFlute : BaseSkill
+public class Mudfling : BaseSkill
 {
+    public GameObject projectilePrefab;
     private PlayerMovement playerMovement;
 
     // Start is called before the first frame update
@@ -14,7 +16,7 @@ public class MusicalFlute : BaseSkill
         player = GameObject.FindWithTag("Player");
         playerMovement = player.GetComponent<PlayerMovement>();
         maxCharges = 1;
-        cooldown = 40;
+        cooldown = 8;
     }
 
     // Update is called once per frame
@@ -29,19 +31,12 @@ public class MusicalFlute : BaseSkill
         {
             StopCoroutine(playerMovement.basicAttackCoroutine);
             playerMovement.basicAttackCoroutine = null;
-        }
+        }     
         playerMovement.ChangeState(PlayerState.Idle);
-        GameObject.FindWithTag("Player Input").GetComponent<PlayerInput>().actions["Move"].Disable();
-        yield return new WaitForSeconds(1.5f); //Charge up time, animation of flute playing
-        float detectionRadius = 10f;
-        Collider[] colliders = Physics.OverlapSphere(player.transform.position, detectionRadius);
-        foreach (Collider collider in colliders)
-        {
-            if (collider.TryGetComponent<KapreMob>(out var mob))
-            {
-                StartCoroutine(mob.Stun(5));
-            }
-        }
+        yield return new WaitForSeconds(1); //Charge up time, animation of making mudball
+        GameObject projectile = Instantiate(projectilePrefab, player.transform.position, Quaternion.identity);
+        ProjectileScript projectileScript = projectile.GetComponent<ProjectileScript>();
+        StartCoroutine(projectileScript.Move(player.GetComponent<PlayerMovement>().lookPos.normalized));
         playerMovement.StateCheck();
     }
 }

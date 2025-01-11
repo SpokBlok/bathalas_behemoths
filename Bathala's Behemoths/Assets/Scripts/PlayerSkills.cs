@@ -9,18 +9,21 @@ public class PlayerSkills : MonoBehaviour
     public int mainCharacterSkillCharges;
     public bool mainCharacterSkillCharging;
     public float mainCharacterSkillChargeTimer;
+    public Coroutine mainCharacterSkillCoroutine = null;
 
     public BaseSkill behemothSkill1;
     public bool behemothSkill1IsEquipped = false;
     public int behemothSkill1Charges;
     public bool behemothSkill1Charging;
     public float behemothSkill1ChargeTimer;
+    public Coroutine behemothSkill1Coroutine = null;
 
     public BaseSkill behemothSkill2;
     public bool behemothSkill2IsEquipped = false;
     public int behemothSkill2Charges;
     public bool behemothSkill2Charging;
     public float behemothSkill2ChargeTimer;
+    public Coroutine behemothSkill2Coroutine = null;
 
     // Start is called before the first frame update
     void Start()
@@ -161,31 +164,38 @@ public class PlayerSkills : MonoBehaviour
         }
     }
 
-    public void RunMainCharacterSkill()
+    public IEnumerator RunMainCharacterSkill()
     {
-        if (mainCharacterSkillIsEquipped && (mainCharacterSkillCharges > 0 
+        if (mainCharacterSkillIsEquipped && mainCharacterSkillCoroutine == null && 
+            (mainCharacterSkillCharges > 0 
             || mainCharacterSkill.oneTimeUseAvailable))
         {
             mainCharacterSkillCharges--;
             mainCharacterSkill.oneTimeUseAvailable = false;
-            StartCoroutine(mainCharacterSkill.RunSkill());
+            mainCharacterSkillCoroutine = StartCoroutine(mainCharacterSkill.RunSkill());
+            yield return mainCharacterSkillCoroutine;
+            mainCharacterSkillCoroutine = null;
         }
     }
 
-    public void RunBehemothSkill1()
+    public IEnumerator RunBehemothSkill1()
     {
-        if (behemothSkill1IsEquipped && (behemothSkill1Charges > 0
+        if (behemothSkill1IsEquipped && behemothSkill1Coroutine == null &&
+            (behemothSkill1Charges > 0
             || behemothSkill1.oneTimeUseAvailable))
         {
             behemothSkill1Charges--;
             behemothSkill1.oneTimeUseAvailable = false;
-            StartCoroutine(behemothSkill1.RunSkill());
+            behemothSkill1Coroutine = StartCoroutine(behemothSkill1.RunSkill());
+            yield return behemothSkill1Coroutine;
+            behemothSkill1Coroutine = null;
         }
     }
 
     public void RunBehemothSkill2()
     {
-        if (behemothSkill2IsEquipped && (behemothSkill2Charges > 0
+        if (behemothSkill2IsEquipped && behemothSkill2Coroutine == null &&
+            (behemothSkill2Charges > 0
             || behemothSkill2.oneTimeUseAvailable))
         {
             behemothSkill2Charges--;

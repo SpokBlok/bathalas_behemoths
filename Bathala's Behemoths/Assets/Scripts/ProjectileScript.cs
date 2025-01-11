@@ -64,6 +64,7 @@ public class ProjectileScript : MonoBehaviour
             {
                 objectHit = other.gameObject;
                 objectHit.GetComponent<KapreMob>().TakeDamage(PlayerStats.Instance.basicAttackDamage);
+                StartCoroutine(objectHit.GetComponent<KapreMob>().Stun(2));
             }
             Destroy(gameObject);
         }

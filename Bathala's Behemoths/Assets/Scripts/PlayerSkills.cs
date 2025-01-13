@@ -34,8 +34,18 @@ public class PlayerSkills : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        MainCharacterSkillChargeTimer();
-        BehemothSkillQChargeTimer();
+        if (mainCharacterSkillIsEquipped)
+        {
+            MainCharacterSkillChargeTimer();
+        }
+        if (behemothSkillQIsEquipped)
+        {
+            BehemothSkillQChargeTimer();
+        }
+        if (behemothSkillEIsEquipped)
+        {
+            BehemothSkillEChargeTimer();
+        }
     }
 
     public static PlayerSkills Instance { get; private set; }
@@ -105,91 +115,71 @@ public class PlayerSkills : MonoBehaviour
         behemothSkillECharging = false;
     }
 
-    public void MainCharacterSkillChargeTimer()
+    private void SkillChargeTimer(ref bool isEquipped, ref bool isCharging, ref float chargeTimer, ref int charges, int maxCharges, float cooldown)
     {
-        if (!mainCharacterSkillIsEquipped)
+        if (!isEquipped)
         {
             return;
         }
-        if (mainCharacterSkillCharges < mainCharacterSkill.maxCharges)
+
+        if (charges < maxCharges)
         {
-            mainCharacterSkillCharging = true;
+            isCharging = true;
         }
 
-        if (mainCharacterSkillCharging)
+        if (isCharging)
         {
-            if (mainCharacterSkillChargeTimer <= 0)
+            if (charges >= maxCharges)
             {
-                mainCharacterSkillCharges++;
-                mainCharacterSkillChargeTimer = mainCharacterSkill.cooldown;
-                if (mainCharacterSkillCharges == mainCharacterSkill.maxCharges)
-                {
-                    mainCharacterSkillCharging = false;
-                }
+                isCharging = false;
+                chargeTimer = cooldown;
+            }
+            else if (chargeTimer <= 0)
+            {
+                charges++;
+                chargeTimer = cooldown;
             }
             else
             {
-                mainCharacterSkillChargeTimer -= Time.deltaTime;
+                chargeTimer -= Time.deltaTime;
             }
         }
+    }
+
+    public void MainCharacterSkillChargeTimer()
+    {
+        SkillChargeTimer(
+            ref mainCharacterSkillIsEquipped,
+            ref mainCharacterSkillCharging,
+            ref mainCharacterSkillChargeTimer,
+            ref mainCharacterSkillCharges,
+            mainCharacterSkill.maxCharges,
+            mainCharacterSkill.cooldown
+        );
     }
 
     public void BehemothSkillQChargeTimer()
     {
-        if (!behemothSkillQIsEquipped)
-        {
-            return;
-        }
-        if (behemothSkillQCharges < behemothSkillQ.maxCharges)
-        {
-            behemothSkillQCharging = true;
-        }
-
-        if (behemothSkillQCharging)
-        {
-            if (behemothSkillQChargeTimer <= 0)
-            {
-                behemothSkillQCharges++;
-                behemothSkillQChargeTimer = behemothSkillQ.cooldown;
-                if (behemothSkillQCharges == behemothSkillQ.maxCharges)
-                {
-                    behemothSkillQCharging = false;
-                }
-            }
-            else
-            {
-                behemothSkillQChargeTimer -= Time.deltaTime;
-            }
-        }
+        SkillChargeTimer(
+            ref behemothSkillQIsEquipped,
+            ref behemothSkillQCharging,
+            ref behemothSkillQChargeTimer,
+            ref behemothSkillQCharges,
+            behemothSkillQ.maxCharges,
+            behemothSkillQ.cooldown
+        );
     }
 
     public void BehemothSkillEChargeTimer()
     {
-        if (!behemothSkillEIsEquipped)
-        {
-            return;
-        }
-        if (behemothSkillECharges < behemothSkillE.maxCharges)
-        {
-            behemothSkillECharging = true;
-        }
-
-        if (behemothSkillECharging)
-        {
-            if (behemothSkillEChargeTimer <= 0)
-            {
-                behemothSkillECharges++;
-                behemothSkillEChargeTimer = behemothSkillE.cooldown;
-                if (behemothSkillECharges == behemothSkillE.maxCharges)
-                {
-                    behemothSkillECharging = false;
-                }
-            }
-            else
-            {
-                behemothSkillEChargeTimer -= Time.deltaTime;
-            }
-        }
+        SkillChargeTimer(
+            ref behemothSkillEIsEquipped,
+            ref behemothSkillECharging,
+            ref behemothSkillEChargeTimer,
+            ref behemothSkillECharges,
+            behemothSkillE.maxCharges,
+            behemothSkillE.cooldown
+        );
     }
 
     public IEnumerator RunMainCharacterSkill()
@@ -220,7 +210,7 @@ public class PlayerSkills : MonoBehaviour
         }
     }
 
-    public void RunBehemothSkillE()
+    public IEnumerator RunBehemothSkillE()
     {
         if (behemothSkillEIsEquipped && behemothSkillECoroutine == null &&
             (behemothSkillECharges > 0
@@ -228,7 +218,9 @@ public class PlayerSkills : MonoBehaviour
         {
             behemothSkillECharges--;
             behemothSkillE.oneTimeUseAvailable = false;
-            StartCoroutine(behemothSkillE.RunSkill());
+            behemothSkillECoroutine = StartCoroutine(behemothSkillQ.RunSkill());
+            yield return behemothSkillECoroutine;
+            behemothSkillECoroutine = null;
         }
     }
 }

@@ -157,16 +157,17 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    public void OnUltTrigger(InputAction.CallbackContext context)
+    public void OnBehemothSkillETrigger(InputAction.CallbackContext context)
     {
+
         if (context.performed)
         {
-            Debug.Log("F press");
             if (context.performed && !isAttacking)
             {
-                Debug.Log("Ult!");
                 ChangeState(PlayerState.Attacking);
-                StartCoroutine(UltTrigger());
+                GameObject skillManager = GameObject.FindGameObjectWithTag("Player Skills");
+                StartCoroutine(skillManager.GetComponent<PlayerSkills>().RunBehemothSkillE());
+
             }
         }
     }

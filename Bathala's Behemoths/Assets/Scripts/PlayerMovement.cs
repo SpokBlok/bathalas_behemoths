@@ -142,7 +142,7 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    public void OnBehemothSkill1Trigger(InputAction.CallbackContext context)
+    public void OnBehemothSkillQTrigger(InputAction.CallbackContext context)
     {
 
         if (context.performed)
@@ -151,7 +151,7 @@ public class PlayerMovement : MonoBehaviour
             {
                 ChangeState(PlayerState.Attacking);
                 GameObject skillManager = GameObject.FindGameObjectWithTag("Player Skills");
-                StartCoroutine(skillManager.GetComponent<PlayerSkills>().RunBehemothSkill1());
+                StartCoroutine(skillManager.GetComponent<PlayerSkills>().RunBehemothSkillQ());
 
             }
         }

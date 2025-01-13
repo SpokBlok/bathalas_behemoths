@@ -33,6 +33,7 @@ public class MusicalFlute : BaseSkill
         playerMovement.ChangeState(PlayerState.Idle);
         GameObject.FindWithTag("Player Input").GetComponent<PlayerInput>().actions["Move"].Disable();
         yield return new WaitForSeconds(1.5f); //Charge up time, animation of flute playing
+        GameObject.FindWithTag("Player Input").GetComponent<PlayerInput>().actions["Move"].Enable();
         Collider[] colliders = Physics.OverlapSphere(player.transform.position, 10f);
         foreach (Collider collider in colliders)
         {

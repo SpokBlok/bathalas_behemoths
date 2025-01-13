@@ -42,7 +42,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "BehemothSkill1Trigger",
+                    "name": "BehemothSkillQTrigger",
                     "type": "Button",
                     "id": "d82caa7a-c5f9-4d87-ab8e-57f3d88fe19b",
                     "expectedControlType": "",
@@ -51,7 +51,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "BehemothSkill2Trigger",
+                    "name": "BehemothSkillETrigger",
                     "type": "Button",
                     "id": "b74d2807-8578-46a3-8158-c2c758dbc177",
                     "expectedControlType": "",
@@ -196,7 +196,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "BehemothSkill1Trigger",
+                    "action": "BehemothSkillQTrigger",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -207,7 +207,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "BehemothSkill2Trigger",
+                    "action": "BehemothSkillETrigger",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

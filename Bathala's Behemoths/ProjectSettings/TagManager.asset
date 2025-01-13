@@ -14,6 +14,7 @@ TagManager:
   - Kapre
   - Player Skills
   - Player Input
+  - Q Button
   layers:
   - Default
   - TransparentFX

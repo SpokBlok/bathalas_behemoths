@@ -25,6 +25,7 @@ public class MCSkillsUIPanel : MonoBehaviour
     private List<TextMeshProUGUI> textList = new List<TextMeshProUGUI>();
 
     private PlayerStats playerStats;
+    private PlayerSkills playerSkills;
 
     // Start is called before the first frame update
     void Start()
@@ -53,6 +54,7 @@ public class MCSkillsUIPanel : MonoBehaviour
         textList.Add(Skill5Text);
 
         playerStats = PlayerStats.Instance;
+        playerSkills = PlayerSkills.Instance;
     }
 
     public void EnablePanel()
@@ -99,6 +101,7 @@ public class MCSkillsUIPanel : MonoBehaviour
             }
         }
     }
+
     public void Skill1Upgrade()
     {
         if (!Skill1Purchased)
@@ -114,8 +117,8 @@ public class MCSkillsUIPanel : MonoBehaviour
 
         UnequipAll();
         Skill1Text.text = "Equipped";
-        FirstAid firstAid = PlayerSkills.Instance.GetComponentInChildren<FirstAid>();
-        PlayerSkills.Instance.MainCharacterSkillChange(firstAid);
+        FirstAid firstAid = playerSkills.GetComponentInChildren<FirstAid>();
+        playerSkills.MainCharacterSkillChange(firstAid);
     }
 
     public void Skill2Upgrade()
@@ -151,8 +154,8 @@ public class MCSkillsUIPanel : MonoBehaviour
 
         UnequipAll();
         Skill3Text.text = "Equipped";
-        MusicalFlute musicalFlute = PlayerSkills.Instance.GetComponentInChildren<MusicalFlute>();
-        PlayerSkills.Instance.MainCharacterSkillChange(musicalFlute);
+        MusicalFlute musicalFlute = playerSkills.GetComponentInChildren<MusicalFlute>();
+        playerSkills.MainCharacterSkillChange(musicalFlute);
     }
 
     public void Skill4Upgrade()
@@ -187,7 +190,7 @@ public class MCSkillsUIPanel : MonoBehaviour
 
         UnequipAll();
         Skill5Text.text = "Equipped";
-        BathalasBlessing bathalasBlessing = PlayerSkills.Instance.GetComponentInChildren<BathalasBlessing>();
-        PlayerSkills.Instance.MainCharacterSkillChange(bathalasBlessing);
+        BathalasBlessing bathalasBlessing = playerSkills.GetComponentInChildren<BathalasBlessing>();
+        playerSkills.MainCharacterSkillChange(bathalasBlessing);
     }
 }

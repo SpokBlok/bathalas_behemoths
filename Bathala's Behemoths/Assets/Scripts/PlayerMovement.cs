@@ -53,7 +53,12 @@ public class PlayerMovement : MonoBehaviour
 
     private PlayerStats stats;
 
+    //For basic attack logic
+    private BoxCollider basicAttackHitbox;
+    Vector3 worldCenter;
+    Vector3 worldSize;
     public Coroutine basicAttackCoroutine;
+    public InputActionReference mouseAction;
 
     private void Start()
     {
@@ -79,6 +84,8 @@ public class PlayerMovement : MonoBehaviour
 
         stats = PlayerStats.Instance;
 
+        basicAttackHitbox = transform.Find("Basic Attack/Basic Attack Hitbox").GetComponent<BoxCollider>();
+
         if (stats.introDone && stats.outdoorsScene)
         {
             gameObject.transform.position = new Vector3(313.5f, 23.52272f, 195.11f);
@@ -90,17 +97,17 @@ public class PlayerMovement : MonoBehaviour
         move = context.ReadValue<Vector2>();
 
         // Only act on the input when it is performed
-        // If there is input, transition to the Moving state
+        // If there is input when not attacking, transition to the Moving state
         if (context.performed)
         {
-            if (move != Vector2.zero && currentState != PlayerState.Moving && currentState != PlayerState.Knockback)
+            if (move != Vector2.zero && currentState != PlayerState.Moving && currentState != PlayerState.Attacking)
             {
                 ChangeState(PlayerState.Moving);
             }
         }
         else if (context.canceled)
         {
-            if (currentState != PlayerState.Idle && currentState != PlayerState.Knockback)
+            if (currentState != PlayerState.Idle && currentState != PlayerState.Attacking)
             {
                 ChangeState(PlayerState.Idle);
             }
@@ -116,10 +123,8 @@ public class PlayerMovement : MonoBehaviour
     {
         if (context.performed)
         {
-            Debug.Log("Click");
             if (context.performed && !isAttacking)
             {
-                Debug.Log("Attack!");
                 ChangeState(PlayerState.Attacking);
                 basicAttackCoroutine = StartCoroutine(BasicAttack());
             }
@@ -130,21 +135,17 @@ public class PlayerMovement : MonoBehaviour
         
         if (context.performed)
         {
-            Debug.Log("Right Click");
             if (context.performed && !isAttacking)
             {
-                Debug.Log("Skill!");
                 ChangeState(PlayerState.Attacking);
                 GameObject skillManager = GameObject.FindGameObjectWithTag("Player Skills");
                 StartCoroutine(skillManager.GetComponent<PlayerSkills>().RunMainCharacterSkill());
-
             }
         }
     }
 
     public void OnBehemothSkillQTrigger(InputAction.CallbackContext context)
     {
-
         if (context.performed)
         {
             if (context.performed && !isAttacking)
@@ -159,7 +160,6 @@ public class PlayerMovement : MonoBehaviour
 
     public void OnBehemothSkillETrigger(InputAction.CallbackContext context)
     {
-
         if (context.performed)
         {
             if (context.performed && !isAttacking)
@@ -188,6 +188,7 @@ public class PlayerMovement : MonoBehaviour
 
             case PlayerState.Attacking:
                 MovePlayer();
+                UpdateBasicAttackHitboxPosition();
                 break;
 
             case PlayerState.Knockback:
@@ -251,6 +252,13 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
+    private void UpdateBasicAttackHitboxPosition()
+    {
+        // Get the BoxCollider's world position, size, and rotation
+        worldCenter = basicAttackHitbox.transform.TransformPoint(basicAttackHitbox.center);
+        worldSize = Vector3.Scale(basicAttackHitbox.size, basicAttackHitbox.transform.lossyScale) / 2;
+    }
+
     public void MovePlayer()
     {
         Vector3 moveDirection = new Vector3(move.x, 0f, move.y) * stats.speed;
@@ -267,171 +275,36 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    public void Knockback(GameObject hit)
-    {
-        if (hit.CompareTag("Enemy"))
-        {
-            if (isBerserk)
-            {
-                hit.GetComponent<EnemyMob>().takeDamage(stats.basicAttackDamage);
-            }
-            // Calculate direction to push player away from enemy`, Player - Enemy position
-            Vector3 direction = new Vector3(transform.position.x - hit.transform.position.x, 0, transform.position.z - hit.transform.position.z);
-            StartCoroutine(SmoothPushBack(direction.normalized));
-        }
-        else if (hit.CompareTag("Boss"))
-        {
-            if (isBerserk)
-            {
-                hit.GetComponent<MarkupoScript>().takeDamage(stats.basicAttackDamage);
-            }
-            // Calculate direction to push player away from enemy`, Player - Enemy position
-            Vector3 direction = new Vector3(transform.position.x - hit.transform.position.x, 0, transform.position.z - hit.transform.position.z);
-            StartCoroutine(SmoothPushBack(direction.normalized));
-        }
-    }
-
-    private IEnumerator SmoothPushBack(Vector3 direction)
-    {
-        TakeDamage(15);
-        ChangeState(PlayerState.Knockback); // Change to Knockback state
-        gameObject.layer = LayerMask.NameToLayer("Pushback");
-        //playerInput.actions["BasicAttack"].Disable();
-        //playerInput.actions["SkillTrigger"].Disable();
-        //playerInput.actions["UltTrigger"].Disable();
-        float elapsedTime = 0f;
-
-        while (elapsedTime < pushBackDuration)
-        {
-            // Apply push-back force gradually
-            charControl.Move(direction * pushBackForce * Time.deltaTime);
-            TerrainGravity();
-            elapsedTime += Time.deltaTime;
-            yield return null; // Wait for the next frame
-        }
-
-        //playerInput.actions.Enable();
-        gameObject.layer = LayerMask.NameToLayer("Default");
-        ChangeState(PlayerState.Idle); // Return to Idle state after knockback
-    }
-
     private IEnumerator BasicAttack()
     {
         isAttacking = true;
-        yield return new WaitForSeconds(0.1f / stats.speedMultiplier); // Wait for attack duration
-        yield return StartCoroutine(MoveToPosition(rightHook, 0.4f / stats.speedMultiplier, true));
-        yield return new WaitForSeconds(0.1f);
-        yield return StartCoroutine(MoveToPosition(leftHook, 0.4f / stats.speedMultiplier, false));
-        yield return new WaitForSeconds(0.1f / stats.speedMultiplier);
-        leftHook.position = leftAnchor.position;
-        rightHook.position = rightAnchor.position;
-        leftHook.GetComponent<BasicAttackTrigger>().enemyHit = null;
-        rightHook.GetComponent<BasicAttackTrigger>().enemyHit = null; //From preventing double damage trigger
+        yield return new WaitForSeconds(0.5f / stats.speedMultiplier); // Wait for attack duration
+        BasicAttackHitboxCheck(Physics.OverlapBox(worldCenter, worldSize, basicAttackHitbox.transform.rotation));
+        yield return new WaitForSeconds(0.5f / stats.speedMultiplier);
+        BasicAttackHitboxCheck(Physics.OverlapBox(worldCenter, worldSize, basicAttackHitbox.transform.rotation));
 
-        if (move.magnitude == 0)
+        if (mouseAction.action.ReadValue<float>() > 0)
         {
-            ChangeState(PlayerState.Idle);
+            basicAttackCoroutine = StartCoroutine(BasicAttack());
         }
         else
         {
-            ChangeState(PlayerState.Moving);
+            isAttacking = false;
+            basicAttackCoroutine = null;
+
+            StateCheck();
         }
-        isAttacking = false;
-        StopCoroutine(basicAttackCoroutine);
-        basicAttackCoroutine = null;
-        yield break;
     }
 
-    private IEnumerator MoveToPosition(Transform obj, float duration, bool toLeft)
+    private void BasicAttackHitboxCheck(Collider[] colliders)
     {
-        float elapsedTime = 0f;
-        Vector3 targetPosition;
-
-        while (elapsedTime < duration)
+        foreach (Collider collider in colliders)
         {
-            elapsedTime += Time.deltaTime;
-
-            // Dynamically calculate the left or rightmost point
-            if (toLeft)
+            if (collider.TryGetComponent<KapreMob>(out var mob))
             {
-                targetPosition = leftAnchor.position;
-            } 
-            else
-            {
-                targetPosition = rightAnchor.position;
+                mob.TakeDamage(PlayerStats.Instance.basicAttackDamage / 2);
             }
-            
-            // Interpolate towards the updated target
-            obj.position = Vector3.Lerp(obj.position, targetPosition, elapsedTime / duration);
-
-            yield return null;
-        }     
-    }
-
-    public IEnumerator SkillTrigger()
-    {
-        //if (stats.dashSkillEquipped)
-        //{
-        //    isAttacking = true;
-        //    isSkillingOrUlting = true;
-        //    yield return StartCoroutine(DashSkill());
-        //}
-        //else if (stats.rangedSkillEquipped)
-        //{
-        //    isAttacking = true;
-        //    isSkillingOrUlting = true;
-        //    yield return new WaitForSeconds(1.0f); // Skill charge up duration
-        //    yield return StartCoroutine(RangedSkill(lookPos.normalized));
-        //}
-
-        Debug.Log("Skill end");
-        isSkillingOrUlting = false;
-        isAttacking = false;
-
-
-        if (move.magnitude == 0)
-        {
-            ChangeState(PlayerState.Idle);
         }
-        else
-        {
-            ChangeState(PlayerState.Moving);
-        }
-
-        yield break;
-    }
-
-    private IEnumerator DashSkill()
-    {
-        Debug.Log("Dashing");
-        //Disable children colliders
-        CollisionToggle();
-        gameObject.layer = LayerMask.NameToLayer("Pushback");
-
-        Vector3 direction = -lookPos.normalized;
-        if (move.magnitude > 0)
-        {
-            direction = move.normalized;
-            direction.z = direction.y;
-            direction.y = 0;
-        }
-        
-        //playerInput.actions["Move"].Disable(); //Prevent moving while dashing
-        float dashDuration = 0.4f; // Time for the dash
-
-        float elapsedTime = 0f;
-        while (elapsedTime < dashDuration)
-        {
-            charControl.Move(direction * stats.speed * Time.deltaTime * 2.5f);
-            TerrainGravity();
-            elapsedTime += Time.deltaTime;
-            yield return null; // Wait for the next frame
-        }
-        //playerInput.actions["Move"].Enable();
-        EnemyTriggerCheck();
-        gameObject.layer = LayerMask.NameToLayer("Default");
-        //Enable children colliders
-        CollisionToggle();
     }
 
     public void CollisionToggle()
@@ -443,25 +316,6 @@ public class PlayerMovement : MonoBehaviour
                 col.enabled = !col.enabled;
             }
         }
-    }
-
-    public void EnemyTriggerCheck()
-    {
-        EventManager.Instance.InvokeOnDashComplete();
-        //Need to update for new enemy mob types/scripts
-        //EnemyRadiusTrigger[] enemyRadiusTriggers = GameObject.FindObjectsOfType<EnemyRadiusTrigger>();
-        //foreach (EnemyRadiusTrigger trigger in enemyRadiusTriggers)
-        //{
-        //    trigger.TriggerCheck();
-        //}
-    }
-
-    public IEnumerator RangedSkill(Vector3 target)
-    {
-        GameObject projectile = Instantiate(projectilePrefab, gameObject.transform.position, Quaternion.identity);
-        ProjectileScript projectileScript = projectile.GetComponent<ProjectileScript>();
-        StartCoroutine(projectileScript.Move(target));
-        yield break;
     }
 
     public void Heal(float percent)
@@ -479,71 +333,6 @@ public class PlayerMovement : MonoBehaviour
         {
             EventManager.Instance.InvokeOnFullHealth();
         }
-    }
-
-    public IEnumerator UltTrigger()
-    {
-        //if (stats.rangedUltEquipped)
-        //{
-        //    isAttacking = true;
-        //    isSkillingOrUlting = true;
-        //    yield return new WaitForSeconds(1.5f); // Ult charge up duration
-        //    yield return StartCoroutine(RangedUlt());
-        //}
-        //else if (stats.berserkUltEquipped)
-        //{
-        //    yield return StartCoroutine(BerserkUlt());
-        //}
-
-        isSkillingOrUlting = false;
-        isAttacking = false;
-
-
-        if (move.magnitude == 0)
-        {
-            ChangeState(PlayerState.Idle);
-        }
-        else
-        {
-            ChangeState(PlayerState.Moving);
-        }
-
-        yield break;
-    }
-
-    public IEnumerator RangedUlt()
-    {
-        Vector3[] directions = new Vector3[]{
-            new Vector3(0, 0, 1),                                // North
-            new Vector3(1, 0, 1).normalized,                     // Northeast
-            new Vector3(1, 0, 0),                                // East
-            new Vector3(1, 0, -1).normalized,                    // Southeast
-            new Vector3(0, 0, -1),                               // South
-            new Vector3(-1, 0, -1).normalized,                   // Southwest
-            new Vector3(-1, 0, 0),                               // West
-            new Vector3(-1, 0, 1).normalized                     // Northwest
-        };
-
-        foreach (Vector3 direction in directions)
-        {
-            StartCoroutine(RangedSkill(direction));
-        }
-        yield break;
-    }
-
-    public IEnumerator BerserkUlt()
-    {
-        isBerserk = true;
-        transform.localScale *= 2;
-        float elapsedTime = 0f;
-        while (elapsedTime < 5)
-        {
-            elapsedTime += Time.deltaTime;
-            yield return null; // Wait for the next frame
-        }
-        transform.localScale *= 0.5f;
-        isBerserk = false;
-        yield break;
     }
 
     public void TakeDamage(int damage)

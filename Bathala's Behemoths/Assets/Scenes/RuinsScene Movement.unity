@@ -18728,8 +18728,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: Kapre
       objectReference: {fileID: 0}
+    - target: {fileID: 3543018298486764693, guid: 5959d18082eae3e4b8211378139457ef,
+        type: 3}
+      propertyPath: m_Name
+      value: Basic Attack Hitbox
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 7100475827598242767, guid: 5959d18082eae3e4b8211378139457ef, type: 3}
+    - {fileID: 4151358072994679121, guid: 5959d18082eae3e4b8211378139457ef, type: 3}
+    - {fileID: 626920997984338273, guid: 5959d18082eae3e4b8211378139457ef, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5959d18082eae3e4b8211378139457ef, type: 3}

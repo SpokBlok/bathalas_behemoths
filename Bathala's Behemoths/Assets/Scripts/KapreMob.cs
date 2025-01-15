@@ -35,10 +35,11 @@ public class KapreMob : MonoBehaviour
 
     private KapreRadiusTrigger radius;
 
-    //Basic attack variables
-    private Transform punch;
-    private Transform leftAnchor;
-    private Transform rightAnchor;
+    //For basic attack logic
+    private BoxCollider basicAttackHitbox;
+    public Coroutine basicAttackCoroutine;
+    Vector3 worldCenter;
+    Vector3 worldSize;
 
     // Start is called before the first frame update
     void Start()
@@ -72,9 +73,7 @@ public class KapreMob : MonoBehaviour
         //Subscribe to trigger check event
         EventManager.OnDashComplete += radius.TriggerCheck;
 
-        punch = gameObject.transform.Find("Basic Attack/Punch");
-        leftAnchor = gameObject.transform.Find("Basic Attack/Left Anchor");
-        rightAnchor = gameObject.transform.Find("Basic Attack/Right Anchor");
+        basicAttackHitbox = transform.Find("Basic Attack/Basic Attack Hitbox").GetComponent<BoxCollider>();
     }
 
     // Update is called once per frame
@@ -95,7 +94,7 @@ public class KapreMob : MonoBehaviour
                 {
                     UpdateRotationTarget();
                     isAttacking = true;
-                    StartCoroutine(BasicAttack());
+                    basicAttackCoroutine = StartCoroutine(BasicAttack());
                 }
                 break;
 
@@ -170,33 +169,32 @@ public class KapreMob : MonoBehaviour
     private IEnumerator BasicAttack()
     {
         Debug.Log("Enemy Attack");
-        yield return StartCoroutine(MoveToPosition(punch, 0.4f));
-        punch.position = rightAnchor.position;
+        worldCenter = basicAttackHitbox.transform.TransformPoint(basicAttackHitbox.center);
+        worldSize = Vector3.Scale(basicAttackHitbox.size, basicAttackHitbox.transform.lossyScale) / 2;
+
+        yield return new WaitForSeconds(0.4f);
+        BasicAttackHitboxCheck(Physics.OverlapBox(worldCenter, worldSize, basicAttackHitbox.transform.rotation));
         yield return new WaitForSeconds(1.0f);
         radius.TriggerCheck();
         isAttacking = false;
-        punch.GetComponent<KapreBasicAttackTrigger>().playerHit = null;
-        yield break;
     }
 
-    private IEnumerator MoveToPosition(Transform obj, float duration)
+    private void BasicAttackHitboxCheck(Collider[] colliders)
     {
-        float elapsedTime = 0f;
-
-        while (elapsedTime < duration)
+        foreach (Collider collider in colliders)
         {
-            elapsedTime += Time.deltaTime;
-
-            // Interpolate towards the updated target
-            obj.position = Vector3.Lerp(obj.position, leftAnchor.position, elapsedTime / duration);
-
-            yield return null;
+            if (collider.CompareTag("Player"))
+            {
+                Debug.Log("Calling");
+                collider.GetComponent<PlayerMovement>().TakeDamage(5);
+            }
         }
     }
 
     public IEnumerator Stun(float duration)
     {
         ChangeState(KapreState.Stunned);
+        StopCoroutine(basicAttackCoroutine);
         yield return new WaitForSeconds(duration);
         radius.TriggerCheck();
         yield return null;

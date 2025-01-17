@@ -57,14 +57,14 @@ public class ProjectileScript : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Kapre"))
+        if (other.gameObject.CompareTag("Enemy"))
         {
             //objectHit is to prevent double damage triggering
             if (objectHit != other.gameObject)
             {
                 objectHit = other.gameObject;
-                objectHit.GetComponent<KapreMob>().TakeDamage(PlayerStats.Instance.basicAttackDamage);
-                StartCoroutine(objectHit.GetComponent<KapreMob>().Stun(2));
+                objectHit.GetComponent<EnemyMob>().TakeDamage(PlayerStats.Instance.basicAttackDamage);
+                StartCoroutine(objectHit.GetComponent<EnemyMob>().Stun(2));
             }
             Destroy(gameObject);
         }

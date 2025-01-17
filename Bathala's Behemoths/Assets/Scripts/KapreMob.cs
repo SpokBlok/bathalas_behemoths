@@ -12,7 +12,7 @@ public enum KapreState
     Stunned
 }
 
-public class KapreMob : MonoBehaviour
+public class KapreMob : EnemyMob
 {
     private CharacterController kapreControl;
     private Transform playerTransform;
@@ -113,24 +113,6 @@ public class KapreMob : MonoBehaviour
         transform.position = newPosition;
     }
 
-    public void TakeDamage(float damage)
-    {
-        health -= damage;
-        if (health <= 0)
-        {
-            PlayerStats.Instance.AddKapreCigars(1);
-            //Disabled for now in lieu of having kapre cigar currency
-            //Might need in for intro kill quest anyway?
-            //if (killQuestUI.gameObject.activeSelf)
-            //{
-            //    killQuestUI.KillQuestCount += 1;
-            //}
-            EventManager.OnDashComplete -= radius.TriggerCheck;
-            Debug.Log("Enemy killed!");
-            Destroy(gameObject);
-        }
-    }
-
     public void ChasePlayer()
     {
         target = playerTransform;
@@ -191,7 +173,25 @@ public class KapreMob : MonoBehaviour
         }
     }
 
-    public IEnumerator Stun(float duration)
+    public override void TakeDamage(float damage)
+    {
+        health -= damage;
+        if (health <= 0)
+        {
+            PlayerStats.Instance.AddKapreCigars(1);
+            //Disabled for now in lieu of having kapre cigar currency
+            //Might need in for intro kill quest anyway?
+            //if (killQuestUI.gameObject.activeSelf)
+            //{
+            //    killQuestUI.KillQuestCount += 1;
+            //}
+            EventManager.OnDashComplete -= radius.TriggerCheck;
+            Debug.Log("Enemy killed!");
+            Destroy(gameObject);
+        }
+    }
+
+    public override IEnumerator Stun(float duration)
     {
         ChangeState(KapreState.Stunned);
         StopCoroutine(basicAttackCoroutine);

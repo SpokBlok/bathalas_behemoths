@@ -37,7 +37,7 @@ public class MusicalFlute : BaseSkill
         Collider[] colliders = Physics.OverlapSphere(player.transform.position, 10f);
         foreach (Collider collider in colliders)
         {
-            if (collider.TryGetComponent<KapreMob>(out var mob))
+            if (collider.TryGetComponent<EnemyMob>(out var mob))
             {
                 StartCoroutine(mob.Stun(5));
             }

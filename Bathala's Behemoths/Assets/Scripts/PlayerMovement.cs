@@ -300,7 +300,7 @@ public class PlayerMovement : MonoBehaviour
     {
         foreach (Collider collider in colliders)
         {
-            if (collider.TryGetComponent<KapreMob>(out var mob))
+            if (collider.TryGetComponent<EnemyMob>(out var mob))
             {
                 mob.TakeDamage(PlayerStats.Instance.basicAttackDamage / 2);
             }

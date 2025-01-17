@@ -302,7 +302,7 @@ GameObject:
   - component: {fileID: 6080050113629792048}
   m_Layer: 0
   m_Name: Kapre
-  m_TagString: Kapre
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

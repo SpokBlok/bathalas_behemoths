@@ -1,0 +1,1993 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1064416577843055465
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6532724714922758055}
+  m_Layer: 0
+  m_Name: Row 2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6532724714922758055
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1064416577843055465}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 6981538925237672635}
+  - {fileID: 6654499309697548737}
+  - {fileID: 3558563221574693860}
+  - {fileID: 9144689884218905214}
+  - {fileID: 6226432904439787858}
+  m_Father: {fileID: 7261355991200884955}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2913396746079434956
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2708718541458192719}
+  m_Layer: 0
+  m_Name: Row 5
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2708718541458192719
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2913396746079434956}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 7605120209827065430}
+  - {fileID: 7229999453477318495}
+  - {fileID: 6006945011058661022}
+  - {fileID: 3972794114316973706}
+  m_Father: {fileID: 7261355991200884955}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &3858484558548633489
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6515214983801460520}
+  m_Layer: 0
+  m_Name: Row 3
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6515214983801460520
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3858484558548633489}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 4695283813233084909}
+  - {fileID: 9107803298959361907}
+  - {fileID: 7705487033120096356}
+  - {fileID: 8197622213571222520}
+  - {fileID: 5261833105659860452}
+  - {fileID: 1718522831275870308}
+  m_Father: {fileID: 7261355991200884955}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &4801361899630218370
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5271133040133968477}
+  m_Layer: 0
+  m_Name: Row 1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5271133040133968477
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4801361899630218370}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 281208219109091395}
+  - {fileID: 4388301544076239645}
+  - {fileID: 316437122445187977}
+  - {fileID: 6400677737604337317}
+  m_Father: {fileID: 7261355991200884955}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &7395304905062221442
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3824021631985016422}
+  m_Layer: 0
+  m_Name: Row 4
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3824021631985016422
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7395304905062221442}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 2672101825869275475}
+  - {fileID: 7559026982829282873}
+  - {fileID: 8191547448791318218}
+  - {fileID: 7427295954596362944}
+  - {fileID: 372388246592812534}
+  m_Father: {fileID: 7261355991200884955}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &8687510543522287237
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7261355991200884955}
+  m_Layer: 0
+  m_Name: Arena Wide Attack
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7261355991200884955
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8687510543522287237}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 140, y: 9.24, z: 95.84}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 5271133040133968477}
+  - {fileID: 6532724714922758055}
+  - {fileID: 6515214983801460520}
+  - {fileID: 3824021631985016422}
+  - {fileID: 2708718541458192719}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &248674979445120515
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 3824021631985016422}
+    m_Modifications:
+    - target: {fileID: 1083680755275985701, guid: 346abac7785fbd64bb2dd5cbdc7f7988,
+        type: 3}
+      propertyPath: m_Name
+      value: Tambanokano Lighting Strike (15)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2766985777270685520, guid: 346abac7785fbd64bb2dd5cbdc7f7988,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -3.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 2766985777270685520, guid: 346abac7785fbd64bb2dd5cbdc7f7988,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2766985777270685520, guid: 346abac7785fbd64bb2dd5cbdc7f7988,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -18.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 2766985777270685520, guid: 346abac7785fbd64bb2dd5cbdc7f7988,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2766985777270685520, guid: 346abac7785fbd64bb2dd5cbdc7f7988,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2766985777270685520, guid: 346abac7785fbd64bb2dd5cbdc7f7988,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2766985777270685520, guid: 346abac7785fbd64bb2dd5cbdc7f7988,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2766985777270685520, guid: 346abac7785fbd64bb2dd5cbdc7f7988,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2766985777270685520, guid: 346abac7785fbd64bb2dd5cbdc7f7988,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2766985777270685520, guid: 346abac7785fbd64bb2dd5cbdc7f7988,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 346abac7785fbd64bb2dd5cbdc7f7988, type: 3}
+--- !u!4 &2672101825869275475 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2766985777270685520, guid: 346abac7785fbd64bb2dd5cbdc7f7988,
+    type: 3}
+  m_PrefabInstance: {fileID: 248674979445120515}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1244257751872752090
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 2708718541458192719}
+    m_Modifications:
+    - target: {fileID: 1083680755275985701, guid: 346abac7785fbd64bb2dd5cbdc7f7988,
+        type: 3}
+      propertyPath: m_Name
+      value: Tambanokano Lighting Strike (23)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2766985777270685520, guid: 346abac7785fbd64bb2dd5cbdc7f7988,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 22.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2766985777270685520, guid: 346abac7785fbd64bb2dd5cbdc7f7988,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2766985777270685520, guid: 346abac7785fbd64bb2dd5cbdc7f7988,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -25
+      objectReference: {fileID: 0}
+    - target: {fileID: 2766985777270685520, guid: 346abac7785fbd64bb2dd5cbdc7f7988,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2766985777270685520, guid: 346abac7785fbd64bb2dd5cbdc7f7988,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2766985777270685520, guid: 346abac7785fbd64bb2dd5cbdc7f7988,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2766985777270685520, guid: 346abac7785fbd64bb2dd5cbdc7f7988,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2766985777270685520, guid: 346abac7785fbd64bb2dd5cbdc7f7988,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2766985777270685520, guid: 346abac7785fbd64bb2dd5cbdc7f7988,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2766985777270685520, guid: 346abac7785fbd64bb2dd5cbdc7f7988,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 346abac7785fbd64bb2dd5cbdc7f7988, type: 3}
+--- !u!4 &3972794114316973706 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2766985777270685520, guid: 346abac7785fbd64bb2dd5cbdc7f7988,
+    type: 3}
+  m_PrefabInstance: {fileID: 1244257751872752090}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1658662231056600244
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 6532724714922758055}
+    m_Modifications:
+    - target: {fileID: 1083680755275985701, guid: 346abac7785fbd64bb2dd5cbdc7f7988,
+        type: 3}
+      propertyPath: m_Name
+      value: Tambanokano Lighting Strike (6)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2766985777270685520, guid: 346abac7785fbd64bb2dd5cbdc7f7988,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 11.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 2766985777270685520, guid: 346abac7785fbd64bb2dd5cbdc7f7988,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2766985777270685520, guid: 346abac7785fbd64bb2dd5cbdc7f7988,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -6.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 2766985777270685520, guid: 346abac7785fbd64bb2dd5cbdc7f7988,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2766985777270685520, guid: 346abac7785fbd64bb2dd5cbdc7f7988,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2766985777270685520, guid: 346abac7785fbd64bb2dd5cbdc7f7988,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2766985777270685520, guid: 346abac7785fbd64bb2dd5cbdc7f7988,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2766985777270685520, guid: 346abac7785fbd64bb2dd5cbdc7f7988,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2766985777270685520, guid: 346abac7785fbd64bb2dd5cbdc7f7988,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2766985777270685520, guid: 346abac7785fbd64bb2dd5cbdc7f7988,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 346abac7785fbd64bb2dd5cbdc7f7988, type: 3}
+--- !u!4 &3558563221574693860 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2766985777270685520, guid: 346abac7785fbd64bb2dd5cbdc7f7988,
+    type: 3}
+  m_PrefabInstance: {fileID: 1658662231056600244}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1909578909262847053
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 5271133040133968477}
+    m_Modifications:
+    - target: {fileID: 1083680755275985701, guid: 346abac7785fbd64bb2dd5cbdc7f7988,
+        type: 3}
+      propertyPath: m_Name
+      value: Tambanokano Lighting Strike (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2766985777270685520, guid: 346abac7785fbd64bb2dd5cbdc7f7988,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 7.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2766985777270685520, guid: 346abac7785fbd64bb2dd5cbdc7f7988,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2766985777270685520, guid: 346abac7785fbd64bb2dd5cbdc7f7988,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2766985777270685520, guid: 346abac7785fbd64bb2dd5cbdc7f7988,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2766985777270685520, guid: 346abac7785fbd64bb2dd5cbdc7f7988,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2766985777270685520, guid: 346abac7785fbd64bb2dd5cbdc7f7988,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2766985777270685520, guid: 346abac7785fbd64bb2dd5cbdc7f7988,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2766985777270685520, guid: 346abac7785fbd64bb2dd5cbdc7f7988,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2766985777270685520, guid: 346abac7785fbd64bb2dd5cbdc7f7988,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2766985777270685520, guid: 346abac7785fbd64bb2dd5cbdc7f7988,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 346abac7785fbd64bb2dd5cbdc7f7988, type: 3}
+--- !u!4 &4388301544076239645 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2766985777270685520, guid: 346abac7785fbd64bb2dd5cbdc7f7988,
+    type: 3}
+  m_PrefabInstance: {fileID: 1909578909262847053}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &2450656410356245721
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 5271133040133968477}
+    m_Modifications:
+    - target: {fileID: 1083680755275985701, guid: 346abac7785fbd64bb2dd5cbdc7f7988,
+        type: 3}
+      propertyPath: m_Name
+      value: Tambanokano Lighting Strike (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2766985777270685520, guid: 346abac7785fbd64bb2dd5cbdc7f7988,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 2766985777270685520, guid: 346abac7785fbd64bb2dd5cbdc7f7988,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2766985777270685520, guid: 346abac7785fbd64bb2dd5cbdc7f7988,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2766985777270685520, guid: 346abac7785fbd64bb2dd5cbdc7f7988,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2766985777270685520, guid: 346abac7785fbd64bb2dd5cbdc7f7988,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2766985777270685520, guid: 346abac7785fbd64bb2dd5cbdc7f7988,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2766985777270685520, guid: 346abac7785fbd64bb2dd5cbdc7f7988,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2766985777270685520, guid: 346abac7785fbd64bb2dd5cbdc7f7988,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2766985777270685520, guid: 346abac7785fbd64bb2dd5cbdc7f7988,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2766985777270685520, guid: 346abac7785fbd64bb2dd5cbdc7f7988,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 346abac7785fbd64bb2dd5cbdc7f7988, type: 3}
+--- !u!4 &316437122445187977 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2766985777270685520, guid: 346abac7785fbd64bb2dd5cbdc7f7988,
+    type: 3}
+  m_PrefabInstance: {fileID: 2450656410356245721}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &2543605546711714470
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 3824021631985016422}
+    m_Modifications:
+    - target: {fileID: 1083680755275985701, guid: 346abac7785fbd64bb2dd5cbdc7f7988,
+        type: 3}
+      propertyPath: m_Name
+      value: Tambanokano Lighting Strike (19)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2766985777270685520, guid: 346abac7785fbd64bb2dd5cbdc7f7988,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 26.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 2766985777270685520, guid: 346abac7785fbd64bb2dd5cbdc7f7988,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2766985777270685520, guid: 346abac7785fbd64bb2dd5cbdc7f7988,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -18.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 2766985777270685520, guid: 346abac7785fbd64bb2dd5cbdc7f7988,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2766985777270685520, guid: 346abac7785fbd64bb2dd5cbdc7f7988,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2766985777270685520, guid: 346abac7785fbd64bb2dd5cbdc7f7988,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2766985777270685520, guid: 346abac7785fbd64bb2dd5cbdc7f7988,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2766985777270685520, guid: 346abac7785fbd64bb2dd5cbdc7f7988,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2766985777270685520, guid: 346abac7785fbd64bb2dd5cbdc7f7988,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2766985777270685520, guid: 346abac7785fbd64bb2dd5cbdc7f7988,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 346abac7785fbd64bb2dd5cbdc7f7988, type: 3}
+--- !u!4 &372388246592812534 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2766985777270685520, guid: 346abac7785fbd64bb2dd5cbdc7f7988,
+    type: 3}
+  m_PrefabInstance: {fileID: 2543605546711714470}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &2702515490565920531
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 5271133040133968477}
+    m_Modifications:
+    - target: {fileID: 1083680755275985701, guid: 346abac7785fbd64bb2dd5cbdc7f7988,
+        type: 3}
+      propertyPath: m_Name
+      value: Tambanokano Lighting Strike
+      objectReference: {fileID: 0}
+    - target: {fileID: 2766985777270685520, guid: 346abac7785fbd64bb2dd5cbdc7f7988,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2766985777270685520, guid: 346abac7785fbd64bb2dd5cbdc7f7988,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2766985777270685520, guid: 346abac7785fbd64bb2dd5cbdc7f7988,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2766985777270685520, guid: 346abac7785fbd64bb2dd5cbdc7f7988,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2766985777270685520, guid: 346abac7785fbd64bb2dd5cbdc7f7988,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2766985777270685520, guid: 346abac7785fbd64bb2dd5cbdc7f7988,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2766985777270685520, guid: 346abac7785fbd64bb2dd5cbdc7f7988,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2766985777270685520, guid: 346abac7785fbd64bb2dd5cbdc7f7988,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2766985777270685520, guid: 346abac7785fbd64bb2dd5cbdc7f7988,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2766985777270685520, guid: 346abac7785fbd64bb2dd5cbdc7f7988,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 346abac7785fbd64bb2dd5cbdc7f7988, type: 3}
+--- !u!4 &281208219109091395 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2766985777270685520, guid: 346abac7785fbd64bb2dd5cbdc7f7988,
+    type: 3}
+  m_PrefabInstance: {fileID: 2702515490565920531}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &3584625126405977908
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 6515214983801460520}
+    m_Modifications:
+    - target: {fileID: 1083680755275985701, guid: 346abac7785fbd64bb2dd5cbdc7f7988,
+        type: 3}
+      propertyPath: m_Name
+      value: Tambanokano Lighting Strike (14)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2766985777270685520, guid: 346abac7785fbd64bb2dd5cbdc7f7988,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 2766985777270685520, guid: 346abac7785fbd64bb2dd5cbdc7f7988,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2766985777270685520, guid: 346abac7785fbd64bb2dd5cbdc7f7988,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -12.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2766985777270685520, guid: 346abac7785fbd64bb2dd5cbdc7f7988,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2766985777270685520, guid: 346abac7785fbd64bb2dd5cbdc7f7988,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2766985777270685520, guid: 346abac7785fbd64bb2dd5cbdc7f7988,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2766985777270685520, guid: 346abac7785fbd64bb2dd5cbdc7f7988,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2766985777270685520, guid: 346abac7785fbd64bb2dd5cbdc7f7988,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2766985777270685520, guid: 346abac7785fbd64bb2dd5cbdc7f7988,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2766985777270685520, guid: 346abac7785fbd64bb2dd5cbdc7f7988,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 346abac7785fbd64bb2dd5cbdc7f7988, type: 3}
+--- !u!4 &1718522831275870308 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2766985777270685520, guid: 346abac7785fbd64bb2dd5cbdc7f7988,
+    type: 3}
+  m_PrefabInstance: {fileID: 3584625126405977908}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &4716747336102938000
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 3824021631985016422}
+    m_Modifications:
+    - target: {fileID: 1083680755275985701, guid: 346abac7785fbd64bb2dd5cbdc7f7988,
+        type: 3}
+      propertyPath: m_Name
+      value: Tambanokano Lighting Strike (18)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2766985777270685520, guid: 346abac7785fbd64bb2dd5cbdc7f7988,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 18.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 2766985777270685520, guid: 346abac7785fbd64bb2dd5cbdc7f7988,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2766985777270685520, guid: 346abac7785fbd64bb2dd5cbdc7f7988,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -18.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 2766985777270685520, guid: 346abac7785fbd64bb2dd5cbdc7f7988,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2766985777270685520, guid: 346abac7785fbd64bb2dd5cbdc7f7988,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2766985777270685520, guid: 346abac7785fbd64bb2dd5cbdc7f7988,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2766985777270685520, guid: 346abac7785fbd64bb2dd5cbdc7f7988,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2766985777270685520, guid: 346abac7785fbd64bb2dd5cbdc7f7988,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2766985777270685520, guid: 346abac7785fbd64bb2dd5cbdc7f7988,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2766985777270685520, guid: 346abac7785fbd64bb2dd5cbdc7f7988,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 346abac7785fbd64bb2dd5cbdc7f7988, type: 3}
+--- !u!4 &7427295954596362944 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2766985777270685520, guid: 346abac7785fbd64bb2dd5cbdc7f7988,
+    type: 3}
+  m_PrefabInstance: {fileID: 4716747336102938000}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &4769400884869091343
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 2708718541458192719}
+    m_Modifications:
+    - target: {fileID: 1083680755275985701, guid: 346abac7785fbd64bb2dd5cbdc7f7988,
+        type: 3}
+      propertyPath: m_Name
+      value: Tambanokano Lighting Strike (21)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2766985777270685520, guid: 346abac7785fbd64bb2dd5cbdc7f7988,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 7.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2766985777270685520, guid: 346abac7785fbd64bb2dd5cbdc7f7988,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2766985777270685520, guid: 346abac7785fbd64bb2dd5cbdc7f7988,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -25
+      objectReference: {fileID: 0}
+    - target: {fileID: 2766985777270685520, guid: 346abac7785fbd64bb2dd5cbdc7f7988,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2766985777270685520, guid: 346abac7785fbd64bb2dd5cbdc7f7988,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2766985777270685520, guid: 346abac7785fbd64bb2dd5cbdc7f7988,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2766985777270685520, guid: 346abac7785fbd64bb2dd5cbdc7f7988,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2766985777270685520, guid: 346abac7785fbd64bb2dd5cbdc7f7988,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2766985777270685520, guid: 346abac7785fbd64bb2dd5cbdc7f7988,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2766985777270685520, guid: 346abac7785fbd64bb2dd5cbdc7f7988,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 346abac7785fbd64bb2dd5cbdc7f7988, type: 3}
+--- !u!4 &7229999453477318495 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2766985777270685520, guid: 346abac7785fbd64bb2dd5cbdc7f7988,
+    type: 3}
+  m_PrefabInstance: {fileID: 4769400884869091343}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &5081509871688115691
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 6532724714922758055}
+    m_Modifications:
+    - target: {fileID: 1083680755275985701, guid: 346abac7785fbd64bb2dd5cbdc7f7988,
+        type: 3}
+      propertyPath: m_Name
+      value: Tambanokano Lighting Strike (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2766985777270685520, guid: 346abac7785fbd64bb2dd5cbdc7f7988,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 3.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 2766985777270685520, guid: 346abac7785fbd64bb2dd5cbdc7f7988,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2766985777270685520, guid: 346abac7785fbd64bb2dd5cbdc7f7988,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -6.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 2766985777270685520, guid: 346abac7785fbd64bb2dd5cbdc7f7988,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2766985777270685520, guid: 346abac7785fbd64bb2dd5cbdc7f7988,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2766985777270685520, guid: 346abac7785fbd64bb2dd5cbdc7f7988,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2766985777270685520, guid: 346abac7785fbd64bb2dd5cbdc7f7988,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2766985777270685520, guid: 346abac7785fbd64bb2dd5cbdc7f7988,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2766985777270685520, guid: 346abac7785fbd64bb2dd5cbdc7f7988,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2766985777270685520, guid: 346abac7785fbd64bb2dd5cbdc7f7988,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 346abac7785fbd64bb2dd5cbdc7f7988, type: 3}
+--- !u!4 &6981538925237672635 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2766985777270685520, guid: 346abac7785fbd64bb2dd5cbdc7f7988,
+    type: 3}
+  m_PrefabInstance: {fileID: 5081509871688115691}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &5514988997736562484
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 6515214983801460520}
+    m_Modifications:
+    - target: {fileID: 1083680755275985701, guid: 346abac7785fbd64bb2dd5cbdc7f7988,
+        type: 3}
+      propertyPath: m_Name
+      value: Tambanokano Lighting Strike (11)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2766985777270685520, guid: 346abac7785fbd64bb2dd5cbdc7f7988,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 7.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2766985777270685520, guid: 346abac7785fbd64bb2dd5cbdc7f7988,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2766985777270685520, guid: 346abac7785fbd64bb2dd5cbdc7f7988,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -12.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2766985777270685520, guid: 346abac7785fbd64bb2dd5cbdc7f7988,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2766985777270685520, guid: 346abac7785fbd64bb2dd5cbdc7f7988,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2766985777270685520, guid: 346abac7785fbd64bb2dd5cbdc7f7988,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2766985777270685520, guid: 346abac7785fbd64bb2dd5cbdc7f7988,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2766985777270685520, guid: 346abac7785fbd64bb2dd5cbdc7f7988,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2766985777270685520, guid: 346abac7785fbd64bb2dd5cbdc7f7988,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2766985777270685520, guid: 346abac7785fbd64bb2dd5cbdc7f7988,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 346abac7785fbd64bb2dd5cbdc7f7988, type: 3}
+--- !u!4 &7705487033120096356 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2766985777270685520, guid: 346abac7785fbd64bb2dd5cbdc7f7988,
+    type: 3}
+  m_PrefabInstance: {fileID: 5514988997736562484}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &5656873088707930473
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 3824021631985016422}
+    m_Modifications:
+    - target: {fileID: 1083680755275985701, guid: 346abac7785fbd64bb2dd5cbdc7f7988,
+        type: 3}
+      propertyPath: m_Name
+      value: Tambanokano Lighting Strike (16)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2766985777270685520, guid: 346abac7785fbd64bb2dd5cbdc7f7988,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 3.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 2766985777270685520, guid: 346abac7785fbd64bb2dd5cbdc7f7988,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2766985777270685520, guid: 346abac7785fbd64bb2dd5cbdc7f7988,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -18.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 2766985777270685520, guid: 346abac7785fbd64bb2dd5cbdc7f7988,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2766985777270685520, guid: 346abac7785fbd64bb2dd5cbdc7f7988,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2766985777270685520, guid: 346abac7785fbd64bb2dd5cbdc7f7988,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2766985777270685520, guid: 346abac7785fbd64bb2dd5cbdc7f7988,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2766985777270685520, guid: 346abac7785fbd64bb2dd5cbdc7f7988,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2766985777270685520, guid: 346abac7785fbd64bb2dd5cbdc7f7988,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2766985777270685520, guid: 346abac7785fbd64bb2dd5cbdc7f7988,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 346abac7785fbd64bb2dd5cbdc7f7988, type: 3}
+--- !u!4 &7559026982829282873 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2766985777270685520, guid: 346abac7785fbd64bb2dd5cbdc7f7988,
+    type: 3}
+  m_PrefabInstance: {fileID: 5656873088707930473}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &5759152218853085446
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 2708718541458192719}
+    m_Modifications:
+    - target: {fileID: 1083680755275985701, guid: 346abac7785fbd64bb2dd5cbdc7f7988,
+        type: 3}
+      propertyPath: m_Name
+      value: Tambanokano Lighting Strike (20)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2766985777270685520, guid: 346abac7785fbd64bb2dd5cbdc7f7988,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2766985777270685520, guid: 346abac7785fbd64bb2dd5cbdc7f7988,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2766985777270685520, guid: 346abac7785fbd64bb2dd5cbdc7f7988,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -25
+      objectReference: {fileID: 0}
+    - target: {fileID: 2766985777270685520, guid: 346abac7785fbd64bb2dd5cbdc7f7988,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2766985777270685520, guid: 346abac7785fbd64bb2dd5cbdc7f7988,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2766985777270685520, guid: 346abac7785fbd64bb2dd5cbdc7f7988,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2766985777270685520, guid: 346abac7785fbd64bb2dd5cbdc7f7988,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2766985777270685520, guid: 346abac7785fbd64bb2dd5cbdc7f7988,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2766985777270685520, guid: 346abac7785fbd64bb2dd5cbdc7f7988,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2766985777270685520, guid: 346abac7785fbd64bb2dd5cbdc7f7988,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 346abac7785fbd64bb2dd5cbdc7f7988, type: 3}
+--- !u!4 &7605120209827065430 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2766985777270685520, guid: 346abac7785fbd64bb2dd5cbdc7f7988,
+    type: 3}
+  m_PrefabInstance: {fileID: 5759152218853085446}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &6315598225550435496
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 6515214983801460520}
+    m_Modifications:
+    - target: {fileID: 1083680755275985701, guid: 346abac7785fbd64bb2dd5cbdc7f7988,
+        type: 3}
+      propertyPath: m_Name
+      value: Tambanokano Lighting Strike (12)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2766985777270685520, guid: 346abac7785fbd64bb2dd5cbdc7f7988,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 2766985777270685520, guid: 346abac7785fbd64bb2dd5cbdc7f7988,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2766985777270685520, guid: 346abac7785fbd64bb2dd5cbdc7f7988,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -12.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2766985777270685520, guid: 346abac7785fbd64bb2dd5cbdc7f7988,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2766985777270685520, guid: 346abac7785fbd64bb2dd5cbdc7f7988,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2766985777270685520, guid: 346abac7785fbd64bb2dd5cbdc7f7988,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2766985777270685520, guid: 346abac7785fbd64bb2dd5cbdc7f7988,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2766985777270685520, guid: 346abac7785fbd64bb2dd5cbdc7f7988,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2766985777270685520, guid: 346abac7785fbd64bb2dd5cbdc7f7988,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2766985777270685520, guid: 346abac7785fbd64bb2dd5cbdc7f7988,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 346abac7785fbd64bb2dd5cbdc7f7988, type: 3}
+--- !u!4 &8197622213571222520 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2766985777270685520, guid: 346abac7785fbd64bb2dd5cbdc7f7988,
+    type: 3}
+  m_PrefabInstance: {fileID: 6315598225550435496}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &6325437508602577306
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 3824021631985016422}
+    m_Modifications:
+    - target: {fileID: 1083680755275985701, guid: 346abac7785fbd64bb2dd5cbdc7f7988,
+        type: 3}
+      propertyPath: m_Name
+      value: Tambanokano Lighting Strike (17)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2766985777270685520, guid: 346abac7785fbd64bb2dd5cbdc7f7988,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 11.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 2766985777270685520, guid: 346abac7785fbd64bb2dd5cbdc7f7988,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2766985777270685520, guid: 346abac7785fbd64bb2dd5cbdc7f7988,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -18.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 2766985777270685520, guid: 346abac7785fbd64bb2dd5cbdc7f7988,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2766985777270685520, guid: 346abac7785fbd64bb2dd5cbdc7f7988,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2766985777270685520, guid: 346abac7785fbd64bb2dd5cbdc7f7988,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2766985777270685520, guid: 346abac7785fbd64bb2dd5cbdc7f7988,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2766985777270685520, guid: 346abac7785fbd64bb2dd5cbdc7f7988,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2766985777270685520, guid: 346abac7785fbd64bb2dd5cbdc7f7988,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2766985777270685520, guid: 346abac7785fbd64bb2dd5cbdc7f7988,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 346abac7785fbd64bb2dd5cbdc7f7988, type: 3}
+--- !u!4 &8191547448791318218 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2766985777270685520, guid: 346abac7785fbd64bb2dd5cbdc7f7988,
+    type: 3}
+  m_PrefabInstance: {fileID: 6325437508602577306}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &6341952556999931939
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 6515214983801460520}
+    m_Modifications:
+    - target: {fileID: 1083680755275985701, guid: 346abac7785fbd64bb2dd5cbdc7f7988,
+        type: 3}
+      propertyPath: m_Name
+      value: Tambanokano Lighting Strike (10)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2766985777270685520, guid: 346abac7785fbd64bb2dd5cbdc7f7988,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2766985777270685520, guid: 346abac7785fbd64bb2dd5cbdc7f7988,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2766985777270685520, guid: 346abac7785fbd64bb2dd5cbdc7f7988,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -12.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2766985777270685520, guid: 346abac7785fbd64bb2dd5cbdc7f7988,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2766985777270685520, guid: 346abac7785fbd64bb2dd5cbdc7f7988,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2766985777270685520, guid: 346abac7785fbd64bb2dd5cbdc7f7988,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2766985777270685520, guid: 346abac7785fbd64bb2dd5cbdc7f7988,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2766985777270685520, guid: 346abac7785fbd64bb2dd5cbdc7f7988,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2766985777270685520, guid: 346abac7785fbd64bb2dd5cbdc7f7988,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2766985777270685520, guid: 346abac7785fbd64bb2dd5cbdc7f7988,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 346abac7785fbd64bb2dd5cbdc7f7988, type: 3}
+--- !u!4 &9107803298959361907 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2766985777270685520, guid: 346abac7785fbd64bb2dd5cbdc7f7988,
+    type: 3}
+  m_PrefabInstance: {fileID: 6341952556999931939}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &6381099398855601454
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 6532724714922758055}
+    m_Modifications:
+    - target: {fileID: 1083680755275985701, guid: 346abac7785fbd64bb2dd5cbdc7f7988,
+        type: 3}
+      propertyPath: m_Name
+      value: Tambanokano Lighting Strike (7)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2766985777270685520, guid: 346abac7785fbd64bb2dd5cbdc7f7988,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 18.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 2766985777270685520, guid: 346abac7785fbd64bb2dd5cbdc7f7988,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2766985777270685520, guid: 346abac7785fbd64bb2dd5cbdc7f7988,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -6.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 2766985777270685520, guid: 346abac7785fbd64bb2dd5cbdc7f7988,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2766985777270685520, guid: 346abac7785fbd64bb2dd5cbdc7f7988,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2766985777270685520, guid: 346abac7785fbd64bb2dd5cbdc7f7988,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2766985777270685520, guid: 346abac7785fbd64bb2dd5cbdc7f7988,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2766985777270685520, guid: 346abac7785fbd64bb2dd5cbdc7f7988,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2766985777270685520, guid: 346abac7785fbd64bb2dd5cbdc7f7988,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2766985777270685520, guid: 346abac7785fbd64bb2dd5cbdc7f7988,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 346abac7785fbd64bb2dd5cbdc7f7988, type: 3}
+--- !u!4 &9144689884218905214 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2766985777270685520, guid: 346abac7785fbd64bb2dd5cbdc7f7988,
+    type: 3}
+  m_PrefabInstance: {fileID: 6381099398855601454}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &7444082018903701181
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 6515214983801460520}
+    m_Modifications:
+    - target: {fileID: 1083680755275985701, guid: 346abac7785fbd64bb2dd5cbdc7f7988,
+        type: 3}
+      propertyPath: m_Name
+      value: Tambanokano Lighting Strike (9)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2766985777270685520, guid: 346abac7785fbd64bb2dd5cbdc7f7988,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -7.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2766985777270685520, guid: 346abac7785fbd64bb2dd5cbdc7f7988,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2766985777270685520, guid: 346abac7785fbd64bb2dd5cbdc7f7988,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -12.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2766985777270685520, guid: 346abac7785fbd64bb2dd5cbdc7f7988,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2766985777270685520, guid: 346abac7785fbd64bb2dd5cbdc7f7988,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2766985777270685520, guid: 346abac7785fbd64bb2dd5cbdc7f7988,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2766985777270685520, guid: 346abac7785fbd64bb2dd5cbdc7f7988,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2766985777270685520, guid: 346abac7785fbd64bb2dd5cbdc7f7988,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2766985777270685520, guid: 346abac7785fbd64bb2dd5cbdc7f7988,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2766985777270685520, guid: 346abac7785fbd64bb2dd5cbdc7f7988,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 346abac7785fbd64bb2dd5cbdc7f7988, type: 3}
+--- !u!4 &4695283813233084909 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2766985777270685520, guid: 346abac7785fbd64bb2dd5cbdc7f7988,
+    type: 3}
+  m_PrefabInstance: {fileID: 7444082018903701181}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &8026408165031144116
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 6515214983801460520}
+    m_Modifications:
+    - target: {fileID: 1083680755275985701, guid: 346abac7785fbd64bb2dd5cbdc7f7988,
+        type: 3}
+      propertyPath: m_Name
+      value: Tambanokano Lighting Strike (13)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2766985777270685520, guid: 346abac7785fbd64bb2dd5cbdc7f7988,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 22.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2766985777270685520, guid: 346abac7785fbd64bb2dd5cbdc7f7988,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2766985777270685520, guid: 346abac7785fbd64bb2dd5cbdc7f7988,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -12.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2766985777270685520, guid: 346abac7785fbd64bb2dd5cbdc7f7988,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2766985777270685520, guid: 346abac7785fbd64bb2dd5cbdc7f7988,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2766985777270685520, guid: 346abac7785fbd64bb2dd5cbdc7f7988,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2766985777270685520, guid: 346abac7785fbd64bb2dd5cbdc7f7988,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2766985777270685520, guid: 346abac7785fbd64bb2dd5cbdc7f7988,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2766985777270685520, guid: 346abac7785fbd64bb2dd5cbdc7f7988,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2766985777270685520, guid: 346abac7785fbd64bb2dd5cbdc7f7988,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 346abac7785fbd64bb2dd5cbdc7f7988, type: 3}
+--- !u!4 &5261833105659860452 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2766985777270685520, guid: 346abac7785fbd64bb2dd5cbdc7f7988,
+    type: 3}
+  m_PrefabInstance: {fileID: 8026408165031144116}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &8074660954424020482
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 6532724714922758055}
+    m_Modifications:
+    - target: {fileID: 1083680755275985701, guid: 346abac7785fbd64bb2dd5cbdc7f7988,
+        type: 3}
+      propertyPath: m_Name
+      value: Tambanokano Lighting Strike (8)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2766985777270685520, guid: 346abac7785fbd64bb2dd5cbdc7f7988,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 26.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 2766985777270685520, guid: 346abac7785fbd64bb2dd5cbdc7f7988,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2766985777270685520, guid: 346abac7785fbd64bb2dd5cbdc7f7988,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -6.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 2766985777270685520, guid: 346abac7785fbd64bb2dd5cbdc7f7988,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2766985777270685520, guid: 346abac7785fbd64bb2dd5cbdc7f7988,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2766985777270685520, guid: 346abac7785fbd64bb2dd5cbdc7f7988,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2766985777270685520, guid: 346abac7785fbd64bb2dd5cbdc7f7988,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2766985777270685520, guid: 346abac7785fbd64bb2dd5cbdc7f7988,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2766985777270685520, guid: 346abac7785fbd64bb2dd5cbdc7f7988,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2766985777270685520, guid: 346abac7785fbd64bb2dd5cbdc7f7988,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 346abac7785fbd64bb2dd5cbdc7f7988, type: 3}
+--- !u!4 &6226432904439787858 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2766985777270685520, guid: 346abac7785fbd64bb2dd5cbdc7f7988,
+    type: 3}
+  m_PrefabInstance: {fileID: 8074660954424020482}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &8447268898775116238
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 2708718541458192719}
+    m_Modifications:
+    - target: {fileID: 1083680755275985701, guid: 346abac7785fbd64bb2dd5cbdc7f7988,
+        type: 3}
+      propertyPath: m_Name
+      value: Tambanokano Lighting Strike (22)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2766985777270685520, guid: 346abac7785fbd64bb2dd5cbdc7f7988,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 2766985777270685520, guid: 346abac7785fbd64bb2dd5cbdc7f7988,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2766985777270685520, guid: 346abac7785fbd64bb2dd5cbdc7f7988,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -25
+      objectReference: {fileID: 0}
+    - target: {fileID: 2766985777270685520, guid: 346abac7785fbd64bb2dd5cbdc7f7988,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2766985777270685520, guid: 346abac7785fbd64bb2dd5cbdc7f7988,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2766985777270685520, guid: 346abac7785fbd64bb2dd5cbdc7f7988,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2766985777270685520, guid: 346abac7785fbd64bb2dd5cbdc7f7988,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2766985777270685520, guid: 346abac7785fbd64bb2dd5cbdc7f7988,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2766985777270685520, guid: 346abac7785fbd64bb2dd5cbdc7f7988,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2766985777270685520, guid: 346abac7785fbd64bb2dd5cbdc7f7988,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 346abac7785fbd64bb2dd5cbdc7f7988, type: 3}
+--- !u!4 &6006945011058661022 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2766985777270685520, guid: 346abac7785fbd64bb2dd5cbdc7f7988,
+    type: 3}
+  m_PrefabInstance: {fileID: 8447268898775116238}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &8808980651272060561
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 6532724714922758055}
+    m_Modifications:
+    - target: {fileID: 1083680755275985701, guid: 346abac7785fbd64bb2dd5cbdc7f7988,
+        type: 3}
+      propertyPath: m_Name
+      value: Tambanokano Lighting Strike (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2766985777270685520, guid: 346abac7785fbd64bb2dd5cbdc7f7988,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -3.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 2766985777270685520, guid: 346abac7785fbd64bb2dd5cbdc7f7988,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2766985777270685520, guid: 346abac7785fbd64bb2dd5cbdc7f7988,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -6.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 2766985777270685520, guid: 346abac7785fbd64bb2dd5cbdc7f7988,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2766985777270685520, guid: 346abac7785fbd64bb2dd5cbdc7f7988,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2766985777270685520, guid: 346abac7785fbd64bb2dd5cbdc7f7988,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2766985777270685520, guid: 346abac7785fbd64bb2dd5cbdc7f7988,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2766985777270685520, guid: 346abac7785fbd64bb2dd5cbdc7f7988,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2766985777270685520, guid: 346abac7785fbd64bb2dd5cbdc7f7988,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2766985777270685520, guid: 346abac7785fbd64bb2dd5cbdc7f7988,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 346abac7785fbd64bb2dd5cbdc7f7988, type: 3}
+--- !u!4 &6654499309697548737 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2766985777270685520, guid: 346abac7785fbd64bb2dd5cbdc7f7988,
+    type: 3}
+  m_PrefabInstance: {fileID: 8808980651272060561}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &9130354018721116661
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 5271133040133968477}
+    m_Modifications:
+    - target: {fileID: 1083680755275985701, guid: 346abac7785fbd64bb2dd5cbdc7f7988,
+        type: 3}
+      propertyPath: m_Name
+      value: Tambanokano Lighting Strike (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2766985777270685520, guid: 346abac7785fbd64bb2dd5cbdc7f7988,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 22.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2766985777270685520, guid: 346abac7785fbd64bb2dd5cbdc7f7988,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2766985777270685520, guid: 346abac7785fbd64bb2dd5cbdc7f7988,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2766985777270685520, guid: 346abac7785fbd64bb2dd5cbdc7f7988,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2766985777270685520, guid: 346abac7785fbd64bb2dd5cbdc7f7988,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2766985777270685520, guid: 346abac7785fbd64bb2dd5cbdc7f7988,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2766985777270685520, guid: 346abac7785fbd64bb2dd5cbdc7f7988,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2766985777270685520, guid: 346abac7785fbd64bb2dd5cbdc7f7988,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2766985777270685520, guid: 346abac7785fbd64bb2dd5cbdc7f7988,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2766985777270685520, guid: 346abac7785fbd64bb2dd5cbdc7f7988,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 346abac7785fbd64bb2dd5cbdc7f7988, type: 3}
+--- !u!4 &6400677737604337317 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2766985777270685520, guid: 346abac7785fbd64bb2dd5cbdc7f7988,
+    type: 3}
+  m_PrefabInstance: {fileID: 9130354018721116661}
+  m_PrefabAsset: {fileID: 0}

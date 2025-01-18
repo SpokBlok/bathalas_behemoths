@@ -36,12 +36,6 @@ public class PlayerMovement : MonoBehaviour
     // Character Conroller
     public CharacterController charControl;
 
-    //Basic attack variables
-    private Transform leftHook;
-    private Transform rightHook;
-    private Transform leftAnchor;
-    private Transform rightAnchor;
-
     // FSM State
     private PlayerState currentState;
 
@@ -64,17 +58,6 @@ public class PlayerMovement : MonoBehaviour
     {
         // Get references to char controller + collider
         charControl = GetComponent<CharacterController>();
-
-        //Reference to basic attack objects
-        leftHook = gameObject.transform.Find("Basic Attack/Left Hook");
-        rightHook = gameObject.transform.Find("Basic Attack/Right Hook");
-        leftAnchor = gameObject.transform.Find("Basic Attack/Left Anchor");
-        rightAnchor = gameObject.transform.Find("Basic Attack/Right Anchor");
-
-        if (leftAnchor == null)
-        {
-            Debug.Log("Error, no basic attack left hook");
-        }
 
         // Start with Idle state
         currentState = PlayerState.Idle;
@@ -335,7 +318,7 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    public void TakeDamage(int damage)
+    public void TakeDamage(float damage)
     {
         if (PlayerStats.Instance.hasMudArmor)
         {

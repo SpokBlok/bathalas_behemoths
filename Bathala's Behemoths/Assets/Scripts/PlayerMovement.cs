@@ -49,8 +49,8 @@ public class PlayerMovement : MonoBehaviour
 
     //For basic attack logic
     private BoxCollider basicAttackHitbox;
-    Vector3 worldCenter;
-    Vector3 worldSize;
+    private Vector3 worldCenter;
+    private Vector3 worldSize;
     public Coroutine basicAttackCoroutine;
     public InputActionReference mouseAction;
 

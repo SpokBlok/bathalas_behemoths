@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2766985777270685520}
   - component: {fileID: 6853585377040579723}
   m_Layer: 0
-  m_Name: AOE Circle Attack
+  m_Name: Tambanokano Lighting Strike
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -48,7 +48,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackDuration: 5
-  finalScale: 6
+  finalScaleX: 6
+  finalScaleY: 6
 --- !u!1 &2943237318426240122
 GameObject:
   m_ObjectHideFlags: 0

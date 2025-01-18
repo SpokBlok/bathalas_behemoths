@@ -7,7 +7,8 @@ public class FillEffect : MonoBehaviour
     private Transform fillCircle;
     private float timer;
     public float attackDuration;
-    public float finalScale;
+    public float finalScaleX;
+    public float finalScaleY;
 
     private AOEAttackRadius attackRadius;
 
@@ -25,8 +26,9 @@ public class FillEffect : MonoBehaviour
         {
             timer += Time.deltaTime;
             float currentPercentage = timer / attackDuration;
-            float currentScale = currentPercentage * finalScale;
-            fillCircle.localScale = new (currentScale, currentScale, 15);
+            float currentScaleX = currentPercentage * finalScaleX;
+            float currentScaleY = currentPercentage * finalScaleY;
+            fillCircle.localScale = new (currentScaleX, currentScaleY, 15);
         }
         else
         {

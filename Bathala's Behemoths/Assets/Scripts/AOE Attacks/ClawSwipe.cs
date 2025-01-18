@@ -2,38 +2,31 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TambanokanoLightningStrike : AOEAttackRadius
+public class ClawSwipe : AOEAttackRadius
 {
-    public SphereCollider radiusCollider;
-    private Vector3 sphereCenter;
-    private float sphereRadius;
+    public BoxCollider radiusCollider;
+    private Vector3 worldCenter;
+    private Vector3 worldSize;
 
     public float attackDamage;
 
     // Start is called before the first frame update
     void Start()
     {
-        float scaleX = transform.parent.GetComponentInChildren<FillEffect>().finalScaleX;
-        transform.localScale = new(scaleX, scaleX, scaleX);
-
-        radiusCollider = GetComponent<SphereCollider>();
+        radiusCollider = GetComponent<BoxCollider>();
 
         // Get the terrain height at the object's current position (X, Z)
         float terrainHeight = Terrain.activeTerrain.SampleHeight(transform.position);
         Vector3 position = transform.position;
         transform.position = new(position.x, terrainHeight, position.z);
 
-        sphereCenter = radiusCollider.transform.position + radiusCollider.center;
-        sphereRadius = radiusCollider.radius * Mathf.Max(
-            radiusCollider.transform.lossyScale.x,
-            radiusCollider.transform.lossyScale.y,
-            radiusCollider.transform.lossyScale.z
-        );
+        worldCenter = radiusCollider.transform.TransformPoint(radiusCollider.center);
+        worldSize = Vector3.Scale(radiusCollider.size, radiusCollider.transform.lossyScale) / 2;
     }
 
     public override void Damage()
     {
-        Collider[] hitColliders = Physics.OverlapSphere(sphereCenter, sphereRadius);
+        Collider[] hitColliders = Physics.OverlapBox(worldCenter, worldSize, radiusCollider.transform.rotation);
 
         foreach (Collider hitCollider in hitColliders)
         {
@@ -46,5 +39,6 @@ public class TambanokanoLightningStrike : AOEAttackRadius
                 hitCollider.GetComponent<EnemyMob>().TakeDamage(attackDamage);
             }
         }
+
     }
 }

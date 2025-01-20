@@ -48,8 +48,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackDuration: 5
-  finalScaleX: 6
-  finalScaleY: 6
+  finalScaleX: 13
+  finalScaleY: 13
 --- !u!1 &2943237318426240122
 GameObject:
   m_ObjectHideFlags: 0
@@ -145,8 +145,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 7, y: 7, z: 14.999999}
-  m_ConstrainProportionsScale: 1
+  m_LocalScale: {x: 15, y: 15, z: 100}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2766985777270685520}
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
@@ -203,7 +203,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: -2.48, z: 0}
-  m_LocalScale: {x: 0, y: 0, z: 15}
+  m_LocalScale: {x: 0, y: 0, z: 100}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2766985777270685520}

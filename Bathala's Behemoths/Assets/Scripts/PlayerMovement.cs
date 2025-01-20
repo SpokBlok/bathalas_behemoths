@@ -171,6 +171,7 @@ public class PlayerMovement : MonoBehaviour
 
             case PlayerState.Attacking:
                 MovePlayer();
+                TerrainGravity();
                 UpdateBasicAttackHitboxPosition();
                 break;
 
@@ -198,14 +199,7 @@ public class PlayerMovement : MonoBehaviour
         float terrainHeight = Terrain.activeTerrain.SampleHeight(position);
 
         // Set the character's Y position to match the terrain height + 1, more if berserk
-        if (isBerserk)
-        {
-            position.y = terrainHeight + 2.2f;
-        }
-        else
-        {
-            position.y = terrainHeight + 1.2f;
-        }
+        position.y = terrainHeight + 2.7f;
 
         charControl.transform.position = position;
     }

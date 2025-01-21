@@ -218,7 +218,7 @@ public class PlayerSkills : MonoBehaviour
         {
             behemothSkillECharges--;
             behemothSkillE.oneTimeUseAvailable = false;
-            behemothSkillECoroutine = StartCoroutine(behemothSkillQ.RunSkill());
+            behemothSkillECoroutine = StartCoroutine(behemothSkillE.RunSkill());
             yield return behemothSkillECoroutine;
             behemothSkillECoroutine = null;
         }

@@ -39,7 +39,7 @@ public class Tambanokano : EnemyMob
     // Update is called once per frame
     void Update()
     {
-        if (randomAttackCoroutine == null && !isUlting)
+        if (randomAttackCoroutine == null && !isUlting && !stunned)
         {
             foreach (Transform child in transform)
             {
@@ -83,17 +83,19 @@ public class Tambanokano : EnemyMob
     {
         if (isLightingStriking)
         {
+            stunned = true;
             foreach (Transform child in transform)
             {
                 Destroy(child.gameObject);
             }
-            StopCoroutine(randomAttackCoroutine);
+            StopAllCoroutines();
             randomAttackCoroutine = null;
             isLightingStriking = false;
             isUlting = false;
         }
         //stun animation
-        yield return new WaitForSeconds(duration);
+        yield return new WaitForSeconds(5);
+        stunned = false;
     }
 
     public override void TakeDamage(float damage)

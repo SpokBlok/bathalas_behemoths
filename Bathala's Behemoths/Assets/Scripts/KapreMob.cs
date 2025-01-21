@@ -32,7 +32,7 @@ public class KapreMob : EnemyMob
     private GameObject objectHit;
 
     //Kapre State Machine
-    private KapreState kapreState;
+    public KapreState kapreState;
 
     private bool isAttacking = false;
 

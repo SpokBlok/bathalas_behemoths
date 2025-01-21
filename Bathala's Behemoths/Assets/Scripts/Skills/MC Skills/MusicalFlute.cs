@@ -39,6 +39,7 @@ public class MusicalFlute : BaseSkill
         {
             if (collider.TryGetComponent<EnemyMob>(out var mob))
             {
+                Debug.Log("Stunned");
                 StartCoroutine(mob.Stun(5));
             }
         }

@@ -32,8 +32,6 @@ public class Tambanokano : EnemyMob
 
         isLightingStriking = false;
         stunned = false;
-
-        attacksPassed = 9;
     }
 
     // Update is called once per frame

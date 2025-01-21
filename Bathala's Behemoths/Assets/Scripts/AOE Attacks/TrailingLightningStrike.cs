@@ -7,7 +7,8 @@ public class TrailingLightningStrike : MonoBehaviour
     public FillEffect lightningPrefab;
     private GameObject player;
     private float timer = 0;
-    private float attacksLeft = 15;
+    public float attackGapDuration;
+    public float attacksLeft;
 
     // Start is called before the first frame update
     void Start()
@@ -18,13 +19,14 @@ public class TrailingLightningStrike : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (timer < 1.5f)
+        if (timer < attackGapDuration)
             {
             timer += Time.deltaTime;
         }
         else if (attacksLeft > 0)
         {
-            Instantiate(lightningPrefab, player.transform.position, Quaternion.identity);
+            FillEffect lightning = Instantiate(lightningPrefab, player.transform.position, Quaternion.identity);
+            lightning.gameObject.transform.SetParent(gameObject.transform, false);
             timer = 0f;
             attacksLeft--;
         } else

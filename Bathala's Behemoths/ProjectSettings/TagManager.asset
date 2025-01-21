@@ -15,6 +15,7 @@ TagManager:
   - Player Skills
   - Player Input
   - Q Button
+  - Tambanokano
   layers:
   - Default
   - TransparentFX

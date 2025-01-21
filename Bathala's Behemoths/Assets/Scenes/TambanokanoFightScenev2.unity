@@ -683,17 +683,17 @@ PrefabInstance:
     - target: {fileID: 7176874766724399289, guid: e2befb3480872ac4d860e47a6b28741a,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 419.4
+      value: 441.8
       objectReference: {fileID: 0}
     - target: {fileID: 7176874766724399289, guid: e2befb3480872ac4d860e47a6b28741a,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 147.09
+      value: 167.5
       objectReference: {fileID: 0}
     - target: {fileID: 7176874766724399289, guid: e2befb3480872ac4d860e47a6b28741a,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 309.1
+      value: 241.6
       objectReference: {fileID: 0}
     - target: {fileID: 7176874766724399289, guid: e2befb3480872ac4d860e47a6b28741a,
         type: 3}
@@ -852,6 +852,55 @@ MonoBehaviour:
   cooldown: 0
   maxCharges: 0
   oneTimeUseAvailable: 0
+--- !u!1 &863342467
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 863342468}
+  - component: {fileID: 863342469}
+  m_Layer: 0
+  m_Name: MobSpawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &863342468
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 863342467}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 360.52258, y: 128.25943, z: 286.33582}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &863342469
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 863342467}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0584e9faa2a656145921b6afe46a5624, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  kaprePlayerPrefab: {fileID: 652888866743149242, guid: a6f006a0c4e853949965849f8229f42c,
+    type: 3}
+  kapreTambanokanoPrefab: {fileID: 6631686466241745483, guid: 22dca872b33d0e54d812c70b862b57bf,
+    type: 3}
+  spawnGap: 8
 --- !u!1 &866877310
 GameObject:
   m_ObjectHideFlags: 0
@@ -1624,12 +1673,11 @@ GameObject:
   - component: {fileID: 1451421645}
   - component: {fileID: 1451421644}
   - component: {fileID: 1451421643}
-  - component: {fileID: 1451421642}
   - component: {fileID: 1451421641}
   - component: {fileID: 1451421640}
   m_Layer: 0
   m_Name: Tambanokano
-  m_TagString: Enemy
+  m_TagString: Tambanokano
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1673,27 +1721,6 @@ BoxCollider:
   m_Enabled: 1
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!65 &1451421642
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1451421639}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1.3}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &1451421643
 MeshRenderer:
@@ -2348,7 +2375,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 580446872}
   smoothTime: 0.3
-  offset: {x: 0, y: 20, z: -20}
+  offset: {x: 0, y: 30, z: -30}
 --- !u!4 &2044688112
 Transform:
   m_ObjectHideFlags: 0
@@ -2924,3 +2951,4 @@ SceneRoots:
   - {fileID: 2044688112}
   - {fileID: 75886982}
   - {fileID: 580446870}
+  - {fileID: 863342468}

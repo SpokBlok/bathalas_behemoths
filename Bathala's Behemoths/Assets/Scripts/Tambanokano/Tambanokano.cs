@@ -27,7 +27,7 @@ public class Tambanokano : EnemyMob
     {
         player = GameObject.FindWithTag("Player");
         clawRange = GetComponentInChildren<BoxCollider>();
-        health = 1000f;
+        health = 5000f;
     }
 
     // Update is called once per frame

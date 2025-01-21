@@ -50,7 +50,7 @@ public class PlayerStats : MonoBehaviour
     private void InitializePlayerStats()
     {
         // Set default values
-        speed = 10;
+        speed = 15;
         speedMultiplier = 1;
         basicAttackDamage = 25;
         maxHealth = 50;

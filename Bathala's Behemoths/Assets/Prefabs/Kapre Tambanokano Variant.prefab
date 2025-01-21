@@ -1,0 +1,85 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &8617328127703462127
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1450450405182598192, guid: 5959d18082eae3e4b8211378139457ef,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 438.1796
+      objectReference: {fileID: 0}
+    - target: {fileID: 1450450405182598192, guid: 5959d18082eae3e4b8211378139457ef,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 172.71524
+      objectReference: {fileID: 0}
+    - target: {fileID: 1450450405182598192, guid: 5959d18082eae3e4b8211378139457ef,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 249.74089
+      objectReference: {fileID: 0}
+    - target: {fileID: 1450450405182598192, guid: 5959d18082eae3e4b8211378139457ef,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: -0.7037809
+      objectReference: {fileID: 0}
+    - target: {fileID: 1450450405182598192, guid: 5959d18082eae3e4b8211378139457ef,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1450450405182598192, guid: 5959d18082eae3e4b8211378139457ef,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.7104171
+      objectReference: {fileID: 0}
+    - target: {fileID: 1450450405182598192, guid: 5959d18082eae3e4b8211378139457ef,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1450450405182598192, guid: 5959d18082eae3e4b8211378139457ef,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1450450405182598192, guid: 5959d18082eae3e4b8211378139457ef,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 269.462
+      objectReference: {fileID: 0}
+    - target: {fileID: 1450450405182598192, guid: 5959d18082eae3e4b8211378139457ef,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3143123256931115684, guid: 5959d18082eae3e4b8211378139457ef,
+        type: 3}
+      propertyPath: m_Name
+      value: Kapre Tambanokano Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 6080050113629792048, guid: 5959d18082eae3e4b8211378139457ef,
+        type: 3}
+      propertyPath: health
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 6080050113629792048, guid: 5959d18082eae3e4b8211378139457ef,
+        type: 3}
+      propertyPath: attackDamage
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6080050113629792048, guid: 5959d18082eae3e4b8211378139457ef,
+        type: 3}
+      propertyPath: tambanokanoMob
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 5959d18082eae3e4b8211378139457ef, type: 3}

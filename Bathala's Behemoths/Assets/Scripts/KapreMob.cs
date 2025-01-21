@@ -17,10 +17,13 @@ public class KapreMob : EnemyMob
     private CharacterController kapreControl;
     private Transform playerTransform;
     private Transform target;
+    public bool tambanokanoMob;
+    public bool tambanokanoMobPlayer;
 
     public float health;
     public bool playerInRange;
     public int speed;
+    public float attackDamage;
 
     //For intro kill quest tutorial maybe?
     public KillQuestUI[] killQuestUIList;
@@ -49,9 +52,6 @@ public class KapreMob : EnemyMob
         {
             killQuestUI = UI;
         }
-
-        health = 50;
-        speed = 4;
 
         SphereCollider triggerRadius = GetComponentInChildren<SphereCollider>();
         GameObject player = GameObject.FindWithTag("Player");
@@ -82,6 +82,10 @@ public class KapreMob : EnemyMob
         switch (kapreState)
         {
             case KapreState.Idle:
+                if (tambanokanoMob || tambanokanoMobPlayer)
+                {
+                    ChangeState(KapreState.Moving);
+                }
                 break;
 
             case KapreState.Moving:
@@ -115,9 +119,16 @@ public class KapreMob : EnemyMob
 
     public void ChasePlayer()
     {
-        target = playerTransform;
+        if (!tambanokanoMob)
+        {
+            target = playerTransform;
+        } 
+        else
+        {
+            target = GameObject.FindGameObjectWithTag("Tambanokano").transform;
+        }
         //Get vector from enemy to player and assign to x and z axes
-        Vector3 moveDirection = (playerTransform.position - transform.position).normalized;
+        Vector3 moveDirection = (target.position - transform.position).normalized;
         Vector3 terrainMoveDirection = new Vector3(moveDirection.x, 0f, moveDirection.z) * speed;
 
         // Move the enemy in the x and z direction
@@ -142,7 +153,7 @@ public class KapreMob : EnemyMob
 
     private void OnControllerColliderHit(ControllerColliderHit hit)
     {
-        if (hit.gameObject.CompareTag("Player"))
+        if (hit.gameObject.CompareTag("Player") || hit.gameObject.CompareTag("Tambanokano"))
         {
             ChangeState(KapreState.Attacking);
         }
@@ -150,14 +161,15 @@ public class KapreMob : EnemyMob
 
     private IEnumerator BasicAttack()
     {
-        Debug.Log("Enemy Attack");
         worldCenter = basicAttackHitbox.transform.TransformPoint(basicAttackHitbox.center);
         worldSize = Vector3.Scale(basicAttackHitbox.size, basicAttackHitbox.transform.lossyScale) / 2;
 
-        yield return new WaitForSeconds(0.4f);
         BasicAttackHitboxCheck(Physics.OverlapBox(worldCenter, worldSize, basicAttackHitbox.transform.rotation));
-        yield return new WaitForSeconds(1.0f);
-        radius.TriggerCheck();
+        yield return new WaitForSeconds(1.5f);
+        if (!tambanokanoMob || !tambanokanoMobPlayer)
+        {
+            radius.TriggerCheck();
+        }
         isAttacking = false;
     }
 
@@ -168,7 +180,11 @@ public class KapreMob : EnemyMob
             if (collider.CompareTag("Player"))
             {
                 Debug.Log("Calling");
-                collider.GetComponent<PlayerMovement>().TakeDamage(5);
+                collider.GetComponent<PlayerMovement>().TakeDamage(attackDamage);
+            } 
+            else if (collider.CompareTag("Tambanokano"))
+            {
+                collider.GetComponent<EnemyMob>().TakeDamage(attackDamage);
             }
         }
     }

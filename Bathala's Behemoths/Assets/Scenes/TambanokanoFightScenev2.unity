@@ -1700,7 +1700,10 @@ MonoBehaviour:
     type: 3}
   arenaWideLightingPrefab: {fileID: 8687510543522287237, guid: 35822e15bdcc2f84ea164f7d3fea5f98,
     type: 3}
+  massiveAOEPrefab: {fileID: 5264218506392493291, guid: 6b48735cd54a48e4a9e06cb6bbc8f919,
+    type: 3}
   health: 0
+  attacksPassed: 0
 --- !u!65 &1451421641
 BoxCollider:
   m_ObjectHideFlags: 0

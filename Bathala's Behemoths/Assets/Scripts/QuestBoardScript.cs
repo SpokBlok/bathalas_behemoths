@@ -6,52 +6,43 @@ using TMPro;
 
 public class QuestBoardScript : MonoBehaviour
 {
-    public QuestUI[] questUIList;
-    public KillQuestUI[] killQuestUIList;
-    public QuestUI questUI;
-    public KillQuestUI killUI;
+    public QuestBoardUIPanel[] questUIList;
+    public QuestBoardUIPanel questUIPanel;
     public TextMeshProUGUI popUp;
 
+    private bool isPanelUp;
     private bool isInTrigger;
 
     // Start is called before the first frame update
     void Start()
     {
+        isPanelUp = false;
+        isInTrigger = false;
         UpdateCanvas();
     }
 
     void UpdateCanvas()
     {
-        questUIList = Resources.FindObjectsOfTypeAll<QuestUI>();
+        questUIList = Resources.FindObjectsOfTypeAll<QuestBoardUIPanel>();
 
-        foreach (QuestUI UI in questUIList)
+        foreach (QuestBoardUIPanel UI in questUIList)
         {
-            questUI = UI;
+            questUIPanel = UI;
         }
-
-        killQuestUIList = Resources.FindObjectsOfTypeAll<KillQuestUI>();
-
-        foreach (KillQuestUI UI in killQuestUIList)
-        {
-            killUI = UI;
-        }
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
     }
 
     public void OnInteract(InputAction.CallbackContext context)
     {
         // Check for the key press only when inside the trigger
-        if (context.performed && isInTrigger)
+        if (context.performed && isInTrigger && !isPanelUp)
         {
-            UpdateCanvas();
-            Debug.Log("E key pressed while inside the trigger!");
-            questUI.transform.parent.gameObject.SetActive(true);
-            killUI.transform.parent.gameObject.SetActive(true);
+            isPanelUp = true;
+            questUIPanel.EnablePanel();
+        }
+        else if (context.performed && isInTrigger && isPanelUp)
+        {
+            isPanelUp = false;
+            questUIPanel.DisablePanel();
         }
     }
 
@@ -60,9 +51,8 @@ public class QuestBoardScript : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            popUp.gameObject.SetActive(true);
             isInTrigger = true;
-            Debug.Log("Player entered the trigger");
+            popUp.gameObject.SetActive(true);
         }
     }
 
@@ -71,9 +61,10 @@ public class QuestBoardScript : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            popUp.gameObject.SetActive(false);
             isInTrigger = false;
-            Debug.Log("Player exited the trigger");
+            isPanelUp = false;
+            popUp.gameObject.SetActive(false);
+            questUIPanel.DisablePanel();
         }
     }
 }

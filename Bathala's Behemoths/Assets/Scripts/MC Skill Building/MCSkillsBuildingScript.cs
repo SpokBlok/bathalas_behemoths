@@ -63,7 +63,6 @@ public class MCSkillsBuildingScript : MonoBehaviour
             isPanelUp = false;
             popUp.gameObject.SetActive(false);
             upgradePanel.DisablePanel();
-            Debug.Log("Player exited the trigger");
         }
     }
 }

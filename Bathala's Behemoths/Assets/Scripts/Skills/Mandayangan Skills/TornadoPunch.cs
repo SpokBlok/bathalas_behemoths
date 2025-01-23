@@ -1,16 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Drawing;
 using UnityEngine;
 
-public class MusicalFlute : BaseSkill
+public class TornadoPunch : BaseSkill
 {
     // Start is called before the first frame update
     void Start()
     {
         player = GameObject.FindWithTag("Player");
         maxCharges = 1;
-        cooldown = 40;
+        cooldown = 10;
     }
 
     // Update is called once per frame
@@ -21,16 +20,14 @@ public class MusicalFlute : BaseSkill
 
     public override IEnumerator RunSkill()
     {
-        float detectionRadius = 10f;
-        Collider[] colliders = Physics.OverlapSphere(player.transform.position, detectionRadius);
+        yield return new WaitForSeconds(0.3f); //Charge up time, animation of tornado punch
+        Collider[] colliders = Physics.OverlapSphere(player.transform.position, 5f);
         foreach (Collider collider in colliders)
         {
-            if (collider.TryGetComponent<KapreMob>(out var mob))
+            if (collider.TryGetComponent<EnemyMob>(out var mob))
             {
-                StartCoroutine(mob.Stun(5));
+                mob.TakeDamage(PlayerStats.Instance.basicAttackDamage);
             }
         }
-
-        yield return null;
     }
 }

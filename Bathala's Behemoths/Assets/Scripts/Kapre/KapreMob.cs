@@ -12,15 +12,18 @@ public enum KapreState
     Stunned
 }
 
-public class KapreMob : MonoBehaviour
+public class KapreMob : EnemyMob
 {
     private CharacterController kapreControl;
     private Transform playerTransform;
     private Transform target;
+    public bool tambanokanoMob;
+    public bool tambanokanoMobPlayer;
 
     public float health;
     public bool playerInRange;
     public int speed;
+    public float attackDamage;
 
     //For intro kill quest tutorial maybe?
     public KillQuestUI[] killQuestUIList;
@@ -29,16 +32,17 @@ public class KapreMob : MonoBehaviour
     private GameObject objectHit;
 
     //Kapre State Machine
-    private KapreState kapreState;
+    public KapreState kapreState;
 
     private bool isAttacking = false;
 
     private KapreRadiusTrigger radius;
 
-    //Basic attack variables
-    private Transform punch;
-    private Transform leftAnchor;
-    private Transform rightAnchor;
+    //For basic attack logic
+    private BoxCollider basicAttackHitbox;
+    public Coroutine basicAttackCoroutine;
+    Vector3 worldCenter;
+    Vector3 worldSize;
 
     // Start is called before the first frame update
     void Start()
@@ -48,9 +52,6 @@ public class KapreMob : MonoBehaviour
         {
             killQuestUI = UI;
         }
-
-        health = 50;
-        speed = 4;
 
         SphereCollider triggerRadius = GetComponentInChildren<SphereCollider>();
         GameObject player = GameObject.FindWithTag("Player");
@@ -72,9 +73,7 @@ public class KapreMob : MonoBehaviour
         //Subscribe to trigger check event
         EventManager.OnDashComplete += radius.TriggerCheck;
 
-        punch = gameObject.transform.Find("Basic Attack/Punch");
-        leftAnchor = gameObject.transform.Find("Basic Attack/Left Anchor");
-        rightAnchor = gameObject.transform.Find("Basic Attack/Right Anchor");
+        basicAttackHitbox = transform.Find("Basic Attack/Basic Attack Hitbox").GetComponent<BoxCollider>();
     }
 
     // Update is called once per frame
@@ -83,6 +82,10 @@ public class KapreMob : MonoBehaviour
         switch (kapreState)
         {
             case KapreState.Idle:
+                if (tambanokanoMob || tambanokanoMobPlayer)
+                {
+                    ChangeState(KapreState.Moving);
+                }
                 break;
 
             case KapreState.Moving:
@@ -95,7 +98,7 @@ public class KapreMob : MonoBehaviour
                 {
                     UpdateRotationTarget();
                     isAttacking = true;
-                    StartCoroutine(BasicAttack());
+                    basicAttackCoroutine = StartCoroutine(BasicAttack());
                 }
                 break;
 
@@ -114,29 +117,18 @@ public class KapreMob : MonoBehaviour
         transform.position = newPosition;
     }
 
-    public void TakeDamage(float damage)
-    {
-        health -= damage;
-        if (health <= 0)
-        {
-            PlayerStats.Instance.AddKapreCigars(1);
-            //Disabled for now in lieu of having kapre cigar currency
-            //Might need in for intro kill quest anyway?
-            //if (killQuestUI.gameObject.activeSelf)
-            //{
-            //    killQuestUI.KillQuestCount += 1;
-            //}
-            EventManager.OnDashComplete -= radius.TriggerCheck;
-            Debug.Log("Enemy killed!");
-            Destroy(gameObject);
-        }
-    }
-
     public void ChasePlayer()
     {
-        target = playerTransform;
+        if (!tambanokanoMob)
+        {
+            target = playerTransform;
+        } 
+        else
+        {
+            target = GameObject.FindGameObjectWithTag("Tambanokano").transform;
+        }
         //Get vector from enemy to player and assign to x and z axes
-        Vector3 moveDirection = (playerTransform.position - transform.position).normalized;
+        Vector3 moveDirection = (target.position - transform.position).normalized;
         Vector3 terrainMoveDirection = new Vector3(moveDirection.x, 0f, moveDirection.z) * speed;
 
         // Move the enemy in the x and z direction
@@ -161,7 +153,7 @@ public class KapreMob : MonoBehaviour
 
     private void OnControllerColliderHit(ControllerColliderHit hit)
     {
-        if (hit.gameObject.CompareTag("Player"))
+        if (hit.gameObject.CompareTag("Player") || hit.gameObject.CompareTag("Tambanokano"))
         {
             ChangeState(KapreState.Attacking);
         }
@@ -169,34 +161,56 @@ public class KapreMob : MonoBehaviour
 
     private IEnumerator BasicAttack()
     {
-        Debug.Log("Enemy Attack");
-        yield return StartCoroutine(MoveToPosition(punch, 0.4f));
-        punch.position = rightAnchor.position;
-        yield return new WaitForSeconds(1.0f);
-        radius.TriggerCheck();
+        worldCenter = basicAttackHitbox.transform.TransformPoint(basicAttackHitbox.center);
+        worldSize = Vector3.Scale(basicAttackHitbox.size, basicAttackHitbox.transform.lossyScale) / 2;
+
+        BasicAttackHitboxCheck(Physics.OverlapBox(worldCenter, worldSize, basicAttackHitbox.transform.rotation));
+        yield return new WaitForSeconds(1.5f);
+        if (!tambanokanoMob || !tambanokanoMobPlayer)
+        {
+            radius.TriggerCheck();
+        }
         isAttacking = false;
-        punch.GetComponent<KapreBasicAttackTrigger>().playerHit = null;
-        yield break;
     }
 
-    private IEnumerator MoveToPosition(Transform obj, float duration)
+    private void BasicAttackHitboxCheck(Collider[] colliders)
     {
-        float elapsedTime = 0f;
-
-        while (elapsedTime < duration)
+        foreach (Collider collider in colliders)
         {
-            elapsedTime += Time.deltaTime;
-
-            // Interpolate towards the updated target
-            obj.position = Vector3.Lerp(obj.position, leftAnchor.position, elapsedTime / duration);
-
-            yield return null;
+            if (collider.CompareTag("Player"))
+            {
+                Debug.Log("Calling");
+                collider.GetComponent<PlayerMovement>().TakeDamage(attackDamage);
+            } 
+            else if (collider.CompareTag("Tambanokano"))
+            {
+                collider.GetComponent<EnemyMob>().TakeDamage(attackDamage);
+            }
         }
     }
 
-    public IEnumerator Stun(float duration)
+    public override void TakeDamage(float damage)
+    {
+        health -= damage;
+        if (health <= 0)
+        {
+            PlayerStats.Instance.AddKapreCigars(1);
+            //Disabled for now in lieu of having kapre cigar currency
+            //Might need in for intro kill quest anyway?
+            //if (killQuestUI.gameObject.activeSelf)
+            //{
+            //    killQuestUI.KillQuestCount += 1;
+            //}
+            EventManager.OnDashComplete -= radius.TriggerCheck;
+            Debug.Log("Enemy killed!");
+            Destroy(gameObject);
+        }
+    }
+
+    public override IEnumerator Stun(float duration)
     {
         ChangeState(KapreState.Stunned);
+        StopCoroutine(basicAttackCoroutine);
         yield return new WaitForSeconds(duration);
         radius.TriggerCheck();
         yield return null;

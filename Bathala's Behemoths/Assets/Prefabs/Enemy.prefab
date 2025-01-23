@@ -264,7 +264,6 @@ GameObject:
   - component: {fileID: 5662572017639848330}
   - component: {fileID: 5416653459061547166}
   - component: {fileID: 4019675415513161508}
-  - component: {fileID: 6033373601458341482}
   - component: {fileID: 8761248543049757768}
   m_Layer: 0
   m_Name: Enemy
@@ -390,23 +389,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &6033373601458341482
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4319304737004772979}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 11c354715180e9a4795a511b94531419, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  health: 0
-  playerInRange: 0
-  speed: 0
-  killQuestUIList: []
-  killQuestUI: {fileID: 0}
 --- !u!143 &8761248543049757768
 CharacterController:
   m_ObjectHideFlags: 0

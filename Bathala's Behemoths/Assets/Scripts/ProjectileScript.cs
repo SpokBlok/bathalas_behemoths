@@ -6,8 +6,6 @@ public class ProjectileScript : MonoBehaviour
 {
     public CharacterController charControl;
 
-    private GameObject objectHit;
-
     // Start is called before the first frame update
     void Start()
     {
@@ -57,15 +55,10 @@ public class ProjectileScript : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Kapre"))
+        if (other.gameObject.CompareTag("Enemy") || other.gameObject.CompareTag("Tambanokano"))
         {
-            //objectHit is to prevent double damage triggering
-            if (objectHit != other.gameObject)
-            {
-                objectHit = other.gameObject;
-                objectHit.GetComponent<KapreMob>().TakeDamage(PlayerStats.Instance.basicAttackDamage);
-            }
-            Destroy(gameObject);
+            other.gameObject.GetComponent<EnemyMob>().TakeDamage(PlayerStats.Instance.basicAttackDamage);
+            StartCoroutine(other.gameObject.GetComponent<EnemyMob>().Stun(2));
         }
     }
 }

@@ -25,13 +25,8 @@ public class PlayerStats : MonoBehaviour
     public float currentHealth;
     public float maxHealth;
 
-    public bool dashSkillEquipped;
-    public bool rangedSkillEquipped;
-    public bool noSkillEquipped;
+    public bool hasMudArmor;
 
-    public bool rangedUltEquipped;
-    public bool berserkUltEquipped;
-    public bool noUltEquipped;
     public bool introDone;
     public bool outdoorsScene;
     public bool questComp;
@@ -55,19 +50,14 @@ public class PlayerStats : MonoBehaviour
     private void InitializePlayerStats()
     {
         // Set default values
-        speed = 10;
+        speed = 15;
         speedMultiplier = 1;
         basicAttackDamage = 25;
         maxHealth = 50;
         currentHealth = maxHealth;
 
-        dashSkillEquipped = false;
-        rangedSkillEquipped = true;
-        noSkillEquipped = false;
+        hasMudArmor = false;
 
-        rangedUltEquipped = true;
-        berserkUltEquipped = false;
-        noUltEquipped = false;
         introDone = false;
         outdoorsScene = true;
 

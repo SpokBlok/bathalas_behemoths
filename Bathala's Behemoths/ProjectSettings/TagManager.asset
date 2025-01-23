@@ -13,6 +13,9 @@ TagManager:
   - Investigation Text
   - Kapre
   - Player Skills
+  - Player Input
+  - Q Button
+  - Tambanokano
   layers:
   - Default
   - TransparentFX

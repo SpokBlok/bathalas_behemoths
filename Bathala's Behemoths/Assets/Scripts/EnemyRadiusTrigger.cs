@@ -17,30 +17,30 @@ public class EnemyRadiusTrigger : MonoBehaviour
         
     }
 
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.CompareTag("Player")){
-            GetComponentInParent<EnemyMob>().ChangeState(EnemyState.Moving);
-        }
-    }
+    //private void OnTriggerEnter(Collider other)
+    //{
+    //    if (other.CompareTag("Player")){
+    //        GetComponentInParent<EnemyMob>().ChangeState(EnemyState.Moving);
+    //    }
+    //}
 
-    private void OnTriggerExit(Collider other)
-    {
-        if (other.CompareTag("Player"))
-        {
-            GetComponentInParent<EnemyMob>().ChangeState(EnemyState.Idle);
-        }
-    }
+    //private void OnTriggerExit(Collider other)
+    //{
+    //    if (other.CompareTag("Player"))
+    //    {
+    //        GetComponentInParent<EnemyMob>().ChangeState(EnemyState.Idle);
+    //    }
+    //}
 
-    public void TriggerCheck()
-    {
-        if (GetComponent<Collider>().bounds.Contains(player.transform.position))
-        {
-            GetComponentInParent<EnemyMob>().ChangeState(EnemyState.Moving);
-        }
-        else
-        {
-            GetComponentInParent<EnemyMob>().ChangeState(EnemyState.Idle);
-        }
-    }
+    //public void TriggerCheck()
+    //{
+    //    if (GetComponent<Collider>().bounds.Contains(player.transform.position))
+    //    {
+    //        GetComponentInParent<EnemyMob>().ChangeState(EnemyState.Moving);
+    //    }
+    //    else
+    //    {
+    //        GetComponentInParent<EnemyMob>().ChangeState(EnemyState.Idle);
+    //    }
+    //}
 }

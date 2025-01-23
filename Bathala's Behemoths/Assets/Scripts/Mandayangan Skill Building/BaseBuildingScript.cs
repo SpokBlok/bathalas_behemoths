@@ -6,8 +6,8 @@ using TMPro;
 
 public class BaseBuildingScript : MonoBehaviour
 {
-    public BaseUpgradeUIPanel[] uiList;
-    public BaseUpgradeUIPanel upgradePanel;
+    public MandayanganSkillsUIPanel[] uiList;
+    public MandayanganSkillsUIPanel upgradePanel;
     public TextMeshProUGUI popUp;
 
     private bool isPanelUp;
@@ -25,9 +25,9 @@ public class BaseBuildingScript : MonoBehaviour
 
     public void UpdateCanvas()
     {
-        uiList = Resources.FindObjectsOfTypeAll<BaseUpgradeUIPanel>();
+        uiList = Resources.FindObjectsOfTypeAll<MandayanganSkillsUIPanel>();
 
-        foreach (BaseUpgradeUIPanel UI in uiList)
+        foreach (MandayanganSkillsUIPanel UI in uiList)
         {
             upgradePanel = UI;
         }

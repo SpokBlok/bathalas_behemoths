@@ -179,7 +179,6 @@ public class KapreMob : EnemyMob
         {
             if (collider.CompareTag("Player"))
             {
-                Debug.Log("Calling");
                 collider.GetComponent<PlayerMovement>().TakeDamage(attackDamage);
             } 
             else if (collider.CompareTag("Tambanokano"))

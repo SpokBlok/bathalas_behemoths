@@ -1131,7 +1131,7 @@ MonoBehaviour:
   m_ActionEvents:
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1499869913}
         m_TargetAssemblyTypeName: PlayerMovement, Assembly-CSharp
         m_MethodName: OnMove
         m_Mode: 0
@@ -1147,7 +1147,7 @@ MonoBehaviour:
     m_ActionName: Player/Move[/Keyboard/w,/Keyboard/s,/Keyboard/a,/Keyboard/d]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1499869913}
         m_TargetAssemblyTypeName: PlayerMovement, Assembly-CSharp
         m_MethodName: OnMouseLook
         m_Mode: 0
@@ -1163,7 +1163,7 @@ MonoBehaviour:
     m_ActionName: Player/mouseLook[/Mouse/position]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1499869913}
         m_TargetAssemblyTypeName: PlayerMovement, Assembly-CSharp
         m_MethodName: OnBasicAttack
         m_Mode: 0
@@ -1179,9 +1179,9 @@ MonoBehaviour:
     m_ActionName: Player/BasicAttack[/Mouse/leftButton]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1499869912}
         m_TargetAssemblyTypeName: QuestBoardScript, Assembly-CSharp
-        m_MethodName: OnInteract
+        m_MethodName: 
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1191,9 +1191,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1499869912}
         m_TargetAssemblyTypeName: InvestigationClueScript, Assembly-CSharp
-        m_MethodName: OnInteract
+        m_MethodName: 
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1203,9 +1203,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1499869912}
         m_TargetAssemblyTypeName: BaseBuildingScript, Assembly-CSharp
-        m_MethodName: OnInteract
+        m_MethodName: 
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1219,7 +1219,7 @@ MonoBehaviour:
     m_ActionName: Player/Interact[/Keyboard/e]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1499869913}
         m_TargetAssemblyTypeName: PlayerMovement, Assembly-CSharp
         m_MethodName: OnSkillTrigger
         m_Mode: 0
@@ -1235,7 +1235,7 @@ MonoBehaviour:
     m_ActionName: Player/SkillTrigger[/Mouse/rightButton]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1499869913}
         m_TargetAssemblyTypeName: PlayerMovement, Assembly-CSharp
         m_MethodName: OnUltTrigger
         m_Mode: 0
@@ -1482,6 +1482,24 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1499869912 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5725552720055748903, guid: e2befb3480872ac4d860e47a6b28741a,
+    type: 3}
+  m_PrefabInstance: {fileID: 436175245}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1499869913 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1304987194780425126, guid: e2befb3480872ac4d860e47a6b28741a,
+    type: 3}
+  m_PrefabInstance: {fileID: 436175245}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1499869912}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa15a3e1dffa0b641a88b46afeb69f6d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &1587128887
 MonoBehaviour:
   m_ObjectHideFlags: 0

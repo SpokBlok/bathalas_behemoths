@@ -15,6 +15,19 @@ public class QuestBoardUIPanel : MonoBehaviour
     private Image selectedClue2Image;
     private Image selectedClue3Image;
 
+    [SerializeField] GameObject clue1;
+    [SerializeField] GameObject clue2;
+    [SerializeField] GameObject clue3;
+    [SerializeField] GameObject clue4;
+    [SerializeField] GameObject clue5;
+    [SerializeField] GameObject clue6;
+    [SerializeField] GameObject clue1Tracking;
+    [SerializeField] GameObject clue2Tracking;
+    [SerializeField] GameObject clue3Tracking;
+    [SerializeField] GameObject clue4Tracking;
+    [SerializeField] GameObject clue5Tracking;
+    [SerializeField] GameObject clue6Tracking;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -25,17 +38,55 @@ public class QuestBoardUIPanel : MonoBehaviour
         selectedClue1Image = transform.Find("LeftPanel/Selected Clue 1").GetComponentInChildren<Image>();
         selectedClue2Image = transform.Find("LeftPanel/Selected Clue 2").GetComponentInChildren<Image>();
         selectedClue3Image = transform.Find("LeftPanel/Selected Clue 3").GetComponentInChildren<Image>();
-}
+    
+        if(PlayerStats.Instance.clue1 == true)
+        {
+            clue1.SetActive(true);
+            clue1Tracking.SetActive(false);
+            Debug.Log("Clue 1 is true");
+        }
+        if(PlayerStats.Instance.clue2 == true)
+        {
+            clue2.SetActive(true);
+            clue2Tracking.SetActive(false);
+            Debug.Log("Clue 2 is true");
+        }
+        if(PlayerStats.Instance.clue3 == true)
+        {
+            clue3.SetActive(true);
+            clue3Tracking.SetActive(false);
+            Debug.Log("Clue 3 is true");
+        }
+        if(PlayerStats.Instance.clue4 == true)
+        {
+            clue4.SetActive(true);
+            clue4Tracking.SetActive(false);
+            Debug.Log("Clue 4 is true");
+        }
+        if(PlayerStats.Instance.clue5 == true)
+        {
+            clue5.SetActive(true);
+            clue5Tracking.SetActive(false);
+            Debug.Log("Clue 5 is true");
+        }
+        if(PlayerStats.Instance.clue6 == true)
+        {
+            clue6.SetActive(true);
+            clue6Tracking.SetActive(false);
+            Debug.Log("Clue 6 is true");
+        }
+    }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     public void EnablePanel()
     {
         gameObject.SetActive(true);
+
         EventManager.Instance.InvokeOnEnteringUpgradeScreen();
     }
 

@@ -3,18 +3,18 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class TriggerToStage : MonoBehaviour
+public class BosstoOutdoors : MonoBehaviour
 {
     // Start is called before the first frame update
     void Start()
     {
-
+        
     }
 
     // Update is called once per frame
     void Update()
     {
-
+        
     }
 
     private void OnTriggerEnter(Collider other)
@@ -22,7 +22,6 @@ public class TriggerToStage : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             SceneManager.LoadScene("OutdoorsSceneFinal");
-            PlayerStats.Instance.outdoorsScene = true;
         }
     }
 }

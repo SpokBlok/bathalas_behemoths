@@ -7453,10 +7453,10 @@ RectTransform:
   - {fileID: 102592974}
   m_Father: {fileID: 2012985873}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 717.5, y: -540}
+  m_SizeDelta: {x: 1435, y: 1080}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &443166952
 MonoBehaviour:
@@ -8510,7 +8510,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &483016621
 RectTransform:
   m_ObjectHideFlags: 0
@@ -9948,7 +9948,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &643777053
 RectTransform:
   m_ObjectHideFlags: 0
@@ -10243,7 +10243,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &669554757
 RectTransform:
   m_ObjectHideFlags: 0
@@ -10412,7 +10412,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &693045771
 RectTransform:
   m_ObjectHideFlags: 0
@@ -15687,7 +15687,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1045137596
 RectTransform:
   m_ObjectHideFlags: 0
@@ -17454,9 +17454,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 94f2cd998ad284b438a1675e6d9d3de7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  uiList: []
-  upgradePanel: {fileID: 62116802}
-  popUp: {fileID: 93754580}
 --- !u!65 &1140790898
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -20136,10 +20133,10 @@ RectTransform:
   - {fileID: 98336055}
   m_Father: {fileID: 2012985873}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 1677.5, y: -540}
+  m_SizeDelta: {x: 485, y: 1080}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1296602182
 MonoBehaviour:
@@ -20748,7 +20745,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1323460217
 RectTransform:
   m_ObjectHideFlags: 0
@@ -21841,7 +21838,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1483032187
 RectTransform:
   m_ObjectHideFlags: 0
@@ -24014,6 +24011,12 @@ MonoBehaviour:
   outdoorsScene: 0
   questComp: 0
   kapreCigars: 0
+  clue1: 0
+  clue2: 0
+  clue3: 0
+  clue4: 0
+  clue5: 0
+  clue6: 0
 --- !u!4 &1597588349
 Transform:
   m_ObjectHideFlags: 0
@@ -30392,9 +30395,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 94649c5e0385aa34b980e696d56acf30, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cooldown: 0
-  maxCharges: 0
-  oneTimeUseAvailable: 0
 --- !u!1 &2012985872
 GameObject:
   m_ObjectHideFlags: 0
@@ -30414,7 +30414,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2012985873
 RectTransform:
   m_ObjectHideFlags: 0
@@ -30512,6 +30512,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77138f0c5aca9cd419a3a3bbac7dbedc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  clue1: {fileID: 1323460216}
+  clue2: {fileID: 1483032186}
+  clue3: {fileID: 643777052}
+  clue4: {fileID: 669554756}
+  clue5: {fileID: 229210109}
+  clue6: {fileID: 1399525552}
+  clue1Tracking: {fileID: 483016620}
+  clue2Tracking: {fileID: 693045770}
+  clue3Tracking: {fileID: 2040128392}
+  clue4Tracking: {fileID: 1045137595}
+  clue5Tracking: {fileID: 1755983510}
+  clue6Tracking: {fileID: 726707841}
 --- !u!1 &2013410473
 GameObject:
   m_ObjectHideFlags: 1
@@ -31135,7 +31147,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &2040128393
 RectTransform:
   m_ObjectHideFlags: 0
@@ -32619,6 +32631,11 @@ PrefabInstance:
       propertyPath: questUI
       value: 
       objectReference: {fileID: 321068742}
+    - target: {fileID: 817613642672016744, guid: 1386be20f236ee44d9a89475913cbd88,
+        type: 3}
+      propertyPath: questUIPanel
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 5562768419259451210, guid: 1386be20f236ee44d9a89475913cbd88,
         type: 3}
       propertyPath: m_text

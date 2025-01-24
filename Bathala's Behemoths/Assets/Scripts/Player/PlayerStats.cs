@@ -32,6 +32,12 @@ public class PlayerStats : MonoBehaviour
     public bool questComp;
 
     public float kapreCigars;
+    public bool clue1;
+    public bool clue2;
+    public bool clue3;
+    public bool clue4;
+    public bool clue5;
+    public bool clue6;
 
     private void Awake()
     {

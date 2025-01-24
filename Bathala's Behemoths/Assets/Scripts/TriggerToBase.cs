@@ -21,7 +21,7 @@ public class TriggerToBase : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            SceneManager.LoadScene("RuinsScene Quests");
+            SceneManager.LoadScene("RuinsScene Movement");
             PlayerStats.Instance.introDone = true;
             PlayerStats.Instance.outdoorsScene = false;
         }

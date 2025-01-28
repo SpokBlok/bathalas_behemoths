@@ -4,10 +4,11 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using TMPro;
 
-public class CharredTreeClue : MonoBehaviour
+public class FrightenedDwende : MonoBehaviour
 {
     public PlayerStats playerStats;
     public TextMeshProUGUI popUp;
+    public GameObject dialogue;
     
     private bool isInTrigger;
 
@@ -25,11 +26,10 @@ public class CharredTreeClue : MonoBehaviour
 
     public void OnInteract(InputAction.CallbackContext context)
     {
-
         // Check for the key press only when inside the trigger
         if (context.performed && isInTrigger)
         {
-            playerStats.clue1 = true;
+            dialogue.SetActive(true);
         }
     }
 

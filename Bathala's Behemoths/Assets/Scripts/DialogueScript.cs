@@ -7,13 +7,22 @@ public class DialogueScript : MonoBehaviour
 {
     public TextMeshProUGUI textComponent;
     public string[] lines;
-    public float textSpeed;
+    public float textInterval;
+    public GameObject pointer;
 
+    private bool pointerActive = false;
     private int index;
 
     // Start is called before the first frame update
     void Start()
     {
+        textComponent.text = string.Empty;
+        StartDialogue();
+    }
+
+    void OnEnable()
+    {
+        index = 0;
         textComponent.text = string.Empty;
         StartDialogue();
     }
@@ -46,7 +55,7 @@ public class DialogueScript : MonoBehaviour
         foreach(char c in lines[index].ToCharArray())
         {
             textComponent.text += c;
-            yield return new WaitForSeconds(textSpeed);
+            yield return new WaitForSeconds(textInterval);
         }
     }
 
@@ -58,9 +67,18 @@ public class DialogueScript : MonoBehaviour
             textComponent.text = string.Empty;
             StartCoroutine(TypeLine());
         }
-        else
+        else if(pointerActive == true)
         {
             gameObject.SetActive(false);
+            pointer.SetActive(false);
+            pointerActive = false;
+            
+            Debug.Log("inside end state");
+        }
+        else
+        {
+            pointer.SetActive(true);
+            pointerActive = true;
         }
     }
 }

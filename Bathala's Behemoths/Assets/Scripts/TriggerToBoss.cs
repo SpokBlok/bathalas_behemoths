@@ -21,7 +21,7 @@ public class TriggerToBoss : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            SceneManager.LoadScene("TambanokanoFightScene");
+            SceneManager.LoadScene("TambanokanoFightScenev2");
         }
     }
 }

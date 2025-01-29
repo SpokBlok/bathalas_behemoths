@@ -44,20 +44,6 @@ public class CharredTreeClue : MonoBehaviour
                 clueImageActive = true;
             }
         }
-
-        if(Input.GetMouseButtonDown(0))
-        {
-            if(clueImageActive)
-            {
-                clueImage.SetActive(false);
-                clueImageActive = false;
-            }
-            else
-            {
-                clueImage.SetActive(true);
-                clueImageActive = true;
-            }
-        }
     }
 
     // Called when entering the trigger

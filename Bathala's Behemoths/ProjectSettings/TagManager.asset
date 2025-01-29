@@ -16,6 +16,7 @@ TagManager:
   - Player Input
   - Q Button
   - Tambanokano
+  - Chicken
   layers:
   - Default
   - TransparentFX

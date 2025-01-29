@@ -11,18 +11,19 @@ public class DialogueScript : MonoBehaviour
     public GameObject pointer;
 
     private bool pointerActive = false;
+    Vector3 currentPosition;
     private int index;
 
     // Start is called before the first frame update
     void Start()
     {
+        index = 0;
         textComponent.text = string.Empty;
-        StartDialogue();
+        currentPosition = gameObject.transform.localPosition;
     }
 
     void OnEnable()
     {
-        index = 0;
         textComponent.text = string.Empty;
         StartDialogue();
     }
@@ -69,6 +70,7 @@ public class DialogueScript : MonoBehaviour
         }
         else if(pointerActive == true)
         {
+            gameObject.transform.localPosition = currentPosition;
             gameObject.SetActive(false);
             pointer.SetActive(false);
             pointerActive = false;
@@ -77,6 +79,7 @@ public class DialogueScript : MonoBehaviour
         }
         else
         {
+            gameObject.transform.localPosition = new Vector3 (1000, 1000);
             pointer.SetActive(true);
             pointerActive = true;
         }

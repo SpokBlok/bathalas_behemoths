@@ -23,6 +23,8 @@ public class Tambanokano : EnemyMob
 
     public int attacksPassed;
 
+    public float duration;
+
 
     // Start is called before the first frame update
     void Start()
@@ -108,29 +110,29 @@ public class Tambanokano : EnemyMob
     private IEnumerator SingleClawSwipe()
     {
         //attack animation
-        GameObject claw = Instantiate(clawSwipePrefab, new Vector3(Random.Range(250f, 650f), 170f, 365f), Quaternion.Euler(0f, 90f, 0f));
+        GameObject claw = Instantiate(clawSwipePrefab, new Vector3(Random.Range(400f, 500f), 170f, Random.Range(285f, 425f)), Quaternion.Euler(0f, 90f, 0f));
         claw.transform.parent = transform;
         yield return new WaitForSeconds(claw.GetComponent<FillEffect>().attackDuration);
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(2f);
     }
 
-    private IEnumerator ClawSwipe() //6 second claw swipe, 14 second total
+    private IEnumerator ClawSwipe()
     {
         //attack animation
-        GameObject claw = Instantiate(clawSwipePrefab, new Vector3(Random.Range(250f, 650f), 170f, 370f), Quaternion.Euler(0f, 90f, 0f));
+        GameObject claw = Instantiate(clawSwipePrefab, new Vector3(Random.Range(400f, 500f), 170f, Random.Range(285f, 425f)), Quaternion.Euler(0f, 90f, 0f));
         claw.transform.parent = transform;
         yield return new WaitForSeconds(claw.GetComponent<FillEffect>().attackDuration);
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(2f);
 
         //attack animation
         claw = Instantiate(clawSwipePrefab, new Vector3(Random.Range(250f, 650f), 170f, 370f), Quaternion.Euler(0f, 90f, 0f));
         yield return new WaitForSeconds(claw.GetComponent<FillEffect>().attackDuration);
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(2f);
 
         randomAttackCoroutine = null;
     }
 
-    private IEnumerator TrailingLightning() //6 * 1.5 seconds = 9 seconds total
+    private IEnumerator TrailingLightning()
     {
         isLightingStriking = true;
         
@@ -143,22 +145,23 @@ public class Tambanokano : EnemyMob
             yield break; // Exit the coroutine if the component is not found
         }
 
-        float duration = lightningComponent.attackGapDuration * lightningComponent.attacksLeft;
+        duration = lightningComponent.attackGapDuration * (lightningComponent.attacksLeft);
         
-        yield return new WaitForSeconds(duration);
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(duration + 7f);
 
         randomAttackCoroutine = null;
     }
 
-    private IEnumerator ArenaWideLightning() //5 seconds
+    private IEnumerator ArenaWideLightning()
     {
         isLightingStriking = true;
 
-        GameObject lightning = Instantiate(arenaWideLightingPrefab, player.transform.position, Quaternion.identity);
+        GameObject lightning = Instantiate(arenaWideLightingPrefab, 
+            new Vector3(Random.Range(380f, 420f), 300f, Random.Range(260f, 360f)),
+            Quaternion.Euler(0f, Random.Range(0f, 90f), 0f));
         lightning.transform.parent = transform;
-        yield return new WaitForSeconds(5);
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(6);
+        yield return new WaitForSeconds(2f);
 
         randomAttackCoroutine = null;
     }
@@ -166,25 +169,23 @@ public class Tambanokano : EnemyMob
     private IEnumerator UltimateAttack()
     {
         isUlting = true;
-        StartCoroutine(TrailingLightning()); // 6*1.5 = 9 seconds
-        StartCoroutine(ArenaWideLightning()); //5 seconds
-        StartCoroutine(ClawSwipe()); // 12.5 seconds
+        StartCoroutine(TrailingLightning());
+        StartCoroutine(ArenaWideLightning());
+
+        yield return new WaitForSeconds(7);
+        StartCoroutine(ClawSwipe());
+
+        yield return new WaitForSeconds(1.25f);
+        StartCoroutine(TrailingLightning());
 
         yield return new WaitForSeconds(6);
         StartCoroutine(ArenaWideLightning());
 
-        yield return new WaitForSeconds(4);
-        StartCoroutine(TrailingLightning());
-
-        yield return new WaitForSeconds(2);
-        StartCoroutine(SingleClawSwipe());
-        StartCoroutine(ArenaWideLightning());
-
-        yield return new WaitForSeconds(7);
-        GameObject lightning = Instantiate(massiveAOEPrefab, player.transform.position, Quaternion.identity);
+        yield return new WaitForSeconds(9);
+        GameObject lightning = Instantiate(massiveAOEPrefab, new Vector3(440f, 160f, 240f), Quaternion.identity);
         lightning.transform.parent = transform;
 
-        yield return new WaitForSeconds(10);
+        yield return new WaitForSeconds(14);
 
         isUlting = false;
         randomAttackCoroutine = null;

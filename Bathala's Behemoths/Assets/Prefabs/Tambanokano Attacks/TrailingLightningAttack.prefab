@@ -46,5 +46,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lightningPrefab: {fileID: 6853585377040579723, guid: 346abac7785fbd64bb2dd5cbdc7f7988,
     type: 3}
-  attackGapDuration: 1.5
+  attackGapDuration: 2.5
   attacksLeft: 6

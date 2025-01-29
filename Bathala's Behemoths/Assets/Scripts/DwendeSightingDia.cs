@@ -19,7 +19,6 @@ public class DwendeSightingDia : MonoBehaviour
     void Start()
     {
         index = 0;
-        textComponent.text = string.Empty;
         currentPosition = gameObject.transform.localPosition;
     }
 

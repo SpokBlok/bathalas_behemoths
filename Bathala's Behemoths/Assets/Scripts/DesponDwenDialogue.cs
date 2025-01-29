@@ -10,23 +10,29 @@ public class DesponDwenDialogue : MonoBehaviour
     public string[] linesRepeat;
     public string[] currentLines;
     public float textInterval;
-    public GameObject pointer;
 
-    private bool pointerActive = false;
     Vector3 currentPosition;
+    public bool dialogueRepeat;
     private int index;
 
     // Start is called before the first frame update
     void Start()
     {
         index = 0;
-        currentLines = lines;
-        textComponent.text = string.Empty;
+        dialogueRepeat = false;
         currentPosition = gameObject.transform.localPosition;
     }
 
     void OnEnable()
     {
+        if(dialogueRepeat)
+        {
+            currentLines = linesRepeat;
+        }
+        else
+        {
+            currentLines = lines;
+        }
         textComponent.text = string.Empty;
         StartDialogue();
     }
@@ -71,22 +77,10 @@ public class DesponDwenDialogue : MonoBehaviour
             textComponent.text = string.Empty;
             StartCoroutine(TypeLine());
         }
-        else if(pointerActive == true)
-        {
-            gameObject.transform.localPosition = currentPosition;
-            gameObject.SetActive(false);
-            pointer.SetActive(false);
-            pointerActive = false;
-            currentLines = linesRepeat;
-            index = 0;
-
-            Debug.Log("inside end state");
-        }
         else
         {
-            gameObject.transform.localPosition = new Vector3 (1000, 1000);
-            pointer.SetActive(true);
-            pointerActive = true;
+            gameObject.SetActive(false);
+            dialogueRepeat = true;
         }
     }
 }

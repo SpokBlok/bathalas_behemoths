@@ -7,23 +7,34 @@ public class FenceDialogue : MonoBehaviour
 {
     public TextMeshProUGUI textComponent;
     public string[] lines;
+    public string[] linesRepeat;
+    public string[] currentLines;
     public float textInterval;
     public GameObject pointer;
 
     private bool pointerActive = false;
     Vector3 currentPosition;
+    public bool dialogueRepeat;
     private int index;
 
     // Start is called before the first frame update
     void Start()
     {
         index = 0;
+        dialogueRepeat = false;
         currentPosition = gameObject.transform.localPosition;
     }
 
     void OnEnable()
     {
-        index = 0;
+        if(dialogueRepeat)
+        {
+            currentLines = linesRepeat;
+        }
+        else
+        {
+            currentLines = lines;
+        }
         textComponent.text = string.Empty;
         StartDialogue();
     }
@@ -33,14 +44,14 @@ public class FenceDialogue : MonoBehaviour
     {
         if(Input.GetMouseButtonDown(0))
         {
-            if(textComponent.text == lines[index])
+            if(textComponent.text == currentLines[index])
             {
                 NextLine();
             }
             else
             {
                 StopAllCoroutines();
-                textComponent.text = lines[index];
+                textComponent.text = currentLines[index];
             }
         }
     }
@@ -53,7 +64,7 @@ public class FenceDialogue : MonoBehaviour
 
     IEnumerator TypeLine()
     {
-        foreach(char c in lines[index].ToCharArray())
+        foreach(char c in currentLines[index].ToCharArray())
         {
             textComponent.text += c;
             yield return new WaitForSeconds(textInterval);
@@ -62,7 +73,7 @@ public class FenceDialogue : MonoBehaviour
 
     void NextLine()
     {
-        if(index < lines.Length - 1)
+        if(index < currentLines.Length - 1)
         {
             index++;
             textComponent.text = string.Empty;
@@ -82,6 +93,7 @@ public class FenceDialogue : MonoBehaviour
             gameObject.transform.localPosition = new Vector3 (1000, 1000);
             pointer.SetActive(true);
             pointerActive = true;
+            dialogueRepeat = true;
         }
     }
 }

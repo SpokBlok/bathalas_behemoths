@@ -71,7 +71,7 @@ public class PlayerMovement : MonoBehaviour
 
         if (stats.introDone && stats.outdoorsScene)
         {
-            gameObject.transform.position = new Vector3(313.5f, 23.52272f, 195.11f);
+            gameObject.transform.position = new Vector3(588.2f, 81.7f, 261.7f);
         }
     }
 

@@ -5,6 +5,9 @@ using UnityEngine.SceneManagement;
 
 public class TriggerToStage : MonoBehaviour
 {
+    public GameObject sceneDoor;
+    public GameObject playerOutdoors;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -23,6 +26,7 @@ public class TriggerToStage : MonoBehaviour
         {
             SceneManager.LoadScene("OutdoorsSceneFinal");
             PlayerStats.Instance.outdoorsScene = true;
+            PlayerStats.Instance.ruinsScene = false;
         }
     }
 }

@@ -8,7 +8,7 @@ public class PlayerStats : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        
     }
 
     // Update is called once per frame
@@ -27,8 +27,10 @@ public class PlayerStats : MonoBehaviour
 
     public bool hasMudArmor;
 
-    public bool introDone;
-    public bool outdoorsScene;
+    public bool introDone = true;
+    public bool tutorialDone = false;
+    public bool ruinsScene = false;
+    public bool outdoorsScene = true;
     public bool questComp;
 
     public float kapreCigars;
@@ -56,16 +58,20 @@ public class PlayerStats : MonoBehaviour
     private void InitializePlayerStats()
     {
         // Set default values
-        speed = 15;
+        if(outdoorsScene && introDone)
+        {
+            speed = 15;
+        }
+        else
+        {
+            speed = 45;
+        }
         speedMultiplier = 1;
         basicAttackDamage = 25;
         maxHealth = 50;
         currentHealth = maxHealth;
 
         hasMudArmor = false;
-
-        introDone = false;
-        outdoorsScene = true;
 
         kapreCigars = 0;
 }

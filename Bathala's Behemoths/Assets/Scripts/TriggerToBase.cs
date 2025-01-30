@@ -24,6 +24,8 @@ public class TriggerToBase : MonoBehaviour
             SceneManager.LoadScene("RuinsScene Movement");
             PlayerStats.Instance.introDone = true;
             PlayerStats.Instance.outdoorsScene = false;
+            PlayerStats.Instance.ruinsScene = true;
+
         }
     }
 }

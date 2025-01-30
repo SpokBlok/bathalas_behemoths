@@ -20,7 +20,10 @@ public class ChickenRadius : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        GetComponentInParent<ChickenClue>().ChangeState(ChickenState.Moving);
+        if (other.CompareTag("Player"))
+        {
+            GetComponentInParent<ChickenClue>().ChangeState(ChickenState.Moving);
+        }
     }
 
     private void OnTriggerExit(Collider other)

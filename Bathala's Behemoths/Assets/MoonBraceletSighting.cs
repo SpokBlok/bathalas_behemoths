@@ -8,17 +8,15 @@ public class MoonBraceletSighting : MonoBehaviour
 {
     public PlayerStats playerStats;
     public GameObject dialogue;
-    public bool doneSighting;
-    
-    public bool moonQuestTrigger;
+
     private bool isInTrigger;
 
     // Start is called before the first frame update
     void Start()
     {
         isInTrigger = false;
-        doneSighting = false;
-        moonQuestTrigger = false;
+        QuestState.Instance.moonSightingTrigger = false;
+        QuestState.Instance.moonQuestTrigger = false;
     }
 
     // Update is called once per frame
@@ -33,10 +31,9 @@ public class MoonBraceletSighting : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             isInTrigger = true;
-            if(doneSighting == false && moonQuestTrigger == true)
+            if(QuestState.Instance.moonSightingTrigger == false && QuestState.Instance.moonQuestTrigger == true)
             {
                 dialogue.SetActive(true);
-                doneSighting = true;
             }
         }
     }

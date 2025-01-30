@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-public class MoonBraceletSightingDia : MonoBehaviour
+public class ChickenSightDia : MonoBehaviour
 {
     public TextMeshProUGUI textComponent;
     public string[] lines;
@@ -74,7 +74,7 @@ public class MoonBraceletSightingDia : MonoBehaviour
             gameObject.SetActive(false);
             pointer.SetActive(false);
             pointerActive = false;
-            QuestState.Instance.moonSightingTrigger = true;
+            QuestState.Instance.chickenSightTrigger = true;
             index = 0;
             
             Debug.Log("inside end state");

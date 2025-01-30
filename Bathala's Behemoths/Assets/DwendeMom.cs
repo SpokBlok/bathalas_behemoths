@@ -9,6 +9,7 @@ public class DwendeMom : MonoBehaviour
     public PlayerStats playerStats;
     public TextMeshProUGUI popUp;
     public GameObject dialogue;
+    public GameObject marker;
     
     private bool isInTrigger;
 
@@ -16,6 +17,10 @@ public class DwendeMom : MonoBehaviour
     void Start()
     {
         isInTrigger = false;
+        if(QuestState.Instance.dwendeMomRepeat)
+        {
+            marker.SetActive(false);
+        }
     }
 
     // Update is called once per frame
@@ -30,6 +35,7 @@ public class DwendeMom : MonoBehaviour
         if (context.performed && isInTrigger)
         {
             playerStats.clue2 = true;
+            marker.SetActive(false);
             dialogue.SetActive(true);
         }
     }

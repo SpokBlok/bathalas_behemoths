@@ -14,20 +14,19 @@ public class FenceDialogue : MonoBehaviour
 
     private bool pointerActive = false;
     Vector3 currentPosition;
-    public bool dialogueRepeat;
     private int index;
 
     // Start is called before the first frame update
     void Start()
     {
         index = 0;
-        dialogueRepeat = false;
+        QuestState.Instance.washedUpFenceRepeat = false;
         currentPosition = gameObject.transform.localPosition;
     }
 
     void OnEnable()
     {
-        if(dialogueRepeat)
+        if(QuestState.Instance.washedUpFenceRepeat)
         {
             currentLines = linesRepeat;
         }
@@ -93,7 +92,7 @@ public class FenceDialogue : MonoBehaviour
             gameObject.transform.localPosition = new Vector3 (1000, 1000);
             pointer.SetActive(true);
             pointerActive = true;
-            dialogueRepeat = true;
+            QuestState.Instance.washedUpFenceRepeat = true;
         }
     }
 }

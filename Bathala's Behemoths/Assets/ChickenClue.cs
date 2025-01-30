@@ -16,6 +16,7 @@ public class ChickenClue : MonoBehaviour
     public PlayerStats playerStats;
     public TextMeshProUGUI popUp;
     public GameObject dialogue;
+    public GameObject marker;
     
     private bool isInTrigger;
 
@@ -35,6 +36,11 @@ public class ChickenClue : MonoBehaviour
         playerTransform = player.transform;
         chickenControl = GetComponent<CharacterController>();
         //speed = 14;
+
+        if(QuestState.Instance.chickenRepeat)
+        {
+            marker.SetActive(false);
+        }
         
         isInTrigger = false;
     }
@@ -60,6 +66,7 @@ public class ChickenClue : MonoBehaviour
         {
             playerStats.clue4 = true;
             dialogue.SetActive(true);
+            marker.SetActive(false);
         }
     }
 

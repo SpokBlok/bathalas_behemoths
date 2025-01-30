@@ -9,6 +9,8 @@ public class FrightenedDwende : MonoBehaviour
     public PlayerStats playerStats;
     public TextMeshProUGUI popUp;
     public GameObject dialogue;
+    public GameObject charredTree;
+    public GameObject marker;
     
     private bool isInTrigger;
 
@@ -16,6 +18,11 @@ public class FrightenedDwende : MonoBehaviour
     void Start()
     {
         isInTrigger = false;
+        if(QuestState.Instance.frightenedDwendeRepeat)
+        {
+            marker.SetActive(false);
+            charredTree.SetActive(true);
+        }
     }
 
     // Update is called once per frame
@@ -29,6 +36,8 @@ public class FrightenedDwende : MonoBehaviour
         // Check for the key press only when inside the trigger
         if (context.performed && isInTrigger)
         {
+            charredTree.SetActive(true);
+            marker.SetActive(false);
             dialogue.SetActive(true);
         }
     }

@@ -12,20 +12,19 @@ public class DesponDwenDialogue : MonoBehaviour
     public float textInterval;
 
     Vector3 currentPosition;
-    public bool dialogueRepeat;
     private int index;
 
     // Start is called before the first frame update
     void Start()
     {
         index = 0;
-        dialogueRepeat = false;
+        QuestState.Instance.desponDwendeRepeat = false;
         currentPosition = gameObject.transform.localPosition;
     }
 
     void OnEnable()
     {
-        if(dialogueRepeat)
+        if(QuestState.Instance.desponDwendeRepeat)
         {
             currentLines = linesRepeat;
         }
@@ -80,7 +79,7 @@ public class DesponDwenDialogue : MonoBehaviour
         else
         {
             gameObject.SetActive(false);
-            dialogueRepeat = true;
+            QuestState.Instance.desponDwendeRepeat = true;
         }
     }
 }

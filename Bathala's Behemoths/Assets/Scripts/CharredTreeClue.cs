@@ -8,16 +8,14 @@ public class CharredTreeClue : MonoBehaviour
 {
     public PlayerStats playerStats;
     public TextMeshProUGUI popUp;
-    public GameObject clueImage;
+    public GameObject dialogue;
     
-    private bool clueImageActive;
     private bool isInTrigger;
 
     // Start is called before the first frame update
     void Start()
     {
         isInTrigger = false;
-        clueImageActive = false;
     }
 
     // Update is called once per frame
@@ -33,16 +31,7 @@ public class CharredTreeClue : MonoBehaviour
         if (context.performed && isInTrigger)
         {
             playerStats.clue1 = true;
-            if(clueImageActive)
-            {
-                clueImage.SetActive(false);
-                clueImageActive = false;
-            }
-            else
-            {
-                clueImage.SetActive(true);
-                clueImageActive = true;
-            }
+            dialogue.SetActive(true);
         }
     }
 

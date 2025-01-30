@@ -7,6 +7,8 @@ public class FootprintsDialogue : MonoBehaviour
 {
     public TextMeshProUGUI textComponent;
     public string[] lines;
+    public string[] linesRepeat;
+    public string[] currentLines;
     public float textInterval;
     public GameObject pointer;
 
@@ -18,11 +20,20 @@ public class FootprintsDialogue : MonoBehaviour
     void Start()
     {
         index = 0;
+        QuestState.Instance.footprintsRepeat = false;
         currentPosition = gameObject.transform.localPosition;
     }
 
     void OnEnable()
     {
+        if(QuestState.Instance.footprintsRepeat)
+        {
+            currentLines = linesRepeat;
+        }
+        else
+        {
+            currentLines = lines;
+        }
         textComponent.text = string.Empty;
         StartDialogue();
     }
@@ -32,14 +43,14 @@ public class FootprintsDialogue : MonoBehaviour
     {
         if(Input.GetMouseButtonDown(0))
         {
-            if(textComponent.text == lines[index])
+            if(textComponent.text == currentLines[index])
             {
                 NextLine();
             }
             else
             {
                 StopAllCoroutines();
-                textComponent.text = lines[index];
+                textComponent.text = currentLines[index];
             }
         }
     }
@@ -52,7 +63,7 @@ public class FootprintsDialogue : MonoBehaviour
 
     IEnumerator TypeLine()
     {
-        foreach(char c in lines[index].ToCharArray())
+        foreach(char c in currentLines[index].ToCharArray())
         {
             textComponent.text += c;
             yield return new WaitForSeconds(textInterval);
@@ -61,7 +72,7 @@ public class FootprintsDialogue : MonoBehaviour
 
     void NextLine()
     {
-        if(index < lines.Length - 1)
+        if(index < currentLines.Length - 1)
         {
             index++;
             textComponent.text = string.Empty;
@@ -73,6 +84,7 @@ public class FootprintsDialogue : MonoBehaviour
             gameObject.SetActive(false);
             pointer.SetActive(false);
             pointerActive = false;
+            QuestState.Instance.footprintsRepeat = true;
             
             Debug.Log("inside end state");
         }

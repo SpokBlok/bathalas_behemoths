@@ -4,12 +4,10 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using TMPro;
 
-public class FenceBroken : MonoBehaviour
+public class ChickenSighting : MonoBehaviour
 {
     public PlayerStats playerStats;
-    public TextMeshProUGUI popUp;
     public GameObject dialogue;
-    public GameObject marker;
     
     private bool isInTrigger;
 
@@ -17,10 +15,6 @@ public class FenceBroken : MonoBehaviour
     void Start()
     {
         isInTrigger = false;
-        if(QuestState.Instance.washedUpFenceRepeat)
-        {
-            marker.SetActive(false);
-        }
     }
 
     // Update is called once per frame
@@ -29,23 +23,17 @@ public class FenceBroken : MonoBehaviour
         
     }
 
-    public void OnInteract(InputAction.CallbackContext context)
-    {
-        // Check for the key press only when inside the trigger
-        if (context.performed && isInTrigger)
-        {
-            marker.SetActive(false);
-            dialogue.SetActive(true);
-        }
-    }
-
     // Called when entering the trigger
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
         {
             isInTrigger = true;
-            popUp.gameObject.SetActive(true);
+            if(QuestState.Instance.chickenSightTrigger == false)
+            {
+                QuestState.Instance.chickenSightTrigger = true;
+                dialogue.SetActive(true);
+            }
         }
     }
 
@@ -55,7 +43,8 @@ public class FenceBroken : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             isInTrigger = false;
-            popUp.gameObject.SetActive(false);
+            QuestState.Instance.chickenSightTrigger = true;
+            // popUp.gameObject.SetActive(false);
         }
     }
 }

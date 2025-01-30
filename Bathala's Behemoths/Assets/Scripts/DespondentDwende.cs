@@ -9,6 +9,8 @@ public class DespondentDwende : MonoBehaviour
     public PlayerStats playerStats;
     public TextMeshProUGUI popUp;
     public GameObject dialogue;
+    public GameObject footprints;
+    public GameObject marker;
     
     private bool isInTrigger;
 
@@ -16,6 +18,11 @@ public class DespondentDwende : MonoBehaviour
     void Start()
     {
         isInTrigger = false;
+        if(QuestState.Instance.desponDwendeRepeat)
+        {
+            footprints.SetActive(true);
+            marker.SetActive(false);
+        }
     }
 
     // Update is called once per frame
@@ -29,6 +36,8 @@ public class DespondentDwende : MonoBehaviour
         // Check for the key press only when inside the trigger
         if (context.performed && isInTrigger)
         {
+            footprints.SetActive(true);
+            marker.SetActive(false);
             dialogue.SetActive(true);
         }
     }

@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-public class MoonBraceletSightingDia : MonoBehaviour
+public class CharredTreeDialogue : MonoBehaviour
 {
     public TextMeshProUGUI textComponent;
     public string[] lines;
+    public string[] linesRepeat;
+    public string[] currentLines;
     public float textInterval;
     public GameObject pointer;
 
@@ -18,11 +20,20 @@ public class MoonBraceletSightingDia : MonoBehaviour
     void Start()
     {
         index = 0;
+        QuestState.Instance.charredTreeRepeat = false;
         currentPosition = gameObject.transform.localPosition;
     }
 
     void OnEnable()
     {
+        if(QuestState.Instance.charredTreeRepeat)
+        {
+            currentLines = linesRepeat;
+        }
+        else
+        {
+            currentLines = lines;
+        }
         textComponent.text = string.Empty;
         StartDialogue();
     }
@@ -32,17 +43,16 @@ public class MoonBraceletSightingDia : MonoBehaviour
     {
         if(Input.GetMouseButtonDown(0))
         {
-            if(textComponent.text == lines[index])
+            if(textComponent.text == currentLines[index])
             {
                 NextLine();
             }
             else
             {
                 StopAllCoroutines();
-                textComponent.text = lines[index];
+                textComponent.text = currentLines[index];
             }
         }
-        Debug.Log("Index: " + index);
     }
 
     void StartDialogue()
@@ -53,7 +63,7 @@ public class MoonBraceletSightingDia : MonoBehaviour
 
     IEnumerator TypeLine()
     {
-        foreach(char c in lines[index].ToCharArray())
+        foreach(char c in currentLines[index].ToCharArray())
         {
             textComponent.text += c;
             yield return new WaitForSeconds(textInterval);
@@ -62,7 +72,7 @@ public class MoonBraceletSightingDia : MonoBehaviour
 
     void NextLine()
     {
-        if(index < lines.Length - 1)
+        if(index < currentLines.Length - 1)
         {
             index++;
             textComponent.text = string.Empty;
@@ -74,8 +84,7 @@ public class MoonBraceletSightingDia : MonoBehaviour
             gameObject.SetActive(false);
             pointer.SetActive(false);
             pointerActive = false;
-            QuestState.Instance.moonSightingTrigger = true;
-            index = 0;
+            QuestState.Instance.charredTreeRepeat = true;
             
             Debug.Log("inside end state");
         }

@@ -8,7 +8,6 @@ public class DesDwendeSighting : MonoBehaviour
 {
     public PlayerStats playerStats;
     public GameObject dialogue;
-    public bool doneSighting;
     
     private bool isInTrigger;
 
@@ -16,7 +15,7 @@ public class DesDwendeSighting : MonoBehaviour
     void Start()
     {
         isInTrigger = false;
-        doneSighting = false;
+        QuestState.Instance.desponDwendeSightTrigger = false;
     }
 
     // Update is called once per frame
@@ -31,7 +30,7 @@ public class DesDwendeSighting : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             isInTrigger = true;
-            if(doneSighting == false)
+            if(QuestState.Instance.desponDwendeSightTrigger == false)
             {
                 dialogue.SetActive(true);
             }
@@ -44,7 +43,7 @@ public class DesDwendeSighting : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             isInTrigger = false;
-            doneSighting = true;
+            QuestState.Instance.desponDwendeSightTrigger = true;
             // popUp.gameObject.SetActive(false);
         }
     }

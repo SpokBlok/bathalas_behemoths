@@ -9,14 +9,45 @@ public class TheMoonNPC : MonoBehaviour
     public PlayerStats playerStats;
     public TextMeshProUGUI popUp;
     public GameObject dialogue;
-    public MoonBraceletSighting sighting;
+    public GameObject moonSighting;
+    public GameObject moonBracelet;
+    public GameObject moonNPC;
     
+    private MeshFilter meshFilter;
+    public Mesh moonMarkerMesh;
     private bool isInTrigger;
 
     // Start is called before the first frame update
     void Start()
     {
+        meshFilter = GetComponent<MeshFilter>();
+
         isInTrigger = false;
+        if(QuestState.Instance.moonNPCRepeat)
+        {
+            if(QuestState.Instance.moonSightingTrigger == false)
+            {
+                moonSighting.SetActive(true);
+            }
+
+            if(QuestState.Instance.moonQuestTrigger && QuestState.Instance.moonChunkGet == false)
+            {
+                moonBracelet.SetActive(true);
+                TurnInvisible();
+            }
+            else if(QuestState.Instance.moonChunkGet)
+            {
+                moonBracelet.SetActive(false);
+                moonNPC.SetActive(false);
+                TurnVisible();
+            }
+            else
+            {
+                moonBracelet.SetActive(false);
+                moonNPC.SetActive(false);
+                TurnInvisible();
+            }
+        }
     }
 
     // Update is called once per frame
@@ -30,8 +61,18 @@ public class TheMoonNPC : MonoBehaviour
         // Check for the key press only when inside the trigger
         if (context.performed && isInTrigger)
         {
-            sighting.moonQuestTrigger = true;
+            if(QuestState.Instance.moonSightingTrigger == false)
+            {
+                moonSighting.SetActive(true);
+            }
+            
+            if(QuestState.Instance.moonChunkGet == false)
+            {
+                moonBracelet.SetActive(true);
+            }
+            QuestState.Instance.moonQuestTrigger = true;
             dialogue.SetActive(true);
+            TurnInvisible();
         }
     }
 
@@ -52,6 +93,22 @@ public class TheMoonNPC : MonoBehaviour
         {
             isInTrigger = false;
             popUp.gameObject.SetActive(false);
+        }
+    }
+
+    public void TurnInvisible()
+    {
+        if (meshFilter != null)
+        {
+            meshFilter.mesh = null;  // Change the mesh to null
+        }
+    }
+
+    public void TurnVisible()
+    {
+        if (meshFilter != null)
+        {
+            meshFilter.mesh = moonMarkerMesh;  // Change the mesh to monMarkerMesh
         }
     }
 }

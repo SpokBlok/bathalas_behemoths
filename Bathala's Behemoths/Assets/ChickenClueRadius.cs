@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ChickenRadius : MonoBehaviour
+public class ChickenClueRadius : MonoBehaviour
 {
     GameObject player;
 
@@ -22,7 +22,7 @@ public class ChickenRadius : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            GetComponentInParent<NormalChicken>().ChangeState(ChickenState.Moving);
+            GetComponentInParent<ChickenClue>().ChangeState(ChickenState.Moving);
         }
     }
 
@@ -30,7 +30,7 @@ public class ChickenRadius : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            GetComponentInParent<NormalChicken>().ChangeState(ChickenState.Idle);
+            GetComponentInParent<ChickenClue>().ChangeState(ChickenState.Idle);
         }
     }
 
@@ -38,11 +38,11 @@ public class ChickenRadius : MonoBehaviour
     {
         if (GetComponent<Collider>().bounds.Contains(player.transform.position))
         {
-            GetComponentInParent<NormalChicken>().ChangeState(ChickenState.Moving);
+            GetComponentInParent<ChickenClue>().ChangeState(ChickenState.Moving);
         }
         else
         {
-            GetComponentInParent<NormalChicken>().ChangeState(ChickenState.Idle);
+            GetComponentInParent<ChickenClue>().ChangeState(ChickenState.Idle);
         }
     }
 }

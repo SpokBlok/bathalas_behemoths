@@ -34,7 +34,7 @@ public class ChickenClue : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player");
         playerTransform = player.transform;
         chickenControl = GetComponent<CharacterController>();
-        ChangeState(ChickenState.Idle);
+        //speed = 14;
         
         isInTrigger = false;
     }
@@ -87,7 +87,7 @@ public class ChickenClue : MonoBehaviour
     {
         float terrainHeight = Terrain.activeTerrain.SampleHeight(transform.position);
         Vector3 newPosition = transform.position;
-        newPosition.y = terrainHeight + 1.2f;
+        newPosition.y = terrainHeight + 2.0f;
         transform.position = newPosition;
     }
 
@@ -99,7 +99,7 @@ public class ChickenClue : MonoBehaviour
 
         // Move the enemy in the x and z direction
         chickenControl.Move(terrainMoveDirection * Time.deltaTime);
-
+        
         TerrainGravity();
     }
 

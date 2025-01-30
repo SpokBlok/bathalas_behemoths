@@ -4,12 +4,12 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using TMPro;
 
-public class TheMoonNPC : MonoBehaviour
+public class LSSDwende : MonoBehaviour
 {
     public PlayerStats playerStats;
     public TextMeshProUGUI popUp;
     public GameObject dialogue;
-    public MoonBraceletSighting sighting;
+    public FluteSightTrigger sighting;
     
     private bool isInTrigger;
 
@@ -30,7 +30,7 @@ public class TheMoonNPC : MonoBehaviour
         // Check for the key press only when inside the trigger
         if (context.performed && isInTrigger)
         {
-            sighting.moonQuestTrigger = true;
+            sighting.fluteQuestTrigger = true;
             dialogue.SetActive(true);
         }
     }

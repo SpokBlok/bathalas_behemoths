@@ -4,19 +4,21 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using TMPro;
 
-public class TheMoonNPC : MonoBehaviour
+public class MoonBraceletSighting : MonoBehaviour
 {
     public PlayerStats playerStats;
-    public TextMeshProUGUI popUp;
     public GameObject dialogue;
-    public MoonBraceletSighting sighting;
+    public bool doneSighting;
     
+    public bool moonQuestTrigger;
     private bool isInTrigger;
 
     // Start is called before the first frame update
     void Start()
     {
         isInTrigger = false;
+        doneSighting = false;
+        moonQuestTrigger = false;
     }
 
     // Update is called once per frame
@@ -25,23 +27,17 @@ public class TheMoonNPC : MonoBehaviour
         
     }
 
-    public void OnInteract(InputAction.CallbackContext context)
-    {
-        // Check for the key press only when inside the trigger
-        if (context.performed && isInTrigger)
-        {
-            sighting.moonQuestTrigger = true;
-            dialogue.SetActive(true);
-        }
-    }
-
     // Called when entering the trigger
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
         {
             isInTrigger = true;
-            popUp.gameObject.SetActive(true);
+            if(doneSighting == false && moonQuestTrigger == true)
+            {
+                dialogue.SetActive(true);
+                doneSighting = true;
+            }
         }
     }
 
@@ -51,7 +47,7 @@ public class TheMoonNPC : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             isInTrigger = false;
-            popUp.gameObject.SetActive(false);
+            // popUp.gameObject.SetActive(false);
         }
     }
 }

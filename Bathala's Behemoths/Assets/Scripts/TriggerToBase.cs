@@ -25,7 +25,7 @@ public class TriggerToBase : MonoBehaviour
             PlayerStats.Instance.introDone = true;
             PlayerStats.Instance.outdoorsScene = false;
             PlayerStats.Instance.ruinsScene = true;
-
+            PlayerStats.Instance.speed = 15;
         }
     }
 }

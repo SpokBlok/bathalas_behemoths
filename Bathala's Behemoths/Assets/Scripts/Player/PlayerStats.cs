@@ -58,7 +58,7 @@ public class PlayerStats : MonoBehaviour
     private void InitializePlayerStats()
     {
         // Set default values
-        if(outdoorsScene && introDone)
+        if(ruinsScene && introDone)
         {
             speed = 15;
         }

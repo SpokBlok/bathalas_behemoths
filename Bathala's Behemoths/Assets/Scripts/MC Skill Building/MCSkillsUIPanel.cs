@@ -8,6 +8,10 @@ public class MCSkillsUIPanel : MonoBehaviour
 {
     public GameObject HPRegenPrefab;
 
+    public GameObject purchaseFlute;
+    public GameObject equip1Flute;
+    public GameObject equip2Flute;
+
     //Purchased bools
     private bool Skill1Purchased;
     private bool Skill2Purchased;
@@ -61,6 +65,13 @@ public class MCSkillsUIPanel : MonoBehaviour
     {
         gameObject.SetActive(true);
         EventManager.Instance.InvokeOnEnteringUpgradeScreen();
+
+        if(PlayerStats.Instance.clue1)
+        {
+            purchaseFlute.SetActive(false);
+            equip1Flute.SetActive(true);
+            equip2Flute.SetActive(true);
+        }
     }
 
     public void DisablePanel()

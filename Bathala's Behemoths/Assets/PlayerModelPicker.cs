@@ -15,6 +15,11 @@ public class PlayerModelPicker : MonoBehaviour
             steveModel.SetActive(true);
             mountedModel.SetActive(false);
         }
+        else if(PlayerStats.Instance.outdoorsScene && PlayerStats.Instance.introDone == false)
+        {
+            steveModel.SetActive(true);
+            mountedModel.SetActive(false);
+        }
         else
         {
             steveModel.SetActive(false);
@@ -25,6 +30,6 @@ public class PlayerModelPicker : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 }

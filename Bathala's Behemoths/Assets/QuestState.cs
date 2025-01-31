@@ -29,6 +29,8 @@ public class QuestState : MonoBehaviour
     public bool fluteGet;
     public bool lssDwendeRan;
     public bool fluteSightTrigger;
+    public bool questTutorialTrigger;
+    public bool skillsTutorialTrigger;
 
     // Boss Scene Triggers
     public bool tambanokanoFound;

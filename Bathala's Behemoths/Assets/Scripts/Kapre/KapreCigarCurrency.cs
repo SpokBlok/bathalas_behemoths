@@ -7,6 +7,8 @@ public class KapreCigarCurrency : MonoBehaviour
 {
     public TextMeshProUGUI CigarText;
 
+    public static KapreCigarCurrency Instance { get; private set; }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -19,6 +21,19 @@ public class KapreCigarCurrency : MonoBehaviour
     void Update()
     {
         CigarText.text = "Kapre Cigars: " + PlayerStats.Instance.kapreCigars;
+    }
+
+    private void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject); // Keep this object across scenes
+        }
+        else
+        {
+            Destroy(gameObject); // Destroy duplicate instance
+        }
     }
 
     private void EnableUI()

@@ -27,10 +27,10 @@ public class PlayerStats : MonoBehaviour
 
     public bool hasMudArmor;
 
-    public bool introDone = true;
-    public bool tutorialDone = false;
-    public bool ruinsScene = false;
-    public bool outdoorsScene = true;
+    public bool introDone;
+    public bool tutorialDone;
+    public bool ruinsScene;
+    public bool outdoorsScene;
     public bool questComp;
 
     public float kapreCigars;
@@ -57,8 +57,17 @@ public class PlayerStats : MonoBehaviour
 
     private void InitializePlayerStats()
     {
+        outdoorsScene = true;
+        ruinsScene = false;
+        introDone = false;
+        tutorialDone = false;
+
         // Set default values
         if(ruinsScene && introDone)
+        {
+            speed = 15;
+        }
+        else if(outdoorsScene && introDone == false)
         {
             speed = 15;
         }

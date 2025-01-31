@@ -7,6 +7,8 @@ public class HealthBar : MonoBehaviour
 {
     public TextMeshProUGUI HPText;
 
+    public static HealthBar Instance { get; private set; }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -19,6 +21,19 @@ public class HealthBar : MonoBehaviour
     void Update()
     {
         HPText.text = "HP: " + PlayerStats.Instance.currentHealth + "/" + PlayerStats.Instance.maxHealth;
+    }
+
+    private void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject); // Keep this object across scenes
+        }
+        else
+        {
+            Destroy(gameObject); // Destroy duplicate instance
+        }
     }
 
     private void EnableUI()

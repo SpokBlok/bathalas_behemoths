@@ -6,6 +6,7 @@ public class Tambanokano : EnemyMob
 {
 
     private GameObject player;
+    public GameObject endDialogue;
 
     //Attack prefabs
     public GameObject clawSwipePrefab;
@@ -14,6 +15,7 @@ public class Tambanokano : EnemyMob
     public GameObject massiveAOEPrefab;
 
     private Coroutine randomAttackCoroutine;
+    private bool isAlive;
     private bool isUlting;
 
     private bool isLightingStriking;
@@ -39,6 +41,11 @@ public class Tambanokano : EnemyMob
     // Update is called once per frame
     void Update()
     {
+        if(isAlive == false)
+        {
+            StopAllCoroutines();
+            endDialogue.SetActive(true);
+        }
         if (randomAttackCoroutine == null && !isUlting && !stunned)
         {
             foreach (Transform child in transform)
@@ -104,6 +111,7 @@ public class Tambanokano : EnemyMob
         if (health <= 0)
         {
             //trigger winning cutscene
+            isAlive = false;
         }
     }
 

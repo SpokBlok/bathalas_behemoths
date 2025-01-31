@@ -19,7 +19,6 @@ public class BaseBuildingScript : MonoBehaviour
         isPanelUp = false;
         isInTrigger = false;
         isBuilt = false;
-        gameObject.GetComponent<MeshRenderer>().enabled = false;
         UpdateCanvas();
     }
 

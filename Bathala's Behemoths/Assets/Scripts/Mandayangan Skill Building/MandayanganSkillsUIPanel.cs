@@ -10,6 +10,11 @@ public class MandayanganSkillsUIPanel : MonoBehaviour
     public MandayanganSkillsUIPanel[] uiList;
     public MandayanganSkillsUIPanel baseUI;
 
+    public GameObject purchaseMudfling;
+    public GameObject equip1Mudfling;
+    public GameObject equip2Mudfling;
+
+
     //Purchased bools
     private bool Skill3Purchased;
 
@@ -71,6 +76,13 @@ public class MandayanganSkillsUIPanel : MonoBehaviour
     {
         gameObject.SetActive(true);
         EventManager.Instance.InvokeOnEnteringUpgradeScreen();
+
+        if(PlayerStats.Instance.clue1)
+        {
+            purchaseMudfling.SetActive(false);
+            equip1Mudfling.SetActive(true);
+            equip2Mudfling.SetActive(true);
+        }
     }
 
     public void DisablePanel()

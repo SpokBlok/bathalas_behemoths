@@ -9,7 +9,6 @@ public class FluteSIghtingDia : MonoBehaviour
     public string[] lines;
     public float textInterval;
     public GameObject pointer;
-    public FluteSightTrigger sighting;
 
     private bool pointerActive = false;
     Vector3 currentPosition;
@@ -75,7 +74,7 @@ public class FluteSIghtingDia : MonoBehaviour
             gameObject.SetActive(false);
             pointer.SetActive(false);
             pointerActive = false;
-            sighting.doneSighting = true;
+            QuestState.Instance.fluteSightTrigger = true;
             index = 0;
             
             Debug.Log("inside end state");

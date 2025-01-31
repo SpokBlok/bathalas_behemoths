@@ -13,12 +13,26 @@ public class QuestState : MonoBehaviour
     public bool moonNPCRepeat;
     public bool moonBraceletRepeat;
     public bool chickenRepeat;
+    public bool lssDwendeRepeat;
+    public bool fluteChestRepeat;
+    public bool vetFarmerRepeat;
+    public bool gardenerRepeat;
+    public bool fertilizerRepeat;
 
     public bool desponDwendeSightTrigger;
     public bool chickenSightTrigger;
     public bool moonChunkGet;
+    public bool moonQuestEnded;
     public bool moonQuestTrigger;
     public bool moonSightingTrigger;
+    public bool fluteQuestTrigger;
+    public bool fluteGet;
+    public bool lssDwendeRan;
+    public bool fluteSightTrigger;
+
+    // Boss Scene Triggers
+    public bool tambanokanoFound;
+    public bool markupoFound;
 
     // Start is called before the first frame update
     void Start()
@@ -51,8 +65,16 @@ public class QuestState : MonoBehaviour
     private void InitializeQuestState()
     {
         // Set default values
+        moonQuestEnded = false;
         moonChunkGet = false;
         moonNPCRepeat = false;
         chickenSightTrigger = false;
+        fluteGet = false;
+        lssDwendeRepeat = false;
+        fluteQuestTrigger = false;
+        fluteSightTrigger = false;
+
+        tambanokanoFound = false;
+        markupoFound = false;
     }
 }

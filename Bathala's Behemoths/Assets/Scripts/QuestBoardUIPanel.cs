@@ -39,42 +39,82 @@ public class QuestBoardUIPanel : MonoBehaviour
         selectedClue2Image = transform.Find("LeftPanel/Selected Clue 2").GetComponentInChildren<Image>();
         selectedClue3Image = transform.Find("LeftPanel/Selected Clue 3").GetComponentInChildren<Image>();
     
+    }
+
+    void OnEnable()
+    {
         if(PlayerStats.Instance.clue1 == true)
         {
             clue1.SetActive(true);
             clue1Tracking.SetActive(false);
             Debug.Log("Clue 1 is true");
         }
+        else
+        {
+            clue1.SetActive(false);
+            clue1Tracking.SetActive(true);
+        }
+
         if(PlayerStats.Instance.clue2 == true)
         {
             clue2.SetActive(true);
             clue2Tracking.SetActive(false);
             Debug.Log("Clue 2 is true");
         }
+        else
+        {
+            clue2.SetActive(false);
+            clue2Tracking.SetActive(true);
+        }
+
         if(PlayerStats.Instance.clue3 == true)
         {
             clue3.SetActive(true);
             clue3Tracking.SetActive(false);
             Debug.Log("Clue 3 is true");
         }
+        else
+        {
+            clue3.SetActive(false);
+            clue3Tracking.SetActive(true);
+        }
+
         if(PlayerStats.Instance.clue4 == true)
         {
             clue4.SetActive(true);
             clue4Tracking.SetActive(false);
             Debug.Log("Clue 4 is true");
         }
+        else
+        {
+            clue4.SetActive(false);
+            clue4Tracking.SetActive(true);
+        }
+
         if(PlayerStats.Instance.clue5 == true)
         {
             clue5.SetActive(true);
             clue5Tracking.SetActive(false);
             Debug.Log("Clue 5 is true");
         }
+        else
+        {
+            clue5.SetActive(false);
+            clue5Tracking.SetActive(true);
+        }
+
         if(PlayerStats.Instance.clue6 == true)
         {
             clue6.SetActive(true);
             clue6Tracking.SetActive(false);
             Debug.Log("Clue 6 is true");
         }
+        else
+        {
+            clue6.SetActive(false);
+            clue6Tracking.SetActive(true);
+        }
+
     }
 
     // Update is called once per frame
@@ -237,11 +277,13 @@ public class QuestBoardUIPanel : MonoBehaviour
             if (selectedClue1Set == 1)
             {
                 //markupo quest unlock
+                QuestState.Instance.markupoFound = true;
                 Debug.Log("Markupo found");
             }
             else if (selectedClue1Set == 2)
             {
                 //tambanokano quest unlock
+                QuestState.Instance.tambanokanoFound = true;
                 Debug.Log("Tammy found");
             }
         }

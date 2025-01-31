@@ -8,17 +8,13 @@ public class FluteSightTrigger : MonoBehaviour
 {
     public PlayerStats playerStats;
     public GameObject dialogue;
-    public bool doneSighting;
     
-    public bool fluteQuestTrigger;
     private bool isInTrigger;
 
     // Start is called before the first frame update
     void Start()
     {
         isInTrigger = false;
-        doneSighting = false;
-        fluteQuestTrigger = false;
     }
 
     // Update is called once per frame
@@ -33,10 +29,10 @@ public class FluteSightTrigger : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             isInTrigger = true;
-            if(doneSighting == false && fluteQuestTrigger == true)
+            if(QuestState.Instance.fluteSightTrigger == false && QuestState.Instance.fluteQuestTrigger == true)
             {
                 dialogue.SetActive(true);
-                doneSighting = true;
+                QuestState.Instance.fluteSightTrigger = true;
             }
         }
     }

@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class TriggerToBoss : MonoBehaviour
+public class TriggerToMarkupo : MonoBehaviour
 {
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
@@ -21,7 +21,7 @@ public class TriggerToBoss : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            SceneManager.LoadScene("TambanokanoFightScenev2");
+            SceneManager.LoadScene("Marky");
         }
     }
 }

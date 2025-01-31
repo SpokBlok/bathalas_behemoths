@@ -6,19 +6,28 @@ using TMPro;
 
 public class FluteChest : MonoBehaviour
 {
-    public PlayerStats playerStats;
     public TextMeshProUGUI popUp;
     public GameObject dialogue;
     public GameObject closedChest;
     public GameObject openChest;
-    public LSSDwendeDialogue dwendeDialogue;
+    public GameObject markerDwende;
     
+    private MeshFilter meshFilter;
     private bool isInTrigger;
 
     // Start is called before the first frame update
     void Start()
     {
+        meshFilter = GetComponent<MeshFilter>();
         isInTrigger = false;
+
+        if(QuestState.Instance.fluteGet == true)
+        {
+            closedChest.SetActive(false);
+            openChest.SetActive(true);
+            markerDwende.SetActive(true);
+            TurnInvisible();
+        }
     }
 
     // Update is called once per frame
@@ -34,8 +43,10 @@ public class FluteChest : MonoBehaviour
         {
             closedChest.SetActive(false);
             openChest.SetActive(true);
-            dwendeDialogue.fluteGet = true;
+            QuestState.Instance.fluteGet = true;
             dialogue.SetActive(true);
+            markerDwende.SetActive(true);
+            TurnInvisible();
         }
     }
 
@@ -56,6 +67,14 @@ public class FluteChest : MonoBehaviour
         {
             isInTrigger = false;
             popUp.gameObject.SetActive(false);
+        }
+    }
+
+    public void TurnInvisible()
+    {
+        if (meshFilter != null)
+        {
+            meshFilter.mesh = null;  // Change the mesh to model1
         }
     }
 }

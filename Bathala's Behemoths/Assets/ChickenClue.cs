@@ -13,7 +13,6 @@ public enum ChickenState
 
 public class ChickenClue : MonoBehaviour
 {
-    public PlayerStats playerStats;
     public TextMeshProUGUI popUp;
     public GameObject dialogue;
     public GameObject marker;
@@ -64,7 +63,7 @@ public class ChickenClue : MonoBehaviour
         // Check for the key press only when inside the trigger
         if (context.performed && isInTrigger)
         {
-            playerStats.clue4 = true;
+            PlayerStats.Instance.clue4 = true;
             dialogue.SetActive(true);
             marker.SetActive(false);
         }

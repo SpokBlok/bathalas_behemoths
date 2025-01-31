@@ -30,6 +30,7 @@ public class TheMoonDialogue : MonoBehaviour
     {
         if(QuestState.Instance.moonNPCRepeat && QuestState.Instance.moonChunkGet)
         {
+            QuestState.Instance.moonQuestEnded = true;
             currentLines = linesRepeat;
         }
         else if(QuestState.Instance.moonNPCRepeat)

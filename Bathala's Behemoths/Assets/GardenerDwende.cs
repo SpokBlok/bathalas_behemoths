@@ -9,6 +9,7 @@ public class GardenerDwende : MonoBehaviour
     public PlayerStats playerStats;
     public TextMeshProUGUI popUp;
     public GameObject dialogue;
+    public GameObject marker;
     
     private bool isInTrigger;
 
@@ -16,6 +17,11 @@ public class GardenerDwende : MonoBehaviour
     void Start()
     {
         isInTrigger = false;
+
+        if(QuestState.Instance.gardenerRepeat)
+        {
+            marker.SetActive(false);
+        }
     }
 
     // Update is called once per frame
@@ -30,6 +36,7 @@ public class GardenerDwende : MonoBehaviour
         if (context.performed && isInTrigger)
         {
             dialogue.SetActive(true);
+            marker.SetActive(false);
         }
     }
 

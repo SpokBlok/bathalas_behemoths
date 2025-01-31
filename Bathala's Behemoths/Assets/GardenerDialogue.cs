@@ -3,19 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-public class LSSDwendeDialogue : MonoBehaviour
+public class GardenerDialogue : MonoBehaviour
 {
     public TextMeshProUGUI textComponent;
     public string[] lines;
     public string[] linesRepeat;
-    public string[] linesRepeat2;
     public string[] currentLines;
     public float textInterval;
     public GameObject pointer;
-    public GameObject clueImage;
-    public GameObject LSSDwende;
 
-    private bool imageActive = false;
+    private bool pointerActive = false;
     Vector3 currentPosition;
     private int index;
 
@@ -23,19 +20,15 @@ public class LSSDwendeDialogue : MonoBehaviour
     void Start()
     {
         index = 0;
+        QuestState.Instance.gardenerRepeat = false;
         currentPosition = gameObject.transform.localPosition;
     }
 
     void OnEnable()
     {
-        if(QuestState.Instance.lssDwendeRepeat && QuestState.Instance.fluteGet)
+        if(QuestState.Instance.gardenerRepeat)
         {
-            QuestState.Instance.lssDwendeRan = true;
             currentLines = linesRepeat;
-        }
-        else if(QuestState.Instance.lssDwendeRepeat)
-        {
-            currentLines = linesRepeat2;
         }
         else
         {
@@ -85,35 +78,21 @@ public class LSSDwendeDialogue : MonoBehaviour
             textComponent.text = string.Empty;
             StartCoroutine(TypeLine());
         }
-        else if(imageActive == true)
+        else if(pointerActive == true)
         {
             gameObject.transform.localPosition = currentPosition;
             gameObject.SetActive(false);
-            clueImage.SetActive(false);
             pointer.SetActive(false);
-            imageActive = false;
-
-            if(QuestState.Instance.lssDwendeRepeat && QuestState.Instance.fluteGet)
-            {
-                LSSDwende.SetActive(false);
-            }
+            pointerActive = false;
             
             Debug.Log("inside end state");
         }
         else
         {
             gameObject.transform.localPosition = new Vector3 (1000, 1000);
-            if(QuestState.Instance.lssDwendeRepeat && QuestState.Instance.fluteGet)
-            {
-                PlayerStats.Instance.clue6 = true;
-                clueImage.SetActive(true);
-            }
-            else
-            {
-                pointer.SetActive(true);
-            }
-            imageActive = true;
-            QuestState.Instance.lssDwendeRepeat = true;
+            pointer.SetActive(true);
+            pointerActive = true;
+            QuestState.Instance.gardenerRepeat = true;
         }
     }
 }

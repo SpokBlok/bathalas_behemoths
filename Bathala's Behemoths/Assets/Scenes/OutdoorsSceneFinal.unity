@@ -1358,6 +1358,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: FluteChestMarker
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: c3b4e91ec3973124b8f57d9243afaeef,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
@@ -1415,12 +1420,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cbf2b00930ec931418a7c0bf1ddccd75, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerStats: {fileID: 444356923}
   popUp: {fileID: 1373226714}
   dialogue: {fileID: 1833533615}
   closedChest: {fileID: 1539110806}
   openChest: {fileID: 12497701}
-  dwendeDialogue: {fileID: 1506570689}
+  markerDwende: {fileID: 1947481355}
 --- !u!65 &64435247
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3802,13 +3806,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2a5d89175c5ddb4aaeff7eadbf7b308, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerStats: {fileID: 444356923}
   popUp: {fileID: 1201869603}
   dialogue: {fileID: 58433986}
   marker: {fileID: 675459080}
   player: {fileID: 1502249270}
   chickenState: 0
-  speed: 110
+  speed: 150
 --- !u!65 &187310017
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5428,7 +5431,7 @@ GameObject:
   - component: {fileID: 274606197}
   - component: {fileID: 274606200}
   - component: {fileID: 274606199}
-  - component: {fileID: 274606198}
+  - component: {fileID: 274606201}
   m_Layer: 5
   m_Name: DialogueBox
   m_TagString: Untagged
@@ -5456,38 +5459,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: -325}
   m_SizeDelta: {x: -400, y: -750}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &274606198
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 274606196}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 94af4cb054f807545b87f388137e60a3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  textComponent: {fileID: 1123508261}
-  lines:
-  - 'Steve: This must be the chest with the powedered scales.'
-  - 'Manny: If that poor farmer used this as fertilizer and his field looks even
-    worse than the old farmer''s field...'
-  - 'Steve: Yeah... I think this might be from the same creature that POISONED that
-    poor chicken.'
-  - 'Manny: But why would the farmer think his field was lush and green when it''s
-    so... dead?'
-  - 'Steve: Since the old farmer also had the same things to say about this field,
-    I think it''s safe to say that there''s some sort of POWER making them HALLUCINATE
-    about the state of this field.'
-  - 'Manny: Is that right? We have to steer clear of whoever these scales belong
-    to...'
-  - 'Steve: Yeah, at least until we can learn more about it.'
-  linesRepeat:
-  - 'Manny: We already have the powdered scales. We should keep investigating elsewhere.'
-  currentLines: []
-  textInterval: 0.03
-  pointer: {fileID: 875123617}
 --- !u!114 &274606199
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5526,6 +5497,38 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 274606196}
   m_CullTransparentMesh: 1
+--- !u!114 &274606201
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 274606196}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 481f3e1823996ce4289b8e5be20bc345, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textComponent: {fileID: 1123508261}
+  lines:
+  - 'Steve: This must be the chest with the powedered scales.'
+  - 'Manny: If that poor farmer used this as fertilizer and his field looks even
+    worse than the old farmer''s field...'
+  - 'Steve: Yeah... I think this might be from the same creature that POISONED that
+    poor chicken.'
+  - 'Manny: But why would the farmer think his field was lush and green when it''s
+    so... dead?'
+  - 'Steve: Since the old farmer also had the same things to say about this field,
+    I think it''s safe to say that there''s some sort of POWER making them HALLUCINATE
+    about the state of this field.'
+  - 'Manny: Is that right? We have to steer clear of whoever these scales belong
+    to...'
+  - 'Steve: Yeah, at least until we can learn more about it.'
+  linesRepeat:
+  - 'Manny: We already have the powdered scales. We should keep investigating elsewhere.'
+  currentLines: []
+  textInterval: 0.03
+  pointer: {fileID: 875123617}
 --- !u!1001 &276016554
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7793,6 +7796,125 @@ RectTransform:
   m_AnchoredPosition: {x: -963.1407, y: -424.36008}
   m_SizeDelta: {x: 20, y: 5}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &410913892
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 410913897}
+  - component: {fileID: 410913896}
+  - component: {fileID: 410913895}
+  - component: {fileID: 410913894}
+  - component: {fileID: 410913893}
+  m_Layer: 0
+  m_Name: MarkyBlocker
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &410913893
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 410913892}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56de3b15c28d13a4c8ed4d7e71af02fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  markyDoor: {fileID: 1806381230}
+--- !u!65 &410913894
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 410913892}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 3.7216144, y: 1, z: 1}
+  m_Center: {x: -1.1261107, y: 0, z: 0.0000000024539912}
+--- !u!23 &410913895
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 410913892}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 257
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 73c176f402d2c2f4d929aa5da7585d17, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!33 &410913896
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 410913892}
+  m_Mesh: {fileID: 0}
+--- !u!4 &410913897
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 410913892}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.74494606, y: -0, z: -0.6671247, w: 0}
+  m_LocalPosition: {x: 1277.5742, y: 120.9, z: 238.20885}
+  m_LocalScale: {x: 78.66, y: 134.9, z: 20}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 180, y: 83.691, z: 0}
 --- !u!1 &412634796
 GameObject:
   m_ObjectHideFlags: 0
@@ -10930,16 +11052,16 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 574647081}
-  m_LocalRotation: {x: 0.011514072, y: -0.033161934, z: 0.0012338314, w: 0.9993829}
-  m_LocalPosition: {x: 0, y: 0, z: 450.09998}
+  m_LocalRotation: {x: 0.011579764, y: -0.13324957, z: 0.00007255196, w: 0.99101484}
+  m_LocalPosition: {x: 0, y: 0, z: 449.6}
   m_LocalScale: {x: 1, y: 2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 75128421}
-  m_LocalEulerAnglesHint: {x: 1.323, y: -3.8, z: 0.098}
+  m_LocalEulerAnglesHint: {x: 1.316, y: -15.318, z: -0.169}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -632.6, y: -470.7}
+  m_AnchoredPosition: {x: -634.6, y: -470.7}
   m_SizeDelta: {x: 20, y: 5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &574647083
@@ -11041,6 +11163,12 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 574647081}
   m_CullTransparentMesh: 1
+--- !u!1 &580640990 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: c3b4e91ec3973124b8f57d9243afaeef,
+    type: 3}
+  m_PrefabInstance: {fileID: 1181152211}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &584149325
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11437,7 +11565,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &628701390
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11452,8 +11580,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerStats: {fileID: 444356923}
   dialogue: {fileID: 1096248193}
-  doneSighting: 0
-  fluteQuestTrigger: 0
 --- !u!65 &628701392
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -12623,7 +12749,7 @@ GameObject:
   - component: {fileID: 693716399}
   - component: {fileID: 693716398}
   m_Layer: 0
-  m_Name: Scene Transition Base
+  m_Name: SceneTransitionBase
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -13305,7 +13431,7 @@ GameObject:
   - component: {fileID: 722915650}
   - component: {fileID: 722915653}
   - component: {fileID: 722915652}
-  - component: {fileID: 722915651}
+  - component: {fileID: 722915654}
   m_Layer: 5
   m_Name: DialogueBox
   m_TagString: Untagged
@@ -13333,7 +13459,7 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: -325}
   m_SizeDelta: {x: -400, y: -750}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &722915651
+--- !u!114 &722915652
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -13342,7 +13468,45 @@ MonoBehaviour:
   m_GameObject: {fileID: 722915649}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3600d32b78e58994fbe6b85b2cbb79b0, type: 3}
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
+  m_Type: 1
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &722915653
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 722915649}
+  m_CullTransparentMesh: 1
+--- !u!114 &722915654
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 722915649}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b45f09b7e9457344a81875d636b368e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   textComponent: {fileID: 1116795190}
@@ -13383,44 +13547,6 @@ MonoBehaviour:
   currentLines: []
   textInterval: 0.03
   pointer: {fileID: 1202008635}
---- !u!114 &722915652
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 722915649}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
-  m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
---- !u!222 &722915653
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 722915649}
-  m_CullTransparentMesh: 1
 --- !u!1001 &725575668
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -16577,6 +16703,7 @@ MonoBehaviour:
   playerStats: {fileID: 444356923}
   popUp: {fileID: 117637222}
   dialogue: {fileID: 1456450249}
+  marker: {fileID: 2033264313}
 --- !u!65 &920963914
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -19138,7 +19265,6 @@ MonoBehaviour:
   - 'Manny: Looks like we''ve got company. Brace yourself!'
   textInterval: 0.03
   pointer: {fileID: 1553160238}
-  sighting: {fileID: 628701390}
 --- !u!1 &1100152163
 GameObject:
   m_ObjectHideFlags: 0
@@ -21242,11 +21368,23 @@ MonoBehaviour:
   moonNPCRepeat: 0
   moonBraceletRepeat: 0
   chickenRepeat: 0
+  lssDwendeRepeat: 0
+  fluteChestRepeat: 0
+  vetFarmerRepeat: 0
+  gardenerRepeat: 0
+  fertilizerRepeat: 0
   desponDwendeSightTrigger: 0
   chickenSightTrigger: 0
   moonChunkGet: 0
+  moonQuestEnded: 0
   moonQuestTrigger: 0
   moonSightingTrigger: 0
+  fluteQuestTrigger: 0
+  fluteGet: 0
+  lssDwendeRan: 0
+  fluteSightTrigger: 0
+  tambanokanoFound: 0
+  markupoFound: 0
 --- !u!4 &1175600767
 Transform:
   m_ObjectHideFlags: 0
@@ -24053,9 +24191,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3000f40d56e3d8429bfbbbb0d2a38be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerStats: {fileID: 0}
-  popUp: {fileID: 0}
-  dialogue: {fileID: 0}
+  playerStats: {fileID: 444356923}
+  popUp: {fileID: 1945171913}
+  dialogue: {fileID: 722915649}
+  marker: {fileID: 580640990}
 --- !u!65 &1344627118
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -25928,7 +26067,7 @@ GameObject:
   - component: {fileID: 1456450250}
   - component: {fileID: 1456450253}
   - component: {fileID: 1456450252}
-  - component: {fileID: 1456450251}
+  - component: {fileID: 1456450254}
   m_Layer: 5
   m_Name: DialogueBox
   m_TagString: Untagged
@@ -25956,48 +26095,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: -325}
   m_SizeDelta: {x: -400, y: -750}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1456450251
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1456450249}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3600d32b78e58994fbe6b85b2cbb79b0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  textComponent: {fileID: 216625541}
-  lines:
-  - 'Old Dwende Farmer: *Mumble mumble* ... stupid... *grumble grumble*'
-  - 'Steve: Hey, old timer! What''s got you down in the dumps?'
-  - 'Manny: Look around, Steve, his crops aren''t growing...'
-  - 'Old Dwende Farmer: You got that right! This land just isn''t fertile enough
-    for growing crops all season long!! If I don''t try to grow crops all season,
-    I''ll go broke!'
-  - 'Old Dwende Farmer: That young whippersnapper down the road has it good. His
-    crops are growing like daisies. I just KNOW he''s using some sort of trick to
-    get his crops to flourish.'
-  - 'Old Dwende Farmer: You know what? Now that you''re here, why don''t you do this
-    old dwende a favor and do a little corporate espionage for me? Whadd''ya say?
-    All you have to do is find out what that young''n''s secret is. His farm''s just
-    down this road; you can''t miss it!'
-  - 'Steve: *Looks at Manny*'
-  - 'Manny: *Looks at Steve*'
-  - 'Steve: Uh, sure. If it helps keep your farm afloat.'
-  - 'Manny: I''m sure the young farmer will want to help! Bayanihan, and all that.'
-  - 'Old Dwende Farmer: He better! I''ve been smelling something in the air ever
-    since he came down from the mountain a couple of weeks ago!!'
-  - 'Steve: Huh. That''s... weird. We''ll go check it out!'
-  linesRepeat:
-  - 'Old Dwende Farmer: I swear... that whippersnapper''s doing something weird with
-    his crops. I can''t even get mine to grow!!'
-  - 'Old Dwende Farmer: You''re still here?! Go! Get me that rascal''s secrets so
-    I can get my farm back in order!'
-  currentLines: []
-  textInterval: 0.03
-  pointer: {fileID: 1666725356}
 --- !u!114 &1456450252
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -26036,6 +26133,48 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1456450249}
   m_CullTransparentMesh: 1
+--- !u!114 &1456450254
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1456450249}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd95f25ef12578c48a1b9c57771dc093, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textComponent: {fileID: 216625541}
+  lines:
+  - 'Old Dwende Farmer: *Mumble mumble* ... stupid... *grumble grumble*'
+  - 'Steve: Hey, old timer! What''s got you down in the dumps?'
+  - 'Manny: Look around, Steve, his crops aren''t growing...'
+  - 'Old Dwende Farmer: You got that right! This land just isn''t fertile enough
+    for growing crops all season long!! If I don''t try to grow crops all season,
+    I''ll go broke!'
+  - 'Old Dwende Farmer: That young whippersnapper down the road has it good. His
+    crops are growing like daisies. I just KNOW he''s using some sort of trick to
+    get his crops to flourish.'
+  - 'Old Dwende Farmer: You know what? Now that you''re here, why don''t you do this
+    old dwende a favor and do a little corporate espionage for me? Whadd''ya say?
+    All you have to do is find out what that young''n''s secret is. His farm''s just
+    down this road; you can''t miss it!'
+  - 'Steve: *Looks at Manny*'
+  - 'Manny: *Looks at Steve*'
+  - 'Steve: Uh, sure. If it helps keep your farm afloat.'
+  - 'Manny: I''m sure the young farmer will want to help! Bayanihan, and all that.'
+  - 'Old Dwende Farmer: He better! I''ve been smelling something in the air ever
+    since he came down from the mountain a couple of weeks ago!!'
+  - 'Steve: Huh. That''s... weird. We''ll go check it out!'
+  linesRepeat:
+  - 'Old Dwende Farmer: I swear... that whippersnapper''s doing something weird with
+    his crops. I can''t even get mine to grow!!'
+  - 'Old Dwende Farmer: You''re still here?! Go! Get me that rascal''s secrets so
+    I can get my farm back in order!'
+  currentLines: []
+  textInterval: 0.03
+  pointer: {fileID: 1666725356}
 --- !u!1 &1476128500 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 374135652254128284, guid: 8bba764eaf2bcfd4ab20c08dffe2de95,
@@ -26436,7 +26575,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80b82827bca367d4aaf1869e90e64b72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerStats: {fileID: 444356923}
   textComponent: {fileID: 563346662}
   lines:
   - '*Happy Dwende humming an infectious tune*'
@@ -26476,7 +26614,7 @@ MonoBehaviour:
   - 'Steve: Huh, funny. I was just thinking the same thing.'
   - 'Steve: I''m sorry, we can''t give you the flute.'
   - 'Manny: Hey, if it helps - we can remember the tune alongside you.'
-  - 'Happy Dwende: NOOOOOOOO! You''ll pay for this!!'
+  - 'Angry Dwende: NOOOOOOOO! You''ll pay for this!!'
   - '*The now-Angry Dwende scurries away while throwing a fit*'
   linesRepeat2:
   - 'Happy Dwende: If I can get that flute, I might even make a hit song! I have
@@ -26487,8 +26625,6 @@ MonoBehaviour:
   pointer: {fileID: 1969180324}
   clueImage: {fileID: 83707107}
   LSSDwende: {fileID: 144975417}
-  dialogueRepeat: 0
-  fluteGet: 0
 --- !u!114 &1506570690
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -28247,7 +28383,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1625721854
 Transform:
   m_ObjectHideFlags: 0
@@ -28695,26 +28831,14 @@ GameObject:
   - component: {fileID: 1656395416}
   - component: {fileID: 1656395415}
   - component: {fileID: 1656395414}
-  - component: {fileID: 1656395413}
+  - component: {fileID: 1656395418}
   m_Layer: 0
-  m_Name: Scene Transition Bossfight
+  m_Name: SceneTransitionTammy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1656395413
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1656395412}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9064881498680404c83305fe0d8c28f4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!65 &1656395414
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -28795,12 +28919,24 @@ Transform:
   m_GameObject: {fileID: 1656395412}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0.9998468, z: -0, w: 0.017506344}
-  m_LocalPosition: {x: 717, y: 74.582, z: 1374.6}
+  m_LocalPosition: {x: 719.6, y: 74.582, z: 1447.6}
   m_LocalScale: {x: 296.5, y: 163, z: 20}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: -177.994, z: 0}
+--- !u!114 &1656395418
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1656395412}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 064f77e8085c9c54bb384aed74cc5073, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1658235025
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -31941,6 +32077,8 @@ MonoBehaviour:
   moonNPC: {fileID: 482477777}
   moonMarkerMesh: {fileID: 3313670672648098118, guid: c3b4e91ec3973124b8f57d9243afaeef,
     type: 3}
+  moonQuestMesh: {fileID: -3262163786380381542, guid: e1aaa277c3bda4d42abd5ccd4fd6fce1,
+    type: 3}
 --- !u!65 &1799148081
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -31962,6 +32100,125 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 19, y: 34.8, z: 22.7}
   m_Center: {x: 0.000030517578, y: 0.011353552, z: 0}
+--- !u!1 &1804893066
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1804893071}
+  - component: {fileID: 1804893070}
+  - component: {fileID: 1804893069}
+  - component: {fileID: 1804893068}
+  - component: {fileID: 1804893067}
+  m_Layer: 0
+  m_Name: TammyBlocker
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1804893067
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1804893066}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a425932b38c7d94d83720114c5ea479, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tammyDoor: {fileID: 1656395412}
+--- !u!65 &1804893068
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1804893066}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1.0000002, y: 1, z: 1.4491545}
+  m_Center: {x: -0.000030250441, y: -0.0000018920899, z: 0.2245318}
+--- !u!23 &1804893069
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1804893066}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 257
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 73c176f402d2c2f4d929aa5da7585d17, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!33 &1804893070
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1804893066}
+  m_Mesh: {fileID: 0}
+--- !u!4 &1804893071
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1804893066}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0.9998468, z: -0, w: 0.017506344}
+  m_LocalPosition: {x: 717.5, y: 74.582, z: 1386.8}
+  m_LocalScale: {x: 296.50012, y: 163, z: 20}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -177.994, z: 0}
 --- !u!1 &1804980716
 GameObject:
   m_ObjectHideFlags: 0
@@ -32064,6 +32321,124 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!1 &1806381230
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1806381235}
+  - component: {fileID: 1806381234}
+  - component: {fileID: 1806381233}
+  - component: {fileID: 1806381232}
+  - component: {fileID: 1806381231}
+  m_Layer: 0
+  m_Name: SceneTransitionMarkupo
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1806381231
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1806381230}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9064881498680404c83305fe0d8c28f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!65 &1806381232
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1806381230}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 3.7216144, y: 1, z: 1}
+  m_Center: {x: -1.1261107, y: 0, z: 0.0000000024539912}
+--- !u!23 &1806381233
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1806381230}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 257
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 73c176f402d2c2f4d929aa5da7585d17, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!33 &1806381234
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1806381230}
+  m_Mesh: {fileID: 0}
+--- !u!4 &1806381235
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1806381230}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.74494606, y: -0, z: -0.6671247, w: 0}
+  m_LocalPosition: {x: 1339, y: 120.9, z: 245}
+  m_LocalScale: {x: 78.66, y: 134.9, z: 20}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 180, y: 83.691, z: 0}
 --- !u!1001 &1809489656
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -32090,17 +32465,17 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: bd49b90bec685f44b8ac83d6e875df8c,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 612.4601
+      value: 592.6
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: bd49b90bec685f44b8ac83d6e875df8c,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 71.9247
+      value: 67.3
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: bd49b90bec685f44b8ac83d6e875df8c,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 939.56635
+      value: 943.7
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: bd49b90bec685f44b8ac83d6e875df8c,
         type: 3}
@@ -32206,7 +32581,9 @@ MonoBehaviour:
   playerStats: {fileID: 444356923}
   popUp: {fileID: 1239243403}
   dialogue: {fileID: 1506570688}
-  sighting: {fileID: 628701390}
+  fluteSighting: {fileID: 628701389}
+  fluteChest: {fileID: 64435244}
+  marker: {fileID: 1947481355}
 --- !u!65 &1809489659
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -32435,7 +32812,7 @@ GameObject:
   - component: {fileID: 1833533619}
   - component: {fileID: 1833533618}
   - component: {fileID: 1833533617}
-  - component: {fileID: 1833533616}
+  - component: {fileID: 1833533620}
   m_Layer: 5
   m_Name: DialogueBox
   m_TagString: Untagged
@@ -32443,28 +32820,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 0
---- !u!114 &1833533616
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1833533615}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 94af4cb054f807545b87f388137e60a3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  textComponent: {fileID: 507999892}
-  lines:
-  - 'Steve: This chest looks like it holds something valuable, right Manny?'
-  - 'Manny: Let''s open it!!'
-  - 'Steve: Right on the money, it''s the flute!'
-  linesRepeat:
-  - 'Manny: We should take this back to the Happy Dwende near the forest''s entrance.'
-  currentLines: []
-  textInterval: 0.03
-  pointer: {fileID: 1753076356}
 --- !u!114 &1833533617
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -32523,6 +32878,28 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: -325}
   m_SizeDelta: {x: -400, y: -750}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1833533620
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1833533615}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c0b0e0b455a2234db25383483f7b320, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textComponent: {fileID: 507999892}
+  lines:
+  - 'Steve: This chest looks like it holds something valuable, right Manny?'
+  - 'Manny: Let''s open it!!'
+  - 'Steve: Right on the money, it''s the flute!'
+  linesRepeat:
+  - 'Manny: We should take this back to the Happy Dwende near the forest''s entrance.'
+  currentLines: []
+  textInterval: 0.03
+  pointer: {fileID: 1753076356}
 --- !u!1 &1835902762
 GameObject:
   m_ObjectHideFlags: 0
@@ -35186,6 +35563,12 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1947481353}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1947481355 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: c3b4e91ec3973124b8f57d9243afaeef,
+    type: 3}
+  m_PrefabInstance: {fileID: 1947481353}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1949742210
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -37463,6 +37846,12 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -4458943891332809404, guid: a447a4862bfecf9b48155669d7db9f02, type: 3}
+--- !u!1 &2033264313 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: e1aaa277c3bda4d42abd5ccd4fd6fce1,
+    type: 3}
+  m_PrefabInstance: {fileID: 1545569890}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2051554349
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -38675,8 +39064,11 @@ SceneRoots:
   - {fileID: 1193454386}
   - {fileID: 1893185569}
   - {fileID: 693716402}
+  - {fileID: 1806381235}
+  - {fileID: 410913897}
   - {fileID: 804165002}
   - {fileID: 1656395417}
+  - {fileID: 1804893071}
   - {fileID: 1438952442}
   - {fileID: 1131532956}
   - {fileID: 529652902}

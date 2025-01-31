@@ -15,12 +15,15 @@ public class TheMoonNPC : MonoBehaviour
     
     private MeshFilter meshFilter;
     public Mesh moonMarkerMesh;
+    public Mesh moonQuestMesh;
+    
     private bool isInTrigger;
 
     // Start is called before the first frame update
     void Start()
     {
         meshFilter = GetComponent<MeshFilter>();
+        meshFilter.mesh = moonQuestMesh;
 
         isInTrigger = false;
         if(QuestState.Instance.moonNPCRepeat)
@@ -35,7 +38,7 @@ public class TheMoonNPC : MonoBehaviour
                 moonBracelet.SetActive(true);
                 TurnInvisible();
             }
-            else if(QuestState.Instance.moonChunkGet)
+            else if(QuestState.Instance.moonQuestEnded == false && QuestState.Instance.moonChunkGet)
             {
                 moonBracelet.SetActive(false);
                 moonNPC.SetActive(false);

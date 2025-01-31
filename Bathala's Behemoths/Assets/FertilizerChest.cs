@@ -12,12 +12,22 @@ public class FertilizerChest : MonoBehaviour
     public GameObject closedChest;
     public GameObject openChest;
     
+    private MeshFilter meshFilter;
     private bool isInTrigger;
 
     // Start is called before the first frame update
     void Start()
     {
+        meshFilter = GetComponent<MeshFilter>();
+
         isInTrigger = false;
+
+        if(QuestState.Instance.fertilizerRepeat == true)
+        {
+            closedChest.SetActive(false);
+            openChest.SetActive(true);
+            TurnInvisible();
+        }
     }
 
     // Update is called once per frame
@@ -31,9 +41,12 @@ public class FertilizerChest : MonoBehaviour
         // Check for the key press only when inside the trigger
         if (context.performed && isInTrigger)
         {
+            PlayerStats.Instance.clue5 = true;
+
             closedChest.SetActive(false);
             openChest.SetActive(true);
             dialogue.SetActive(true);
+            TurnInvisible();
         }
     }
 
@@ -54,6 +67,14 @@ public class FertilizerChest : MonoBehaviour
         {
             isInTrigger = false;
             popUp.gameObject.SetActive(false);
+        }
+    }
+
+    public void TurnInvisible()
+    {
+        if (meshFilter != null)
+        {
+            meshFilter.mesh = null;  // Change the mesh to model1
         }
     }
 }

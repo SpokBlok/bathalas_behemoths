@@ -9,6 +9,7 @@ public class VetDwende : MonoBehaviour
     public PlayerStats playerStats;
     public TextMeshProUGUI popUp;
     public GameObject dialogue;
+    public GameObject marker;
     
     private bool isInTrigger;
 
@@ -16,6 +17,11 @@ public class VetDwende : MonoBehaviour
     void Start()
     {
         isInTrigger = false;
+
+        if(QuestState.Instance.vetFarmerRepeat == true)
+        {
+            marker.SetActive(false);
+        }
     }
 
     // Update is called once per frame
@@ -30,6 +36,8 @@ public class VetDwende : MonoBehaviour
         if (context.performed && isInTrigger)
         {
             dialogue.SetActive(true);
+            marker.SetActive(false);
+            QuestState.Instance.vetFarmerRepeat = true;
         }
     }
 

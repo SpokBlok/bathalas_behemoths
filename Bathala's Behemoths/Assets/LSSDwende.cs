@@ -9,7 +9,9 @@ public class LSSDwende : MonoBehaviour
     public PlayerStats playerStats;
     public TextMeshProUGUI popUp;
     public GameObject dialogue;
-    public FluteSightTrigger sighting;
+    public GameObject fluteSighting;
+    public GameObject fluteChest;
+    public GameObject marker;
     
     private bool isInTrigger;
 
@@ -17,6 +19,22 @@ public class LSSDwende : MonoBehaviour
     void Start()
     {
         isInTrigger = false;
+
+        if(QuestState.Instance.lssDwendeRan == true)
+        {
+            gameObject.SetActive(false);
+        }
+
+        if(QuestState.Instance.lssDwendeRepeat && QuestState.Instance.fluteGet)
+        {
+            marker.SetActive(true);
+        }
+        else if(QuestState.Instance.lssDwendeRepeat && QuestState.Instance.fluteGet == false)
+        {
+            marker.SetActive(false);
+            fluteChest.SetActive(true);
+            fluteSighting.SetActive(true);
+        }
     }
 
     // Update is called once per frame
@@ -30,7 +48,10 @@ public class LSSDwende : MonoBehaviour
         // Check for the key press only when inside the trigger
         if (context.performed && isInTrigger)
         {
-            sighting.fluteQuestTrigger = true;
+            fluteSighting.SetActive(true);
+            marker.SetActive(false);
+            QuestState.Instance.fluteQuestTrigger = true;
+            fluteChest.SetActive(true);
             dialogue.SetActive(true);
         }
     }

@@ -32,7 +32,7 @@ public class Tambanokano : EnemyMob
     void Start()
     {
         player = GameObject.FindWithTag("Player");
-        health = 5000f;
+        health = 50f;
 
         isLightingStriking = false;
         stunned = false;
@@ -41,11 +41,6 @@ public class Tambanokano : EnemyMob
     // Update is called once per frame
     void Update()
     {
-        if(isAlive == false)
-        {
-            StopAllCoroutines();
-            endDialogue.SetActive(true);
-        }
         if (randomAttackCoroutine == null && !isUlting && !stunned)
         {
             foreach (Transform child in transform)
@@ -112,6 +107,12 @@ public class Tambanokano : EnemyMob
         {
             //trigger winning cutscene
             isAlive = false;
+            
+            if(isAlive == false)
+            {
+                StopAllCoroutines();
+                endDialogue.SetActive(true);
+            }
         }
     }
 

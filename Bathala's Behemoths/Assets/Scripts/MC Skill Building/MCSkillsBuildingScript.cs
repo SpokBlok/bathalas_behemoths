@@ -33,6 +33,7 @@ public class MCSkillsBuildingScript : MonoBehaviour
 
     public void OnInteract(InputAction.CallbackContext context)
     {
+        UpdateCanvas();
         // Check for the key press only when inside the trigger
         if (context.performed && isInTrigger && !isPanelUp)
         {

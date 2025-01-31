@@ -8,6 +8,18 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Untitled.unity
     guid: 8124e5870f4fd4c779e7a5f994e84ad1
+  - enabled: 1
+    path: Assets/Scenes/OutdoorsSceneFinal.unity
+    guid: 785636f98c2c31348807ab8d88423963
+  - enabled: 1
+    path: Assets/Scenes/RuinsScene Movement.unity
+    guid: 13243d9cedd956c43b490217b56bfca8
+  - enabled: 1
+    path: Assets/Scenes/Tammy.unity
+    guid: aead202161c037e40ba5789370ce61bd
+  - enabled: 1
+    path: Assets/Scenes/Marky.unity
+    guid: 822aa90ad117bfb42a1529700d3a2b2a
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: f612e8e80fb42e84bacb7788ff9f2c98,
       type: 3}

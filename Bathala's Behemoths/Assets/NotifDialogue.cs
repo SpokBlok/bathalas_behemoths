@@ -3,19 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-public class TheMoonDialogue : MonoBehaviour
+public class NotifDialogue : MonoBehaviour
 {
-    public PlayerStats playerStats;
     public TextMeshProUGUI textComponent;
     public string[] lines;
-    public string[] linesRepeat;
-    public string[] linesRepeat2;
-    public string[] currentLines;
     public float textInterval;
     public GameObject pointer;
-    public GameObject clueImage;
 
-    private bool imageActive = false;
+    private bool pointerActive = false;
     Vector3 currentPosition;
     private int index;
 
@@ -28,19 +23,6 @@ public class TheMoonDialogue : MonoBehaviour
 
     void OnEnable()
     {
-        if(QuestState.Instance.moonNPCRepeat && QuestState.Instance.moonChunkGet)
-        {
-            QuestState.Instance.moonQuestEnded = true;
-            currentLines = linesRepeat;
-        }
-        else if(QuestState.Instance.moonNPCRepeat)
-        {
-            currentLines = linesRepeat2;
-        }
-        else
-        {
-            currentLines = lines;
-        }
         textComponent.text = string.Empty;
         StartDialogue();
     }
@@ -50,16 +32,17 @@ public class TheMoonDialogue : MonoBehaviour
     {
         if(Input.GetMouseButtonDown(0))
         {
-            if(textComponent.text == currentLines[index])
+            if(textComponent.text == lines[index])
             {
                 NextLine();
             }
             else
             {
                 StopAllCoroutines();
-                textComponent.text = currentLines[index];
+                textComponent.text = lines[index];
             }
         }
+        Debug.Log("Index: " + index);
     }
 
     void StartDialogue()
@@ -70,7 +53,7 @@ public class TheMoonDialogue : MonoBehaviour
 
     IEnumerator TypeLine()
     {
-        foreach(char c in currentLines[index].ToCharArray())
+        foreach(char c in lines[index].ToCharArray())
         {
             textComponent.text += c;
             yield return new WaitForSeconds(textInterval);
@@ -79,37 +62,27 @@ public class TheMoonDialogue : MonoBehaviour
 
     void NextLine()
     {
-        if(index < currentLines.Length - 1)
+        if(index < lines.Length - 1)
         {
             index++;
             textComponent.text = string.Empty;
             StartCoroutine(TypeLine());
         }
-        else if(imageActive == true)
+        else if(pointerActive == true)
         {
             gameObject.transform.localPosition = currentPosition;
             gameObject.SetActive(false);
-            clueImage.SetActive(false);
             pointer.SetActive(false);
-            imageActive = false;
+            pointerActive = false;
+            index = 0;
             
             Debug.Log("inside end state");
         }
         else
         {
             gameObject.transform.localPosition = new Vector3 (1000, 1000);
-            if(QuestState.Instance.moonNPCRepeat && QuestState.Instance.moonChunkGet)
-            {
-                PlayerStats.Instance.clue3 = true;
-                clueImage.SetActive(true);
-            }
-            else
-            {
-                pointer.SetActive(true);
-            }
-            imageActive = true;
-            QuestState.Instance.moonNPCRepeat = true;
-            QuestState.Instance.moonQuestTrigger = true;
+            pointer.SetActive(true);
+            pointerActive = true;
         }
     }
 }

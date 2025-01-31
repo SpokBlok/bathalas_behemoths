@@ -1030,7 +1030,6 @@ GameObject:
   - component: {fileID: 532134476}
   - component: {fileID: 532134480}
   - component: {fileID: 532134479}
-  - component: {fileID: 532134478}
   - component: {fileID: 532134477}
   m_Layer: 5
   m_Name: DialogueBox
@@ -1077,43 +1076,6 @@ MonoBehaviour:
   - You gift the massive crustacean with one big blow to the head
   - The Tambanokano is knocked unconscious, and you tame the beast with the help
     of Bathala and Manny.
-  textInterval: 0.03
-  pointer: {fileID: 1495265774}
---- !u!114 &532134478
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 532134475}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 058429c6fad779a4c911c2b99a2d72ca, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  textComponent: {fileID: 1753624969}
-  lines:
-  - 'Frightened Dwende: AAAAHH!!'
-  - 'Steve & Manny: AAAAAHH!!'
-  - "Frightened Dwende: Geez! You can\u2019t be sneaking up behind people like that!
-    I\u2019ve had enough spooks for one day\u2026"
-  - "Steve: \"Spooks? What\u2019s got you so scared that you\u2019re hiding out here?\" "
-  - "Frightened Dwende: Well, I was sleeping beside a tree and just woke up, but
-    as soon as I got up, the tree instantly got struck by lightning! Someone\u2019s
-    out to get me, I\u2019m sure of it! "
-  - 'Steve: Huh, where did the lightning even come from? '
-  - 'Frightened Dwende: You tell me! I just saw these two HUGE rocks that looked
-    like... eyes? They were shaking a bunch - almost as if they were BLINKING and
-    then BAM! LIGHTNING! Oh gods, what if the whole forest is after me?'
-  - 'Steve: Would you mind pointing me over to where this struck tree is?'
-  - 'Frightened Dwende: See that tree to the SOUTH? That was my favorite nap spot,
-    and now it''s gone... *sobs*'
-  linesRepeat:
-  - 'Steve: Where did you say the lightning struck again?'
-  - 'Frightened Dwende: Just over there, to the SOUTH. You can''t miss it!'
-  - 'Frightened Dwende: My favorite nap spot... those BLINKING rocks ruined my nap
-    spot... *sobs*'
-  currentLines: []
   textInterval: 0.03
   pointer: {fileID: 1495265774}
 --- !u!114 &532134479
@@ -2573,9 +2535,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 94649c5e0385aa34b980e696d56acf30, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cooldown: 0
-  maxCharges: 0
-  oneTimeUseAvailable: 0
 --- !u!1001 &1436138631
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2935,7 +2894,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -0, y: 0}
-  m_SizeDelta: {x: 170, y: 100}
+  m_SizeDelta: {x: 200, y: 130}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1495265776
 MonoBehaviour:
@@ -3777,7 +3736,7 @@ MonoBehaviour:
     type: 3}
   massiveAOEPrefab: {fileID: 5264218506392493291, guid: 6b48735cd54a48e4a9e06cb6bbc8f919,
     type: 3}
-  health: 0
+  health: 10
   attacksPassed: 0
   duration: 0
 --- !u!65 &1871873205

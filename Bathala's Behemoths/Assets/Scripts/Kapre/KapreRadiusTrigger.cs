@@ -20,9 +20,12 @@ public class KapreRadiusTrigger : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (GetComponentInParent<KapreMob>().kapreState != KapreState.Stunned)
+        if (other.CompareTag("Player"))
         {
-            GetComponentInParent<KapreMob>().ChangeState(KapreState.Moving);
+            if (GetComponentInParent<KapreMob>().kapreState != KapreState.Stunned)
+            {
+                GetComponentInParent<KapreMob>().ChangeState(KapreState.Moving);
+            }
         }
     }
 

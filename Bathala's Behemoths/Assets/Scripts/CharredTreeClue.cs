@@ -30,7 +30,7 @@ public class CharredTreeClue : MonoBehaviour
         // Check for the key press only when inside the trigger
         if (context.performed && isInTrigger)
         {
-            playerStats.clue1 = true;
+            PlayerStats.Instance.clue1 = true;
             dialogue.SetActive(true);
         }
     }

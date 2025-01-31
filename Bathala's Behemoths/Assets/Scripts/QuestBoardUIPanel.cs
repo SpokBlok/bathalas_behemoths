@@ -7,6 +7,9 @@ using UnityEngine.UI;
 
 public class QuestBoardUIPanel : MonoBehaviour
 {
+    public GameObject tammyNotif;
+    public GameObject markyNotif;
+
     private int selectedClue1Set;
     private int selectedClue2Set;
     private int selectedClue3Set;
@@ -278,12 +281,16 @@ public class QuestBoardUIPanel : MonoBehaviour
             {
                 //markupo quest unlock
                 QuestState.Instance.markupoFound = true;
+                DisablePanel();
+                markyNotif.SetActive(true);
                 Debug.Log("Markupo found");
             }
             else if (selectedClue1Set == 2)
             {
                 //tambanokano quest unlock
                 QuestState.Instance.tambanokanoFound = true;
+                DisablePanel();
+                tammyNotif.SetActive(true);
                 Debug.Log("Tammy found");
             }
         }

@@ -34,7 +34,7 @@ public class DwendeMom : MonoBehaviour
         // Check for the key press only when inside the trigger
         if (context.performed && isInTrigger)
         {
-            playerStats.clue2 = true;
+            PlayerStats.Instance.clue2 = true;
             marker.SetActive(false);
             dialogue.SetActive(true);
         }

@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Threading;
 using UnityEngine;
 
-public class TambanokanoMobSpawner : MonoBehaviour
+public class MarkupoMobSpawner : MonoBehaviour
 {
     public GameObject kaprePlayerPrefab;
-    public GameObject kapreTambanokanoPrefab;
+    public GameObject kapreMarkupoPrefab;
 
     private float timer;
     public float spawnGap;
@@ -16,13 +16,13 @@ public class TambanokanoMobSpawner : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        for (int i = 0; i < 2; i++)
+        {
+            GameObject kapre = Instantiate(kaprePlayerPrefab, new Vector3(Random.Range(200f, 300f), 30f, 160f), Quaternion.Euler(0f, 90f, 0f), transform);
+        }
         for (int i = 0; i < 5; i++)
         {
-            GameObject kapre = Instantiate(kaprePlayerPrefab, new(Random.Range(300f, 600f), 180f, 200f), Quaternion.Euler(0f, 90f, 0f), transform);
-        }
-        for (int i = 0; i < 10; i++)
-        {
-            GameObject kapre = Instantiate(kapreTambanokanoPrefab, new(Random.Range(300f, 600f), 180f, 200f), Quaternion.Euler(0f, 90f, 0f), transform);
+            GameObject kapre = Instantiate(kapreMarkupoPrefab, new Vector3(Random.Range(200f, 300f), 30f, 160f), Quaternion.Euler(0f, 90f, 0f), transform);
         }
     }
 
@@ -38,12 +38,12 @@ public class TambanokanoMobSpawner : MonoBehaviour
             timer = 0f;
             for (int i = 0; i < 1; i++)
             {
-                GameObject kapre = Instantiate(kaprePlayerPrefab, new(Random.Range(300f, 600f), 180f, 200f), Quaternion.Euler(0f, 90f, 0f));
+                GameObject kapre = Instantiate(kaprePlayerPrefab, new Vector3(Random.Range(200f, 600f), 30f, 160f), Quaternion.Euler(0f, 90f, 0f));
                 kapre.transform.parent = transform;
             }
             for (int i = 0; i < 2; i++)
             {
-                GameObject kapre = Instantiate(kapreTambanokanoPrefab, new(Random.Range(300f, 600f), 180f, 200f), Quaternion.Euler(0f, 90f, 0f));
+                GameObject kapre = Instantiate(kapreMarkupoPrefab, new Vector3(Random.Range(200f, 600f), 30f, 160f), Quaternion.Euler(0f, 90f, 0f));
                 kapre.transform.parent = transform;
             }
         }

@@ -61,12 +61,17 @@ PrefabInstance:
     - target: {fileID: 3143123256931115684, guid: 5959d18082eae3e4b8211378139457ef,
         type: 3}
       propertyPath: m_Name
-      value: Kapre Tambanokano Variant
+      value: Kapre Markupo Variant
       objectReference: {fileID: 0}
     - target: {fileID: 6080050113629792048, guid: 5959d18082eae3e4b8211378139457ef,
         type: 3}
       propertyPath: health
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 6080050113629792048, guid: 5959d18082eae3e4b8211378139457ef,
+        type: 3}
+      propertyPath: markupoMob
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6080050113629792048, guid: 5959d18082eae3e4b8211378139457ef,
         type: 3}

@@ -17,8 +17,8 @@ public class KapreMob : EnemyMob
     private CharacterController kapreControl;
     private Transform playerTransform;
     private Transform target;
-    public bool tambanokanoMob;
-    public bool tambanokanoMobPlayer;
+    public bool markupoMob;
+    public bool markupoMobPlayer;
 
     public float health;
     public bool playerInRange;
@@ -82,7 +82,7 @@ public class KapreMob : EnemyMob
         switch (kapreState)
         {
             case KapreState.Idle:
-                if (tambanokanoMob || tambanokanoMobPlayer)
+                if (markupoMob || markupoMobPlayer)
                 {
                     ChangeState(KapreState.Moving);
                 }
@@ -119,13 +119,13 @@ public class KapreMob : EnemyMob
 
     public void ChasePlayer()
     {
-        if (!tambanokanoMob)
+        if (!markupoMob)
         {
             target = playerTransform;
         } 
         else
         {
-            target = GameObject.FindGameObjectWithTag("Tambanokano").transform;
+            target = GameObject.FindGameObjectWithTag("Markupo").transform;
         }
         //Get vector from enemy to player and assign to x and z axes
         Vector3 moveDirection = (target.position - transform.position).normalized;
@@ -153,7 +153,7 @@ public class KapreMob : EnemyMob
 
     private void OnControllerColliderHit(ControllerColliderHit hit)
     {
-        if (hit.gameObject.CompareTag("Player") || hit.gameObject.CompareTag("Tambanokano"))
+        if (hit.gameObject.CompareTag("Player") || hit.gameObject.CompareTag("Markupo"))
         {
             ChangeState(KapreState.Attacking);
         }
@@ -166,7 +166,7 @@ public class KapreMob : EnemyMob
 
         BasicAttackHitboxCheck(Physics.OverlapBox(worldCenter, worldSize, basicAttackHitbox.transform.rotation));
         yield return new WaitForSeconds(1.5f);
-        if (!tambanokanoMob || !tambanokanoMobPlayer)
+        if (!markupoMob || !markupoMobPlayer)
         {
             radius.TriggerCheck();
         }
@@ -181,7 +181,7 @@ public class KapreMob : EnemyMob
             {
                 collider.GetComponent<PlayerMovement>().TakeDamage(attackDamage);
             } 
-            else if (collider.CompareTag("Tambanokano"))
+            else if (collider.CompareTag("Markupo"))
             {
                 collider.GetComponent<EnemyMob>().TakeDamage(attackDamage);
             }

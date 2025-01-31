@@ -41,6 +41,9 @@ public class PlayerStats : MonoBehaviour
     public bool clue5;
     public bool clue6;
 
+    public bool tammyFound;
+    public bool markyFound;
+
     private void Awake()
     {
         if (Instance == null)

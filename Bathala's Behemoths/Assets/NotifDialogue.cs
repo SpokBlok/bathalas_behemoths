@@ -74,6 +74,9 @@ public class NotifDialogue : MonoBehaviour
             gameObject.SetActive(false);
             pointer.SetActive(false);
             pointerActive = false;
+
+            PlayerStats.Instance.tammyFound = false;
+            PlayerStats.Instance.markyFound = false;
             index = 0;
             
             Debug.Log("inside end state");

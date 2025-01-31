@@ -17316,6 +17316,8 @@ MonoBehaviour:
   clue4: 0
   clue5: 0
   clue6: 0
+  tammyFound: 0
+  markyFound: 0
 --- !u!4 &444356924
 Transform:
   m_ObjectHideFlags: 0
@@ -33330,6 +33332,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 102525056304982691, guid: e2befb3480872ac4d860e47a6b28741a,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4251353181425818040, guid: e2befb3480872ac4d860e47a6b28741a,
         type: 3}
       propertyPath: m_Mesh
@@ -48633,8 +48640,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77138f0c5aca9cd419a3a3bbac7dbedc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tammyNotif: {fileID: 0}
-  markyNotif: {fileID: 0}
   clue1: {fileID: 901553083}
   clue2: {fileID: 1306443808}
   clue3: {fileID: 826712388}

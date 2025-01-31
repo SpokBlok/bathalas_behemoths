@@ -31,7 +31,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 30.000002, y: 30.000002, z: 30.000002}
+  m_LocalScale: {x: 60, y: 60, z: 60}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 1450450405182598192}
@@ -332,12 +332,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tambanokanoMob: 0
+  tambanokanoMobPlayer: 0
   health: 50
   playerInRange: 0
   speed: 24
   attackDamage: 1
   killQuestUIList: []
   killQuestUI: {fileID: 0}
+  kapreState: 0
 --- !u!1 &3543018298486764693
 GameObject:
   m_ObjectHideFlags: 0

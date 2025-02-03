@@ -18,6 +18,7 @@ public class HPPassiveRegen : MonoBehaviour
 
     private IEnumerator PassiveRegen()
     {
+        player = GameObject.FindWithTag("Player");
         Debug.Log("Passive Regen Start");
         yield return new WaitForSeconds(10);
         player.GetComponent<PlayerMovement>().Heal(5);

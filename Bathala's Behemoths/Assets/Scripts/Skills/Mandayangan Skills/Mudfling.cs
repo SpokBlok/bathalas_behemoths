@@ -27,6 +27,8 @@ public class Mudfling : BaseSkill
 
     public override IEnumerator RunSkill()
     {
+        player = GameObject.FindWithTag("Player");
+        playerMovement = player.GetComponent<PlayerMovement>();
         if (playerMovement.basicAttackCoroutine != null)
         {
             StopCoroutine(playerMovement.basicAttackCoroutine);

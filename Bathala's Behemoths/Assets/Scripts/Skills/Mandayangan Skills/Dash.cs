@@ -19,6 +19,8 @@ public class Dash : BaseSkill
 
     public override IEnumerator RunSkill()
     {
+        player = GameObject.FindWithTag("Player");
+        input = GameObject.FindWithTag("Player Input").GetComponent<PlayerInput>();
         PlayerMovement playerMovement = player.GetComponent<PlayerMovement>();
         Debug.Log("Dashing");
         //Disable children colliders

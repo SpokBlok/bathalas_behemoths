@@ -20,6 +20,7 @@ public class TornadoPunch : BaseSkill
 
     public override IEnumerator RunSkill()
     {
+        player = GameObject.FindWithTag("Player");
         yield return new WaitForSeconds(0.3f); //Charge up time, animation of tornado punch
         Collider[] colliders = Physics.OverlapSphere(player.transform.position, 5f);
         foreach (Collider collider in colliders)

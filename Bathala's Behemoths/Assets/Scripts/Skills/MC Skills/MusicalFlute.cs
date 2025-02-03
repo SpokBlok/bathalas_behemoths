@@ -17,14 +17,10 @@ public class MusicalFlute : BaseSkill
         cooldown = 40;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     public override IEnumerator RunSkill()
     {
+        player = GameObject.FindWithTag("Player");
+        playerMovement = player.GetComponent<PlayerMovement>();
         if (playerMovement.basicAttackCoroutine != null)
         {
             StopCoroutine(playerMovement.basicAttackCoroutine);

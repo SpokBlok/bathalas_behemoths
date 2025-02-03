@@ -14,6 +14,7 @@ public class FirstAid : BaseSkill
 
     public override IEnumerator RunSkill()
     {
+        player = GameObject.FindWithTag("Player");
         player.GetComponent<PlayerMovement>().Heal(40);
         yield return null;
     }

@@ -21,6 +21,7 @@ public class BathalasBlessing : BaseSkill
 
     public override IEnumerator RunSkill()
     {
+        player = GameObject.FindWithTag("Player");
         PlayerMovement playerScript = player.GetComponent<PlayerMovement>();
         playerScript.isBerserk = true;          //wont actually grow twice in size in final, just to see effect 
         playerScript.transform.localScale *= 2;

@@ -15,6 +15,7 @@ public class MudArmor : BaseSkill
 
     public override IEnumerator RunSkill()
     {
+        player = GameObject.FindWithTag("Player");
         yield return new WaitForSeconds(1f); //Skill animation
         PlayerStats.Instance.hasMudArmor = true;
         yield return new WaitForSeconds(20);

@@ -246,4 +246,9 @@ public class KapreMob : EnemyMob
                 break;
         }
     }
+
+    private void OnDestroy()
+    {
+        EventManager.OnDashComplete -= radius.TriggerCheck;
+    }
 }

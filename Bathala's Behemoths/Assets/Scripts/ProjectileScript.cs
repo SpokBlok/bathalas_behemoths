@@ -27,7 +27,7 @@ public class ProjectileScript : MonoBehaviour
     {
         float attackDuration = 0.5f;
         float elapsedTime = 0f;
-        float projectileSpeed = 20f;
+        float projectileSpeed = 50f;
         while ((elapsedTime < attackDuration))
         {
             TerrainGravity();
@@ -57,8 +57,12 @@ public class ProjectileScript : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Enemy") || other.gameObject.CompareTag("Tambanokano"))
         {
-            other.gameObject.GetComponent<EnemyMob>().TakeDamage(PlayerStats.Instance.basicAttackDamage);
-            StartCoroutine(other.gameObject.GetComponent<EnemyMob>().Stun(2));
+            EnemyMob enemy = other.GetComponent<EnemyMob>();
+            if (enemy.health - PlayerStats.Instance.basicAttackDamage > 0)
+            {
+                enemy.StartCoroutine(other.gameObject.GetComponent<EnemyMob>().Stun(2));
+            }
+            enemy.TakeDamage(PlayerStats.Instance.basicAttackDamage);
         }
     }
 }

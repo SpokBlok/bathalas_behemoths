@@ -20,7 +20,6 @@ public class KapreMob : EnemyMob
     public bool tambanokanoMob;
     public bool tambanokanoMobPlayer;
 
-    public float health;
     public bool playerInRange;
     public int speed;
     public float attackDamage;

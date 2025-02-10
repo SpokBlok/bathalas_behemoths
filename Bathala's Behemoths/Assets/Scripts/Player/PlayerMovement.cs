@@ -35,6 +35,8 @@ public class PlayerMovement : MonoBehaviour
 
     // Character Conroller
     public CharacterController charControl;
+    private float acceleration = 10f;
+    private float deceleration = 15f;
 
     // FSM State
     private PlayerState currentState;
@@ -239,6 +241,9 @@ public class PlayerMovement : MonoBehaviour
     public void MovePlayer()
     {
         Vector3 moveDirection = new Vector3(move.x, 0f, move.y) * stats.speed;
+        Vector3 currentVelocity = Vector3.zero;
+        // Smooth Acceleration and Deceleration
+        currentVelocity = Vector3.Lerp(currentVelocity, moveDirection, (moveDirection.magnitude > 0 ? acceleration : deceleration) * Time.deltaTime);
         if (isSkillingOrUlting)
         {
             charControl.Move(moveDirection * 0);
@@ -246,7 +251,8 @@ public class PlayerMovement : MonoBehaviour
         else if (isAttacking)
         {
             charControl.Move(((moveDirection / 3) * stats.speedMultiplier) * Time.deltaTime);
-        } else
+        } 
+        else
         {
             charControl.Move((moveDirection) * stats.speedMultiplier * Time.deltaTime);
         }

@@ -250,7 +250,7 @@ public class PlayerMovement : MonoBehaviour
         }
         else if (isAttacking)
         {
-            charControl.Move(((moveDirection / 3) * stats.speedMultiplier) * Time.deltaTime);
+            charControl.Move(((moveDirection / 5) * stats.speedMultiplier) * Time.deltaTime);
         } 
         else
         {

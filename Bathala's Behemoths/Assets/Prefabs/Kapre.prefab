@@ -335,7 +335,7 @@ MonoBehaviour:
   tambanokanoMob: 0
   tambanokanoMobPlayer: 0
   playerInRange: 0
-  speed: 24
+  speed: 20
   attackDamage: 1
   killQuestUIList: []
   killQuestUI: {fileID: 0}

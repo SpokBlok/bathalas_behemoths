@@ -21,8 +21,6 @@ public class Tambanokano : EnemyMob
     private bool isLightingStriking;
     private bool stunned;
 
-    public float health;
-
     public int attacksPassed;
 
     public float duration;
@@ -32,7 +30,7 @@ public class Tambanokano : EnemyMob
     void Start()
     {
         player = GameObject.FindWithTag("Player");
-        health = 50f;
+        health = 2500f;
 
         isLightingStriking = false;
         stunned = false;

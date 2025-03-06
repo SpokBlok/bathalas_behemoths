@@ -5,6 +5,7 @@ using UnityEngine;
 public class MarkyBlocker : MonoBehaviour
 {
     public GameObject markyDoor;
+    public GameObject markyModel;
 
     // Start is called before the first frame update
     void Start()
@@ -12,6 +13,7 @@ public class MarkyBlocker : MonoBehaviour
         if(QuestState.Instance.markupoFound)
         {
             markyDoor.SetActive(true);
+            markyModel.SetActive(true);
             gameObject.SetActive(false);
         }
         else

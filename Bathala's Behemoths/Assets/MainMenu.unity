@@ -256,6 +256,78 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 37634866}
   m_CullTransparentMesh: 1
+--- !u!1 &74505580
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 74505582}
+  - component: {fileID: 74505581}
+  m_Layer: 0
+  m_Name: QuestState
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &74505581
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 74505580}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 938c89232d353cb4aae74507592d84f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  frightenedDwendeRepeat: 0
+  charredTreeRepeat: 0
+  washedUpFenceRepeat: 0
+  desponDwendeRepeat: 0
+  footprintsRepeat: 0
+  dwendeMomRepeat: 0
+  moonNPCRepeat: 0
+  moonBraceletRepeat: 0
+  chickenRepeat: 0
+  lssDwendeRepeat: 0
+  fluteChestRepeat: 0
+  vetFarmerRepeat: 0
+  gardenerRepeat: 0
+  fertilizerRepeat: 0
+  desponDwendeSightTrigger: 0
+  chickenSightTrigger: 0
+  moonChunkGet: 0
+  moonQuestEnded: 0
+  moonQuestTrigger: 0
+  moonSightingTrigger: 0
+  fluteQuestTrigger: 0
+  fluteGet: 0
+  lssDwendeRan: 0
+  fluteSightTrigger: 0
+  questTutorialTrigger: 0
+  skillsTutorialTrigger: 0
+  tambanokanoFound: 0
+  markupoFound: 0
+--- !u!4 &74505582
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 74505580}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0.043805756, z: -0, w: 0.9990401}
+  m_LocalPosition: {x: 860.5943, y: 87.7, z: 55.10442}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &153943108
 GameObject:
   m_ObjectHideFlags: 0
@@ -924,6 +996,70 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1393869586
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1393869588}
+  - component: {fileID: 1393869587}
+  m_Layer: 0
+  m_Name: PlayerStats
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1393869587
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1393869586}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e7d9c9a6e25b8e14e84fc124727244aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 0
+  speedMultiplier: 0
+  basicAttackDamage: 0
+  currentHealth: 0
+  maxHealth: 0
+  hasMudArmor: 0
+  introDone: 0
+  tutorialDone: 0
+  ruinsScene: 0
+  outdoorsScene: 0
+  questComp: 0
+  kapreCigars: 0
+  clue1: 0
+  clue2: 0
+  clue3: 0
+  clue4: 0
+  clue5: 0
+  clue6: 0
+  tammyFound: 0
+  markyFound: 0
+--- !u!4 &1393869588
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1393869586}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -5.4873986, y: 3.3220966, z: -0.978693}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1539707128
 GameObject:
   m_ObjectHideFlags: 0
@@ -1551,3 +1687,5 @@ SceneRoots:
   - {fileID: 1658419851}
   - {fileID: 669032384}
   - {fileID: 153943110}
+  - {fileID: 1393869588}
+  - {fileID: 74505582}

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class TammyTamedDialogue : MonoBehaviour
 {
@@ -71,6 +72,7 @@ public class TammyTamedDialogue : MonoBehaviour
         {
             gameObject.transform.localPosition = currentPosition;
             gameObject.SetActive(false);
+            SceneManager.LoadScene("MainMenu");
             
             Debug.Log("inside end state");
         }

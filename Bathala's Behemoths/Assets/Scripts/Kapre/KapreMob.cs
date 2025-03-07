@@ -34,6 +34,7 @@ public class KapreMob : EnemyMob
     public KapreState kapreState;
 
     private bool isAttacking = false;
+    public KapreAnimController kapreModel;
 
     private KapreRadiusTrigger radius;
 
@@ -163,8 +164,8 @@ public class KapreMob : EnemyMob
         worldCenter = basicAttackHitbox.transform.TransformPoint(basicAttackHitbox.center);
         worldSize = Vector3.Scale(basicAttackHitbox.size, basicAttackHitbox.transform.lossyScale) / 2;
 
+        yield return new WaitForSeconds(0.5f);
         BasicAttackHitboxCheck(Physics.OverlapBox(worldCenter, worldSize, basicAttackHitbox.transform.rotation));
-        yield return new WaitForSeconds(1.5f);
         if (!tambanokanoMob || !tambanokanoMobPlayer)
         {
             radius.TriggerCheck();
@@ -223,24 +224,34 @@ public class KapreMob : EnemyMob
             case KapreState.Idle:
                 // Enter Idle logic
                 isAttacking = false;
+                kapreModel.setAttacking(false);
+                kapreModel.setMoving(false);
                 break;
 
             case KapreState.Moving:
                 // Enter Moving logic
                 isAttacking = false;
+                kapreModel.setAttacking(false);
+                kapreModel.setMoving(true);
                 break;
 
             case KapreState.Attacking:
                 // Enter Attacking logic
+                kapreModel.setAttacking(true);
+                kapreModel.setMoving(false);
                 break;
 
             case KapreState.Knockback:
                 // Enter Knockback logic
                 isAttacking = false;
+                kapreModel.setAttacking(false);
+                kapreModel.setMoving(false);
                 break;
 
             case KapreState.Stunned:
                 isAttacking = false;
+                kapreModel.setAttacking(false);
+                kapreModel.setMoving(false);
                 Debug.Log("Got stunned");
                 break;
         }

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SteveAnimController : MonoBehaviour
+public class MSAnimController : MonoBehaviour
 {
     public Animator animator;
     float velocity = 0.0f;
@@ -38,7 +38,7 @@ public class SteveAnimController : MonoBehaviour
             moving = false;
         }
 
-        if((moving && shiftPressed) && velocity < 30.0f)
+        if((moving && shiftPressed) && velocity < 15.0f)
         {
             velocity += Time.deltaTime * acceleration;
         }

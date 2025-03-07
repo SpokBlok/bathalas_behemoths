@@ -22,6 +22,13 @@ public class PlayerMovement : MonoBehaviour
     public float minDistanceToLook = 0.1f;
     public Vector3 lookPos;
 
+    public Animator animator;
+    public Coroutine enterFightingStance;
+    public Coroutine exitFightingStance;
+    private float fightStanceValue = 0.0f;
+    int basicAttackHash;
+    Collider[] objsInRange;
+
     // Movement variables
     public Vector2 move;
 
@@ -60,6 +67,9 @@ public class PlayerMovement : MonoBehaviour
     {
         // Get references to char controller + collider
         charControl = GetComponent<CharacterController>();
+        animator = GetComponentsInChildren<Animator>()[0];
+
+        basicAttackHash = Animator.StringToHash("basicAttacking");
 
         // Start with Idle state
         currentState = PlayerState.Idle;
@@ -102,6 +112,23 @@ public class PlayerMovement : MonoBehaviour
     public void OnMouseLook(InputAction.CallbackContext context)
     {
         mouseLook = context.ReadValue<Vector2>();
+    }
+
+    // Detects any Enemy entering the sphere collider and if so, activates combat layer to blend with movement layer
+    private void OnTriggerEnter(Collider other)
+    {
+        if (fightStanceValue == 0 && other.CompareTag("Enemy"))
+        {
+            enterFightingStance = StartCoroutine(EnterFightingStance());
+        }
+    }
+    
+    private void OnTriggerExit(Collider other)
+    {
+        if (fightStanceValue == 0 && other.CompareTag("Enemy"))
+        {
+            enterFightingStance = StartCoroutine(EnterFightingStance());
+        }
     }
 
     public void OnBasicAttack(InputAction.CallbackContext context)
@@ -261,10 +288,12 @@ public class PlayerMovement : MonoBehaviour
     private IEnumerator BasicAttack()
     {
         isAttacking = true;
+        animator.SetBool(basicAttackHash, true);
         yield return new WaitForSeconds(0.5f / stats.speedMultiplier); // Wait for attack duration
         BasicAttackHitboxCheck(Physics.OverlapBox(worldCenter, worldSize, basicAttackHitbox.transform.rotation));
         yield return new WaitForSeconds(0.5f / stats.speedMultiplier);
         BasicAttackHitboxCheck(Physics.OverlapBox(worldCenter, worldSize, basicAttackHitbox.transform.rotation));
+        animator.SetBool(basicAttackHash, false);
 
         if (mouseAction.action.ReadValue<float>() > 0)
         {
@@ -337,6 +366,46 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
+    IEnumerator EnterFightingStance()
+    {
+        float duration = 0.5f;
+        float elapsedTime = 0f;
+        float startValue = 0.0f;
+        float endValue = 0.69f;
+
+        while (elapsedTime < duration)
+        {
+            elapsedTime += Time.deltaTime;
+            float t = elapsedTime / duration;
+            fightStanceValue = Mathf.Lerp(startValue, endValue, t);
+            animator.SetLayerWeight(1, fightStanceValue);
+            yield return null;
+        }
+        
+        fightStanceValue = endValue; // Ensure it fully reaches the target
+        animator.SetLayerWeight(1, fightStanceValue);
+    }
+
+    IEnumerator ExitFightingStance()
+    {
+        float duration = 0.5f;
+        float elapsedTime = 0f;
+        float startValue = 1.0f;
+        float endValue = 0.0f;
+
+        while (elapsedTime < duration)
+        {
+            elapsedTime += Time.deltaTime;
+            float t = elapsedTime / duration;
+            fightStanceValue = Mathf.Lerp(startValue, endValue, t);
+            animator.SetLayerWeight(1, fightStanceValue);
+            yield return null;
+        }
+        
+        fightStanceValue = endValue; // Ensure it fully reaches the target
+        animator.SetLayerWeight(1, fightStanceValue);
+    }
+
     public void ChangeState(PlayerState newState) //Logic for entering states (e.g. playing animations)
     {
         currentState = newState;
@@ -347,23 +416,47 @@ public class PlayerMovement : MonoBehaviour
                 // Enter Idle logic
                 isAttacking = false;
                 Debug.Log("Idle State");
+                objsInRange = Physics.OverlapSphere(transform.position, GetComponent<SphereCollider>().radius);
+                Debug.Log("Objects inside: " + objsInRange.Length);
+                if(fightStanceValue == 0.69f && objsInRange.Length == 4)
+                {
+                    exitFightingStance = StartCoroutine(ExitFightingStance());
+                }
                 break;
 
             case PlayerState.Moving:
                 // Enter Moving logic
                 isAttacking = false;
                 Debug.Log("Moving State");
+                objsInRange = Physics.OverlapSphere(transform.position, GetComponent<SphereCollider>().radius);
+                Debug.Log("Objects inside: " + objsInRange.Length);
+                if(fightStanceValue == 0.69f && objsInRange.Length == 4)
+                {
+                    exitFightingStance = StartCoroutine(ExitFightingStance());
+                }
                 break;
 
             case PlayerState.Attacking:
                 // Enter Attacking logic
                 Debug.Log("Attack State");
+                objsInRange = Physics.OverlapSphere(transform.position, GetComponent<SphereCollider>().radius);
+                Debug.Log("Objects inside: " + objsInRange.Length);
+                if(fightStanceValue == 1 && objsInRange.Length == 4)
+                {
+                    exitFightingStance = StartCoroutine(ExitFightingStance());
+                }
                 break;
 
             case PlayerState.Knockback:
                 // Enter Knockback logic
                 isAttacking = false;
                 Debug.Log("Knockback State");
+                objsInRange = Physics.OverlapSphere(transform.position, GetComponent<SphereCollider>().radius);
+                Debug.Log("Objects inside: " + objsInRange.Length);
+                if(fightStanceValue == 1 && objsInRange.Length == 4)
+                {
+                    exitFightingStance = StartCoroutine(ExitFightingStance());
+                }
                 break;
         }
     }

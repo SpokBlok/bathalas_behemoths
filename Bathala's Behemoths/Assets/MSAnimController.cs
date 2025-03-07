@@ -38,17 +38,13 @@ public class MSAnimController : MonoBehaviour
             moving = false;
         }
 
-        if((moving && shiftPressed) && velocity < 15.0f)
+        if((moving && shiftPressed) && velocity < 20.0f)
         {
             velocity += Time.deltaTime * acceleration;
         }
         else if(moving && velocity < 5.0f)
         {
             velocity += Time.deltaTime * acceleration;
-        }
-        else if((moving && !shiftPressed) && velocity > 5.0f)
-        {
-            velocity -= Time.deltaTime * deceleration;
         }
         else if(!moving && velocity > 0.0f)
         {

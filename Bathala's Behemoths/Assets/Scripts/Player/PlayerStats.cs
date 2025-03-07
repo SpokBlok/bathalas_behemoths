@@ -19,6 +19,7 @@ public class PlayerStats : MonoBehaviour
 
     public static PlayerStats Instance { get; private set; }
 
+    public int initSpeed;
     public int speed;
     public float speedMultiplier;
     public float basicAttackDamage;
@@ -68,15 +69,15 @@ public class PlayerStats : MonoBehaviour
         // Set default values
         if(ruinsScene && introDone)
         {
-            speed = 15;
+            initSpeed = 0;
         }
         else if(outdoorsScene && introDone == false)
         {
-            speed = 15;
+            initSpeed = 0;
         }
         else
         {
-            speed = 45;
+            initSpeed = 30;
         }
         speedMultiplier = 1;
         basicAttackDamage = 25;
@@ -96,6 +97,16 @@ public class PlayerStats : MonoBehaviour
     public void AddSpeed(int speedIncrease)
     {
         speed += speedIncrease;
+    }
+
+    public void ReduceSpeed(int speedDecrease)
+    {
+        speed -= speedDecrease;
+    }
+
+    public void SetSpeed(int velocity)
+    {
+        speed = initSpeed + velocity;
     }
 
     public void AddKapreCigars(float addedCigars)

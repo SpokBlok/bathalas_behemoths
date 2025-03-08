@@ -7,10 +7,14 @@ using UnityEngine.InputSystem;
 public class Dash : BaseSkill
 {
     private PlayerInput input;
+    public Animator animator;
+    int isDashingHash;
 
     // Start is called before the first frame update
     void Start()
     {
+        isDashingHash = Animator.StringToHash("isDashing");
+
         player = GameObject.FindWithTag("Player");
         input = GameObject.FindWithTag("Player Input").GetComponent<PlayerInput>();
         maxCharges = 3;
@@ -19,6 +23,7 @@ public class Dash : BaseSkill
 
     public override IEnumerator RunSkill()
     {
+        animator.SetBool(isDashingHash, true);
         player = GameObject.FindWithTag("Player");
         input = GameObject.FindWithTag("Player Input").GetComponent<PlayerInput>();
         PlayerMovement playerMovement = player.GetComponent<PlayerMovement>();
@@ -51,5 +56,7 @@ public class Dash : BaseSkill
         gameObject.layer = LayerMask.NameToLayer("Default");
         //Enable children colliders
         playerMovement.CollisionToggle();
+        
+        animator.SetBool(isDashingHash, false);
     }
 }

@@ -4,9 +4,13 @@ using UnityEngine;
 
 public class BathalasBlessing : BaseSkill
 {
+    public Animator animator;
+    int isBBHash;
+
     // Start is called before the first frame update
     void Start()
     {
+        isBBHash = Animator.StringToHash("isBathblessed");
         player = GameObject.FindWithTag("Player");
         maxCharges = 0;
         cooldown = 0;
@@ -21,11 +25,14 @@ public class BathalasBlessing : BaseSkill
 
     public override IEnumerator RunSkill()
     {
+        animator.SetBool(isBBHash, true);
         player = GameObject.FindWithTag("Player");
         PlayerMovement playerScript = player.GetComponent<PlayerMovement>();
         playerScript.isBerserk = true;          //wont actually grow twice in size in final, just to see effect 
         playerScript.transform.localScale *= 2;
         PlayerStats.Instance.speedMultiplier = 2;
+        yield return new WaitForSeconds(0.8f);
+        animator.SetBool(isBBHash, false);
 
         //Also reset all equipped skills and cooldowns
 

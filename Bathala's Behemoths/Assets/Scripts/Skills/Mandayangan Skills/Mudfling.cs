@@ -7,12 +7,16 @@ using static UnityEngine.GraphicsBuffer;
 
 public class Mudfling : BaseSkill
 {
+    public Animator animator;
+    int isMudflingHash;
+
     public GameObject projectilePrefab;
     private PlayerMovement playerMovement;
 
     // Start is called before the first frame update
     void Start()
     {
+        isMudflingHash = Animator.StringToHash("isMudfling");
         player = GameObject.FindWithTag("Player");
         playerMovement = player.GetComponent<PlayerMovement>();
         maxCharges = 1;
@@ -27,6 +31,7 @@ public class Mudfling : BaseSkill
 
     public override IEnumerator RunSkill()
     {
+        animator.SetBool(isMudflingHash, true);
         player = GameObject.FindWithTag("Player");
         playerMovement = player.GetComponent<PlayerMovement>();
         if (playerMovement.basicAttackCoroutine != null)
@@ -40,5 +45,6 @@ public class Mudfling : BaseSkill
         ProjectileScript projectileScript = projectile.GetComponent<ProjectileScript>();
         StartCoroutine(projectileScript.Move(player.GetComponent<PlayerMovement>().lookPos.normalized));
         playerMovement.StateCheck();
+        animator.SetBool(isMudflingHash, false);
     }
 }

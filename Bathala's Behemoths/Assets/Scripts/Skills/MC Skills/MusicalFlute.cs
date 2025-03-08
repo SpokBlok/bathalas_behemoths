@@ -8,9 +8,13 @@ public class MusicalFlute : BaseSkill
 {
     private PlayerMovement playerMovement;
 
+    public Animator animator;
+    int isFluteHash;
+
     // Start is called before the first frame update
     void Start()
     {
+        isFluteHash = Animator.StringToHash("isFlute");
         player = GameObject.FindWithTag("Player");
         playerMovement = player.GetComponent<PlayerMovement>();
         maxCharges = 1;
@@ -19,6 +23,7 @@ public class MusicalFlute : BaseSkill
 
     public override IEnumerator RunSkill()
     {
+        animator.SetBool(isFluteHash, true);
         player = GameObject.FindWithTag("Player");
         playerMovement = player.GetComponent<PlayerMovement>();
         if (playerMovement.basicAttackCoroutine != null)
@@ -40,5 +45,7 @@ public class MusicalFlute : BaseSkill
             }
         }
         playerMovement.StateCheck();
+        
+        animator.SetBool(isFluteHash, false);
     }
 }

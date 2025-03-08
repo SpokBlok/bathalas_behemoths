@@ -4,9 +4,13 @@ using UnityEngine;
 
 public class TornadoPunch : BaseSkill
 {
+    public Animator animator;
+    int isTornadoHash;
+    
     // Start is called before the first frame update
     void Start()
     {
+        isTornadoHash = Animator.StringToHash("isTornado");
         player = GameObject.FindWithTag("Player");
         maxCharges = 1;
         cooldown = 10;
@@ -20,9 +24,10 @@ public class TornadoPunch : BaseSkill
 
     public override IEnumerator RunSkill()
     {
+        animator.SetBool(isTornadoHash, true);
         player = GameObject.FindWithTag("Player");
-        yield return new WaitForSeconds(0.3f); //Charge up time, animation of tornado punch
-        Collider[] colliders = Physics.OverlapSphere(player.transform.position, 5f);
+        yield return new WaitForSeconds(1.0f); //Charge up time, animation of tornado punch
+        Collider[] colliders = Physics.OverlapSphere(player.transform.position, 8.0f);
         foreach (Collider collider in colliders)
         {
             if (collider.TryGetComponent<EnemyMob>(out var mob))
@@ -30,5 +35,6 @@ public class TornadoPunch : BaseSkill
                 mob.TakeDamage(PlayerStats.Instance.basicAttackDamage);
             }
         }
+        animator.SetBool(isTornadoHash, false);
     }
 }

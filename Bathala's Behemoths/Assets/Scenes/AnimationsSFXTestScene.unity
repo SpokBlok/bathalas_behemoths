@@ -531,6 +531,7 @@ MonoBehaviour:
   cooldown: 0
   maxCharges: 0
   oneTimeUseAvailable: 0
+  animator: {fileID: 421029693}
   projectilePrefab: {fileID: 1190830937122899381, guid: ba21279a731ddbb4bacbc708576ea9f2,
     type: 3}
 --- !u!1 &59241781
@@ -580,6 +581,7 @@ MonoBehaviour:
   cooldown: 0
   maxCharges: 0
   oneTimeUseAvailable: 0
+  animator: {fileID: 421029693}
 --- !u!1 &69157544
 GameObject:
   m_ObjectHideFlags: 0
@@ -5062,6 +5064,7 @@ MonoBehaviour:
   cooldown: 0
   maxCharges: 0
   oneTimeUseAvailable: 0
+  animator: {fileID: 421029693}
 --- !u!1 &418232116
 GameObject:
   m_ObjectHideFlags: 0
@@ -5202,6 +5205,12 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 520743985}
   m_PrefabAsset: {fileID: 0}
+--- !u!95 &421029693 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 6621215511150831328, guid: e2befb3480872ac4d860e47a6b28741a,
+    type: 3}
+  m_PrefabInstance: {fileID: 520743985}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &438082315
 GameObject:
   m_ObjectHideFlags: 0
@@ -5249,6 +5258,7 @@ MonoBehaviour:
   cooldown: 0
   maxCharges: 0
   oneTimeUseAvailable: 0
+  animator: {fileID: 421029693}
 --- !u!1 &463449100
 GameObject:
   m_ObjectHideFlags: 0
@@ -5562,6 +5572,7 @@ MonoBehaviour:
   cooldown: 0
   maxCharges: 0
   oneTimeUseAvailable: 0
+  animator: {fileID: 421029693}
 --- !u!1 &473263721
 GameObject:
   m_ObjectHideFlags: 0
@@ -6706,11 +6717,6 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5407332154306142791, guid: e2befb3480872ac4d860e47a6b28741a,
-        type: 3}
-      propertyPath: m_Radius
-      value: 10
-      objectReference: {fileID: 0}
     - target: {fileID: 5413284788210932825, guid: e2befb3480872ac4d860e47a6b28741a,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -7692,6 +7698,7 @@ MonoBehaviour:
   cooldown: 0
   maxCharges: 0
   oneTimeUseAvailable: 0
+  animator: {fileID: 421029693}
 --- !u!1 &554206297
 GameObject:
   m_ObjectHideFlags: 0
@@ -31518,6 +31525,7 @@ MonoBehaviour:
   cooldown: 0
   maxCharges: 0
   oneTimeUseAvailable: 0
+  animator: {fileID: 421029693}
 --- !u!1 &2132761297
 GameObject:
   m_ObjectHideFlags: 0

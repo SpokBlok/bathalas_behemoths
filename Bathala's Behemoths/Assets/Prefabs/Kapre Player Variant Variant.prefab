@@ -15,6 +15,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2591341218890061791, guid: 22dca872b33d0e54d812c70b862b57bf,
         type: 3}
+      propertyPath: markupoMob
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2591341218890061791, guid: 22dca872b33d0e54d812c70b862b57bf,
+        type: 3}
       propertyPath: tambanokanoMob
       value: 0
       objectReference: {fileID: 0}

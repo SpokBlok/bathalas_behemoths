@@ -70,6 +70,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6080050113629792048, guid: 5959d18082eae3e4b8211378139457ef,
         type: 3}
+      propertyPath: markupoMob
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6080050113629792048, guid: 5959d18082eae3e4b8211378139457ef,
+        type: 3}
       propertyPath: attackDamage
       value: 1
       objectReference: {fileID: 0}

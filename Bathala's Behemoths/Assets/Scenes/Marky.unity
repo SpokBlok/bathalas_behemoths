@@ -5532,10 +5532,10 @@ MonoBehaviour:
   currentHealth: 0
   maxHealth: 0
   hasMudArmor: 0
-  introDone: 0
-  tutorialDone: 0
+  introDone: 1
+  tutorialDone: 1
   ruinsScene: 0
-  outdoorsScene: 0
+  outdoorsScene: 1
   questComp: 0
   kapreCigars: 0
   clue1: 0
@@ -12017,6 +12017,53 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &772300157
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 772300159}
+  - component: {fileID: 772300158}
+  m_Layer: 0
+  m_Name: MobSpawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &772300158
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 772300157}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0584e9faa2a656145921b6afe46a5624, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  kaprePlayerPrefab: {fileID: 652888866743149242, guid: a6f006a0c4e853949965849f8229f42c,
+    type: 3}
+  spawnGap: 8
+--- !u!4 &772300159
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 772300157}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &775125538
 GameObject:
   m_ObjectHideFlags: 0
@@ -12514,54 +12561,6 @@ RectTransform:
   m_AnchoredPosition: {x: 425, y: -191}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!1 &790845162
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 790845164}
-  - component: {fileID: 790845163}
-  m_Layer: 0
-  m_Name: KapreSpawner
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &790845163
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 790845162}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f41c12c5dffd12148bd812c21173a7d5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  enemyPrefab: {fileID: 0}
-  spawnPoints: []
-  enemyCount: 0
-  player: {fileID: 0}
---- !u!4 &790845164
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 790845162}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 253.90665, y: 27.28535, z: 201.82509}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &817311563
 GameObject:
   m_ObjectHideFlags: 0
@@ -18197,6 +18196,11 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1879604765750739598, guid: e2befb3480872ac4d860e47a6b28741a,
+        type: 3}
+      propertyPath: steveModel
+      value: 
+      objectReference: {fileID: 1526986826}
     - target: {fileID: 4251353181425818040, guid: e2befb3480872ac4d860e47a6b28741a,
         type: 3}
       propertyPath: m_Mesh
@@ -18205,7 +18209,7 @@ PrefabInstance:
     - target: {fileID: 4689692903261357202, guid: e2befb3480872ac4d860e47a6b28741a,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4958812543795710122, guid: e2befb3480872ac4d860e47a6b28741a,
         type: 3}
@@ -22475,6 +22479,12 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1521242916}
   m_CullTransparentMesh: 1
+--- !u!1 &1526986826 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4958812543795710122, guid: e2befb3480872ac4d860e47a6b28741a,
+    type: 3}
+  m_PrefabInstance: {fileID: 1191615332}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1541480197
 GameObject:
   m_ObjectHideFlags: 0
@@ -31732,4 +31742,4 @@ SceneRoots:
   - {fileID: 366404717}
   - {fileID: 1630657645}
   - {fileID: 895561280}
-  - {fileID: 790845164}
+  - {fileID: 772300159}

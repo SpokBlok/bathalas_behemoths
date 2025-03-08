@@ -388,9 +388,11 @@ public class PlayerMovement : MonoBehaviour
 
     IEnumerator ExitFightingStance()
     {
+        yield return new WaitForSeconds(3.0f);
+
         float duration = 0.5f;
         float elapsedTime = 0f;
-        float startValue = 1.0f;
+        float startValue = 0.69f;
         float endValue = 0.0f;
 
         while (elapsedTime < duration)
@@ -417,7 +419,7 @@ public class PlayerMovement : MonoBehaviour
                 isAttacking = false;
                 Debug.Log("Idle State");
                 objsInRange = Physics.OverlapSphere(transform.position, GetComponent<SphereCollider>().radius);
-                Debug.Log("Objects inside: " + objsInRange.Length);
+                // Debug.Log("Objects inside: " + objsInRange.Length);
                 if(fightStanceValue == 0.69f && objsInRange.Length == 4)
                 {
                     exitFightingStance = StartCoroutine(ExitFightingStance());
@@ -429,7 +431,7 @@ public class PlayerMovement : MonoBehaviour
                 isAttacking = false;
                 Debug.Log("Moving State");
                 objsInRange = Physics.OverlapSphere(transform.position, GetComponent<SphereCollider>().radius);
-                Debug.Log("Objects inside: " + objsInRange.Length);
+                // Debug.Log("Objects inside: " + objsInRange.Length);
                 if(fightStanceValue == 0.69f && objsInRange.Length == 4)
                 {
                     exitFightingStance = StartCoroutine(ExitFightingStance());
@@ -439,11 +441,19 @@ public class PlayerMovement : MonoBehaviour
             case PlayerState.Attacking:
                 // Enter Attacking logic
                 Debug.Log("Attack State");
+                if(fightStanceValue == 0)
+                {
+                    enterFightingStance = StartCoroutine(EnterFightingStance());
+                }
                 objsInRange = Physics.OverlapSphere(transform.position, GetComponent<SphereCollider>().radius);
-                Debug.Log("Objects inside: " + objsInRange.Length);
-                if(fightStanceValue == 1 && objsInRange.Length == 4)
+                // Debug.Log("Objects inside: " + objsInRange.Length);
+                if(fightStanceValue == 0.69 && objsInRange.Length == 4)
                 {
                     exitFightingStance = StartCoroutine(ExitFightingStance());
+                }
+                if(exitFightingStance != null)
+                {
+                    StopCoroutine(exitFightingStance);
                 }
                 break;
 
@@ -453,7 +463,7 @@ public class PlayerMovement : MonoBehaviour
                 Debug.Log("Knockback State");
                 objsInRange = Physics.OverlapSphere(transform.position, GetComponent<SphereCollider>().radius);
                 Debug.Log("Objects inside: " + objsInRange.Length);
-                if(fightStanceValue == 1 && objsInRange.Length == 4)
+                if(fightStanceValue == 0.69 && objsInRange.Length == 4)
                 {
                     exitFightingStance = StartCoroutine(ExitFightingStance());
                 }

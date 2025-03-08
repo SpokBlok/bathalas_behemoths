@@ -10,14 +10,19 @@ public class FirstAid : BaseSkill
     // Start is called before the first frame update
     void Start()
     {
-        isHealHash = Animator.StringToHash("isHealing");
         player = GameObject.FindWithTag("Player");
+        animator = player.GetComponentInChildren<Animator>();
+
+        isHealHash = Animator.StringToHash("isHealing");
         maxCharges = 3;
         cooldown = 40;
     }
 
     public override IEnumerator RunSkill()
     {
+        player = GameObject.FindWithTag("Player");
+        animator = player.GetComponentInChildren<Animator>();
+        
         animator.SetBool(isHealHash, true);
         player = GameObject.FindWithTag("Player");
         player.GetComponent<PlayerMovement>().Heal(40);

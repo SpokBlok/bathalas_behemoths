@@ -14,8 +14,10 @@ public class MusicalFlute : BaseSkill
     // Start is called before the first frame update
     void Start()
     {
-        isFluteHash = Animator.StringToHash("isFlute");
         player = GameObject.FindWithTag("Player");
+        animator = player.GetComponentInChildren<Animator>();
+
+        isFluteHash = Animator.StringToHash("isFlute");
         playerMovement = player.GetComponent<PlayerMovement>();
         maxCharges = 1;
         cooldown = 40;
@@ -23,6 +25,9 @@ public class MusicalFlute : BaseSkill
 
     public override IEnumerator RunSkill()
     {
+        player = GameObject.FindWithTag("Player");
+        animator = player.GetComponentInChildren<Animator>();
+        
         animator.SetBool(isFluteHash, true);
         player = GameObject.FindWithTag("Player");
         playerMovement = player.GetComponent<PlayerMovement>();

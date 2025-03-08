@@ -38,7 +38,7 @@ public class SteveAnimController : MonoBehaviour
             moving = false;
         }
 
-        if((moving && shiftPressed) && velocity < 30.0f)
+        if((moving && shiftPressed) && velocity < 20.0f)
         {
             velocity += Time.deltaTime * acceleration;
         }

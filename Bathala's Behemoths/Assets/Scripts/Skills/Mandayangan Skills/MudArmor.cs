@@ -14,14 +14,19 @@ public class MudArmor : BaseSkill
     // Start is called before the first frame update
     void Start()
     {
-        isMudArmorHash = Animator.StringToHash("isMudarmor");
         player = GameObject.FindWithTag("Player");
+        animator = player.GetComponentInChildren<Animator>();
+        
+        isMudArmorHash = Animator.StringToHash("isMudarmor");
         maxCharges = 1;
         cooldown = 40;
     }
 
     IEnumerator EnterMudStance()
     {
+        player = GameObject.FindWithTag("Player");
+        animator = player.GetComponentInChildren<Animator>();
+        
         float duration = 0.5f;
         float elapsedTime = 0f;
         float startValue = 0.0f;

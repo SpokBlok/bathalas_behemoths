@@ -13,9 +13,11 @@ public class Dash : BaseSkill
     // Start is called before the first frame update
     void Start()
     {
+        player = GameObject.FindWithTag("Player");
+        animator = player.GetComponentInChildren<Animator>();
+
         isDashingHash = Animator.StringToHash("isDashing");
 
-        player = GameObject.FindWithTag("Player");
         input = GameObject.FindWithTag("Player Input").GetComponent<PlayerInput>();
         maxCharges = 3;
         cooldown = 6;
@@ -23,6 +25,9 @@ public class Dash : BaseSkill
 
     public override IEnumerator RunSkill()
     {
+        player = GameObject.FindWithTag("Player");
+        animator = player.GetComponentInChildren<Animator>();
+
         animator.SetBool(isDashingHash, true);
         player = GameObject.FindWithTag("Player");
         input = GameObject.FindWithTag("Player Input").GetComponent<PlayerInput>();

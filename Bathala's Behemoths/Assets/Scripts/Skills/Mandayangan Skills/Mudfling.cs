@@ -16,8 +16,9 @@ public class Mudfling : BaseSkill
     // Start is called before the first frame update
     void Start()
     {
-        isMudflingHash = Animator.StringToHash("isMudfling");
         player = GameObject.FindWithTag("Player");
+        animator = player.GetComponentInChildren<Animator>();
+        isMudflingHash = Animator.StringToHash("isMudfling");
         playerMovement = player.GetComponent<PlayerMovement>();
         maxCharges = 1;
         cooldown = 8;
@@ -31,6 +32,9 @@ public class Mudfling : BaseSkill
 
     public override IEnumerator RunSkill()
     {
+        player = GameObject.FindWithTag("Player");
+        animator = player.GetComponentInChildren<Animator>();
+
         animator.SetBool(isMudflingHash, true);
         player = GameObject.FindWithTag("Player");
         playerMovement = player.GetComponent<PlayerMovement>();

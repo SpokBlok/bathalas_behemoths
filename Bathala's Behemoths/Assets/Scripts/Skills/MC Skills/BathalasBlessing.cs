@@ -10,8 +10,9 @@ public class BathalasBlessing : BaseSkill
     // Start is called before the first frame update
     void Start()
     {
-        isBBHash = Animator.StringToHash("isBathblessed");
         player = GameObject.FindWithTag("Player");
+        animator = player.GetComponentInChildren<Animator>();
+        isBBHash = Animator.StringToHash("isBathblessed");
         maxCharges = 0;
         cooldown = 0;
         oneTimeUseAvailable = true;
@@ -25,6 +26,9 @@ public class BathalasBlessing : BaseSkill
 
     public override IEnumerator RunSkill()
     {
+        player = GameObject.FindWithTag("Player");
+        animator = player.GetComponentInChildren<Animator>();
+
         animator.SetBool(isBBHash, true);
         player = GameObject.FindWithTag("Player");
         PlayerMovement playerScript = player.GetComponent<PlayerMovement>();

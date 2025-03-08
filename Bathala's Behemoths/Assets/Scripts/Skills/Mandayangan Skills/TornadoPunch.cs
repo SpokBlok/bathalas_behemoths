@@ -10,8 +10,9 @@ public class TornadoPunch : BaseSkill
     // Start is called before the first frame update
     void Start()
     {
-        isTornadoHash = Animator.StringToHash("isTornado");
         player = GameObject.FindWithTag("Player");
+        animator = player.GetComponentInChildren<Animator>();
+        isTornadoHash = Animator.StringToHash("isTornado");
         maxCharges = 1;
         cooldown = 10;
     }
@@ -24,6 +25,9 @@ public class TornadoPunch : BaseSkill
 
     public override IEnumerator RunSkill()
     {
+        player = GameObject.FindWithTag("Player");
+        animator = player.GetComponentInChildren<Animator>();
+        
         animator.SetBool(isTornadoHash, true);
         player = GameObject.FindWithTag("Player");
         yield return new WaitForSeconds(1.0f); //Charge up time, animation of tornado punch

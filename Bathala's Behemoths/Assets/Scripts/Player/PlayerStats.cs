@@ -77,7 +77,7 @@ public class PlayerStats : MonoBehaviour
         }
         else
         {
-            initSpeed = 30;
+            initSpeed = 5;
         }
         speedMultiplier = 1;
         basicAttackDamage = 25;

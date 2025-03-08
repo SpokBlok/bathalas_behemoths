@@ -11,8 +11,8 @@ public class IntroDialogue : MonoBehaviour
     public GameObject pointer;
     public GameObject introScene;
     public GameObject introScene2;
-    public GameObject steveModel;
-    public GameObject mountedModel;
+    public SteveAnimController steveModel;
+    public MSAnimController mountedModel;
 
 
     private bool pointerActive = false;
@@ -22,6 +22,9 @@ public class IntroDialogue : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        steveModel = FindAnyObjectByType<SteveAnimController>(FindObjectsInactive.Include);
+        mountedModel = FindAnyObjectByType<MSAnimController>(FindObjectsInactive.Include);
+        
         index = 0;
         currentPosition = gameObject.transform.localPosition;
     }
@@ -85,7 +88,7 @@ public class IntroDialogue : MonoBehaviour
             introScene.SetActive(false);
             introScene2.SetActive(true);
             switchToManny();
-            PlayerStats.Instance.speed = 45;
+            PlayerStats.Instance.initSpeed = 5;
             
             Debug.Log("inside end state");
         }
@@ -99,7 +102,7 @@ public class IntroDialogue : MonoBehaviour
 
     public void switchToManny()
     {
-        steveModel.SetActive(false);
-        mountedModel.SetActive(true);
+        steveModel.gameObject.SetActive(false);
+        mountedModel.gameObject.SetActive(true);
     }
 }

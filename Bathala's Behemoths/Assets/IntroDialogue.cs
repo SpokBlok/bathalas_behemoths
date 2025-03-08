@@ -11,6 +11,7 @@ public class IntroDialogue : MonoBehaviour
     public GameObject pointer;
     public GameObject introScene;
     public GameObject introScene2;
+    public GameObject player;
     public SteveAnimController steveModel;
     public MSAnimController mountedModel;
 
@@ -24,6 +25,7 @@ public class IntroDialogue : MonoBehaviour
     {
         steveModel = FindAnyObjectByType<SteveAnimController>(FindObjectsInactive.Include);
         mountedModel = FindAnyObjectByType<MSAnimController>(FindObjectsInactive.Include);
+        player = GameObject.FindWithTag("Player");
         
         index = 0;
         currentPosition = gameObject.transform.localPosition;
@@ -89,6 +91,8 @@ public class IntroDialogue : MonoBehaviour
             introScene2.SetActive(true);
             switchToManny();
             PlayerStats.Instance.initSpeed = 5;
+
+            player.gameObject.transform.position = new Vector3(703.2f, 57.7f, 272.3f);
             
             Debug.Log("inside end state");
         }

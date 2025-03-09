@@ -11887,6 +11887,7 @@ GameObject:
   - component: {fileID: 765043857}
   - component: {fileID: 765043856}
   - component: {fileID: 765043855}
+  - component: {fileID: 765043859}
   m_Layer: 0
   m_Name: Markupo
   m_TagString: Untagged
@@ -11980,6 +11981,25 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &765043859
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 765043854}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4a6a61df37b7ed349ac9ca9ea31c497e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 0}
+  tailSwipePrefab: {fileID: 1124323920041708412, guid: 77074df22377d3b4b9ce51095f6139a4,
+    type: 3}
+  poisonSprayPrefab: {fileID: 2349935447013016804, guid: 56bec873859ccf447a35be7482b50825,
+    type: 3}
+  distanceFromTarget: 5
+  health: 0
 --- !u!1 &766368627
 GameObject:
   m_ObjectHideFlags: 0

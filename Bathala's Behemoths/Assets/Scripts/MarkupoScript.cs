@@ -1,16 +1,30 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEngine.GraphicsBuffer;
 
 public class MarkupoScript : MonoBehaviour
 {
+    private GameObject player;
+    public Transform target;
+
+    public GameObject tailSwipePrefab;
+    public GameObject poisonSprayPrefab;
+
+    public float distanceFromTarget = 50000f;
+
+    private Coroutine randomAttackCoroutine;
+
     public float health;
     private GameObject bulletHit;
 
     // Start is called before the first frame update
     void Start()
     {
-        health = 1000;
+        player = GameObject.FindWithTag("Player");
+        health = 2500f;
+
+        StartCoroutine(PoisonSpray());
 
         //Start off on terrain height
         float terrainHeight = Terrain.activeTerrain.SampleHeight(transform.position);
@@ -25,7 +39,7 @@ public class MarkupoScript : MonoBehaviour
         
     }
 
-    public void takeDamage(float damage)
+    public void TakeDamage(float damage)
     {
         health -= damage;
         if (health <= 0)
@@ -39,7 +53,27 @@ public class MarkupoScript : MonoBehaviour
         if (bulletHit != other.gameObject && other.gameObject.CompareTag("Projectile"))
         {
             bulletHit = other.gameObject;
-            takeDamage(PlayerStats.Instance.basicAttackDamage);
+            TakeDamage(PlayerStats.Instance.basicAttackDamage);
         }
+    }
+
+    private IEnumerator TailSwipe()
+    {
+        GameObject tailSwipe = Instantiate(tailSwipePrefab, gameObject.transform.position, Quaternion.identity);
+        tailSwipe.transform.parent = transform;
+        yield return null;
+    }
+
+    private IEnumerator PoisonSpray()
+    {
+        target = GameObject.FindGameObjectWithTag("Player").transform;
+        Vector3 directionToTarget = (target.position - transform.position).normalized;
+
+        Vector3 spawnPosition = transform.position + (directionToTarget * distanceFromTarget);
+
+        GameObject poisonSpray = Instantiate(poisonSprayPrefab, 
+            spawnPosition, Quaternion.LookRotation(directionToTarget));
+
+        yield return null;
     }
 }

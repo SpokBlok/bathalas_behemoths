@@ -92,7 +92,7 @@ public class IntroDialogue : MonoBehaviour
             switchToManny();
             PlayerStats.Instance.initSpeed = 5;
 
-            player.gameObject.transform.position = new Vector3(703.2f, 57.7f, 272.3f);
+            player.gameObject.transform.position = new Vector3(735.2f, 53.7f, 280.3f);
             
             Debug.Log("inside end state");
         }

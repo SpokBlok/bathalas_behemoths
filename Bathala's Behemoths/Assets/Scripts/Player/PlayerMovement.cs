@@ -89,6 +89,10 @@ public class PlayerMovement : MonoBehaviour
         {
             gameObject.transform.position = new Vector3(588.2f, 81.7f, 261.7f);
         }
+        else if(stats.outdoorsScene)
+        {
+            gameObject.transform.position = new Vector3(876.24f, 79.24f, 72.68f);
+        }
     }
 
     public void OnMove(InputAction.CallbackContext context)
@@ -238,7 +242,8 @@ public class PlayerMovement : MonoBehaviour
         Vector3 position = charControl.transform.position;
 
         // Get the terrain height at the character's current position (X, Z)
-        float terrainHeight = Terrain.activeTerrain.SampleHeight(position);
+        Terrain myTerrain = GameObject.Find("Terrain").GetComponent<Terrain>();
+        float terrainHeight = myTerrain.SampleHeight(position);
 
         // Set the character's Y position to match the terrain height + 1, more if berserk
         position.y = terrainHeight + 2.7f;

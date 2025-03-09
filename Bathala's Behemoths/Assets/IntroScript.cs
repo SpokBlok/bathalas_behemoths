@@ -9,6 +9,7 @@ public class IntroScript : MonoBehaviour
     public GameObject dialogue;
     public GameObject introScene;
     public GameObject introScene2;
+    public GameObject instructions;
     
     private bool isInTrigger;
 
@@ -38,6 +39,7 @@ public class IntroScript : MonoBehaviour
             if(PlayerStats.Instance.introDone == false)
             {
                 dialogue.SetActive(true);
+                instructions.SetActive(false);
             }
         }
     }

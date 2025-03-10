@@ -13,6 +13,8 @@ public class MarkupoScript : MonoBehaviour
 
     public float distanceFromTarget;
 
+    private bool stunned;
+
     private Coroutine randomAttackCoroutine;
 
     public float health;
@@ -24,7 +26,7 @@ public class MarkupoScript : MonoBehaviour
         player = GameObject.FindWithTag("Player");
         health = 2500f;
 
-        StartCoroutine(PoisonSpray());
+        stunned = false;
 
         //Start off on terrain height
         float terrainHeight = Terrain.activeTerrain.SampleHeight(transform.position);
@@ -36,7 +38,26 @@ public class MarkupoScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (randomAttackCoroutine == null && !stunned)
+        {
+            foreach (Transform child in transform)
+            {
+                Destroy(child.gameObject);
+            }
+
+            int index = Random.Range(0, 2);
+
+            switch (index)
+            {
+                case 0:
+                    randomAttackCoroutine = StartCoroutine(TailSwipe());
+                    break;
+
+                case 1:
+                    randomAttackCoroutine = StartCoroutine(PoisonSpray());
+                    break;
+            }
+        }
     }
 
     public void TakeDamage(float damage)
@@ -48,20 +69,14 @@ public class MarkupoScript : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter(Collider other)
-    {
-        if (bulletHit != other.gameObject && other.gameObject.CompareTag("Projectile"))
-        {
-            bulletHit = other.gameObject;
-            TakeDamage(PlayerStats.Instance.basicAttackDamage);
-        }
-    }
-
     private IEnumerator TailSwipe()
     {
         GameObject tailSwipe = Instantiate(tailSwipePrefab, gameObject.transform.position, Quaternion.identity);
         tailSwipe.transform.parent = transform;
-        yield return null;
+
+        yield return new WaitForSeconds(10f);
+
+        randomAttackCoroutine = null;
     }
 
     private IEnumerator PoisonSpray()
@@ -75,6 +90,8 @@ public class MarkupoScript : MonoBehaviour
             spawnPosition, Quaternion.LookRotation(directionToTarget));
         poisonSpray.transform.parent = transform;
 
-        yield return null;
+        yield return new WaitForSeconds(10f);
+
+        randomAttackCoroutine = null;
     }
 }

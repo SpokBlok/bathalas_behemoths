@@ -64,8 +64,17 @@ public class PlayerMovement : MonoBehaviour
     public Coroutine basicAttackCoroutine;
     public InputActionReference mouseAction;
 
+    public MSAnimController msModel;
+    public SkinnedMeshRenderer[] modelRenderer;
+    public Coroutine takingDamage;
+
     private void Start()
     {
+        if (modelRenderer == null)
+        {
+            modelRenderer = msModel.GetComponentsInChildren<SkinnedMeshRenderer>();
+        }
+
         // Get references to char controller + collider
         charControl = GetComponent<CharacterController>();
         animator = GetComponentInChildren<Animator>();
@@ -367,6 +376,16 @@ public class PlayerMovement : MonoBehaviour
 
     public void TakeDamage(float damage)
     {
+        if(takingDamage == null)
+        {
+            takingDamage = StartCoroutine(SwitchToDamagedTex());
+        }
+        else if(takingDamage != null)
+        {
+            StopCoroutine(takingDamage);
+            takingDamage = StartCoroutine(SwitchToDamagedTex());
+        }
+
         if (PlayerStats.Instance.hasMudArmor)
         {
             stats.currentHealth -= damage / 1.5f;
@@ -428,6 +447,21 @@ public class PlayerMovement : MonoBehaviour
         fightStanceValue = endValue; // Ensure it fully reaches the target
         animator.SetLayerWeight(1, fightStanceValue);
         isExitingFightStance = false;
+    }
+
+    IEnumerator SwitchToDamagedTex()
+    {
+        foreach(SkinnedMeshRenderer bodypart in modelRenderer)
+        {
+            bodypart.material.color = Color.red; // Change color to red
+        }
+        
+        yield return new WaitForSeconds(0.2f); // Wait
+
+        foreach(SkinnedMeshRenderer bodypart in modelRenderer)
+        {
+            bodypart.material.color = Color.white; // Restore original color
+        }
     }
 
     public void ChangeState(PlayerState newState) //Logic for entering states (e.g. playing animations)

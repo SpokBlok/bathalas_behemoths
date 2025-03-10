@@ -44,9 +44,17 @@ public class KapreMob : EnemyMob
     Vector3 worldCenter;
     Vector3 worldSize;
 
+    public SkinnedMeshRenderer[] modelRenderer;
+    public Coroutine takingDamage;
+
     // Start is called before the first frame update
     void Start()
     {
+        if (modelRenderer == null)
+        {
+            modelRenderer = kapreModel.GetComponentsInChildren<SkinnedMeshRenderer>();
+        }
+
         killQuestUIList = Resources.FindObjectsOfTypeAll<KillQuestUI>();
         foreach (KillQuestUI UI in killQuestUIList)
         {
@@ -111,7 +119,8 @@ public class KapreMob : EnemyMob
     }
     private void TerrainGravity()
     {
-        float terrainHeight = Terrain.activeTerrain.SampleHeight(transform.position);
+        Terrain myTerrain = GameObject.Find("Terrain").GetComponent<Terrain>();
+        float terrainHeight = myTerrain.SampleHeight(transform.position);
         Vector3 newPosition = transform.position;
         newPosition.y = terrainHeight + 1.2f;
         transform.position = newPosition;
@@ -190,6 +199,16 @@ public class KapreMob : EnemyMob
 
     public override void TakeDamage(float damage)
     {
+        if(takingDamage == null)
+        {
+            takingDamage = StartCoroutine(SwitchToDamagedTex());
+        }
+        else if(takingDamage != null)
+        {
+            StopCoroutine(takingDamage);
+            takingDamage = StartCoroutine(SwitchToDamagedTex());
+        }
+
         health -= damage;
         if (health <= 0)
         {
@@ -213,6 +232,21 @@ public class KapreMob : EnemyMob
         yield return new WaitForSeconds(duration);
         radius.TriggerCheck();
         yield return null;
+    }
+
+    IEnumerator SwitchToDamagedTex()
+    {
+        foreach(SkinnedMeshRenderer bodypart in modelRenderer)
+        {
+            bodypart.material.color = Color.red; // Change color to red
+        }
+        
+        yield return new WaitForSeconds(0.2f); // Wait
+
+        foreach(SkinnedMeshRenderer bodypart in modelRenderer)
+        {
+            bodypart.material.color = Color.white; // Restore original color
+        }
     }
 
     public void ChangeState(KapreState newState) //Logic for entering states (e.g. playing animations)

@@ -342,6 +342,10 @@ MonoBehaviour:
   killQuestUI: {fileID: 0}
   kapreState: 0
   kapreModel: {fileID: 515768271369090532}
+  modelRenderer:
+  - {fileID: 4279643568908815687}
+  - {fileID: 4907888917286935240}
+  - {fileID: 4651063741570748705}
 --- !u!1 &3543018298486764693
 GameObject:
   m_ObjectHideFlags: 0
@@ -606,3 +610,21 @@ MonoBehaviour:
   animator: {fileID: 0}
   moving: 0
   attacking: 0
+--- !u!137 &4279643568908815687 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 4112984690662791721, guid: 656f2508aa90b23499d2d31e4894da51,
+    type: 3}
+  m_PrefabInstance: {fileID: 175667796477941614}
+  m_PrefabAsset: {fileID: 0}
+--- !u!137 &4651063741570748705 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -4396642182433536433, guid: 656f2508aa90b23499d2d31e4894da51,
+    type: 3}
+  m_PrefabInstance: {fileID: 175667796477941614}
+  m_PrefabAsset: {fileID: 0}
+--- !u!137 &4907888917286935240 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 5074512353664290214, guid: 656f2508aa90b23499d2d31e4894da51,
+    type: 3}
+  m_PrefabInstance: {fileID: 175667796477941614}
+  m_PrefabAsset: {fileID: 0}

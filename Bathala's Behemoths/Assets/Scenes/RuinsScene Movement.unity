@@ -25900,11 +25900,11 @@ Terrain:
   m_Enabled: 1
   serializedVersion: 6
   m_TerrainData: {fileID: 15600000, guid: f6e8728df0750344a8974f765fab6268, type: 2}
-  m_TreeDistance: 75
-  m_TreeBillboardDistance: 75
+  m_TreeDistance: 150
+  m_TreeBillboardDistance: 250
   m_TreeCrossFadeLength: 3
   m_TreeMaximumFullLODCount: 25
-  m_DetailObjectDistance: 200
+  m_DetailObjectDistance: 150
   m_DetailObjectDensity: 1
   m_HeightmapPixelError: 5
   m_SplatMapDistance: 1000

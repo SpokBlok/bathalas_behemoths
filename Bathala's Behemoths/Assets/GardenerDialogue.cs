@@ -11,6 +11,7 @@ public class GardenerDialogue : MonoBehaviour
     public string[] currentLines;
     public float textInterval;
     public GameObject pointer;
+    public GameObject fertilizerMarker;
 
     private bool pointerActive = false;
     Vector3 currentPosition;
@@ -83,6 +84,7 @@ public class GardenerDialogue : MonoBehaviour
             gameObject.transform.localPosition = currentPosition;
             gameObject.SetActive(false);
             pointer.SetActive(false);
+            fertilizerMarker.SetActive(true);
             pointerActive = false;
             
             Debug.Log("inside end state");

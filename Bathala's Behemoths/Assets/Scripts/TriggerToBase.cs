@@ -25,6 +25,7 @@ public class TriggerToBase : MonoBehaviour
             PlayerStats.Instance.introDone = true;
             PlayerStats.Instance.outdoorsScene = false;
             PlayerStats.Instance.ruinsScene = true;
+            QuestState.Instance.chickenSightTrigger = false;
             PlayerStats.Instance.speed = 15;
         }
     }

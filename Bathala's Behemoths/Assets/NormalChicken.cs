@@ -24,7 +24,7 @@ public class NormalChicken : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player");
         playerTransform = player.transform;
         chickenControl = GetComponent<CharacterController>();
-        speed = 70;
+        speed = 20;
         
         isInTrigger = false;
     }
@@ -63,9 +63,10 @@ public class NormalChicken : MonoBehaviour
 
     private void TerrainGravity()
     {
-        float terrainHeight = Terrain.activeTerrain.SampleHeight(transform.position);
+        Terrain myTerrain = GameObject.Find("Terrain").GetComponent<Terrain>();
+        float terrainHeight = myTerrain.SampleHeight(transform.position);
         Vector3 newPosition = transform.position;
-        newPosition.y = terrainHeight + 2.0f;
+        newPosition.y = terrainHeight + 5.5f;
         transform.position = newPosition;
     }
 

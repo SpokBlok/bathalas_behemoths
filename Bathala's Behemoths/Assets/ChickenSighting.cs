@@ -29,10 +29,11 @@ public class ChickenSighting : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             isInTrigger = true;
-            if(QuestState.Instance.chickenSightTrigger == false)
+            if(QuestState.Instance.chickenSightTrigger == true)
             {
-                QuestState.Instance.chickenSightTrigger = true;
+                QuestState.Instance.chickenSightTrigger = false;
                 dialogue.SetActive(true);
+                Debug.Log("CHICKEN TRIGGER TRIGGERED");
             }
         }
     }
@@ -43,7 +44,7 @@ public class ChickenSighting : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             isInTrigger = false;
-            QuestState.Instance.chickenSightTrigger = true;
+            QuestState.Instance.chickenSightTrigger = false;
             // popUp.gameObject.SetActive(false);
         }
     }

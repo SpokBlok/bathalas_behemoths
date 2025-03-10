@@ -11,7 +11,7 @@ public class MarkupoScript : MonoBehaviour
     public GameObject tailSwipePrefab;
     public GameObject poisonSprayPrefab;
 
-    public float distanceFromTarget = 50000f;
+    public float distanceFromTarget;
 
     private Coroutine randomAttackCoroutine;
 
@@ -67,12 +67,13 @@ public class MarkupoScript : MonoBehaviour
     private IEnumerator PoisonSpray()
     {
         target = GameObject.FindGameObjectWithTag("Player").transform;
-        Vector3 directionToTarget = (target.position - transform.position).normalized;
+        Vector3 directionToTarget = (target.position - gameObject.transform.position).normalized;
 
-        Vector3 spawnPosition = transform.position + (directionToTarget * distanceFromTarget);
+        Vector3 spawnPosition = gameObject.transform.position + (directionToTarget * distanceFromTarget);
 
         GameObject poisonSpray = Instantiate(poisonSprayPrefab, 
             spawnPosition, Quaternion.LookRotation(directionToTarget));
+        poisonSpray.transform.parent = transform;
 
         yield return null;
     }

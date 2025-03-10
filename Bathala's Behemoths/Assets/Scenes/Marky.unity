@@ -11998,7 +11998,7 @@ MonoBehaviour:
     type: 3}
   poisonSprayPrefab: {fileID: 2349935447013016804, guid: 56bec873859ccf447a35be7482b50825,
     type: 3}
-  distanceFromTarget: 5
+  distanceFromTarget: 20
   health: 0
 --- !u!1 &766368627
 GameObject:

@@ -23,6 +23,7 @@ public class NotifDialogue : MonoBehaviour
 
     void OnEnable()
     {
+        QuestState.Instance.pausedForDialogue = true;
         textComponent.text = string.Empty;
         StartDialogue();
     }
@@ -74,6 +75,7 @@ public class NotifDialogue : MonoBehaviour
             gameObject.SetActive(false);
             pointer.SetActive(false);
             pointerActive = false;
+            QuestState.Instance.pausedForDialogue = false;
 
             PlayerStats.Instance.tammyFound = false;
             PlayerStats.Instance.markyFound = false;

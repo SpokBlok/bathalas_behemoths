@@ -21,7 +21,7 @@ public class HPPassiveRegen : MonoBehaviour
         player = GameObject.FindWithTag("Player");
         Debug.Log("Passive Regen Start");
         yield return new WaitForSeconds(10);
-        player.GetComponent<PlayerMovement>().Heal(5);
+        player.GetComponent<PlayerMovement>().Heal(PlayerStats.Instance.maxHealth*0.10f);
         if (!PlayerStats.Instance.IsMaxHealth())
         {
             activeCoroutine = StartCoroutine(PassiveRegen());

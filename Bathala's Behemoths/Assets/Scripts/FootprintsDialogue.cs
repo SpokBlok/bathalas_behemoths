@@ -26,6 +26,7 @@ public class FootprintsDialogue : MonoBehaviour
 
     void OnEnable()
     {
+        QuestState.Instance.pausedForDialogue = true;
         if(QuestState.Instance.footprintsRepeat)
         {
             currentLines = linesRepeat;
@@ -85,6 +86,7 @@ public class FootprintsDialogue : MonoBehaviour
             pointer.SetActive(false);
             pointerActive = false;
             QuestState.Instance.footprintsRepeat = true;
+            QuestState.Instance.pausedForDialogue = false;
             
             Debug.Log("inside end state");
         }

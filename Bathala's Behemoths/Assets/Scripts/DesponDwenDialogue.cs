@@ -24,6 +24,7 @@ public class DesponDwenDialogue : MonoBehaviour
 
     void OnEnable()
     {
+        QuestState.Instance.pausedForDialogue = true;
         if(QuestState.Instance.desponDwendeRepeat)
         {
             currentLines = linesRepeat;
@@ -80,6 +81,7 @@ public class DesponDwenDialogue : MonoBehaviour
         {
             gameObject.SetActive(false);
             QuestState.Instance.desponDwendeRepeat = true;
+            QuestState.Instance.pausedForDialogue = false;
         }
     }
 }

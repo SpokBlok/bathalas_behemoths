@@ -23,6 +23,7 @@ public class DwendeSightingDia : MonoBehaviour
 
     void OnEnable()
     {
+        QuestState.Instance.pausedForDialogue = true;
         textComponent.text = string.Empty;
         StartDialogue();
     }
@@ -75,6 +76,7 @@ public class DwendeSightingDia : MonoBehaviour
             pointer.SetActive(false);
             pointerActive = false;
             QuestState.Instance.desponDwendeSightTrigger = true;
+            QuestState.Instance.pausedForDialogue = false;
             index = 0;
             
             Debug.Log("inside end state");

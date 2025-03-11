@@ -24,6 +24,7 @@ public class TammyTamedDialogue : MonoBehaviour
 
     void OnEnable()
     {
+        QuestState.Instance.pausedForDialogue = true;
         textComponent.text = string.Empty;
         StartDialogue();
     }
@@ -71,6 +72,7 @@ public class TammyTamedDialogue : MonoBehaviour
         else if(pointerActive == true)
         {
             gameObject.transform.localPosition = currentPosition;
+            QuestState.Instance.pausedForDialogue = false;
             gameObject.SetActive(false);
             SceneManager.LoadScene("MainMenu");
             

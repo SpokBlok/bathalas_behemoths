@@ -33,6 +33,7 @@ public class IntroDialogue : MonoBehaviour
 
     void OnEnable()
     {
+        QuestState.Instance.pausedForDialogue = true;
         textComponent.text = string.Empty;
         StartDialogue();
     }
@@ -85,6 +86,7 @@ public class IntroDialogue : MonoBehaviour
             pointer.SetActive(false);
             pointerActive = false;
             PlayerStats.Instance.introDone = true;
+            QuestState.Instance.pausedForDialogue = false;
             index = 0;
 
             introScene.SetActive(false);

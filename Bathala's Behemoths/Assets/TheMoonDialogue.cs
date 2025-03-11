@@ -28,6 +28,7 @@ public class TheMoonDialogue : MonoBehaviour
 
     void OnEnable()
     {
+        QuestState.Instance.pausedForDialogue = true;
         if(QuestState.Instance.moonNPCRepeat && QuestState.Instance.moonChunkGet)
         {
             QuestState.Instance.moonQuestEnded = true;
@@ -92,6 +93,7 @@ public class TheMoonDialogue : MonoBehaviour
             clueImage.SetActive(false);
             pointer.SetActive(false);
             imageActive = false;
+            QuestState.Instance.pausedForDialogue = false;
             
             Debug.Log("inside end state");
         }

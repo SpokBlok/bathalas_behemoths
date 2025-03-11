@@ -26,6 +26,7 @@ public class MoonBraceletDialogue : MonoBehaviour
 
     void OnEnable()
     {
+        QuestState.Instance.pausedForDialogue = true;
         if(QuestState.Instance.moonBraceletRepeat)
         {
             currentLines = linesRepeat;
@@ -84,6 +85,7 @@ public class MoonBraceletDialogue : MonoBehaviour
             gameObject.SetActive(false);
             pointer.SetActive(false);
             pointerActive = false;
+            QuestState.Instance.pausedForDialogue = false;
             
             Debug.Log("inside end state");
         }

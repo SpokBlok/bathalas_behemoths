@@ -26,6 +26,7 @@ public class VetFarmerDialogue : MonoBehaviour
 
     void OnEnable()
     {
+        QuestState.Instance.pausedForDialogue = true;
         if(QuestState.Instance.vetFarmerRepeat)
         {
             currentLines = linesRepeat;
@@ -84,6 +85,7 @@ public class VetFarmerDialogue : MonoBehaviour
             gameObject.SetActive(false);
             pointer.SetActive(false);
             pointerActive = false;
+            QuestState.Instance.pausedForDialogue = false;
             
             Debug.Log("inside end state");
         }

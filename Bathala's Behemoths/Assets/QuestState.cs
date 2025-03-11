@@ -36,6 +36,8 @@ public class QuestState : MonoBehaviour
     public bool tambanokanoFound;
     public bool markupoFound;
 
+    public bool pausedForDialogue = false;
+
     // Start is called before the first frame update
     void Start()
     {

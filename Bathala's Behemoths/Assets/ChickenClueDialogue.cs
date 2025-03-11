@@ -26,6 +26,7 @@ public class ChickenClueDialogue : MonoBehaviour
 
     void OnEnable()
     {
+        QuestState.Instance.pausedForDialogue = true;
         if(QuestState.Instance.chickenRepeat)
         {
             currentLines = linesRepeat;
@@ -84,6 +85,7 @@ public class ChickenClueDialogue : MonoBehaviour
             gameObject.SetActive(false);
             pointer.SetActive(false);
             pointerActive = false;
+            QuestState.Instance.pausedForDialogue = false;
             
             Debug.Log("inside end state");
         }

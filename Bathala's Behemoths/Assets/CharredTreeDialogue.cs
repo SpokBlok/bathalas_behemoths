@@ -26,6 +26,7 @@ public class CharredTreeDialogue : MonoBehaviour
 
     void OnEnable()
     {
+        QuestState.Instance.pausedForDialogue = true;
         if(QuestState.Instance.charredTreeRepeat)
         {
             currentLines = linesRepeat;
@@ -85,6 +86,7 @@ public class CharredTreeDialogue : MonoBehaviour
             pointer.SetActive(false);
             pointerActive = false;
             QuestState.Instance.charredTreeRepeat = true;
+            QuestState.Instance.pausedForDialogue = false;
             
             Debug.Log("inside end state");
         }

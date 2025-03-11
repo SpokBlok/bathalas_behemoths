@@ -5,10 +5,12 @@ using UnityEngine.SceneManagement;
 
 public class TriggerToBase : MonoBehaviour
 {
+    public BathalasBlessing bbSkill;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        bbSkill = FindObjectOfType<BathalasBlessing>();
     }
 
     // Update is called once per frame
@@ -25,8 +27,8 @@ public class TriggerToBase : MonoBehaviour
             PlayerStats.Instance.introDone = true;
             PlayerStats.Instance.outdoorsScene = false;
             PlayerStats.Instance.ruinsScene = true;
-            QuestState.Instance.chickenSightTrigger = false;
-            PlayerStats.Instance.speed = 15;
+            PlayerStats.Instance.currentHealth = 50;
+            bbSkill.RechargeUsages(); // Calls recharge on the skill usage for BB - since it's a one-use skill
         }
     }
 }

@@ -26,6 +26,7 @@ public class DialogueScript : MonoBehaviour
 
     void OnEnable()
     {
+        QuestState.Instance.pausedForDialogue = true;
         if(QuestState.Instance.frightenedDwendeRepeat)
         {
             currentLines = linesRepeat;
@@ -85,6 +86,7 @@ public class DialogueScript : MonoBehaviour
             pointer.SetActive(false);
             pointerActive = false;
             QuestState.Instance.frightenedDwendeRepeat = true;
+            QuestState.Instance.pausedForDialogue = false;
             
             Debug.Log("inside end state");
         }

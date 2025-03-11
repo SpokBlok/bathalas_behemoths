@@ -87,6 +87,8 @@ public class KapreMob : EnemyMob
     // Update is called once per frame
     void Update()
     {
+        if(QuestState.Instance.pausedForDialogue){return;}
+
         switch (kapreState)
         {
             case KapreState.Idle:

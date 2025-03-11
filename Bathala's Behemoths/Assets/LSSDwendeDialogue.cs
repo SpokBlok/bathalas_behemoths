@@ -28,6 +28,7 @@ public class LSSDwendeDialogue : MonoBehaviour
 
     void OnEnable()
     {
+        QuestState.Instance.pausedForDialogue = true;
         if(QuestState.Instance.lssDwendeRepeat && QuestState.Instance.fluteGet)
         {
             QuestState.Instance.lssDwendeRan = true;
@@ -92,6 +93,7 @@ public class LSSDwendeDialogue : MonoBehaviour
             clueImage.SetActive(false);
             pointer.SetActive(false);
             imageActive = false;
+            QuestState.Instance.pausedForDialogue = false;
 
             if(QuestState.Instance.lssDwendeRepeat && QuestState.Instance.fluteGet)
             {

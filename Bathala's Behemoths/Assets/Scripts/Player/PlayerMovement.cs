@@ -212,8 +212,8 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
-        if (pauseSystem.GetIsPaused()) { return; }
-        
+        if (QuestState.Instance.pausedForDialogue) { return; }
+
         UpdateRotationTarget();
 
         switch (currentState)

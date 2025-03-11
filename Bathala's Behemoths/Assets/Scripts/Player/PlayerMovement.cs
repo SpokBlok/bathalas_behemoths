@@ -68,12 +68,16 @@ public class PlayerMovement : MonoBehaviour
     public SkinnedMeshRenderer[] modelRenderer;
     public Coroutine takingDamage;
 
+    private PauseSystem pauseSystem;
+
     private void Start()
     {
         if (modelRenderer == null)
         {
             modelRenderer = msModel.GetComponentsInChildren<SkinnedMeshRenderer>();
         }
+
+        pauseSystem = FindObjectOfType<PauseSystem>();
 
         // Get references to char controller + collider
         charControl = GetComponent<CharacterController>();
@@ -208,6 +212,8 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
+        if (pauseSystem.GetIsPaused()) { return; }
+        
         UpdateRotationTarget();
 
         switch (currentState)

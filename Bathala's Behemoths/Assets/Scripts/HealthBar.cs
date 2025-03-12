@@ -1,11 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using TMPro;
 
 public class HealthBar : MonoBehaviour
 {
     public TextMeshProUGUI HPText;
+    public Image healthBar;
 
     // public static HealthBar Instance { get; private set; }
 
@@ -20,7 +22,8 @@ public class HealthBar : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        HPText.text = "HP: " + PlayerStats.Instance.currentHealth + "/" + PlayerStats.Instance.maxHealth;
+        HPText.text = "HP: " + PlayerStats.Instance.currentHealth + "/" + PlayerStats.Instance.maxHealth + " HP";
+        healthBar.fillAmount = PlayerStats.Instance.currentHealth/PlayerStats.Instance.maxHealth;
     }
 
     // private void Awake()

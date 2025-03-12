@@ -20,7 +20,7 @@ public class KapreCigarCurrency : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        CigarText.text = "Kapre Cigars: " + PlayerStats.Instance.kapreCigars;
+        CigarText.text = PlayerStats.Instance.kapreCigars.ToString();
     }
 
     // private void Awake()

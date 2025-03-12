@@ -20,15 +20,15 @@ public class MCSkillHUD : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(PlayerSkills.Instance.skillBeingEquipped && (PlayerSkills.Instance.mainCharacterSkill != null && PlayerSkills.Instance.mainCharacterSkill.skillCode == 1))
+        if(PlayerSkills.Instance.mainCharacterSkill != null && PlayerSkills.Instance.mainCharacterSkill.skillCode == 1)
         {
             SetHUDToBathBless();
         }
-        else if(PlayerSkills.Instance.skillBeingEquipped && (PlayerSkills.Instance.mainCharacterSkill != null && PlayerSkills.Instance.mainCharacterSkill.skillCode == 2))
+        else if(PlayerSkills.Instance.mainCharacterSkill != null && PlayerSkills.Instance.mainCharacterSkill.skillCode == 2)
         {
             SetHUDToFirstAid();
         }
-        else if(PlayerSkills.Instance.skillBeingEquipped && (PlayerSkills.Instance.mainCharacterSkill != null && PlayerSkills.Instance.mainCharacterSkill.skillCode == 3))
+        else if(PlayerSkills.Instance.mainCharacterSkill != null && PlayerSkills.Instance.mainCharacterSkill.skillCode == 3)
         {
             SetHUDToMusicalFlute();
         }

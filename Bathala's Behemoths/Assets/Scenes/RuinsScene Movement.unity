@@ -16123,8 +16123,8 @@ MonoBehaviour:
     m_ActionName: Player/BasicAttack[/Mouse/leftButton]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: FrightenedDwende, Assembly-CSharp
+      - m_Target: {fileID: 1140790897}
+        m_TargetAssemblyTypeName: BaseBuildingScript, Assembly-CSharp
         m_MethodName: OnInteract
         m_Mode: 0
         m_Arguments:
@@ -16135,8 +16135,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: CharredTreeClue, Assembly-CSharp
+      - m_Target: {fileID: 9113670018620553200}
+        m_TargetAssemblyTypeName: MCSkillsBuildingScript, Assembly-CSharp
         m_MethodName: OnInteract
         m_Mode: 0
         m_Arguments:
@@ -16147,8 +16147,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: FenceBroken, Assembly-CSharp
+      - m_Target: {fileID: 909227162}
+        m_TargetAssemblyTypeName: QuestBoardScript, Assembly-CSharp
         m_MethodName: OnInteract
         m_Mode: 0
         m_Arguments:
@@ -18940,6 +18940,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   img: {fileID: 838505682}
   isBasicAttacking: 0
+  player: {fileID: 0}
 --- !u!114 &838505682
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20082,6 +20083,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 905952961}
   m_CullTransparentMesh: 1
+--- !u!114 &909227162 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 817613642672016744, guid: 1386be20f236ee44d9a89475913cbd88,
+    type: 3}
+  m_PrefabInstance: {fileID: 2112677781686238754}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b0df066024fd424439d4ac3a59d2dee9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &911628482
 GameObject:
   m_ObjectHideFlags: 0

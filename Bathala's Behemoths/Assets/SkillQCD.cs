@@ -7,24 +7,25 @@ public class SkillQCD : MonoBehaviour
 {
     public Image img;
     public Coroutine coolingDown;
-    public float skillCDTime;
-    public bool isCoolingDown;
+    public bool skillInCooldown = false;
+    public float cdTime;
 
     // Start is called before the first frame update
     void Start()
     {
         img.fillAmount = 0.0f;
+        cdTime = PlayerSkills.Instance.behemothSkillQChargeTimer;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(PlayerSkills.Instance.skillBeingEquipped)
+        if(PlayerSkills.Instance.skillBeingEquipped || cdTime == 0)
         {
-            skillCDTime = PlayerSkills.Instance.behemothSkillQChargeTimer;
+            cdTime = PlayerSkills.Instance.behemothSkillQChargeTimer;
         }
 
-        if(PlayerSkills.Instance.skillQCooldownStart && !isCoolingDown)
+        if((PlayerSkills.Instance.skillCooldownStart && !skillInCooldown) && (PlayerSkills.Instance.behemothSkillQCharges != PlayerSkills.Instance.behemothSkillQ.maxCharges))
         {
             CoolDownStart();
         }
@@ -46,9 +47,9 @@ public class SkillQCD : MonoBehaviour
     IEnumerator CoolDown()
     {
         Debug.Log("Skill Q Cooling Down");
-        isCoolingDown = true;
+        skillInCooldown = true;
 
-        float duration = skillCDTime;
+        float duration = cdTime;
         float elapsedTime = 0f;
         float startValue = 1.0f;
         float endValue = 0.0f;
@@ -63,6 +64,6 @@ public class SkillQCD : MonoBehaviour
         }
         
         img.fillAmount = endValue; // Ensure it fully reaches the target
-        isCoolingDown = false;
+        skillInCooldown = false;
     }
 }

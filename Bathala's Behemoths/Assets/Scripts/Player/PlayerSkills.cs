@@ -16,7 +16,7 @@ public class PlayerSkills : MonoBehaviour
     public int behemothSkillQCharges;
     public bool behemothSkillQCharging;
     public float behemothSkillQChargeTimer;
-    public bool skillQCooldownStart;
+    public bool skillCooldownStart;
     public Coroutine behemothSkillQCoroutine = null;
 
     public BaseSkill behemothSkillE;
@@ -137,21 +137,13 @@ public class PlayerSkills : MonoBehaviour
             isCharging = true;
         }
 
-        if(isCharging && !skillQCooldownStart)
-        {
-            skillQCooldownStart = true;
-        }
-        else if(!isCharging)
-        {
-            skillQCooldownStart = false;
-        }
-
         if (isCharging)
         {
             if (charges >= maxCharges)
             {
                 isCharging = false;
                 chargeTimer = cooldown;
+                skillCooldownStart = false;
             }
             else if (chargeTimer <= 0)
             {
@@ -161,6 +153,15 @@ public class PlayerSkills : MonoBehaviour
             else
             {
                 chargeTimer -= Time.deltaTime;
+            }
+            
+            if(isCharging && !skillCooldownStart)
+            {
+                skillCooldownStart = true;
+            }
+            else if(!isCharging)
+            {
+                skillCooldownStart = false;
             }
         }
     }

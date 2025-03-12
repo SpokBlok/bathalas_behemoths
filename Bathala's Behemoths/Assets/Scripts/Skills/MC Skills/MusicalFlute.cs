@@ -21,6 +21,7 @@ public class MusicalFlute : BaseSkill
         playerMovement = player.GetComponent<PlayerMovement>();
         maxCharges = 1;
         cooldown = 40;
+        skillCode = 3;
     }
 
     public override IEnumerator RunSkill()

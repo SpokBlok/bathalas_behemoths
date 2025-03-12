@@ -39,6 +39,7 @@ public class PlayerMovement : MonoBehaviour
 
     //Attack variables
     public bool isAttacking = false;
+    public bool attackOngoing = false;
     public bool isSkillingOrUlting = false;
 
     // Character Conroller
@@ -159,6 +160,7 @@ public class PlayerMovement : MonoBehaviour
             if (context.performed && !isAttacking)
             {
                 ChangeState(PlayerState.Attacking);
+                attackOngoing = true;
                 basicAttackCoroutine = StartCoroutine(BasicAttack());
             }
         }

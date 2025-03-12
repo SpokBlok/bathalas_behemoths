@@ -21,6 +21,7 @@ public class Dash : BaseSkill
         input = GameObject.FindWithTag("Player Input").GetComponent<PlayerInput>();
         maxCharges = 3;
         cooldown = 6;
+        skillCode = 1;
     }
 
     public override IEnumerator RunSkill()

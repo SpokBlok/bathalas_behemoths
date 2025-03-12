@@ -16,6 +16,7 @@ public class FirstAid : BaseSkill
         isHealHash = Animator.StringToHash("isHealing");
         maxCharges = 3;
         cooldown = 40;
+        skillCode = 2;
     }
 
     public override IEnumerator RunSkill()

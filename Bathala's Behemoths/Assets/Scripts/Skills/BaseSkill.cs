@@ -9,5 +9,6 @@ public abstract class BaseSkill : MonoBehaviour
     public float cooldown;
     public int maxCharges;
     public bool oneTimeUseAvailable;
+    public int skillCode;
 
 }

@@ -16,6 +16,7 @@ public class PlayerSkills : MonoBehaviour
     public int behemothSkillQCharges;
     public bool behemothSkillQCharging;
     public float behemothSkillQChargeTimer;
+    public bool skillQCooldownStart;
     public Coroutine behemothSkillQCoroutine = null;
 
     public BaseSkill behemothSkillE;
@@ -24,6 +25,10 @@ public class PlayerSkills : MonoBehaviour
     public bool behemothSkillECharging;
     public float behemothSkillEChargeTimer;
     public Coroutine behemothSkillECoroutine = null;
+
+    public bool skillBeingEquipped = false;
+    public bool skillQBeingUnequipped = false;
+    public bool skillEBeingUnequipped = false;
 
     // Start is called before the first frame update
     void Start()
@@ -70,6 +75,7 @@ public class PlayerSkills : MonoBehaviour
         mainCharacterSkillChargeTimer = newSkill.cooldown;
         mainCharacterSkillCharges = newSkill.maxCharges;
         mainCharacterSkillIsEquipped = true;
+        skillBeingEquipped = true;
     }
 
     public void BehemothSkillQChange(BaseSkill newSkill)
@@ -78,6 +84,7 @@ public class PlayerSkills : MonoBehaviour
         behemothSkillQChargeTimer = newSkill.cooldown;
         behemothSkillQCharges = newSkill.maxCharges;
         behemothSkillQIsEquipped = true;
+        skillBeingEquipped = true;
     }
 
     public void BehemothSkillEChange(BaseSkill newSkill)
@@ -86,6 +93,7 @@ public class PlayerSkills : MonoBehaviour
         behemothSkillEChargeTimer = newSkill.cooldown;
         behemothSkillECharges = newSkill.maxCharges;
         behemothSkillEIsEquipped = true;
+        skillBeingEquipped = true;
     }
 
     public void RemoveMainCharacterSkill()
@@ -104,6 +112,7 @@ public class PlayerSkills : MonoBehaviour
         behemothSkillQCharges = 0;
         behemothSkillQIsEquipped = false;
         behemothSkillQCharging = false;
+        skillQBeingUnequipped = true;
     }
 
     public void RemoveBehemothSkillE()
@@ -113,6 +122,7 @@ public class PlayerSkills : MonoBehaviour
         behemothSkillECharges = 0;
         behemothSkillEIsEquipped = false;
         behemothSkillECharging = false;
+        skillEBeingUnequipped = true;
     }
 
     private void SkillChargeTimer(ref bool isEquipped, ref bool isCharging, ref float chargeTimer, ref int charges, int maxCharges, float cooldown)
@@ -125,6 +135,15 @@ public class PlayerSkills : MonoBehaviour
         if (charges < maxCharges)
         {
             isCharging = true;
+        }
+
+        if(isCharging && !skillQCooldownStart)
+        {
+            skillQCooldownStart = true;
+        }
+        else if(!isCharging)
+        {
+            skillQCooldownStart = false;
         }
 
         if (isCharging)

@@ -16,6 +16,7 @@ public class BathalasBlessing : BaseSkill
         maxCharges = 0;
         cooldown = 0;
         oneTimeUseAvailable = true;
+        skillCode = 1;
     }
 
     // Update is called once per frame

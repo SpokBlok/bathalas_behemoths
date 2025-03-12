@@ -20,6 +20,7 @@ public class MudArmor : BaseSkill
         isMudArmorHash = Animator.StringToHash("isMudarmor");
         maxCharges = 1;
         cooldown = 40;
+        skillCode = 2;
     }
 
     IEnumerator EnterMudStance()

@@ -22,6 +22,7 @@ public class Mudfling : BaseSkill
         playerMovement = player.GetComponent<PlayerMovement>();
         maxCharges = 1;
         cooldown = 8;
+        skillCode = 3;
     }
 
     // Update is called once per frame

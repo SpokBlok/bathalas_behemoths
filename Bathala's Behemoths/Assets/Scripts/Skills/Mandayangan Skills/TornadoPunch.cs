@@ -15,6 +15,7 @@ public class TornadoPunch : BaseSkill
         isTornadoHash = Animator.StringToHash("isTornado");
         maxCharges = 1;
         cooldown = 10;
+        skillCode = 4;
     }
 
     // Update is called once per frame

@@ -20,8 +20,8 @@ public class Mudfling : BaseSkill
         animator = player.GetComponentInChildren<Animator>();
         isMudflingHash = Animator.StringToHash("isMudfling");
         playerMovement = player.GetComponent<PlayerMovement>();
-        maxCharges = 1;
-        cooldown = 8;
+        maxCharges = 2;
+        cooldown = 16;
         skillCode = 3;
     }
 

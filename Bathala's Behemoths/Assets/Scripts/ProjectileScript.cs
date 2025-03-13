@@ -27,7 +27,7 @@ public class ProjectileScript : MonoBehaviour
     {
         float attackDuration = 0.5f;
         float elapsedTime = 0f;
-        float projectileSpeed = 50f;
+        float projectileSpeed = 200f;
         while ((elapsedTime < attackDuration))
         {
             TerrainGravity();

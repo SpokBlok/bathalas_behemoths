@@ -63,7 +63,7 @@ public class KapreMob : EnemyMob
         }
 
         SphereCollider triggerRadius = GetComponentInChildren<SphereCollider>();
-        GameObject player = GameObject.FindWithTag("Player");
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
         if (player != null)
         {
             playerTransform = player.transform;
@@ -131,10 +131,7 @@ public class KapreMob : EnemyMob
 
     public void ChasePlayer()
     {
-        if (markupoMob)
-        {
-            target = playerTransform;
-        }
+        target = playerTransform;
         //Get vector from enemy to player and assign to x and z axes
         Vector3 moveDirection = (target.position - transform.position).normalized;
         Vector3 terrainMoveDirection = new Vector3(moveDirection.x, 0f, moveDirection.z) * speed;

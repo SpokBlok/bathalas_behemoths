@@ -333,8 +333,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 50
-  tambanokanoMob: 0
-  tambanokanoMobPlayer: 0
+  markupoMob: 0
   playerInRange: 0
   speed: 20
   attackDamage: 1
@@ -346,6 +345,8 @@ MonoBehaviour:
   - {fileID: 4279643568908815687}
   - {fileID: 4907888917286935240}
   - {fileID: 4651063741570748705}
+  kapreAttackAudio: {fileID: 8300000, guid: f6a633d35bd6b4be1ac9ffbb354b5088, type: 3}
+  clubSmackAudio: {fileID: 8300000, guid: 74198389e177d0948b63ca9a3fb22801, type: 3}
 --- !u!1 &3543018298486764693
 GameObject:
   m_ObjectHideFlags: 0

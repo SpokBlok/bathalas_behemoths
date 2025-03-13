@@ -25,7 +25,7 @@ public class SkillQCD : MonoBehaviour
             cdTime = PlayerSkills.Instance.behemothSkillQChargeTimer;
         }
         
-        if(PlayerSkills.Instance.skillCooldownStart != null && PlayerSkills.Instance.mainCharacterSkillCharges != null && PlayerSkills.Instance.mainCharacterSkill != null)
+        if(PlayerSkills.Instance.skillCooldownStart != null && PlayerSkills.Instance.behemothSkillQCharges != null && PlayerSkills.Instance.behemothSkillQ != null)
         {
             if((PlayerSkills.Instance.skillCooldownStart && !skillInCooldown) && (PlayerSkills.Instance.behemothSkillQCharges != PlayerSkills.Instance.behemothSkillQ.maxCharges))
             {

@@ -21,6 +21,11 @@ public class MSAnimController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(QuestState.Instance.pausedForDialogue) 
+        {   
+            animator.SetFloat(velocityHash, 0f);
+            return; 
+        }
         bool shiftPressed = Input.GetKey(KeyCode.LeftShift);
         bool moving = false;
         float moveHor = Input.GetAxis("Horizontal");

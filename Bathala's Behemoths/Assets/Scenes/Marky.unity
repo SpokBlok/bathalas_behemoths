@@ -1271,56 +1271,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 51348550}
   m_CullTransparentMesh: 1
---- !u!1 &53889151
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 53889152}
-  - component: {fileID: 53889153}
-  m_Layer: 0
-  m_Name: BathalasBlessing
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &53889152
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 53889151}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1334725486}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &53889153
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 53889151}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2e31527e512e1694682353b7a56d96dc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cooldown: 0
-  maxCharges: 0
-  oneTimeUseAvailable: 0
-  skillCode: 0
-  animator: {fileID: 0}
-  bbSound: {fileID: 8300000, guid: b0e62ed71b1538648b719821f4f63b4c, type: 3}
 --- !u!1 &58200476
 GameObject:
   m_ObjectHideFlags: 0
@@ -7186,55 +7136,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &366552268
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 366552269}
-  - component: {fileID: 366552270}
-  m_Layer: 0
-  m_Name: FirstAid
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &366552269
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 366552268}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1334725486}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &366552270
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 366552268}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f7e63f8d5146ea94cb8aa9410b8a3e39, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cooldown: 0
-  maxCharges: 0
-  oneTimeUseAvailable: 0
-  skillCode: 0
-  animator: {fileID: 0}
 --- !u!1 &379566904
 GameObject:
   m_ObjectHideFlags: 0
@@ -8391,55 +8292,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 457631543}
   m_CullTransparentMesh: 1
---- !u!1 &458472086
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 458472087}
-  - component: {fileID: 458472088}
-  m_Layer: 0
-  m_Name: Dash
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &458472087
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 458472086}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1334725486}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &458472088
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 458472086}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1b7643895020fbb43b0ac3b07cc28b86, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cooldown: 0
-  maxCharges: 0
-  oneTimeUseAvailable: 0
-  skillCode: 0
-  animator: {fileID: 0}
 --- !u!1 &464421792
 GameObject:
   m_ObjectHideFlags: 0
@@ -10738,6 +10590,57 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
+--- !u!1 &567965697
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 567965698}
+  - component: {fileID: 567965699}
+  m_Layer: 0
+  m_Name: Mudfling
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &567965698
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 567965697}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1952967414}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &567965699
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 567965697}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e556644b9979338449ac057a4e3c098f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cooldown: 0
+  maxCharges: 0
+  oneTimeUseAvailable: 0
+  skillCode: 0
+  animator: {fileID: 0}
+  projectilePrefab: {fileID: 1190830937122899381, guid: ba21279a731ddbb4bacbc708576ea9f2,
+    type: 3}
 --- !u!1 &581914945
 GameObject:
   m_ObjectHideFlags: 0
@@ -11325,6 +11228,55 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: -191}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &612742658
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 612742659}
+  - component: {fileID: 612742660}
+  m_Layer: 0
+  m_Name: MusicalFlute
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &612742659
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 612742658}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1952967414}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &612742660
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 612742658}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 94649c5e0385aa34b980e696d56acf30, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cooldown: 0
+  maxCharges: 0
+  oneTimeUseAvailable: 0
+  skillCode: 0
+  animator: {fileID: 0}
 --- !u!1 &625701038
 GameObject:
   m_ObjectHideFlags: 0
@@ -11888,7 +11840,7 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!1 &641421334
+--- !u!1 &656886622
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -11896,40 +11848,40 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 641421335}
-  - component: {fileID: 641421336}
+  - component: {fileID: 656886623}
+  - component: {fileID: 656886624}
   m_Layer: 0
-  m_Name: Mudfling
+  m_Name: TornadoPunch
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &641421335
+--- !u!4 &656886623
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 641421334}
+  m_GameObject: {fileID: 656886622}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1334725486}
+  m_Father: {fileID: 1952967414}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &641421336
+--- !u!114 &656886624
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 641421334}
+  m_GameObject: {fileID: 656886622}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e556644b9979338449ac057a4e3c098f, type: 3}
+  m_Script: {fileID: 11500000, guid: 88df950f5e3e1dd4d880f5e4592e588d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   cooldown: 0
@@ -11937,8 +11889,8 @@ MonoBehaviour:
   oneTimeUseAvailable: 0
   skillCode: 0
   animator: {fileID: 0}
-  projectilePrefab: {fileID: 1190830937122899381, guid: ba21279a731ddbb4bacbc708576ea9f2,
-    type: 3}
+  punchSound: {fileID: 8300000, guid: c91fcf414acc0344cb03b13996f1bf3b, type: 3}
+  blowLands: {fileID: 8300000, guid: 74198389e177d0948b63ca9a3fb22801, type: 3}
 --- !u!1 &662194167
 GameObject:
   m_ObjectHideFlags: 0
@@ -14831,6 +14783,7 @@ MonoBehaviour:
   purchaseFlute: {fileID: 0}
   equip1Flute: {fileID: 0}
   equip2Flute: {fileID: 0}
+  hud: {fileID: 0}
 --- !u!114 &842668360
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21228,60 +21181,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1194945875}
   m_CullTransparentMesh: 1
---- !u!1 &1199941864
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1199941865}
-  - component: {fileID: 1199941866}
-  m_Layer: 0
-  m_Name: MudArmor
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1199941865
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1199941864}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1334725486}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1199941866
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1199941864}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 773eaf43e56df7b45813ba9087f61e0c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cooldown: 0
-  maxCharges: 0
-  oneTimeUseAvailable: 0
-  skillCode: 0
-  animator: {fileID: 0}
-  mannyBody: {fileID: 0}
-  normalManny: {fileID: 2100000, guid: c442acc9afecc18408ba47491af3a47a, type: 2}
-  armoredManny: {fileID: 2100000, guid: 049dabe6476954042a5dc2cea575fc79, type: 2}
-  armoredGruntSound: {fileID: 8300000, guid: d1a4b34f9c9584a39919a6f1ddbeb03e, type: 3}
-  releaseArmorSound: {fileID: 8300000, guid: 7a9de5c4d998126449cf964a6b27a8b0, type: 3}
 --- !u!1 &1200785537
 GameObject:
   m_ObjectHideFlags: 0
@@ -23791,76 +23690,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1323019751}
   m_CullTransparentMesh: 1
---- !u!1 &1334725484
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1334725486}
-  - component: {fileID: 1334725485}
-  m_Layer: 0
-  m_Name: PlayerSkills
-  m_TagString: Player Skills
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1334725485
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1334725484}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1523d9e18a501d54699c867d03ae2ada, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mainCharacterSkill: {fileID: 0}
-  mainCharacterSkillIsEquipped: 0
-  mainCharacterSkillCharges: 0
-  mainCharacterSkillCharging: 0
-  mainCharacterSkillChargeTimer: 0
-  behemothSkillQ: {fileID: 0}
-  behemothSkillQIsEquipped: 0
-  behemothSkillQCharges: 0
-  behemothSkillQCharging: 0
-  behemothSkillQChargeTimer: 0
-  skillCooldownStart: 0
-  behemothSkillE: {fileID: 0}
-  behemothSkillEIsEquipped: 0
-  behemothSkillECharges: 0
-  behemothSkillECharging: 0
-  behemothSkillEChargeTimer: 0
-  skillBeingEquipped: 0
-  skillQBeingUnequipped: 0
-  skillEBeingUnequipped: 0
---- !u!4 &1334725486
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1334725484}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 142.73166, y: 10.648652, z: 72.99518}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 366552269}
-  - {fileID: 1763598874}
-  - {fileID: 53889152}
-  - {fileID: 458472087}
-  - {fileID: 641421335}
-  - {fileID: 1199941865}
-  - {fileID: 2011034640}
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1336438244
 GameObject:
   m_ObjectHideFlags: 0
@@ -24917,6 +24746,7 @@ MonoBehaviour:
   purchaseMudfling: {fileID: 0}
   equip1Mudfling: {fileID: 0}
   equip2Mudfling: {fileID: 0}
+  hud: {fileID: 0}
 --- !u!114 &1421273508
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -25264,6 +25094,55 @@ SkinnedMeshRenderer:
     type: 3}
   m_PrefabInstance: {fileID: 125559936}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1450035427
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1450035428}
+  - component: {fileID: 1450035429}
+  m_Layer: 0
+  m_Name: FirstAid
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1450035428
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1450035427}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1952967414}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1450035429
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1450035427}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f7e63f8d5146ea94cb8aa9410b8a3e39, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cooldown: 0
+  maxCharges: 0
+  oneTimeUseAvailable: 0
+  skillCode: 0
+  animator: {fileID: 0}
 --- !u!1 &1468783671
 GameObject:
   m_ObjectHideFlags: 0
@@ -26393,6 +26272,7 @@ MonoBehaviour:
   clue4Tracking: {fileID: 384294627}
   clue5Tracking: {fileID: 1028262043}
   clue6Tracking: {fileID: 306782823}
+  hud: {fileID: 0}
 --- !u!114 &1529287660
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -30660,6 +30540,60 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1729905793}
   m_CullTransparentMesh: 1
+--- !u!1 &1732680237
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1732680238}
+  - component: {fileID: 1732680239}
+  m_Layer: 0
+  m_Name: MudArmor
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1732680238
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1732680237}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1952967414}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1732680239
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1732680237}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 773eaf43e56df7b45813ba9087f61e0c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cooldown: 0
+  maxCharges: 0
+  oneTimeUseAvailable: 0
+  skillCode: 0
+  animator: {fileID: 0}
+  mannyBody: {fileID: 0}
+  normalManny: {fileID: 2100000, guid: c442acc9afecc18408ba47491af3a47a, type: 2}
+  armoredManny: {fileID: 2100000, guid: 049dabe6476954042a5dc2cea575fc79, type: 2}
+  armoredGruntSound: {fileID: 8300000, guid: d1a4b34f9c9584a39919a6f1ddbeb03e, type: 3}
+  releaseArmorSound: {fileID: 8300000, guid: 7a9de5c4d998126449cf964a6b27a8b0, type: 3}
 --- !u!1 &1742067878
 GameObject:
   m_ObjectHideFlags: 0
@@ -30867,55 +30801,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1753684912}
   m_CullTransparentMesh: 1
---- !u!1 &1763598873
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1763598874}
-  - component: {fileID: 1763598875}
-  m_Layer: 0
-  m_Name: MusicalFlute
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1763598874
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1763598873}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1334725486}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1763598875
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1763598873}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 94649c5e0385aa34b980e696d56acf30, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cooldown: 0
-  maxCharges: 0
-  oneTimeUseAvailable: 0
-  skillCode: 0
-  animator: {fileID: 0}
 --- !u!1 &1777404425
 GameObject:
   m_ObjectHideFlags: 0
@@ -31184,6 +31069,55 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1779167992}
   m_CullTransparentMesh: 1
+--- !u!1 &1780549252
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1780549253}
+  - component: {fileID: 1780549254}
+  m_Layer: 0
+  m_Name: Dash
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1780549253
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1780549252}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1952967414}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1780549254
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1780549252}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b7643895020fbb43b0ac3b07cc28b86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cooldown: 0
+  maxCharges: 0
+  oneTimeUseAvailable: 0
+  skillCode: 0
+  animator: {fileID: 0}
 --- !u!1 &1795025011
 GameObject:
   m_ObjectHideFlags: 0
@@ -32990,6 +32924,76 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1938791379}
   m_CullTransparentMesh: 1
+--- !u!1 &1952967412
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1952967414}
+  - component: {fileID: 1952967413}
+  m_Layer: 0
+  m_Name: PlayerSkills
+  m_TagString: Player Skills
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1952967413
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1952967412}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1523d9e18a501d54699c867d03ae2ada, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mainCharacterSkill: {fileID: 0}
+  mainCharacterSkillIsEquipped: 0
+  mainCharacterSkillCharges: 0
+  mainCharacterSkillCharging: 0
+  mainCharacterSkillChargeTimer: 0
+  behemothSkillQ: {fileID: 0}
+  behemothSkillQIsEquipped: 0
+  behemothSkillQCharges: 0
+  behemothSkillQCharging: 0
+  behemothSkillQChargeTimer: 0
+  skillCooldownStart: 0
+  behemothSkillE: {fileID: 0}
+  behemothSkillEIsEquipped: 0
+  behemothSkillECharges: 0
+  behemothSkillECharging: 0
+  behemothSkillEChargeTimer: 0
+  skillBeingEquipped: 0
+  skillQBeingUnequipped: 0
+  skillEBeingUnequipped: 0
+--- !u!4 &1952967414
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1952967412}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 142.73166, y: 10.648652, z: 72.99518}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1450035428}
+  - {fileID: 612742659}
+  - {fileID: 2009193766}
+  - {fileID: 1780549253}
+  - {fileID: 567965698}
+  - {fileID: 1732680238}
+  - {fileID: 656886623}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1954631924
 GameObject:
   m_ObjectHideFlags: 0
@@ -34073,7 +34077,7 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2006670366}
   m_CullTransparentMesh: 1
---- !u!1 &2011034639
+--- !u!1 &2009193765
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -34081,40 +34085,40 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 2011034640}
-  - component: {fileID: 2011034641}
+  - component: {fileID: 2009193766}
+  - component: {fileID: 2009193767}
   m_Layer: 0
-  m_Name: TornadoPunch
+  m_Name: BathalasBlessing
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &2011034640
+--- !u!4 &2009193766
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2011034639}
+  m_GameObject: {fileID: 2009193765}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1334725486}
+  m_Father: {fileID: 1952967414}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2011034641
+--- !u!114 &2009193767
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2011034639}
+  m_GameObject: {fileID: 2009193765}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 88df950f5e3e1dd4d880f5e4592e588d, type: 3}
+  m_Script: {fileID: 11500000, guid: 2e31527e512e1694682353b7a56d96dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   cooldown: 0
@@ -34122,8 +34126,7 @@ MonoBehaviour:
   oneTimeUseAvailable: 0
   skillCode: 0
   animator: {fileID: 0}
-  punchSound: {fileID: 8300000, guid: c91fcf414acc0344cb03b13996f1bf3b, type: 3}
-  blowLands: {fileID: 8300000, guid: 74198389e177d0948b63ca9a3fb22801, type: 3}
+  bbSound: {fileID: 8300000, guid: b0e62ed71b1538648b719821f4f63b4c, type: 3}
 --- !u!1 &2012101284
 GameObject:
   m_ObjectHideFlags: 0
@@ -37209,7 +37212,7 @@ SceneRoots:
   - {fileID: 78341038}
   - {fileID: 751998760}
   - {fileID: 366404717}
-  - {fileID: 1334725486}
+  - {fileID: 1952967414}
   - {fileID: 2090336169}
   - {fileID: 1003400702}
   - {fileID: 1671734914}

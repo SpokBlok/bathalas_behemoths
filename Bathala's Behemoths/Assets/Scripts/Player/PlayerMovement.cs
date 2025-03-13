@@ -187,6 +187,8 @@ public class PlayerMovement : MonoBehaviour
                 ChangeState(PlayerState.Attacking);
                 attackOngoing = true;
                 basicAttackCoroutine = StartCoroutine(BasicAttack());
+                AudioSource.PlayClipAtPoint(basicAttackAudio, Camera.main.transform.position + Camera.main.transform.forward * 2f, 1f);
+        
             }
         }
     }
@@ -239,7 +241,7 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
-        if (QuestState.Instance.pausedForDialogue) { return; }
+        if(QuestState.Instance.pausedForDialogue) { return; }
 
         UpdateRotationTarget();
 
@@ -349,7 +351,6 @@ public class PlayerMovement : MonoBehaviour
     {
         isAttacking = true;
 
-        AudioSource.PlayClipAtPoint(basicAttackAudio, Camera.main.transform.position + Camera.main.transform.forward * 2f, 1f);
         animator.SetBool(basicAttackHash, true);
         yield return new WaitForSeconds(0.5f / stats.speedMultiplier); // Wait for attack duration
         BasicAttackHitboxCheck(Physics.OverlapBox(worldCenter, worldSize, basicAttackHitbox.transform.rotation));
@@ -450,7 +451,6 @@ public class PlayerMovement : MonoBehaviour
         float elapsedTime = 0f;
         float startValue = 0.0f;
         float endValue = 0.69f;
-        Debug.Log("Starting Fight Stance");
 
         while (elapsedTime < duration)
         {
@@ -469,7 +469,6 @@ public class PlayerMovement : MonoBehaviour
     {
         yield return new WaitForSeconds(3.0f);
         isExitingFightStance = true;
-        Debug.Log("Exiting Fight Stance");
 
         float duration = 0.5f;
         float elapsedTime = 0f;
@@ -531,7 +530,7 @@ public class PlayerMovement : MonoBehaviour
             case PlayerState.Idle:
                 // Enter Idle logic
                 isAttacking = false;
-                Debug.Log("Idle State");
+                // Debug.Log("Idle State");
                 // Debug.Log("Objects inside: " + objsInRange.Length);
                 if((fightStanceValue >= 0.69f && !enemyFound))
                 {
@@ -543,7 +542,7 @@ public class PlayerMovement : MonoBehaviour
             case PlayerState.Moving:
                 // Enter Moving logic
                 isAttacking = false;
-                Debug.Log("Moving State");
+                // Debug.Log("Moving State");
                 // Debug.Log("Objects inside: " + objsInRange.Length);
                 if((fightStanceValue >= 0.69f && !enemyFound))
                 {
@@ -554,7 +553,7 @@ public class PlayerMovement : MonoBehaviour
 
             case PlayerState.Attacking:
                 // Enter Attacking logic
-                Debug.Log("Attack State");
+                // Debug.Log("Attack State");
                 if(fightStanceValue == 0)
                 {
                     enterFightingStance = StartCoroutine(EnterFightingStance());
@@ -574,8 +573,8 @@ public class PlayerMovement : MonoBehaviour
             case PlayerState.Knockback:
                 // Enter Knockback logic
                 isAttacking = false;
-                Debug.Log("Knockback State");
-                Debug.Log("Objects inside: " + objsInRange.Length);
+                // Debug.Log("Knockback State");
+                // Debug.Log("Objects inside: " + objsInRange.Length);
                 if((fightStanceValue >= 0.69f && !enemyFound))
                 {
                     exitFightingStance = StartCoroutine(ExitFightingStance());

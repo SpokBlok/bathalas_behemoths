@@ -20,12 +20,14 @@ public class ChickenSightDia : MonoBehaviour
     {
         index = 0;
         currentPosition = gameObject.transform.localPosition;
+        QuestState.Instance.frightenedDwendeRepeat = false;
     }
 
     void OnEnable()
     {
         HUD = GameObject.FindGameObjectWithTag("HUD");
         HUD.SetActive(false);
+        QuestState.Instance.pausedForDialogue = true;
         textComponent.text = string.Empty;
         StartDialogue();
     }
@@ -79,6 +81,7 @@ public class ChickenSightDia : MonoBehaviour
             pointerActive = false;
             QuestState.Instance.chickenSightTrigger = true;
             HUD.SetActive(true);
+            QuestState.Instance.pausedForDialogue = false;
             index = 0;
             
             Debug.Log("inside end state");

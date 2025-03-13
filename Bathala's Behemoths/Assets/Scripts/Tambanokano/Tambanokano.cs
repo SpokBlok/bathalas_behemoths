@@ -15,6 +15,8 @@ public class Tambanokano : EnemyMob
     public GameObject massiveAOEPrefab;
 
     private Coroutine randomAttackCoroutine;
+    private Coroutine getStunned;
+    private Coroutine blinking;
     private bool isAlive;
     private bool isUlting;
 
@@ -25,12 +27,16 @@ public class Tambanokano : EnemyMob
 
     public float duration;
 
+    public Material eyesOpenMat;
+    public Material eyesClosedMat;
+    public Renderer tamRend;
 
     // Start is called before the first frame update
     void Start()
     {
         player = GameObject.FindWithTag("Player");
-        health = 2500f;
+        tamRend = GameObject.FindWithTag("TambanokanoBody").GetComponent<Renderer>();
+        health = 1000f;
 
         isLightingStriking = false;
         stunned = false;
@@ -76,6 +82,27 @@ public class Tambanokano : EnemyMob
                     attacksPassed = 0;
                     break;
             }
+        }
+    }
+
+    public void BlinkOnce()
+    {
+        blinking = StartCoroutine(blink(0.5f));
+    }
+
+    public void GetMudStunned()
+    {
+        getStunned = StartCoroutine(Stun(2));
+        blinking = StartCoroutine(blink(2f));
+    }
+
+    public IEnumerator blink(float duration)
+    {
+        if (tamRend != null && eyesClosedMat != null && eyesOpenMat != null)
+        {
+            tamRend.material = eyesClosedMat;
+            yield return new WaitForSeconds(duration);
+            tamRend.material = eyesOpenMat;
         }
     }
 

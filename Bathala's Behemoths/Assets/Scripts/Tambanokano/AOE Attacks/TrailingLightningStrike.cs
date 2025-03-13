@@ -19,6 +19,7 @@ public class TrailingLightningStrike : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
         if (timer < attackGapDuration)
             {
             timer += Time.deltaTime;
@@ -29,7 +30,11 @@ public class TrailingLightningStrike : MonoBehaviour
             lightning.gameObject.transform.SetParent(gameObject.transform, false);
             timer = 0f;
             attacksLeft--;
-        } else
+
+            Tambanokano tammy = GameObject.FindWithTag("Tambanokano").GetComponent<Tambanokano>();
+            tammy.BlinkOnce();
+        } 
+        else
         {
             Destroy(gameObject);
         }

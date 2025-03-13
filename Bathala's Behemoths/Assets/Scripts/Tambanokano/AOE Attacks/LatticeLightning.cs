@@ -25,6 +25,8 @@ public class LatticeLightning : AOEAttackRadius
         }
         else
         {
+            Tambanokano tammy = GameObject.FindWithTag("Tambanokano").GetComponent<Tambanokano>();
+            tammy.BlinkOnce();
             Damage();
             Destroy(gameObject);
         }

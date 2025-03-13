@@ -58,11 +58,13 @@ public class ProjectileScript : MonoBehaviour
         if (other.gameObject.CompareTag("Enemy") || other.gameObject.CompareTag("Tambanokano"))
         {
             EnemyMob enemy = other.GetComponent<EnemyMob>();
+            Tambanokano tammy = GameObject.FindWithTag("Tambanokano").GetComponent<Tambanokano>();
             if (enemy.health - PlayerStats.Instance.basicAttackDamage > 0)
             {
                 enemy.StartCoroutine(other.gameObject.GetComponent<EnemyMob>().Stun(2));
             }
             enemy.TakeDamage(PlayerStats.Instance.basicAttackDamage);
+            tammy.GetMudStunned();
         }
     }
 }

@@ -3,28 +3,39 @@ using System.Collections.Generic;
 using UnityEngine;
 using static UnityEngine.GraphicsBuffer;
 
-public class MarkupoScript : MonoBehaviour
+public class MarkupoScript : EnemyMob
 {
     private GameObject player;
     public Transform target;
 
     public GameObject tailSwipePrefab;
     public GameObject poisonSprayPrefab;
+    public bool isSpraying;
+    public bool isSpinning;
 
     public float distanceFromTarget;
 
     private bool stunned;
+    private bool isAlive;
 
     private Coroutine randomAttackCoroutine;
 
-    public float health;
     private GameObject bulletHit;
+    public SkinnedMeshRenderer[] modelRenderer;
+    public markyAnim markupoModel;
+    public Coroutine takingDamage;
 
     // Start is called before the first frame update
     void Start()
     {
+        if (modelRenderer == null)
+        {
+            modelRenderer = markupoModel.GetComponentsInChildren<SkinnedMeshRenderer>();
+        }
+
         player = GameObject.FindWithTag("Player");
-        health = 2500f;
+        PlayerStats.Instance.markyScene = true;
+        health = 3500f;
 
         stunned = false;
 
@@ -60,12 +71,60 @@ public class MarkupoScript : MonoBehaviour
         }
     }
 
-    public void TakeDamage(float damage)
+    public override IEnumerator Stun(float duration)
+    {       
+        stunned = true;
+        foreach (Transform child in transform)
+        {
+            Destroy(child.gameObject);
+        }
+        StopAllCoroutines();
+        randomAttackCoroutine = null;
+        
+        //stun animation
+        // stunMoving = StartCoroutine(StunMovement());
+        yield return new WaitForSeconds(duration);
+        stunned = false;
+    }
+
+    IEnumerator SwitchToDamagedTex()
     {
+        foreach(SkinnedMeshRenderer bodypart in modelRenderer)
+        {
+            bodypart.material.color = Color.red; // Change color to red
+        }
+        
+        yield return new WaitForSeconds(0.2f); // Wait
+
+        foreach(SkinnedMeshRenderer bodypart in modelRenderer)
+        {
+            bodypart.material.color = Color.white; // Restore original color
+        }
+    }
+
+    public override void TakeDamage(float damage)
+    {
+        if(takingDamage == null)
+        {
+            takingDamage = StartCoroutine(SwitchToDamagedTex());
+        }
+        else if(takingDamage != null)
+        {
+            StopCoroutine(takingDamage);
+            takingDamage = StartCoroutine(SwitchToDamagedTex());
+        }
+
         health -= damage;
         if (health <= 0)
         {
-            //Trigger win cutscene
+            //trigger winning cutscene
+            isAlive = false;
+            
+            if(isAlive == false)
+            {
+                StopAllCoroutines();
+                // endDialogue.SetActive(true);
+            }
         }
     }
 
@@ -73,8 +132,13 @@ public class MarkupoScript : MonoBehaviour
     {
         GameObject tailSwipe = Instantiate(tailSwipePrefab, gameObject.transform.position, Quaternion.identity);
         tailSwipe.transform.parent = transform;
+        yield return new WaitForSeconds(5f); // Let the attack charge before playing animation
 
-        yield return new WaitForSeconds(10f);
+        isSpinning = true;
+        yield return new WaitForSeconds(2f);
+        isSpinning = false;
+
+        yield return new WaitForSeconds(3f);
 
         randomAttackCoroutine = null;
     }
@@ -89,8 +153,13 @@ public class MarkupoScript : MonoBehaviour
         GameObject poisonSpray = Instantiate(poisonSprayPrefab, 
             spawnPosition, Quaternion.LookRotation(directionToTarget));
         poisonSpray.transform.parent = transform;
+        yield return new WaitForSeconds(5f); // Let the attack charge before playing animation
 
-        yield return new WaitForSeconds(10f);
+        isSpraying = true;
+        yield return new WaitForSeconds(2f);
+        isSpraying = false;
+
+        yield return new WaitForSeconds(3f);
 
         randomAttackCoroutine = null;
     }

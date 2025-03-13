@@ -14203,31 +14203,7 @@ MonoBehaviour:
     m_ActionId: 85bc3fe3-75be-4cf6-856e-f0e5a6b94a43
     m_ActionName: Player/mouseLook[/Mouse/position]
   - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 211558155}
-        m_TargetAssemblyTypeName: PlayerMovement, Assembly-CSharp
-        m_MethodName: OnBasicAttack
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: CDClock, Assembly-CSharp
-        m_MethodName: CoolDownStart
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
     m_ActionId: 141e8549-6b64-4903-95e8-9e84819eb21e
     m_ActionName: Player/BasicAttack[/Mouse/leftButton]
   - m_PersistentCalls:
@@ -31176,6 +31152,8 @@ MonoBehaviour:
   clue6: 0
   tammyFound: 0
   markyFound: 0
+  tammyScene: 0
+  markyScene: 0
 --- !u!4 &1597588349
 Transform:
   m_ObjectHideFlags: 0

@@ -34,9 +34,18 @@ public class Tambanokano : EnemyMob
     public GameObject tammy;
     public bool isClawSwiping;
 
+    public SkinnedMeshRenderer[] modelRenderer;
+    public TammyAnimController tammyModel;
+    public Coroutine takingDamage;
+
     // Start is called before the first frame update
     void Start()
     {
+        if (modelRenderer == null)
+        {
+            modelRenderer = tammyModel.GetComponentsInChildren<SkinnedMeshRenderer>();
+        }
+
         player = GameObject.FindWithTag("Player");
         tamRend = GameObject.FindWithTag("TambanokanoBody").GetComponent<Renderer>();
         tammy = GameObject.FindWithTag("TammyModel");
@@ -50,6 +59,10 @@ public class Tambanokano : EnemyMob
     void Update()
     {
         if(QuestState.Instance.pausedForDialogue) {return;}
+        if(!PlayerStats.Instance.tammyScene)
+        {
+            PlayerStats.Instance.tammyScene = true;
+        }
         if (randomAttackCoroutine == null && !isUlting && !stunned)
         {
             foreach (Transform child in transform)
@@ -167,8 +180,33 @@ public class Tambanokano : EnemyMob
         tammy.transform.rotation = Quaternion.Euler(degreeRot, 180, 0);
     }
 
+    IEnumerator SwitchToDamagedTex()
+    {
+        foreach(SkinnedMeshRenderer bodypart in modelRenderer)
+        {
+            bodypart.material.color = Color.red; // Change color to red
+        }
+        
+        yield return new WaitForSeconds(0.2f); // Wait
+
+        foreach(SkinnedMeshRenderer bodypart in modelRenderer)
+        {
+            bodypart.material.color = Color.white; // Restore original color
+        }
+    }
+
     public override void TakeDamage(float damage)
     {
+        if(takingDamage == null)
+        {
+            takingDamage = StartCoroutine(SwitchToDamagedTex());
+        }
+        else if(takingDamage != null)
+        {
+            StopCoroutine(takingDamage);
+            takingDamage = StartCoroutine(SwitchToDamagedTex());
+        }
+
         health -= damage;
         if (health <= 0)
         {

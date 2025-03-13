@@ -100,9 +100,13 @@ public class PlayerMovement : MonoBehaviour
 
         basicAttackHitbox = transform.Find("Basic Attack/Basic Attack Hitbox").GetComponent<BoxCollider>();
 
-        if(PlayerStats.Instance.tammyScene || PlayerStats.Instance.markyScene)
+        if(PlayerStats.Instance.tammyScene)
         {
-            gameObject.transform.position = new Vector3(463.2f, 175.2f, 150.8f);
+            gameObject.transform.position = new Vector3(463.2f, 175.2f, 100f);
+        }
+        else if(PlayerStats.Instance.markyScene)
+        {
+            gameObject.transform.position = new Vector3(240f, 20f, 100f);
         }
         else if(stats.tammyScene && stats.outdoorsScene)
         {

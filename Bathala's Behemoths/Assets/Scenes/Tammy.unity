@@ -4326,6 +4326,8 @@ MonoBehaviour:
   tamRend: {fileID: 0}
   tammy: {fileID: 0}
   isClawSwiping: 0
+  modelRenderer: []
+  tammyModel: {fileID: 0}
 --- !u!65 &254176168
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -7068,6 +7070,12 @@ MonoBehaviour:
   minFalloff: 1
   max: 2000
   maxFalloff: 1
+--- !u!137 &423252089 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 8417361359673230750, guid: f513dfe3c9aec5f43847779135df51eb,
+    type: 3}
+  m_PrefabInstance: {fileID: 1538033626}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &427892264
 GameObject:
   m_ObjectHideFlags: 0
@@ -27078,6 +27086,8 @@ MonoBehaviour:
   tamRend: {fileID: 0}
   tammy: {fileID: 0}
   isClawSwiping: 0
+  modelRenderer: []
+  tammyModel: {fileID: 0}
 --- !u!65 &1451421641
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -34516,6 +34526,9 @@ MonoBehaviour:
   tamRend: {fileID: 0}
   tammy: {fileID: 0}
   isClawSwiping: 0
+  modelRenderer:
+  - {fileID: 423252089}
+  tammyModel: {fileID: 1538033628}
 --- !u!65 &1871873205
 BoxCollider:
   m_ObjectHideFlags: 0

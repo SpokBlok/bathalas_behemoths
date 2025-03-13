@@ -25,9 +25,12 @@ public class SkillECD : MonoBehaviour
             cdTime = PlayerSkills.Instance.behemothSkillEChargeTimer;
         }
 
-        if((PlayerSkills.Instance.skillCooldownStart && !skillInCooldown) && (PlayerSkills.Instance.behemothSkillECharges != PlayerSkills.Instance.behemothSkillE.maxCharges))
-        {
-            CoolDownStart();
+        if(PlayerSkills.Instance.skillCooldownStart != null && PlayerSkills.Instance.mainCharacterSkillCharges != null && PlayerSkills.Instance.mainCharacterSkill != null)
+        {    
+            if((PlayerSkills.Instance.skillCooldownStart && !skillInCooldown) && (PlayerSkills.Instance.behemothSkillECharges != PlayerSkills.Instance.behemothSkillE.maxCharges))
+            {
+                CoolDownStart();
+            }
         }
     }
 

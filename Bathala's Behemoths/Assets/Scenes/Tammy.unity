@@ -4324,6 +4324,7 @@ MonoBehaviour:
   eyesOpenMat: {fileID: 0}
   eyesClosedMat: {fileID: 0}
   tamRend: {fileID: 0}
+  tammy: {fileID: 0}
 --- !u!65 &254176168
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -26555,6 +26556,7 @@ MonoBehaviour:
   eyesOpenMat: {fileID: 0}
   eyesClosedMat: {fileID: 0}
   tamRend: {fileID: 0}
+  tammy: {fileID: 0}
 --- !u!65 &1451421641
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -28597,6 +28599,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: tambanokanoShorterAnim
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f513dfe3c9aec5f43847779135df51eb,
+        type: 3}
+      propertyPath: m_TagString
+      value: TammyModel
       objectReference: {fileID: 0}
     - target: {fileID: 8417361359673230750, guid: f513dfe3c9aec5f43847779135df51eb,
         type: 3}
@@ -33984,6 +33991,7 @@ MonoBehaviour:
   eyesOpenMat: {fileID: 2100000, guid: e65d2288223134a46b9763f936a11e5e, type: 2}
   eyesClosedMat: {fileID: 2100000, guid: 95995c0d862209d498ee9e141e72ef4f, type: 2}
   tamRend: {fileID: 0}
+  tammy: {fileID: 0}
 --- !u!65 &1871873205
 BoxCollider:
   m_ObjectHideFlags: 0

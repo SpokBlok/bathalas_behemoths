@@ -25,9 +25,12 @@ public class MCSkillCD : MonoBehaviour
             cdTime = PlayerSkills.Instance.mainCharacterSkillChargeTimer;
         }
 
-        if((PlayerSkills.Instance.skillCooldownStart && !skillInCooldown) && (PlayerSkills.Instance.mainCharacterSkillCharges != PlayerSkills.Instance.mainCharacterSkill.maxCharges))
-        {
-            CoolDownStart();
+        if(PlayerSkills.Instance.skillCooldownStart != null && PlayerSkills.Instance.mainCharacterSkillCharges != null && PlayerSkills.Instance.mainCharacterSkill != null)
+        {    
+            if((PlayerSkills.Instance.skillCooldownStart && !skillInCooldown) && (PlayerSkills.Instance.mainCharacterSkillCharges != PlayerSkills.Instance.mainCharacterSkill.maxCharges))
+            {
+                CoolDownStart();
+            }
         }
     }
     

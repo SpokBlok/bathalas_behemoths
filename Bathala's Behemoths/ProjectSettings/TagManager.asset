@@ -19,6 +19,7 @@ TagManager:
   - Chicken
   - HUD
   - TambanokanoBody
+  - TammyModel
   layers:
   - Default
   - TransparentFX

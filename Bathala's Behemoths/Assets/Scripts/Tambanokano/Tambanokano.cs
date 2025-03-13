@@ -16,6 +16,7 @@ public class Tambanokano : EnemyMob
 
     private Coroutine randomAttackCoroutine;
     private Coroutine getStunned;
+    private Coroutine stunMoving;
     private Coroutine blinking;
     private bool isAlive;
     private bool isUlting;
@@ -30,12 +31,14 @@ public class Tambanokano : EnemyMob
     public Material eyesOpenMat;
     public Material eyesClosedMat;
     public Renderer tamRend;
+    public GameObject tammy;
 
     // Start is called before the first frame update
     void Start()
     {
         player = GameObject.FindWithTag("Player");
         tamRend = GameObject.FindWithTag("TambanokanoBody").GetComponent<Renderer>();
+        tammy = GameObject.FindWithTag("TammyModel");
         health = 1000f;
 
         isLightingStriking = false;
@@ -92,8 +95,8 @@ public class Tambanokano : EnemyMob
 
     public void GetMudStunned()
     {
-        getStunned = StartCoroutine(Stun(2));
-        blinking = StartCoroutine(blink(2f));
+        getStunned = StartCoroutine(Stun(3));
+        blinking = StartCoroutine(blink(3f));
     }
 
     public IEnumerator blink(float duration)
@@ -121,8 +124,45 @@ public class Tambanokano : EnemyMob
             isUlting = false;
         }
         //stun animation
-        yield return new WaitForSeconds(5);
+        stunMoving = StartCoroutine(StunMovement());
+        yield return new WaitForSeconds(duration);
         stunned = false;
+    }
+
+    IEnumerator StunMovement()
+    {
+        float degreeRot = 0.0f;
+        float duration = 0.4f;
+        float elapsedTime = 0.0f;
+        float startValue = 0.0f;
+        float endValue = -10.0f;
+        Debug.Log("Tammy Stun Movement Start");
+
+        while (elapsedTime < duration)
+        {
+            elapsedTime += Time.deltaTime;
+            float t = elapsedTime / duration;
+            degreeRot = Mathf.Lerp(startValue, endValue, t);
+            tammy.transform.rotation = Quaternion.Euler(degreeRot, 180, 0);
+            yield return null;
+        }
+        
+        degreeRot = endValue; // Ensure it fully reaches the target
+        tammy.transform.rotation = Quaternion.Euler(degreeRot, 180, 0);
+        elapsedTime = 0.0f;
+        yield return new WaitForSeconds(2.2f);
+
+        while (elapsedTime < duration)
+        {
+            elapsedTime += Time.deltaTime;
+            float t = elapsedTime / duration;
+            degreeRot = Mathf.Lerp(endValue, startValue, t);
+            tammy.transform.rotation = Quaternion.Euler(degreeRot, 180, 0);
+            yield return null;
+        }
+        
+        degreeRot = startValue; // Ensure it fully reaches the target
+        tammy.transform.rotation = Quaternion.Euler(degreeRot, 180, 0);
     }
 
     public override void TakeDamage(float damage)

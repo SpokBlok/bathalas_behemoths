@@ -63,7 +63,7 @@ public class PlayerStats : MonoBehaviour
 
     private void InitializePlayerStats()
     {
-        outdoorsScene = true;
+        outdoorsScene = false; // Set to true for correct build - false for testing boss stages
         ruinsScene = false;
         introDone = false;
         tutorialDone = false;

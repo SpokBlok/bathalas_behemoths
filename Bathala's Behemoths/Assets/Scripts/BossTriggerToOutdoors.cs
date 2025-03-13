@@ -21,8 +21,8 @@ public class BosstoOutdoors : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            SceneManager.LoadScene("OutdoorsSceneFinal");
             PlayerStats.Instance.outdoorsScene = true;
+            SceneManager.LoadScene("OutdoorsSceneFinal");
         }
     }
 }

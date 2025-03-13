@@ -5,6 +5,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UIElements;
+using UnityEngine.SceneManagement;
 
 public enum PlayerState
 {
@@ -101,7 +102,11 @@ public class PlayerMovement : MonoBehaviour
 
         if(PlayerStats.Instance.tammyScene || PlayerStats.Instance.markyScene)
         {
-            gameObject.transform.position = new Vector3(463.2f, 187.2f, 80.8f);
+            gameObject.transform.position = new Vector3(463.2f, 175.2f, 150.8f);
+        }
+        else if(stats.tammyScene && stats.outdoorsScene)
+        {
+            gameObject.transform.position = new Vector3(719.6f, 74.582f, 1350.6f);
         }
         else if (stats.introDone && stats.outdoorsScene)
         {
@@ -412,6 +417,15 @@ public class PlayerMovement : MonoBehaviour
         {
             Debug.Log("Dead");
             //trigger death cutscene
+
+            // Move back to Ruins
+            SceneManager.LoadScene("RuinsScene Movement");
+            PlayerStats.Instance.introDone = true;
+            PlayerStats.Instance.outdoorsScene = false;
+            PlayerStats.Instance.ruinsScene = true;
+            PlayerStats.Instance.currentHealth = 50;
+            BathalasBlessing bbSkill = FindObjectOfType<BathalasBlessing>();
+            bbSkill.RechargeUsages();
         }
     }
 

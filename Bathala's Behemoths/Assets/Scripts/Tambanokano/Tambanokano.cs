@@ -32,6 +32,7 @@ public class Tambanokano : EnemyMob
     public Material eyesClosedMat;
     public Renderer tamRend;
     public GameObject tammy;
+    public bool isClawSwiping;
 
     // Start is called before the first frame update
     void Start()
@@ -39,7 +40,7 @@ public class Tambanokano : EnemyMob
         player = GameObject.FindWithTag("Player");
         tamRend = GameObject.FindWithTag("TambanokanoBody").GetComponent<Renderer>();
         tammy = GameObject.FindWithTag("TammyModel");
-        health = 1000f;
+        health = 3500f;
 
         isLightingStriking = false;
         stunned = false;
@@ -48,6 +49,7 @@ public class Tambanokano : EnemyMob
     // Update is called once per frame
     void Update()
     {
+        if(QuestState.Instance.pausedForDialogue) {return;}
         if (randomAttackCoroutine == null && !isUlting && !stunned)
         {
             foreach (Transform child in transform)
@@ -190,17 +192,26 @@ public class Tambanokano : EnemyMob
         yield return new WaitForSeconds(2f);
     }
 
+    private IEnumerator PlayClawSwipeAnimation()
+    {
+        isClawSwiping = true;
+        yield return new WaitForSeconds(0.5f);
+        isClawSwiping = false;
+    }
+
     private IEnumerator ClawSwipe()
     {
         //attack animation
         GameObject claw = Instantiate(clawSwipePrefab, new Vector3(Random.Range(400f, 500f), 170f, Random.Range(285f, 425f)), Quaternion.Euler(0f, 90f, 0f));
         claw.transform.parent = transform;
         yield return new WaitForSeconds(claw.GetComponent<FillEffect>().attackDuration);
+        StartCoroutine(PlayClawSwipeAnimation());
         yield return new WaitForSeconds(2f);
 
         //attack animation
         claw = Instantiate(clawSwipePrefab, new Vector3(Random.Range(250f, 650f), 170f, 370f), Quaternion.Euler(0f, 90f, 0f));
         yield return new WaitForSeconds(claw.GetComponent<FillEffect>().attackDuration);
+        StartCoroutine(PlayClawSwipeAnimation());
         yield return new WaitForSeconds(2f);
 
         randomAttackCoroutine = null;

@@ -34,6 +34,8 @@ public class MandayanganSkillsUIPanel : MonoBehaviour
     private PlayerStats playerStats;
     private PlayerSkills playerSkills;
 
+    public GameObject hud;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -74,7 +76,9 @@ public class MandayanganSkillsUIPanel : MonoBehaviour
 
     public void EnablePanel()
     {
+        hud = GameObject.FindGameObjectWithTag("HUD");
         gameObject.SetActive(true);
+        hud.gameObject.SetActive(false);
         EventManager.Instance.InvokeOnEnteringUpgradeScreen();
 
         if(PlayerStats.Instance.clue1)
@@ -88,6 +92,7 @@ public class MandayanganSkillsUIPanel : MonoBehaviour
     public void DisablePanel()
     {
         gameObject.SetActive(false);
+        hud.gameObject.SetActive(true);
         EventManager.Instance.InvokeOnExitingUpgradeScreen();
         Transform panel = transform.Find("RightPanel");
         foreach (Transform child in panel)

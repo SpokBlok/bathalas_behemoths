@@ -6,6 +6,7 @@ public class BathalasBlessing : BaseSkill
 {
     public Animator animator;
     int isBBHash;
+    public AudioClip bbSound;
 
     // Start is called before the first frame update
     void Start()
@@ -29,7 +30,9 @@ public class BathalasBlessing : BaseSkill
     {
         player = GameObject.FindWithTag("Player");
         animator = player.GetComponentInChildren<Animator>();
-
+        
+        AudioSource.PlayClipAtPoint(bbSound, Camera.main.transform.position + Camera.main.transform.forward * 2f, 1f);
+        
         animator.SetBool(isBBHash, true);
         player = GameObject.FindWithTag("Player");
         PlayerMovement playerScript = player.GetComponent<PlayerMovement>();
@@ -42,6 +45,9 @@ public class BathalasBlessing : BaseSkill
         //Also reset all equipped skills and cooldowns
 
         yield return new WaitForSeconds(10);
+        
+        AudioSource.PlayClipAtPoint(bbSound, Camera.main.transform.position + Camera.main.transform.forward * 2f, 1f);
+        
         playerScript.transform.localScale *= 0.5f;
         PlayerStats.Instance.speedMultiplier = 1;
         playerScript.isBerserk = false;

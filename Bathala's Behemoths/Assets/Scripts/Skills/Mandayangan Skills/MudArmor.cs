@@ -14,6 +14,8 @@ public class MudArmor : BaseSkill
 
     public Material normalManny;
     public Material armoredManny;
+    public AudioClip armoredGruntSound;
+    public AudioClip releaseArmorSound;
 
     // Start is called before the first frame update
     void Start()
@@ -77,9 +79,15 @@ public class MudArmor : BaseSkill
         animator.SetFloat(isMudArmorHash, 1.0f);
         player = GameObject.FindWithTag("Player");
         mannyBody.material = armoredManny;
+        
+        AudioSource.PlayClipAtPoint(armoredGruntSound, Camera.main.transform.position + Camera.main.transform.forward * 2f, 1f);
+        
         yield return new WaitForSeconds(1f); //Skill animation
         PlayerStats.Instance.hasMudArmor = true;
         yield return new WaitForSeconds(20);
+        
+        AudioSource.PlayClipAtPoint(releaseArmorSound, Camera.main.transform.position + Camera.main.transform.forward * 2f, 1f);
+        
         mannyBody.material = normalManny;
         PlayerStats.Instance.hasMudArmor = false;
         exitMudStance = StartCoroutine(ExitMudStance());

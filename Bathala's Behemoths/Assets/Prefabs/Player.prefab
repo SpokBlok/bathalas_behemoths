@@ -399,7 +399,7 @@ MonoBehaviour:
   pushBackDuration: 0.5
   pushBackForce: 10
   isAttacking: 0
-  attackOngoing: 0
+  attackOngoing: 1
   isSkillingOrUlting: 0
   charControl: {fileID: 0}
   projectilePrefab: {fileID: 0}
@@ -411,6 +411,7 @@ MonoBehaviour:
   - {fileID: 6730637473240653346}
   - {fileID: 2817963349740969752}
   ui: {fileID: 0}
+  basicAttackAudio: {fileID: 8300000, guid: b1790fe4dfa754e96a722bad2b5aaff1, type: 3}
 --- !u!114 &1879604765750739598
 MonoBehaviour:
   m_ObjectHideFlags: 0

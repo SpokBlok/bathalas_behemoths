@@ -28,6 +28,8 @@ public class QuestBoardUIPanel : MonoBehaviour
     [SerializeField] GameObject clue5Tracking;
     [SerializeField] GameObject clue6Tracking;
 
+    public GameObject hud;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -43,6 +45,7 @@ public class QuestBoardUIPanel : MonoBehaviour
 
     void OnEnable()
     {
+        hud = GameObject.FindGameObjectWithTag("HUD");
         if(PlayerStats.Instance.clue1 == true)
         {
             clue1.SetActive(true);
@@ -126,6 +129,7 @@ public class QuestBoardUIPanel : MonoBehaviour
     public void EnablePanel()
     {
         gameObject.SetActive(true);
+        hud.SetActive(false);
 
         EventManager.Instance.InvokeOnEnteringUpgradeScreen();
     }
@@ -133,6 +137,7 @@ public class QuestBoardUIPanel : MonoBehaviour
     public void DisablePanel()
     {
         gameObject.SetActive(false);
+        hud.SetActive(true);
         EventManager.Instance.InvokeOnExitingUpgradeScreen();
         Transform panel = transform.Find("RightPanel");
         foreach (Transform child in panel)

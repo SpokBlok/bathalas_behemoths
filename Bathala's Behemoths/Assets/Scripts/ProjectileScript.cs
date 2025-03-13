@@ -5,6 +5,7 @@ using UnityEngine;
 public class ProjectileScript : MonoBehaviour
 {
     public CharacterController charControl;
+    public AudioClip ballHit;
 
     // Start is called before the first frame update
     void Start()
@@ -62,6 +63,7 @@ public class ProjectileScript : MonoBehaviour
             if (enemy.health - PlayerStats.Instance.basicAttackDamage > 0)
             {
                 enemy.StartCoroutine(other.gameObject.GetComponent<EnemyMob>().Stun(2));
+                AudioSource.PlayClipAtPoint(ballHit, Camera.main.transform.position + Camera.main.transform.forward * 2f, 1f);
             }
             enemy.TakeDamage(PlayerStats.Instance.basicAttackDamage);
             tammy.GetMudStunned();

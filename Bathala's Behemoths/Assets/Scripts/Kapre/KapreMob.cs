@@ -45,6 +45,8 @@ public class KapreMob : EnemyMob
 
     public SkinnedMeshRenderer[] modelRenderer;
     public Coroutine takingDamage;
+    public AudioClip kapreAttackAudio;
+    public AudioClip clubSmackAudio;
 
     // Start is called before the first frame update
     void Start()
@@ -167,10 +169,13 @@ public class KapreMob : EnemyMob
 
     private IEnumerator BasicAttack()
     {
+        AudioSource.PlayClipAtPoint(kapreAttackAudio, Camera.main.transform.position + Camera.main.transform.forward * 2.5f, 1f);
         worldCenter = basicAttackHitbox.transform.TransformPoint(basicAttackHitbox.center);
         worldSize = Vector3.Scale(basicAttackHitbox.size, basicAttackHitbox.transform.lossyScale) / 2;
 
         yield return new WaitForSeconds(0.5f);
+        AudioSource.PlayClipAtPoint(clubSmackAudio, Camera.main.transform.position + Camera.main.transform.forward * 2.5f, 1f);
+        
         BasicAttackHitboxCheck(Physics.OverlapBox(worldCenter, worldSize, basicAttackHitbox.transform.rotation));
         if (!markupoMob)
         {

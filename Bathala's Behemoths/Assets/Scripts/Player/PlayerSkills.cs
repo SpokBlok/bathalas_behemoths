@@ -208,6 +208,8 @@ public class PlayerSkills : MonoBehaviour
             (mainCharacterSkillCharges > 0 
             || mainCharacterSkill.oneTimeUseAvailable))
         {
+            AudioSource.PlayClipAtPoint(PlayerStats.Instance.mcSkillSound, Camera.main.transform.position + Camera.main.transform.forward * 2f, 1f);
+        
             mainCharacterSkillCharges--;
             mainCharacterSkill.oneTimeUseAvailable = false;
             mainCharacterSkillCoroutine = StartCoroutine(mainCharacterSkill.RunSkill());
@@ -222,6 +224,8 @@ public class PlayerSkills : MonoBehaviour
             (behemothSkillQCharges > 0
             || behemothSkillQ.oneTimeUseAvailable))
         {
+            AudioSource.PlayClipAtPoint(PlayerStats.Instance.skillQSound, Camera.main.transform.position + Camera.main.transform.forward * 2f, 1f);
+        
             behemothSkillQCharges--;
             behemothSkillQ.oneTimeUseAvailable = false;
             behemothSkillQCoroutine = StartCoroutine(behemothSkillQ.RunSkill());
@@ -236,6 +240,8 @@ public class PlayerSkills : MonoBehaviour
             (behemothSkillECharges > 0
             || behemothSkillE.oneTimeUseAvailable))
         {
+            AudioSource.PlayClipAtPoint(PlayerStats.Instance.skillESound, Camera.main.transform.position + Camera.main.transform.forward * 2f, 1f);
+        
             behemothSkillECharges--;
             behemothSkillE.oneTimeUseAvailable = false;
             behemothSkillECoroutine = StartCoroutine(behemothSkillE.RunSkill());

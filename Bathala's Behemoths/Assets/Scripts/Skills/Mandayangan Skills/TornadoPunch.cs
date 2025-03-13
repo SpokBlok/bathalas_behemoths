@@ -6,6 +6,8 @@ public class TornadoPunch : BaseSkill
 {
     public Animator animator;
     int isTornadoHash;
+    public AudioClip punchSound;
+    public AudioClip blowLands;
     
     // Start is called before the first frame update
     void Start()
@@ -31,6 +33,8 @@ public class TornadoPunch : BaseSkill
         
         animator.SetBool(isTornadoHash, true);
         player = GameObject.FindWithTag("Player");
+        AudioSource.PlayClipAtPoint(punchSound, Camera.main.transform.position + Camera.main.transform.forward * 2f, 1f);
+        AudioSource.PlayClipAtPoint(blowLands, Camera.main.transform.position + Camera.main.transform.forward * 2f, 1f);
         yield return new WaitForSeconds(1.0f); //Charge up time, animation of tornado punch
         Collider[] colliders = Physics.OverlapSphere(player.transform.position, 8.0f);
         foreach (Collider collider in colliders)

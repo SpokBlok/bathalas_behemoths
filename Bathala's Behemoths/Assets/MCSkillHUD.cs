@@ -11,6 +11,10 @@ public class MCSkillHUD : MonoBehaviour
     public Image musicalFlute;
     public Image blank;
 
+    public AudioClip bbSound;
+    public AudioClip firstAidSound;
+    public AudioClip musicalFluteSound;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -23,14 +27,17 @@ public class MCSkillHUD : MonoBehaviour
         if(PlayerSkills.Instance.mainCharacterSkill != null && PlayerSkills.Instance.mainCharacterSkill.skillCode == 1)
         {
             SetHUDToBathBless();
+            PlayerStats.Instance.mcSkillSound = bbSound;
         }
         else if(PlayerSkills.Instance.mainCharacterSkill != null && PlayerSkills.Instance.mainCharacterSkill.skillCode == 2)
         {
             SetHUDToFirstAid();
+            PlayerStats.Instance.mcSkillSound = firstAidSound;
         }
         else if(PlayerSkills.Instance.mainCharacterSkill != null && PlayerSkills.Instance.mainCharacterSkill.skillCode == 3)
         {
             SetHUDToMusicalFlute();
+            PlayerStats.Instance.mcSkillSound = musicalFluteSound;
         }
     }
 

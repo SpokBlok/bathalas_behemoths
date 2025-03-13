@@ -120,6 +120,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   charControl: {fileID: 0}
+  ballHit: {fileID: 8300000, guid: df7b0527bedef454c888055c076048ed, type: 3}
 --- !u!143 &731112631467309953
 CharacterController:
   m_ObjectHideFlags: 0

@@ -11,6 +11,10 @@ public class SkillEHUD : MonoBehaviour
     public Image tornadoPunch;
     public Image blank;
 
+    public AudioClip dashSound;
+    public AudioClip mudArmorSound;
+    public AudioClip mudFlingSound;
+    public AudioClip tornadoPunchSound;
 
     // Start is called before the first frame update
     void Start()
@@ -30,18 +34,22 @@ public class SkillEHUD : MonoBehaviour
         if(PlayerSkills.Instance.behemothSkillE != null && PlayerSkills.Instance.behemothSkillE.skillCode == 1)
         {
             SetHUDToDash();
+            PlayerStats.Instance.skillESound = dashSound;
         }
         else if(PlayerSkills.Instance.behemothSkillE != null && PlayerSkills.Instance.behemothSkillE.skillCode == 2)
         {
             SetHUDToMudArmor();
+            PlayerStats.Instance.skillESound = mudArmorSound;
         }
         else if(PlayerSkills.Instance.behemothSkillE != null && PlayerSkills.Instance.behemothSkillE.skillCode == 3)
         {
             SetHUDToMudfling();
+            PlayerStats.Instance.skillESound = mudFlingSound;
         }
         else if(PlayerSkills.Instance.behemothSkillE != null && PlayerSkills.Instance.behemothSkillE.skillCode == 4)
         {
             SetHUDToTornadoPunch();
+            PlayerStats.Instance.skillESound = tornadoPunchSound;
         }
     }
 

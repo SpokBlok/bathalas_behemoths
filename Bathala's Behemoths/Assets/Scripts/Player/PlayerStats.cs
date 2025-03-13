@@ -47,6 +47,10 @@ public class PlayerStats : MonoBehaviour
     public bool tammyScene;
     public bool markyScene;
 
+    public AudioClip skillESound;
+    public AudioClip skillQSound;
+    public AudioClip mcSkillSound;
+
     private void Awake()
     {
         if (Instance == null)
@@ -63,7 +67,7 @@ public class PlayerStats : MonoBehaviour
 
     private void InitializePlayerStats()
     {
-        outdoorsScene = false; // Set to true for correct build - false for testing boss stages
+        outdoorsScene = true; // Set to true for correct build - false for testing Manny+Steve Model
         ruinsScene = false;
         introDone = false;
         tutorialDone = false;

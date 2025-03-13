@@ -72,6 +72,7 @@ public class PlayerMovement : MonoBehaviour
 
     private PauseSystem pauseSystem;
     public UICanvas ui;
+    public AudioClip basicAttackAudio;
 
     private void Start()
     {
@@ -181,7 +182,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (context.performed && !QuestState.Instance.pausedForDialogue)
         {
-            if (context.performed && !isAttacking)
+            if (context.performed && !isAttacking && PlayerStats.Instance.introDone)
             {
                 ChangeState(PlayerState.Attacking);
                 attackOngoing = true;
@@ -347,6 +348,8 @@ public class PlayerMovement : MonoBehaviour
     private IEnumerator BasicAttack()
     {
         isAttacking = true;
+
+        AudioSource.PlayClipAtPoint(basicAttackAudio, Camera.main.transform.position + Camera.main.transform.forward * 2f, 1f);
         animator.SetBool(basicAttackHash, true);
         yield return new WaitForSeconds(0.5f / stats.speedMultiplier); // Wait for attack duration
         BasicAttackHitboxCheck(Physics.OverlapBox(worldCenter, worldSize, basicAttackHitbox.transform.rotation));

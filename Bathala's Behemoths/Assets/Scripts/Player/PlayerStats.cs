@@ -82,11 +82,13 @@ public class PlayerStats : MonoBehaviour
             initSpeed = 5;
         }
 
-        speedMultiplier = 1;
         if(tammyScene || markyScene) 
         {
-            initSpeed = 10;
             speedMultiplier = 1.5f;
+        }
+        else
+        {
+            speedMultiplier = 1.0f;
         }
 
         basicAttackDamage = 25;

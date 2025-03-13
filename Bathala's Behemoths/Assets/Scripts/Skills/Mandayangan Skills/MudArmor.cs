@@ -10,12 +10,17 @@ public class MudArmor : BaseSkill
     float mudStanceValue = 0.0f;
     public Coroutine enterMudStance;
     public Coroutine exitMudStance;
+    public SkinnedMeshRenderer mannyBody;
+
+    public Material normalManny;
+    public Material armoredManny;
 
     // Start is called before the first frame update
     void Start()
     {
         player = GameObject.FindWithTag("Player");
         animator = player.GetComponentInChildren<Animator>();
+        mannyBody = GameObject.FindGameObjectWithTag("MannyBody").GetComponent<SkinnedMeshRenderer>();
         
         isMudArmorHash = Animator.StringToHash("isMudarmor");
         maxCharges = 1;
@@ -71,9 +76,11 @@ public class MudArmor : BaseSkill
         enterMudStance = StartCoroutine(EnterMudStance());
         animator.SetFloat(isMudArmorHash, 1.0f);
         player = GameObject.FindWithTag("Player");
+        mannyBody.material = armoredManny;
         yield return new WaitForSeconds(1f); //Skill animation
         PlayerStats.Instance.hasMudArmor = true;
         yield return new WaitForSeconds(20);
+        mannyBody.material = normalManny;
         PlayerStats.Instance.hasMudArmor = false;
         exitMudStance = StartCoroutine(ExitMudStance());
     }

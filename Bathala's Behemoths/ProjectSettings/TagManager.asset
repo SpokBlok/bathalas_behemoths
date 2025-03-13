@@ -21,6 +21,7 @@ TagManager:
   - TambanokanoBody
   - TammyModel
   - Markupo
+  - MannyBody
   layers:
   - Default
   - TransparentFX

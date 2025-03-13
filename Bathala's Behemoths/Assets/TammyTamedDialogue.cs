@@ -76,7 +76,6 @@ public class TammyTamedDialogue : MonoBehaviour
         {
             gameObject.transform.localPosition = currentPosition;
             QuestState.Instance.pausedForDialogue = false;
-            HUD.SetActive(true);
             gameObject.SetActive(false);
             SceneManager.LoadScene("MainMenu");
             

@@ -6,6 +6,7 @@ public class TammyAnimController : MonoBehaviour
 {
     public Animator animator;
     int isClawSwipeHash;
+    int isStunnedHash;
     public Tambanokano tammy;
 
     // Start is called before the first frame update
@@ -13,6 +14,7 @@ public class TammyAnimController : MonoBehaviour
     {
         animator = GetComponent<Animator>();
         isClawSwipeHash = Animator.StringToHash("isClawSwiping");
+        isStunnedHash = Animator.StringToHash("isStunned");
         tammy = GameObject.FindGameObjectWithTag("Tambanokano").GetComponent<Tambanokano>();
     }
 
@@ -26,6 +28,15 @@ public class TammyAnimController : MonoBehaviour
         else
         {
             animator.SetBool(isClawSwipeHash, false);
+        }
+
+        if(tammy.stunned)
+        {
+            animator.SetBool(isStunnedHash, true);
+        }
+        else
+        {
+            animator.SetBool(isStunnedHash, false);
         }
     }
 }

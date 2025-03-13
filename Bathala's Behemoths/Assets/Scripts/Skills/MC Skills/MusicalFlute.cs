@@ -19,7 +19,7 @@ public class MusicalFlute : BaseSkill
 
         isFluteHash = Animator.StringToHash("isFlute");
         playerMovement = player.GetComponent<PlayerMovement>();
-        maxCharges = 1;
+        maxCharges = 2;
         cooldown = 40;
         skillCode = 3;
     }
@@ -28,6 +28,9 @@ public class MusicalFlute : BaseSkill
     {
         player = GameObject.FindWithTag("Player");
         animator = player.GetComponentInChildren<Animator>();
+
+        MarkupoScript marky = GameObject.FindWithTag("Markupo").GetComponent<MarkupoScript>();
+        marky.GetFluteStunned();
         
         animator.SetBool(isFluteHash, true);
         player = GameObject.FindWithTag("Player");

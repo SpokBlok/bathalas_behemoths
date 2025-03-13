@@ -24,6 +24,8 @@ public class MarkupoScript : EnemyMob
     public SkinnedMeshRenderer[] modelRenderer;
     public markyAnim markupoModel;
     public Coroutine takingDamage;
+    public GameObject endDialogue;
+    private Coroutine getStunned;
 
     // Start is called before the first frame update
     void Start()
@@ -35,7 +37,7 @@ public class MarkupoScript : EnemyMob
 
         player = GameObject.FindWithTag("Player");
         PlayerStats.Instance.markyScene = true;
-        health = 3500f;
+        health = 2000f;
 
         stunned = false;
 
@@ -49,6 +51,7 @@ public class MarkupoScript : EnemyMob
     // Update is called once per frame
     void Update()
     {
+        if (QuestState.Instance.pausedForDialogue) { return; }
         if (randomAttackCoroutine == null && !stunned)
         {
             foreach (Transform child in transform)
@@ -69,6 +72,11 @@ public class MarkupoScript : EnemyMob
                     break;
             }
         }
+    }
+
+    public void GetFluteStunned()
+    {
+        getStunned = StartCoroutine(Stun(10));
     }
 
     public override IEnumerator Stun(float duration)
@@ -123,7 +131,7 @@ public class MarkupoScript : EnemyMob
             if(isAlive == false)
             {
                 StopAllCoroutines();
-                // endDialogue.SetActive(true);
+                endDialogue.SetActive(true);
             }
         }
     }

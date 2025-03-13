@@ -4319,6 +4319,7 @@ MonoBehaviour:
     type: 3}
   massiveAOEPrefab: {fileID: 5264218506392493291, guid: 6b48735cd54a48e4a9e06cb6bbc8f919,
     type: 3}
+  stunned: 0
   attacksPassed: 0
   duration: 0
   eyesOpenMat: {fileID: 0}
@@ -9437,6 +9438,11 @@ PrefabInstance:
       propertyPath: m_Radius
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4689692903261357202, guid: e2befb3480872ac4d860e47a6b28741a,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5725552720055748903, guid: e2befb3480872ac4d860e47a6b28741a,
         type: 3}
       propertyPath: m_Name
@@ -9516,6 +9522,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_ConstrainProportionsScale
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8448202413094103549, guid: e2befb3480872ac4d860e47a6b28741a,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8448202413094103549, guid: e2befb3480872ac4d860e47a6b28741a,
+        type: 3}
+      propertyPath: m_TagString
+      value: MannyBody
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -12284,6 +12300,9 @@ MonoBehaviour:
   oneTimeUseAvailable: 0
   skillCode: 0
   animator: {fileID: 0}
+  mannyBody: {fileID: 0}
+  normalManny: {fileID: 2100000, guid: c442acc9afecc18408ba47491af3a47a, type: 2}
+  armoredManny: {fileID: 2100000, guid: 049dabe6476954042a5dc2cea575fc79, type: 2}
 --- !u!1 &725670741
 GameObject:
   m_ObjectHideFlags: 0
@@ -27079,6 +27098,7 @@ MonoBehaviour:
     type: 3}
   massiveAOEPrefab: {fileID: 5264218506392493291, guid: 6b48735cd54a48e4a9e06cb6bbc8f919,
     type: 3}
+  stunned: 0
   attacksPassed: 0
   duration: 0
   eyesOpenMat: {fileID: 0}
@@ -28437,7 +28457,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Texture: {fileID: 2800000, guid: 9ebb522a5b929a04baf4392c3180f574, type: 3}
+  m_Texture: {fileID: 2800000, guid: 54cb8f393d5e25946bc531b9a771144d, type: 3}
   m_UVRect:
     serializedVersion: 2
     x: 0
@@ -34519,6 +34539,7 @@ MonoBehaviour:
     type: 3}
   massiveAOEPrefab: {fileID: 5264218506392493291, guid: 6b48735cd54a48e4a9e06cb6bbc8f919,
     type: 3}
+  stunned: 0
   attacksPassed: 0
   duration: 0
   eyesOpenMat: {fileID: 2100000, guid: e65d2288223134a46b9763f936a11e5e, type: 2}

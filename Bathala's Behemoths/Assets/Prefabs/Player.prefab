@@ -410,6 +410,7 @@ MonoBehaviour:
   modelRenderer:
   - {fileID: 6730637473240653346}
   - {fileID: 2817963349740969752}
+  ui: {fileID: 0}
 --- !u!114 &1879604765750739598
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -666,6 +667,11 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 957c4df04d35bdf49ac8d4dcdd903789, type: 2}
+    - target: {fileID: 4101161180453605438, guid: 659d300a6c4bfa04aba5c43655900f67,
+        type: 3}
+      propertyPath: m_TagString
+      value: MannyBody
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

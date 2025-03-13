@@ -22,7 +22,7 @@ public class Tambanokano : EnemyMob
     private bool isUlting;
 
     private bool isLightingStriking;
-    private bool stunned;
+    public bool stunned;
 
     public int attacksPassed;
 

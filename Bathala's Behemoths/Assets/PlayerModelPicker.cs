@@ -18,7 +18,7 @@ public class PlayerModelPicker : MonoBehaviour
             steveModel.gameObject.SetActive(false);
             mountedModel.gameObject.SetActive(true);
         }
-        else if(PlayerStats.Instance.ruinsScene && PlayerStats.Instance.introDone)
+        else if(PlayerStats.Instance.ruinsScene)
         {
             steveModel.gameObject.SetActive(true);
             mountedModel.gameObject.SetActive(false);

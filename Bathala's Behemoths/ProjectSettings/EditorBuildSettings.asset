@@ -23,6 +23,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Marky.unity
     guid: 822aa90ad117bfb42a1529700d3a2b2a
+  - enabled: 1
+    path: Assets/Scenes/DeathScreen.unity
+    guid: d1ff62810b407644ea4ffba3c0e36013
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: f612e8e80fb42e84bacb7788ff9f2c98,
       type: 3}

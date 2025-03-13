@@ -71,6 +71,7 @@ public class PlayerMovement : MonoBehaviour
     public Coroutine takingDamage;
 
     private PauseSystem pauseSystem;
+    public UICanvas ui;
 
     private void Start()
     {
@@ -78,7 +79,7 @@ public class PlayerMovement : MonoBehaviour
         {
             modelRenderer = msModel.GetComponentsInChildren<SkinnedMeshRenderer>();
         }
-
+        ui = GameObject.FindObjectOfType<UICanvas>();
         pauseSystem = FindObjectOfType<PauseSystem>();
 
         // Get references to char controller + collider
@@ -125,6 +126,10 @@ public class PlayerMovement : MonoBehaviour
         else if(stats.outdoorsScene)
         {
             gameObject.transform.position = new Vector3(876.24f, 79.24f, 72.68f);
+        }
+        else if(stats.ruinsScene)
+        {
+            ui.gameObject.SetActive(true);
         }
     }
 
@@ -174,7 +179,7 @@ public class PlayerMovement : MonoBehaviour
 
     public void OnBasicAttack(InputAction.CallbackContext context)
     {
-        if (context.performed)
+        if (context.performed && !QuestState.Instance.pausedForDialogue)
         {
             if (context.performed && !isAttacking)
             {
@@ -428,14 +433,11 @@ public class PlayerMovement : MonoBehaviour
             Debug.Log("Dead");
             //trigger death cutscene
 
-            // Move back to Ruins
-            SceneManager.LoadScene("RuinsScene Movement");
-            PlayerStats.Instance.introDone = true;
-            PlayerStats.Instance.outdoorsScene = false;
-            PlayerStats.Instance.ruinsScene = true;
-            PlayerStats.Instance.currentHealth = 50;
-            BathalasBlessing bbSkill = FindObjectOfType<BathalasBlessing>();
-            bbSkill.RechargeUsages();
+            // Go to DeathScreen
+            ui.gameObject.SetActive(false);
+            PlayerStats.Instance.tammyScene = false;
+            PlayerStats.Instance.markyScene = false;
+            SceneManager.LoadScene("DeathScreen");
         }
     }
 

@@ -11,6 +11,7 @@ public class FootprintsDialogue : MonoBehaviour
     public string[] currentLines;
     public float textInterval;
     public GameObject pointer;
+    public GameObject HUD;
 
     private bool pointerActive = false;
     Vector3 currentPosition;
@@ -26,6 +27,8 @@ public class FootprintsDialogue : MonoBehaviour
 
     void OnEnable()
     {
+        HUD = GameObject.FindGameObjectWithTag("HUD");
+        HUD.SetActive(false);
         QuestState.Instance.pausedForDialogue = true;
         if(QuestState.Instance.footprintsRepeat)
         {
@@ -87,6 +90,7 @@ public class FootprintsDialogue : MonoBehaviour
             pointerActive = false;
             QuestState.Instance.footprintsRepeat = true;
             QuestState.Instance.pausedForDialogue = false;
+            HUD.SetActive(true);
             
             Debug.Log("inside end state");
         }

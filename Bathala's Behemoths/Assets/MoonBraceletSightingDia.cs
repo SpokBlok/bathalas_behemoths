@@ -9,6 +9,7 @@ public class MoonBraceletSightingDia : MonoBehaviour
     public string[] lines;
     public float textInterval;
     public GameObject pointer;
+    public GameObject HUD;
 
     private bool pointerActive = false;
     Vector3 currentPosition;
@@ -23,6 +24,8 @@ public class MoonBraceletSightingDia : MonoBehaviour
 
     void OnEnable()
     {
+        HUD = GameObject.FindGameObjectWithTag("HUD");
+        HUD.SetActive(false);
         textComponent.text = string.Empty;
         StartDialogue();
     }
@@ -75,6 +78,7 @@ public class MoonBraceletSightingDia : MonoBehaviour
             pointer.SetActive(false);
             pointerActive = false;
             QuestState.Instance.moonSightingTrigger = true;
+            HUD.SetActive(true);
             index = 0;
             
             Debug.Log("inside end state");

@@ -12,6 +12,7 @@ public class GardenerDialogue : MonoBehaviour
     public float textInterval;
     public GameObject pointer;
     public GameObject fertilizerMarker;
+    public GameObject HUD;
 
     private bool pointerActive = false;
     Vector3 currentPosition;
@@ -27,6 +28,8 @@ public class GardenerDialogue : MonoBehaviour
 
     void OnEnable()
     {
+        HUD = GameObject.FindGameObjectWithTag("HUD");
+        HUD.SetActive(false);
         if(QuestState.Instance.gardenerRepeat)
         {
             currentLines = linesRepeat;
@@ -86,6 +89,7 @@ public class GardenerDialogue : MonoBehaviour
             pointer.SetActive(false);
             fertilizerMarker.SetActive(true);
             pointerActive = false;
+            HUD.SetActive(true);
             
             Debug.Log("inside end state");
         }

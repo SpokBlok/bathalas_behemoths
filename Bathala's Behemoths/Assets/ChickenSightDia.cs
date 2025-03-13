@@ -9,6 +9,7 @@ public class ChickenSightDia : MonoBehaviour
     public string[] lines;
     public float textInterval;
     public GameObject pointer;
+    public GameObject HUD;
 
     private bool pointerActive = false;
     Vector3 currentPosition;
@@ -23,6 +24,8 @@ public class ChickenSightDia : MonoBehaviour
 
     void OnEnable()
     {
+        HUD = GameObject.FindGameObjectWithTag("HUD");
+        HUD.SetActive(false);
         textComponent.text = string.Empty;
         StartDialogue();
     }
@@ -75,6 +78,7 @@ public class ChickenSightDia : MonoBehaviour
             pointer.SetActive(false);
             pointerActive = false;
             QuestState.Instance.chickenSightTrigger = true;
+            HUD.SetActive(true);
             index = 0;
             
             Debug.Log("inside end state");

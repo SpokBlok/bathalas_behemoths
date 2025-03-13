@@ -11,6 +11,7 @@ public class FertilizerDialogue : MonoBehaviour
     public string[] currentLines;
     public float textInterval;
     public GameObject pointer;
+    public GameObject HUD;
 
     private bool pointerActive = false;
     Vector3 currentPosition;
@@ -26,6 +27,8 @@ public class FertilizerDialogue : MonoBehaviour
 
     void OnEnable()
     {
+        HUD = GameObject.FindGameObjectWithTag("HUD");
+        HUD.SetActive(false);
         QuestState.Instance.pausedForDialogue = true;
         if(QuestState.Instance.fertilizerRepeat)
         {
@@ -86,6 +89,7 @@ public class FertilizerDialogue : MonoBehaviour
             pointer.SetActive(false);
             pointerActive = false;
             QuestState.Instance.pausedForDialogue = false;
+            HUD.SetActive(true);
             
             Debug.Log("inside end state");
         }

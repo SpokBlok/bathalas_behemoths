@@ -10,6 +10,7 @@ public class TammyTamedDialogue : MonoBehaviour
     public string[] currentLines;
     public float textInterval;
     public GameObject pointer;
+    public GameObject HUD;
 
     private bool pointerActive = false;
     Vector3 currentPosition;
@@ -24,6 +25,8 @@ public class TammyTamedDialogue : MonoBehaviour
 
     void OnEnable()
     {
+        HUD = GameObject.FindGameObjectWithTag("HUD");
+        HUD.SetActive(false);
         QuestState.Instance.pausedForDialogue = true;
         textComponent.text = string.Empty;
         StartDialogue();
@@ -73,6 +76,7 @@ public class TammyTamedDialogue : MonoBehaviour
         {
             gameObject.transform.localPosition = currentPosition;
             QuestState.Instance.pausedForDialogue = false;
+            HUD.SetActive(true);
             gameObject.SetActive(false);
             SceneManager.LoadScene("MainMenu");
             

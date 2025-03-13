@@ -14,6 +14,7 @@ public class IntroDialogue : MonoBehaviour
     public GameObject player;
     public SteveAnimController steveModel;
     public MSAnimController mountedModel;
+    public GameObject HUD;
 
 
     private bool pointerActive = false;
@@ -33,6 +34,8 @@ public class IntroDialogue : MonoBehaviour
 
     void OnEnable()
     {
+        HUD = GameObject.FindGameObjectWithTag("HUD");
+        HUD.SetActive(false);
         QuestState.Instance.pausedForDialogue = true;
         textComponent.text = string.Empty;
         StartDialogue();
@@ -95,6 +98,7 @@ public class IntroDialogue : MonoBehaviour
             PlayerStats.Instance.initSpeed = 5;
 
             player.gameObject.transform.position = new Vector3(735.2f, 53.7f, 280.3f);
+            HUD.SetActive(true);
             
             Debug.Log("inside end state");
         }

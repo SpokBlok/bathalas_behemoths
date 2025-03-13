@@ -9,6 +9,7 @@ public class QuestTutorialDialogue : MonoBehaviour
     public string[] lines;
     public float textInterval;
     public GameObject pointer;
+    public GameObject HUD;
 
     private bool pointerActive = false;
     Vector3 currentPosition;
@@ -23,6 +24,8 @@ public class QuestTutorialDialogue : MonoBehaviour
 
     void OnEnable()
     {
+        HUD = GameObject.FindGameObjectWithTag("HUD");
+        HUD.SetActive(false);
         QuestState.Instance.pausedForDialogue = true;
         textComponent.text = string.Empty;
         StartDialogue();
@@ -77,6 +80,7 @@ public class QuestTutorialDialogue : MonoBehaviour
             pointerActive = false;
             QuestState.Instance.questTutorialTrigger = true;
             QuestState.Instance.pausedForDialogue = false;
+            HUD.SetActive(true);
             index = 0;
             
             Debug.Log("inside end state");

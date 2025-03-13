@@ -17,6 +17,7 @@ TagManager:
   - Q Button
   - Tambanokano
   - Chicken
+  - HUD
   layers:
   - Default
   - TransparentFX

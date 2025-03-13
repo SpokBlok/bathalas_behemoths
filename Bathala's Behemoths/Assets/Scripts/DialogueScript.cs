@@ -11,6 +11,7 @@ public class DialogueScript : MonoBehaviour
     public string[] currentLines;
     public float textInterval;
     public GameObject pointer;
+    public GameObject HUD;
 
     private bool pointerActive = false;
     Vector3 currentPosition;
@@ -26,6 +27,8 @@ public class DialogueScript : MonoBehaviour
 
     void OnEnable()
     {
+        HUD = GameObject.FindGameObjectWithTag("HUD");
+        HUD.SetActive(false);
         QuestState.Instance.pausedForDialogue = true;
         if(QuestState.Instance.frightenedDwendeRepeat)
         {
@@ -87,6 +90,7 @@ public class DialogueScript : MonoBehaviour
             pointerActive = false;
             QuestState.Instance.frightenedDwendeRepeat = true;
             QuestState.Instance.pausedForDialogue = false;
+            HUD.SetActive(true);
             
             Debug.Log("inside end state");
         }

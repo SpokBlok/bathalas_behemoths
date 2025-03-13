@@ -11,6 +11,7 @@ public class FrightenedDwende : MonoBehaviour
     public GameObject dialogue;
     public GameObject charredTree;
     public GameObject marker;
+    public GameObject HUD;
     
     private bool isInTrigger;
 
@@ -18,6 +19,7 @@ public class FrightenedDwende : MonoBehaviour
     void Start()
     {
         isInTrigger = false;
+        HUD = GameObject.Find("HUD");
         if(QuestState.Instance.frightenedDwendeRepeat)
         {
             marker.SetActive(false);

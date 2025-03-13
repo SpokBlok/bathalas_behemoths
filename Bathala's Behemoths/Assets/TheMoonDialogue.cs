@@ -14,6 +14,7 @@ public class TheMoonDialogue : MonoBehaviour
     public float textInterval;
     public GameObject pointer;
     public GameObject clueImage;
+    public GameObject HUD;
 
     private bool imageActive = false;
     Vector3 currentPosition;
@@ -28,6 +29,8 @@ public class TheMoonDialogue : MonoBehaviour
 
     void OnEnable()
     {
+        HUD = GameObject.FindGameObjectWithTag("HUD");
+        HUD.SetActive(false);
         QuestState.Instance.pausedForDialogue = true;
         if(QuestState.Instance.moonNPCRepeat && QuestState.Instance.moonChunkGet)
         {
@@ -94,6 +97,7 @@ public class TheMoonDialogue : MonoBehaviour
             pointer.SetActive(false);
             imageActive = false;
             QuestState.Instance.pausedForDialogue = false;
+            HUD.SetActive(true);
             
             Debug.Log("inside end state");
         }

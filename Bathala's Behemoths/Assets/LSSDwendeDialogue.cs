@@ -14,6 +14,7 @@ public class LSSDwendeDialogue : MonoBehaviour
     public GameObject pointer;
     public GameObject clueImage;
     public GameObject LSSDwende;
+    public GameObject HUD;
 
     private bool imageActive = false;
     Vector3 currentPosition;
@@ -28,6 +29,8 @@ public class LSSDwendeDialogue : MonoBehaviour
 
     void OnEnable()
     {
+        HUD = GameObject.FindGameObjectWithTag("HUD");
+        HUD.SetActive(false);
         QuestState.Instance.pausedForDialogue = true;
         if(QuestState.Instance.lssDwendeRepeat && QuestState.Instance.fluteGet)
         {
@@ -94,6 +97,7 @@ public class LSSDwendeDialogue : MonoBehaviour
             pointer.SetActive(false);
             imageActive = false;
             QuestState.Instance.pausedForDialogue = false;
+            HUD.SetActive(true);
 
             if(QuestState.Instance.lssDwendeRepeat && QuestState.Instance.fluteGet)
             {

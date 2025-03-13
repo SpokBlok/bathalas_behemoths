@@ -9,6 +9,7 @@ public class NotifDialogue : MonoBehaviour
     public string[] lines;
     public float textInterval;
     public GameObject pointer;
+    public GameObject HUD;
 
     private bool pointerActive = false;
     Vector3 currentPosition;
@@ -23,6 +24,8 @@ public class NotifDialogue : MonoBehaviour
 
     void OnEnable()
     {
+        HUD = GameObject.FindGameObjectWithTag("HUD");
+        HUD.SetActive(false);
         QuestState.Instance.pausedForDialogue = true;
         textComponent.text = string.Empty;
         StartDialogue();
@@ -76,6 +79,7 @@ public class NotifDialogue : MonoBehaviour
             pointer.SetActive(false);
             pointerActive = false;
             QuestState.Instance.pausedForDialogue = false;
+            HUD.SetActive(true);
 
             PlayerStats.Instance.tammyFound = false;
             PlayerStats.Instance.markyFound = false;

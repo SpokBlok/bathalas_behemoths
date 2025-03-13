@@ -202,14 +202,14 @@ public class Tambanokano : EnemyMob
     private IEnumerator ClawSwipe()
     {
         //attack animation
-        GameObject claw = Instantiate(clawSwipePrefab, new Vector3(Random.Range(400f, 500f), 170f, Random.Range(285f, 425f)), Quaternion.Euler(0f, 90f, 0f));
+        GameObject claw = Instantiate(clawSwipePrefab, new Vector3(Random.Range(400f, 500f), 170f, Random.Range(350f, 400f)), Quaternion.Euler(0f, 90f, 0f));
         claw.transform.parent = transform;
         yield return new WaitForSeconds(claw.GetComponent<FillEffect>().attackDuration);
         StartCoroutine(PlayClawSwipeAnimation());
         yield return new WaitForSeconds(2f);
 
         //attack animation
-        claw = Instantiate(clawSwipePrefab, new Vector3(Random.Range(250f, 650f), 170f, 370f), Quaternion.Euler(0f, 90f, 0f));
+        claw = Instantiate(clawSwipePrefab, new Vector3(Random.Range(400f, 500f), 170f, Random.Range(350f, 400f)), Quaternion.Euler(0f, 90f, 0f));
         yield return new WaitForSeconds(claw.GetComponent<FillEffect>().attackDuration);
         StartCoroutine(PlayClawSwipeAnimation());
         yield return new WaitForSeconds(2f);

@@ -20,7 +20,7 @@ public class PlayerStats : MonoBehaviour
     public static PlayerStats Instance { get; private set; }
 
     public int initSpeed;
-    public int speed;
+    public float speed;
     public float speedMultiplier;
     public float basicAttackDamage;
     public float currentHealth;
@@ -44,6 +44,8 @@ public class PlayerStats : MonoBehaviour
 
     public bool tammyFound;
     public bool markyFound;
+    public bool tammyScene;
+    public bool markyScene;
 
     private void Awake()
     {
@@ -79,7 +81,14 @@ public class PlayerStats : MonoBehaviour
         {
             initSpeed = 5;
         }
+
         speedMultiplier = 1;
+        if(tammyScene || markyScene) 
+        {
+            initSpeed = 10;
+            speedMultiplier = 1.5f;
+        }
+
         basicAttackDamage = 25;
         maxHealth = 50;
         currentHealth = maxHealth;
@@ -106,7 +115,7 @@ public class PlayerStats : MonoBehaviour
 
     public void SetSpeed(int velocity)
     {
-        speed = initSpeed + velocity;
+        speed = (initSpeed + velocity) * speedMultiplier;
     }
 
     public void AddKapreCigars(float addedCigars)

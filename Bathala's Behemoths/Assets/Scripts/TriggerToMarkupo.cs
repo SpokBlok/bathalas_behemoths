@@ -21,6 +21,7 @@ public class TriggerToMarkupo : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
+            PlayerStats.Instance.markyScene = true;
             SceneManager.LoadScene("Marky");
         }
     }

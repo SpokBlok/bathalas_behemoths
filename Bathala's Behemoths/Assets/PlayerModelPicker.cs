@@ -13,7 +13,12 @@ public class PlayerModelPicker : MonoBehaviour
         steveModel = FindAnyObjectByType<SteveAnimController>(FindObjectsInactive.Include);
         mountedModel = FindAnyObjectByType<MSAnimController>(FindObjectsInactive.Include);
 
-        if(PlayerStats.Instance.ruinsScene && PlayerStats.Instance.introDone)
+        if(PlayerStats.Instance.tammyScene || PlayerStats.Instance.markyScene)
+        {
+            steveModel.gameObject.SetActive(false);
+            mountedModel.gameObject.SetActive(true);
+        }
+        else if(PlayerStats.Instance.ruinsScene && PlayerStats.Instance.introDone)
         {
             steveModel.gameObject.SetActive(true);
             mountedModel.gameObject.SetActive(false);

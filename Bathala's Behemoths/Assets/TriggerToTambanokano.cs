@@ -21,6 +21,7 @@ public class TriggerToTambanokano : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
+            PlayerStats.Instance.tammyScene = true;
             SceneManager.LoadScene("Tammy");
         }
     }

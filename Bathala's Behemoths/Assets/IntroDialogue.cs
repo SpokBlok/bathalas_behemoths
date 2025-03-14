@@ -99,7 +99,7 @@ public class IntroDialogue : MonoBehaviour
             switchToManny();
             PlayerStats.Instance.initSpeed = 5;
 
-            player.gameObject.transform.position = new Vector3(735.2f, 53.7f, 280.3f);
+            player.gameObject.transform.position = new Vector3(735.2f, 60.7f, 280.3f);
             HUD.gameObject.transform.position = originalHUDPos;
             
             Debug.Log("inside end state");

@@ -352,7 +352,7 @@ CharacterController:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Height: 10
+  m_Height: 2
   m_Radius: 2.5
   m_SlopeLimit: 45
   m_StepOffset: 0.3
@@ -543,6 +543,7 @@ MonoBehaviour:
   animator: {fileID: 0}
   acceleration: 50
   deceleration: 100
+  shiftPressed: 0
 --- !u!95 &4163153480500981305
 Animator:
   serializedVersion: 5
@@ -717,6 +718,7 @@ MonoBehaviour:
   animator: {fileID: 0}
   acceleration: 50
   deceleration: 100
+  shiftPressed: 0
 --- !u!95 &6621215511150831328
 Animator:
   serializedVersion: 5

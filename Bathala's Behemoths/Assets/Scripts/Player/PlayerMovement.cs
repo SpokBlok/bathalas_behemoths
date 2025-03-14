@@ -191,8 +191,9 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    public void OnMCSkillTrigger(InputAction.CallbackContext context) {
-        
+    public void OnMCSkillTrigger(InputAction.CallbackContext context) 
+    {
+        // Debug.Log("Calling OnMCSkillTrigger!!!");
         if (context.performed)
         {
             if (context.performed && !isAttacking && stats.introDone && (stats.outdoorsScene || stats.tammyScene || stats.markyScene))
@@ -288,7 +289,7 @@ public class PlayerMovement : MonoBehaviour
         float terrainHeight = myTerrain.SampleHeight(position);
 
         // Set the character's Y position to match the terrain height + 1, more if berserk
-        position.y = terrainHeight + 2.7f;
+        position.y = terrainHeight + 2.1f;
 
         charControl.transform.position = position;
     }
@@ -550,7 +551,7 @@ public class PlayerMovement : MonoBehaviour
             case PlayerState.Moving:
                 // Enter Moving logic
                 isAttacking = false;
-                // Debug.Log("Moving State");
+                Debug.Log("Moving State");
                 // Debug.Log("Objects inside: " + objsInRange.Length);
                 if((fightStanceValue >= 0.69f && !enemyFound && exitFightingStance == null))
                 {

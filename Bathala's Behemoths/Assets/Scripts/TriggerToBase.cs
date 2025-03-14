@@ -31,15 +31,29 @@ public class TriggerToBase : MonoBehaviour
             PlayerMovement playerScript = GameObject.FindWithTag("Player").GetComponent<PlayerMovement>();
             if(playerScript.isBerserk)
             {
-                if(PlayerSkills.Instance.mainCharacterSkillCoroutine != null)
-                {
-                    PlayerSkills.Instance.StopCoroutine(PlayerSkills.Instance.mainCharacterSkillCoroutine);
-                }
                 PlayerStats.Instance.speedMultiplier = 1;
                 playerScript.isBerserk = false;
             }
             bbSkill = FindObjectOfType<BathalasBlessing>();
             bbSkill.RechargeUsages(); // Calls recharge on the skill usage for BB - since it's a one-use skill
+            
+            if(PlayerSkills.Instance.mainCharacterSkillCoroutine != null)
+            {
+                StopCoroutine(PlayerSkills.Instance.mainCharacterSkillCoroutine);
+                PlayerSkills.Instance.mainCharacterSkillCoroutine = null;
+            }
+            
+            if(PlayerSkills.Instance.behemothSkillQCoroutine != null)
+            {
+                StopCoroutine(PlayerSkills.Instance.behemothSkillQCoroutine);
+                PlayerSkills.Instance.behemothSkillQCoroutine = null;
+            }
+
+            if(PlayerSkills.Instance.behemothSkillECoroutine != null)
+            {
+                StopCoroutine(PlayerSkills.Instance.behemothSkillECoroutine);
+                PlayerSkills.Instance.behemothSkillECoroutine = null;
+            }
         }
     }
 }

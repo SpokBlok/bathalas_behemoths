@@ -274,10 +274,12 @@ public class PlayerSkills : MonoBehaviour
 
     public IEnumerator RunMainCharacterSkill()
     {
+        // Debug.Log("RunMCSkill Parameters:" + mainCharacterSkillIsEquipped + (mainCharacterSkillCoroutine == null) + mainCharacterSkillCharges + mainCharacterSkill.oneTimeUseAvailable);
         if (mainCharacterSkillIsEquipped && mainCharacterSkillCoroutine == null && 
             (mainCharacterSkillCharges > 0 
             || mainCharacterSkill.oneTimeUseAvailable))
         {
+            Debug.Log("Running Main Character Skill!");
             AudioSource.PlayClipAtPoint(PlayerStats.Instance.mcSkillSound, Camera.main.transform.position + Camera.main.transform.forward * 2f, 1f);
         
             mainCharacterSkillCharges--;
@@ -290,6 +292,7 @@ public class PlayerSkills : MonoBehaviour
 
     public IEnumerator RunBehemothSkillQ()
     {
+        Debug.Log("RunQSkill Parameters:" + behemothSkillQIsEquipped + (behemothSkillQCoroutine == null) + behemothSkillQCharges + behemothSkillQ.oneTimeUseAvailable);
         if (behemothSkillQIsEquipped && behemothSkillQCoroutine == null &&
             (behemothSkillQCharges > 0
             || behemothSkillQ.oneTimeUseAvailable))

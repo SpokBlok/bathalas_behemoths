@@ -9,6 +9,7 @@ public class SteveAnimController : MonoBehaviour
     public float acceleration = 50.0f;
     public float deceleration = 100.0f;
     int velocityHash;
+    public bool shiftPressed = false;
 
     // Start is called before the first frame update
     void Start()
@@ -26,7 +27,12 @@ public class SteveAnimController : MonoBehaviour
             animator.SetFloat(velocityHash, 0f);
             return; 
         }
-        bool shiftPressed = Input.GetKey(KeyCode.LeftShift);
+
+        if(Input.GetKeyDown(KeyCode.LeftShift))
+        {
+            shiftPressed = !shiftPressed;
+        }
+        
         bool moving = false;
         float moveHor = Input.GetAxis("Horizontal");
         float moveVert = Input.GetAxis("Vertical");

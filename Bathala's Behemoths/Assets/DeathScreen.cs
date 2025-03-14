@@ -23,7 +23,7 @@ public class DeathScreen : MonoBehaviour
         PlayerStats.Instance.markyScene = false;
         PlayerStats.Instance.outdoorsScene = false;
         PlayerStats.Instance.ruinsScene = true;
-        PlayerStats.Instance.currentHealth = 50;
+        PlayerStats.Instance.currentHealth = PlayerStats.Instance.maxHealth;
         PlayerStats.Instance.speedMultiplier = 1;
         BathalasBlessing bbSkill = FindObjectOfType<BathalasBlessing>();
         bbSkill.RechargeUsages();

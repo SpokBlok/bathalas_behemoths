@@ -3234,18 +3234,23 @@ MonoBehaviour:
   mainCharacterSkillCharges: 0
   mainCharacterSkillCharging: 0
   mainCharacterSkillChargeTimer: 0
+  skillMCCDStart: 0
   behemothSkillQ: {fileID: 0}
   behemothSkillQIsEquipped: 0
   behemothSkillQCharges: 0
   behemothSkillQCharging: 0
   behemothSkillQChargeTimer: 0
-  skillCooldownStart: 0
+  skillQCDStart: 0
   behemothSkillE: {fileID: 0}
   behemothSkillEIsEquipped: 0
   behemothSkillECharges: 0
   behemothSkillECharging: 0
   behemothSkillEChargeTimer: 0
-  skillBeingEquipped: 0
+  skillECDStart: 0
+  skillMCBeingEquipped: 0
+  skillEBeingEquipped: 0
+  skillQBeingEquipped: 0
+  skillMCBeingUnequipped: 0
   skillQBeingUnequipped: 0
   skillEBeingUnequipped: 0
 --- !u!4 &239847529
@@ -8100,6 +8105,7 @@ MonoBehaviour:
   equip1Flute: {fileID: 0}
   equip2Flute: {fileID: 0}
   hud: {fileID: 0}
+  originalHUDPos: {x: 0, y: 0, z: 0}
 --- !u!114 &537825837
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13312,6 +13318,7 @@ MonoBehaviour:
   equip1Mudfling: {fileID: 0}
   equip2Mudfling: {fileID: 0}
   hud: {fileID: 0}
+  originalHUDPos: {x: 0, y: 0, z: 0}
 --- !u!114 &856198941
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20823,18 +20830,23 @@ MonoBehaviour:
   mainCharacterSkillCharges: 0
   mainCharacterSkillCharging: 0
   mainCharacterSkillChargeTimer: 0
+  skillMCCDStart: 0
   behemothSkillQ: {fileID: 0}
   behemothSkillQIsEquipped: 0
   behemothSkillQCharges: 0
   behemothSkillQCharging: 0
   behemothSkillQChargeTimer: 0
-  skillCooldownStart: 0
+  skillQCDStart: 0
   behemothSkillE: {fileID: 0}
   behemothSkillEIsEquipped: 0
   behemothSkillECharges: 0
   behemothSkillECharging: 0
   behemothSkillEChargeTimer: 0
-  skillBeingEquipped: 0
+  skillECDStart: 0
+  skillMCBeingEquipped: 0
+  skillEBeingEquipped: 0
+  skillQBeingEquipped: 0
+  skillMCBeingUnequipped: 0
   skillQBeingUnequipped: 0
   skillEBeingUnequipped: 0
 --- !u!1 &1228897256
@@ -24682,13 +24694,13 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 242803725}
   - {fileID: 1913422809}
   - {fileID: 1634696503}
   - {fileID: 856198939}
   - {fileID: 537825835}
   - {fileID: 2143223017}
   - {fileID: 1531544718}
-  - {fileID: 242803725}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -26730,7 +26742,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Texture: {fileID: 2800000, guid: 54cb8f393d5e25946bc531b9a771144d, type: 3}
+  m_Texture: {fileID: 2800000, guid: acc9b68a8c60d81488a6f13fbe86ce63, type: 3}
   m_UVRect:
     serializedVersion: 2
     x: 0
@@ -30436,7 +30448,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   img: {fileID: 1713880874}
-  skillInCooldown: 0
   cdTime: 0
 --- !u!114 &1713880874
 MonoBehaviour:
@@ -30880,7 +30891,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   img: {fileID: 1723309994}
-  skillInCooldown: 0
   cdTime: 0
 --- !u!114 &1723309994
 MonoBehaviour:
@@ -35505,7 +35515,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   img: {fileID: 1984443100}
-  skillInCooldown: 0
   cdTime: 0
 --- !u!114 &1984443100
 MonoBehaviour:
@@ -38045,6 +38054,7 @@ MonoBehaviour:
   clue5Tracking: {fileID: 1789730757}
   clue6Tracking: {fileID: 822011030}
   hud: {fileID: 0}
+  originalHUDPos: {x: 0, y: 0, z: 0}
 --- !u!114 &2143223019
 MonoBehaviour:
   m_ObjectHideFlags: 0

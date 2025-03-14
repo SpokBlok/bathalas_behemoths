@@ -18,6 +18,7 @@ public class TheMoonDialogue : MonoBehaviour
 
     private bool imageActive = false;
     Vector3 currentPosition;
+    Vector3 originalHUDPos;
     private int index;
 
     // Start is called before the first frame update
@@ -30,7 +31,8 @@ public class TheMoonDialogue : MonoBehaviour
     void OnEnable()
     {
         HUD = GameObject.FindGameObjectWithTag("HUD");
-        HUD.SetActive(false);
+        originalHUDPos = HUD.gameObject.transform.position;
+        HUD.gameObject.transform.position = new Vector3(10000, 10000, 10000);
         QuestState.Instance.pausedForDialogue = true;
         if(QuestState.Instance.moonNPCRepeat && QuestState.Instance.moonChunkGet)
         {
@@ -97,7 +99,7 @@ public class TheMoonDialogue : MonoBehaviour
             pointer.SetActive(false);
             imageActive = false;
             QuestState.Instance.pausedForDialogue = false;
-            HUD.SetActive(true);
+            HUD.gameObject.transform.position = originalHUDPos;
             
             Debug.Log("inside end state");
         }

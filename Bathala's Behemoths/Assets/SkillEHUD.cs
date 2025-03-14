@@ -66,27 +66,27 @@ public class SkillEHUD : MonoBehaviour
     {
         ClearSkillEHUD();
         dash.gameObject.SetActive(true);
-        PlayerSkills.Instance.skillBeingEquipped = false;
+        PlayerSkills.Instance.skillEBeingEquipped = false;
     }
 
     public void SetHUDToMudArmor()
     {
         ClearSkillEHUD();
         mudArmor.gameObject.SetActive(true);
-        PlayerSkills.Instance.skillBeingEquipped = false;
+        PlayerSkills.Instance.skillEBeingEquipped = false;
     }
 
     public void SetHUDToMudfling()
     {
         ClearSkillEHUD();
         mudfling.gameObject.SetActive(true);
-        PlayerSkills.Instance.skillBeingEquipped = false;
+        PlayerSkills.Instance.skillEBeingEquipped = false;
     }
     
     public void SetHUDToTornadoPunch()
     {
         ClearSkillEHUD();
         tornadoPunch.gameObject.SetActive(true);
-        PlayerSkills.Instance.skillBeingEquipped = false;
+        PlayerSkills.Instance.skillEBeingEquipped = false;
     }
 }

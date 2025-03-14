@@ -13,6 +13,7 @@ public class ChickenSightDia : MonoBehaviour
 
     private bool pointerActive = false;
     Vector3 currentPosition;
+    Vector3 originalHUDPos;
     private int index;
 
     // Start is called before the first frame update
@@ -26,7 +27,8 @@ public class ChickenSightDia : MonoBehaviour
     void OnEnable()
     {
         HUD = GameObject.FindGameObjectWithTag("HUD");
-        HUD.SetActive(false);
+        originalHUDPos = HUD.gameObject.transform.position;
+        HUD.gameObject.transform.position = new Vector3(10000, 10000, 10000);
         QuestState.Instance.pausedForDialogue = true;
         textComponent.text = string.Empty;
         StartDialogue();
@@ -80,7 +82,7 @@ public class ChickenSightDia : MonoBehaviour
             pointer.SetActive(false);
             pointerActive = false;
             QuestState.Instance.chickenSightTrigger = true;
-            HUD.SetActive(true);
+            HUD.gameObject.transform.position = originalHUDPos;
             QuestState.Instance.pausedForDialogue = false;
             index = 0;
             

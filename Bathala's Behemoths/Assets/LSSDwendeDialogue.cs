@@ -18,6 +18,7 @@ public class LSSDwendeDialogue : MonoBehaviour
 
     private bool imageActive = false;
     Vector3 currentPosition;
+    Vector3 originalHUDPos;
     private int index;
 
     // Start is called before the first frame update
@@ -30,7 +31,8 @@ public class LSSDwendeDialogue : MonoBehaviour
     void OnEnable()
     {
         HUD = GameObject.FindGameObjectWithTag("HUD");
-        HUD.SetActive(false);
+        originalHUDPos = HUD.gameObject.transform.position;
+        HUD.gameObject.transform.position = new Vector3(10000, 10000, 10000);
         QuestState.Instance.pausedForDialogue = true;
         if(QuestState.Instance.lssDwendeRepeat && QuestState.Instance.fluteGet)
         {
@@ -97,7 +99,7 @@ public class LSSDwendeDialogue : MonoBehaviour
             pointer.SetActive(false);
             imageActive = false;
             QuestState.Instance.pausedForDialogue = false;
-            HUD.SetActive(true);
+            HUD.gameObject.transform.position = originalHUDPos;
 
             if(QuestState.Instance.lssDwendeRepeat && QuestState.Instance.fluteGet)
             {

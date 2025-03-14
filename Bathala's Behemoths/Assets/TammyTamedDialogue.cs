@@ -14,6 +14,7 @@ public class TammyTamedDialogue : MonoBehaviour
 
     private bool pointerActive = false;
     Vector3 currentPosition;
+    Vector3 originalHUDPos;
     private int index;
 
     // Start is called before the first frame update
@@ -26,7 +27,8 @@ public class TammyTamedDialogue : MonoBehaviour
     void OnEnable()
     {
         HUD = GameObject.FindGameObjectWithTag("HUD");
-        HUD.SetActive(false);
+        originalHUDPos = HUD.gameObject.transform.position;
+        HUD.gameObject.transform.position = new Vector3(10000, 10000, 10000);
         QuestState.Instance.pausedForDialogue = true;
         textComponent.text = string.Empty;
         StartDialogue();
@@ -76,7 +78,7 @@ public class TammyTamedDialogue : MonoBehaviour
         {
             gameObject.transform.localPosition = currentPosition;
             QuestState.Instance.pausedForDialogue = false;
-            gameObject.SetActive(false);
+            HUD.gameObject.transform.position = originalHUDPos;
             SceneManager.LoadScene("MainMenu");
             
             Debug.Log("inside end state");

@@ -29,8 +29,11 @@ public class MusicalFlute : BaseSkill
         player = GameObject.FindWithTag("Player");
         animator = player.GetComponentInChildren<Animator>();
 
-        MarkupoScript marky = GameObject.FindWithTag("Markupo").GetComponent<MarkupoScript>();
-        marky.GetFluteStunned();
+        if(PlayerStats.Instance.markyScene)
+        {
+            MarkupoScript marky = GameObject.FindWithTag("Markupo").GetComponent<MarkupoScript>();
+            marky.GetFluteStunned();
+        }
         
         animator.SetBool(isFluteHash, true);
         player = GameObject.FindWithTag("Player");

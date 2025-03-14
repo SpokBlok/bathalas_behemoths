@@ -13,6 +13,7 @@ public class MoonBraceletSightingDia : MonoBehaviour
 
     private bool pointerActive = false;
     Vector3 currentPosition;
+    Vector3 originalHUDPos;
     private int index;
 
     // Start is called before the first frame update
@@ -25,7 +26,8 @@ public class MoonBraceletSightingDia : MonoBehaviour
     void OnEnable()
     {
         HUD = GameObject.FindGameObjectWithTag("HUD");
-        HUD.SetActive(false);
+        originalHUDPos = HUD.gameObject.transform.position;
+        HUD.gameObject.transform.position = new Vector3(10000, 10000, 10000);
         textComponent.text = string.Empty;
         StartDialogue();
     }
@@ -78,7 +80,7 @@ public class MoonBraceletSightingDia : MonoBehaviour
             pointer.SetActive(false);
             pointerActive = false;
             QuestState.Instance.moonSightingTrigger = true;
-            HUD.SetActive(true);
+            HUD.gameObject.transform.position = originalHUDPos;
             index = 0;
             
             Debug.Log("inside end state");

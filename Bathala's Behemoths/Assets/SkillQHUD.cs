@@ -31,6 +31,12 @@ public class SkillQHUD : MonoBehaviour
             PlayerSkills.Instance.skillQBeingUnequipped = false;
         }
 
+        if(PlayerSkills.Instance.skillQBeingUnequipped)
+        {
+            ClearSkillQHUD();
+            PlayerSkills.Instance.skillQBeingUnequipped = false;
+        }
+
         if(PlayerSkills.Instance.behemothSkillQ != null && PlayerSkills.Instance.behemothSkillQ.skillCode == 1)
         {
             SetHUDToDash();
@@ -66,27 +72,27 @@ public class SkillQHUD : MonoBehaviour
     {
         ClearSkillQHUD();
         dash.gameObject.SetActive(true);
-        PlayerSkills.Instance.skillBeingEquipped = false;
+        PlayerSkills.Instance.skillQBeingEquipped = false;
     }
 
     public void SetHUDToMudArmor()
     {
         ClearSkillQHUD();
         mudArmor.gameObject.SetActive(true);
-        PlayerSkills.Instance.skillBeingEquipped = false;
+        PlayerSkills.Instance.skillQBeingEquipped = false;
     }
 
     public void SetHUDToMudfling()
     {
         ClearSkillQHUD();
         mudfling.gameObject.SetActive(true);
-        PlayerSkills.Instance.skillBeingEquipped = false;
+        PlayerSkills.Instance.skillQBeingEquipped = false;
     }
     
     public void SetHUDToTornadoPunch()
     {
         ClearSkillQHUD();
         tornadoPunch.gameObject.SetActive(true);
-        PlayerSkills.Instance.skillBeingEquipped = false;
+        PlayerSkills.Instance.skillQBeingEquipped = false;
     }
 }

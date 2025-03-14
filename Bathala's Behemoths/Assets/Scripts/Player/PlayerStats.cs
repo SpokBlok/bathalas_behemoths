@@ -67,9 +67,9 @@ public class PlayerStats : MonoBehaviour
 
     private void InitializePlayerStats()
     {
-        outdoorsScene = true; // Set to true for correct build - false for testing Manny+Steve Model
-        ruinsScene = false;
-        introDone = false;
+        outdoorsScene = false; // Set to true for correct build - false for testing Manny+Steve Model
+        ruinsScene = true; // set to false by default
+        introDone = true; // set to false by default
         tutorialDone = false;
 
         // Set default values

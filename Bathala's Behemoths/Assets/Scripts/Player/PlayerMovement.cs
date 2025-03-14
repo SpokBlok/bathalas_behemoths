@@ -87,7 +87,7 @@ public class PlayerMovement : MonoBehaviour
         charControl = GetComponent<CharacterController>();
         animator = GetComponentInChildren<Animator>();
 
-        Debug.Log("animator found: " + (animator != null ? animator : "NULL"));
+        // Debug.Log("animator found: " + (animator != null ? animator : "NULL"));
 
         stats = PlayerStats.Instance;
 
@@ -182,7 +182,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (context.performed && !QuestState.Instance.pausedForDialogue)
         {
-            if (context.performed && !isAttacking && PlayerStats.Instance.introDone)
+            if (context.performed && !isAttacking && stats.introDone && stats.outdoorsScene)
             {
                 ChangeState(PlayerState.Attacking);
                 attackOngoing = true;
@@ -197,7 +197,7 @@ public class PlayerMovement : MonoBehaviour
         
         if (context.performed)
         {
-            if (context.performed && !isAttacking)
+            if (context.performed && !isAttacking && stats.introDone && stats.outdoorsScene)
             {
                 ChangeState(PlayerState.Attacking);
                 GameObject skillManager = GameObject.FindGameObjectWithTag("Player Skills");
@@ -212,7 +212,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (context.performed)
         {
-            if (context.performed && !isAttacking)
+            if (context.performed && !isAttacking && stats.introDone && stats.outdoorsScene)
             {
                 ChangeState(PlayerState.Attacking);
                 GameObject skillManager = GameObject.FindGameObjectWithTag("Player Skills");
@@ -227,7 +227,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (context.performed)
         {
-            if (context.performed && !isAttacking)
+            if (context.performed && !isAttacking && stats.introDone && stats.outdoorsScene)
             {
                 ChangeState(PlayerState.Attacking);
                 GameObject skillManager = GameObject.FindGameObjectWithTag("Player Skills");

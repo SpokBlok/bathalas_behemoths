@@ -7,7 +7,6 @@ public class SkillQCD : MonoBehaviour
 {
     public Image img;
     public Coroutine coolingDown;
-    public bool skillInCooldown = false;
     public float cdTime;
 
     // Start is called before the first frame update
@@ -20,14 +19,21 @@ public class SkillQCD : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(PlayerSkills.Instance.skillBeingEquipped || cdTime == 0)
+        if(cdTime == 0)
         {
             cdTime = PlayerSkills.Instance.behemothSkillQChargeTimer;
         }
-        
-        if(PlayerSkills.Instance.skillCooldownStart != null && PlayerSkills.Instance.behemothSkillQCharges != null && PlayerSkills.Instance.behemothSkillQ != null)
+
+        if(PlayerSkills.Instance.skillQBeingEquipped)
         {
-            if((PlayerSkills.Instance.skillCooldownStart && !skillInCooldown) && (PlayerSkills.Instance.behemothSkillQCharges != PlayerSkills.Instance.behemothSkillQ.maxCharges))
+            img.fillAmount = 0.0f;
+            cdTime = PlayerSkills.Instance.behemothSkillQChargeTimer;
+            PlayerSkills.Instance.skillQCDStart = false;
+        }
+        
+        if(PlayerSkills.Instance.behemothSkillQCharges != null && PlayerSkills.Instance.behemothSkillQ != null)
+        {
+            if(PlayerSkills.Instance.skillQCDStart)
             {
                 CoolDownStart();
             }
@@ -40,17 +46,11 @@ public class SkillQCD : MonoBehaviour
         {
             coolingDown = StartCoroutine(CoolDown());
         }
-        else if(coolingDown != null && !QuestState.Instance.pausedForDialogue)
-        {
-            StopCoroutine(coolingDown);
-            coolingDown = StartCoroutine(CoolDown());
-        }
     }
 
     IEnumerator CoolDown()
     {
         Debug.Log("Skill Q Cooling Down");
-        skillInCooldown = true;
 
         float duration = cdTime;
         float elapsedTime = 0f;
@@ -67,6 +67,6 @@ public class SkillQCD : MonoBehaviour
         }
         
         img.fillAmount = endValue; // Ensure it fully reaches the target
-        skillInCooldown = false;
+        coolingDown = null;
     }
 }

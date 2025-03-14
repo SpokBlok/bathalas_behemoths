@@ -16,6 +16,7 @@ public class GardenerDialogue : MonoBehaviour
 
     private bool pointerActive = false;
     Vector3 currentPosition;
+    Vector3 originalHUDPos;
     private int index;
 
     // Start is called before the first frame update
@@ -29,7 +30,8 @@ public class GardenerDialogue : MonoBehaviour
     void OnEnable()
     {
         HUD = GameObject.FindGameObjectWithTag("HUD");
-        HUD.SetActive(false);
+        originalHUDPos = HUD.gameObject.transform.position;
+        HUD.gameObject.transform.position = new Vector3(10000, 10000, 10000);
         if(QuestState.Instance.gardenerRepeat)
         {
             currentLines = linesRepeat;
@@ -89,7 +91,7 @@ public class GardenerDialogue : MonoBehaviour
             pointer.SetActive(false);
             fertilizerMarker.SetActive(true);
             pointerActive = false;
-            HUD.SetActive(true);
+            HUD.gameObject.transform.position = originalHUDPos;
             
             Debug.Log("inside end state");
         }

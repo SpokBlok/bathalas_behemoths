@@ -16,7 +16,7 @@ public class MCSkillChargeUpdate : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(PlayerSkills.Instance.behemothSkillE != null)
+        if(PlayerSkills.Instance.mainCharacterSkill != null)
         {
             chargesIndicator.text = PlayerSkills.Instance.mainCharacterSkillCharges.ToString();
         }

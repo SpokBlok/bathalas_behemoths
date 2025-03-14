@@ -9,9 +9,11 @@ public class DwendeSightingDia : MonoBehaviour
     public string[] lines;
     public float textInterval;
     public GameObject pointer;
+    public GameObject HUD;
 
     private bool pointerActive = false;
     Vector3 currentPosition;
+    Vector3 originalHUDPos;
     private int index;
 
     // Start is called before the first frame update
@@ -23,6 +25,9 @@ public class DwendeSightingDia : MonoBehaviour
 
     void OnEnable()
     {
+        HUD = GameObject.FindGameObjectWithTag("HUD");
+        originalHUDPos = HUD.gameObject.transform.position;
+        HUD.gameObject.transform.position = new Vector3(10000, 10000, 10000);
         QuestState.Instance.pausedForDialogue = true;
         textComponent.text = string.Empty;
         StartDialogue();
@@ -77,6 +82,7 @@ public class DwendeSightingDia : MonoBehaviour
             pointerActive = false;
             QuestState.Instance.desponDwendeSightTrigger = true;
             QuestState.Instance.pausedForDialogue = false;
+            HUD.gameObject.transform.position = originalHUDPos;
             index = 0;
             
             Debug.Log("inside end state");

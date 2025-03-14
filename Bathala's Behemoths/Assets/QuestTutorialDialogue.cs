@@ -13,6 +13,7 @@ public class QuestTutorialDialogue : MonoBehaviour
 
     private bool pointerActive = false;
     Vector3 currentPosition;
+    Vector3 originalHUDPos;
     private int index;
 
     // Start is called before the first frame update
@@ -25,7 +26,8 @@ public class QuestTutorialDialogue : MonoBehaviour
     void OnEnable()
     {
         HUD = GameObject.FindGameObjectWithTag("HUD");
-        HUD.SetActive(false);
+        originalHUDPos = HUD.gameObject.transform.position;
+        HUD.gameObject.transform.position = new Vector3(10000, 10000, 10000);
         QuestState.Instance.pausedForDialogue = true;
         textComponent.text = string.Empty;
         StartDialogue();
@@ -46,7 +48,7 @@ public class QuestTutorialDialogue : MonoBehaviour
                 textComponent.text = lines[index];
             }
         }
-        Debug.Log("Index: " + index);
+        // Debug.Log("Index: " + index);
     }
 
     void StartDialogue()
@@ -80,7 +82,7 @@ public class QuestTutorialDialogue : MonoBehaviour
             pointerActive = false;
             QuestState.Instance.questTutorialTrigger = true;
             QuestState.Instance.pausedForDialogue = false;
-            HUD.SetActive(true);
+            HUD.gameObject.transform.position = originalHUDPos;
             index = 0;
             
             Debug.Log("inside end state");

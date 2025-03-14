@@ -2990,7 +2990,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   img: {fileID: 126023001}
-  skillInCooldown: 0
   cdTime: 0
 --- !u!114 &126023001
 MonoBehaviour:
@@ -9616,7 +9615,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   img: {fileID: 550409944}
-  skillInCooldown: 0
   cdTime: 0
 --- !u!114 &550409944
 MonoBehaviour:
@@ -12520,6 +12518,8 @@ MonoBehaviour:
   clue4Tracking: {fileID: 1614250250}
   clue5Tracking: {fileID: 2143152684}
   clue6Tracking: {fileID: 1955006644}
+  hud: {fileID: 0}
+  originalHUDPos: {x: 0, y: 0, z: 0}
 --- !u!114 &725469842
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17957,6 +17957,8 @@ MonoBehaviour:
   purchaseMudfling: {fileID: 0}
   equip1Mudfling: {fileID: 0}
   equip2Mudfling: {fileID: 0}
+  hud: {fileID: 0}
+  originalHUDPos: {x: 0, y: 0, z: 0}
 --- !u!114 &1032724705
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23678,13 +23680,13 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 149525057}
   - {fileID: 908749049}
   - {fileID: 2016956892}
   - {fileID: 1032724703}
   - {fileID: 1631458934}
   - {fileID: 725469840}
   - {fileID: 626909572}
-  - {fileID: 149525057}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -27065,6 +27067,8 @@ MonoBehaviour:
   purchaseFlute: {fileID: 0}
   equip1Flute: {fileID: 0}
   equip2Flute: {fileID: 0}
+  hud: {fileID: 0}
+  originalHUDPos: {x: 0, y: 0, z: 0}
 --- !u!114 &1631458936
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -28376,7 +28380,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   img: {fileID: 1682815907}
-  skillInCooldown: 0
   cdTime: 0
 --- !u!114 &1682815907
 MonoBehaviour:

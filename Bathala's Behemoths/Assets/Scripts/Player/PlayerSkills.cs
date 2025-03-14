@@ -9,6 +9,7 @@ public class PlayerSkills : MonoBehaviour
     public int mainCharacterSkillCharges;
     public bool mainCharacterSkillCharging;
     public float mainCharacterSkillChargeTimer;
+    public bool skillMCCDStart = false;
     public Coroutine mainCharacterSkillCoroutine = null;
 
     public BaseSkill behemothSkillQ;
@@ -16,7 +17,7 @@ public class PlayerSkills : MonoBehaviour
     public int behemothSkillQCharges;
     public bool behemothSkillQCharging;
     public float behemothSkillQChargeTimer;
-    public bool skillCooldownStart;
+    public bool skillQCDStart = false;
     public Coroutine behemothSkillQCoroutine = null;
 
     public BaseSkill behemothSkillE;
@@ -24,9 +25,14 @@ public class PlayerSkills : MonoBehaviour
     public int behemothSkillECharges;
     public bool behemothSkillECharging;
     public float behemothSkillEChargeTimer;
+    public bool skillECDStart = false;
     public Coroutine behemothSkillECoroutine = null;
 
-    public bool skillBeingEquipped = false;
+    public bool skillMCBeingEquipped = false;
+    public bool skillEBeingEquipped = false;
+    public bool skillQBeingEquipped = false;
+    
+    public bool skillMCBeingUnequipped = false;
     public bool skillQBeingUnequipped = false;
     public bool skillEBeingUnequipped = false;
 
@@ -75,7 +81,8 @@ public class PlayerSkills : MonoBehaviour
         mainCharacterSkillChargeTimer = newSkill.cooldown;
         mainCharacterSkillCharges = newSkill.maxCharges;
         mainCharacterSkillIsEquipped = true;
-        skillBeingEquipped = true;
+        skillMCCDStart = false;
+        skillMCBeingEquipped = true;
     }
 
     public void BehemothSkillQChange(BaseSkill newSkill)
@@ -84,7 +91,7 @@ public class PlayerSkills : MonoBehaviour
         behemothSkillQChargeTimer = newSkill.cooldown;
         behemothSkillQCharges = newSkill.maxCharges;
         behemothSkillQIsEquipped = true;
-        skillBeingEquipped = true;
+        skillQBeingEquipped = true;
     }
 
     public void BehemothSkillEChange(BaseSkill newSkill)
@@ -93,7 +100,7 @@ public class PlayerSkills : MonoBehaviour
         behemothSkillEChargeTimer = newSkill.cooldown;
         behemothSkillECharges = newSkill.maxCharges;
         behemothSkillEIsEquipped = true;
-        skillBeingEquipped = true;
+        skillEBeingEquipped = true;
     }
 
     public void RemoveMainCharacterSkill()
@@ -103,6 +110,7 @@ public class PlayerSkills : MonoBehaviour
         mainCharacterSkillCharges = 0;
         mainCharacterSkillIsEquipped = false;
         mainCharacterSkillCharging = false;
+        skillMCBeingUnequipped = true;
     }
 
     public void RemoveBehemothSkillQ()
@@ -125,7 +133,74 @@ public class PlayerSkills : MonoBehaviour
         skillEBeingUnequipped = true;
     }
 
-    private void SkillChargeTimer(ref bool isEquipped, ref bool isCharging, ref float chargeTimer, ref int charges, int maxCharges, float cooldown)
+    private void SkillMCChargeTimer(ref bool isEquipped, ref bool isCharging, ref float chargeTimer, ref int charges, int maxCharges, float cooldown)
+    {
+        if (!isEquipped)
+        {
+            return;;
+        }
+
+        if (charges < maxCharges)
+        {
+            isCharging = true;
+        }
+
+        if (isCharging)
+        {
+            if (charges >= maxCharges)
+            {
+                isCharging = false;
+                chargeTimer = cooldown;
+                skillMCCDStart = false;
+            }
+            else if (chargeTimer <= 0)
+            {
+                charges++;
+                chargeTimer = cooldown;
+            }
+            else
+            {
+                chargeTimer -= Time.deltaTime;
+                skillMCCDStart = true;
+            }
+            // Debug.Log("skillMCCDStart value: " + skillMCCDStart);
+        }
+    }
+    
+    private void SkillEChargeTimer(ref bool isEquipped, ref bool isCharging, ref float chargeTimer, ref int charges, int maxCharges, float cooldown)
+    {
+        if (!isEquipped)
+        {
+            return;;
+        }
+
+        if (charges < maxCharges)
+        {
+            isCharging = true;
+        }
+
+        if (isCharging)
+        {
+            if (charges >= maxCharges)
+            {
+                isCharging = false;
+                chargeTimer = cooldown;
+                skillECDStart = false;
+            }
+            else if (chargeTimer <= 0)
+            {
+                charges++;
+                chargeTimer = cooldown;
+            }
+            else
+            {
+                chargeTimer -= Time.deltaTime;
+                skillECDStart = true;
+            }
+        }
+    }
+
+    private void SkillQChargeTimer(ref bool isEquipped, ref bool isCharging, ref float chargeTimer, ref int charges, int maxCharges, float cooldown)
     {
         if (!isEquipped)
         {
@@ -143,7 +218,7 @@ public class PlayerSkills : MonoBehaviour
             {
                 isCharging = false;
                 chargeTimer = cooldown;
-                skillCooldownStart = false;
+                skillQCDStart = false;
             }
             else if (chargeTimer <= 0)
             {
@@ -153,22 +228,15 @@ public class PlayerSkills : MonoBehaviour
             else
             {
                 chargeTimer -= Time.deltaTime;
-            }
-            
-            if(isCharging && !skillCooldownStart)
-            {
-                skillCooldownStart = true;
-            }
-            else if(!isCharging)
-            {
-                skillCooldownStart = false;
+                skillQCDStart = true;
             }
         }
     }
 
     public void MainCharacterSkillChargeTimer()
     {
-        SkillChargeTimer(
+        // Debug.Log("MCChargeTimer Called");
+        SkillMCChargeTimer(
             ref mainCharacterSkillIsEquipped,
             ref mainCharacterSkillCharging,
             ref mainCharacterSkillChargeTimer,
@@ -180,7 +248,8 @@ public class PlayerSkills : MonoBehaviour
 
     public void BehemothSkillQChargeTimer()
     {
-        SkillChargeTimer(
+        // Debug.Log("QChargeTimer Called");
+        SkillQChargeTimer(
             ref behemothSkillQIsEquipped,
             ref behemothSkillQCharging,
             ref behemothSkillQChargeTimer,
@@ -192,7 +261,8 @@ public class PlayerSkills : MonoBehaviour
 
     public void BehemothSkillEChargeTimer()
     {
-        SkillChargeTimer(
+        // Debug.Log("EChargeTimer Called");
+        SkillEChargeTimer(
             ref behemothSkillEIsEquipped,
             ref behemothSkillECharging,
             ref behemothSkillEChargeTimer,

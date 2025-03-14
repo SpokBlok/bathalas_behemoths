@@ -7,7 +7,6 @@ public class SkillECD : MonoBehaviour
 {
     public Image img;
     public Coroutine coolingDown;
-    public bool skillInCooldown = false;
     public float cdTime;
 
     // Start is called before the first frame update
@@ -20,16 +19,22 @@ public class SkillECD : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(PlayerSkills.Instance.skillBeingEquipped || cdTime == 0)
+        if(cdTime == 0)
         {
             cdTime = PlayerSkills.Instance.behemothSkillEChargeTimer;
         }
 
-        if(PlayerSkills.Instance.skillCooldownStart != null && PlayerSkills.Instance.behemothSkillECharges != null && PlayerSkills.Instance.behemothSkillE != null)
+        if(PlayerSkills.Instance.skillEBeingEquipped)
+        {
+            img.fillAmount = 0.0f;
+            cdTime = PlayerSkills.Instance.behemothSkillEChargeTimer;
+            PlayerSkills.Instance.skillECDStart = false;
+        }
+
+        if(PlayerSkills.Instance.behemothSkillECharges != null && PlayerSkills.Instance.behemothSkillE != null)
         {    
-            if((PlayerSkills.Instance.skillCooldownStart && !skillInCooldown) && (PlayerSkills.Instance.behemothSkillECharges != PlayerSkills.Instance.behemothSkillE.maxCharges))
+            if(PlayerSkills.Instance.skillECDStart)
             {
-                Debug.Log("INSIDE COOLDOWN UPDATE IF STATEMENT");
                 CoolDownStart();
             }
         }
@@ -37,13 +42,8 @@ public class SkillECD : MonoBehaviour
 
     public void CoolDownStart()
     {
-        if((coolingDown == null && !skillInCooldown) && !QuestState.Instance.pausedForDialogue)
+        if(coolingDown == null && !QuestState.Instance.pausedForDialogue)
         {
-            coolingDown = StartCoroutine(CoolDown());
-        }
-        else if((coolingDown != null && !skillInCooldown) && !QuestState.Instance.pausedForDialogue)
-        {
-            StopCoroutine(coolingDown);
             coolingDown = StartCoroutine(CoolDown());
         }
     }
@@ -51,7 +51,6 @@ public class SkillECD : MonoBehaviour
     IEnumerator CoolDown()
     {
         Debug.Log("Skill E Cooling Down");
-        skillInCooldown = true;
 
         float duration = cdTime;
         float elapsedTime = 0f;
@@ -68,6 +67,6 @@ public class SkillECD : MonoBehaviour
         }
         
         img.fillAmount = endValue; // Ensure it fully reaches the target
-        skillInCooldown = false;
+        coolingDown = null;
     }
 }

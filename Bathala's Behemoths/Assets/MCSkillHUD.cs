@@ -24,6 +24,12 @@ public class MCSkillHUD : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(PlayerSkills.Instance.skillMCBeingUnequipped)
+        {
+            ClearMCSkillHUD();
+            PlayerSkills.Instance.skillMCBeingUnequipped = false;
+        }
+
         if(PlayerSkills.Instance.mainCharacterSkill != null && PlayerSkills.Instance.mainCharacterSkill.skillCode == 1)
         {
             SetHUDToBathBless();
@@ -53,20 +59,20 @@ public class MCSkillHUD : MonoBehaviour
     {
         ClearMCSkillHUD();
         bathBless.gameObject.SetActive(true);
-        PlayerSkills.Instance.skillBeingEquipped = false;
+        PlayerSkills.Instance.skillMCBeingEquipped = false;
     }
 
     public void SetHUDToFirstAid()
     {
         ClearMCSkillHUD();
         firstAid.gameObject.SetActive(true);
-        PlayerSkills.Instance.skillBeingEquipped = false;
+        PlayerSkills.Instance.skillMCBeingEquipped = false;
     }
 
     public void SetHUDToMusicalFlute()
     {
         ClearMCSkillHUD();
         musicalFlute.gameObject.SetActive(true);
-        PlayerSkills.Instance.skillBeingEquipped = false;
+        PlayerSkills.Instance.skillMCBeingEquipped = false;
     }
 }

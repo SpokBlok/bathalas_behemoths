@@ -32,6 +32,7 @@ public class MCSkillsUIPanel : MonoBehaviour
     private PlayerSkills playerSkills;
 
     public GameObject hud;
+    public Vector3 originalHUDPos;
 
     // Start is called before the first frame update
     void Start()
@@ -61,16 +62,19 @@ public class MCSkillsUIPanel : MonoBehaviour
 
         playerStats = PlayerStats.Instance;
         playerSkills = PlayerSkills.Instance;
+        
+        hud = GameObject.FindGameObjectWithTag("HUD");
     }
 
     public void EnablePanel()
     {
-        hud = GameObject.FindGameObjectWithTag("HUD");
         gameObject.SetActive(true);
-        hud.SetActive(false);
+        hud = GameObject.FindGameObjectWithTag("HUD");
+        originalHUDPos = hud.gameObject.transform.position;
+        hud.gameObject.transform.position = new Vector3(10000, 10000, 10000);
         EventManager.Instance.InvokeOnEnteringUpgradeScreen();
 
-        if(PlayerStats.Instance.clue1)
+        if(PlayerStats.Instance.clue6)
         {
             purchaseFlute.SetActive(false);
             equip1Flute.SetActive(true);
@@ -81,7 +85,8 @@ public class MCSkillsUIPanel : MonoBehaviour
     public void DisablePanel()
     {
         gameObject.SetActive(false);
-        hud.SetActive(true);
+        hud = GameObject.FindGameObjectWithTag("HUD");
+        hud.gameObject.transform.position = originalHUDPos;
         EventManager.Instance.InvokeOnExitingUpgradeScreen();
         Transform panel = transform.Find("RightPanel");
         foreach (Transform child in panel)

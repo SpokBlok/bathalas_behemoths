@@ -29,6 +29,7 @@ public class QuestBoardUIPanel : MonoBehaviour
     [SerializeField] GameObject clue6Tracking;
 
     public GameObject hud;
+    public Vector3 originalHUDPos;
 
     // Start is called before the first frame update
     void Start()
@@ -41,11 +42,11 @@ public class QuestBoardUIPanel : MonoBehaviour
         selectedClue2Image = transform.Find("LeftPanel/Selected Clue 2").GetComponentInChildren<Image>();
         selectedClue3Image = transform.Find("LeftPanel/Selected Clue 3").GetComponentInChildren<Image>();
     
+        hud = GameObject.FindGameObjectWithTag("HUD");
     }
 
     void OnEnable()
     {
-        hud = GameObject.FindGameObjectWithTag("HUD");
         if(PlayerStats.Instance.clue1 == true)
         {
             clue1.SetActive(true);
@@ -129,7 +130,9 @@ public class QuestBoardUIPanel : MonoBehaviour
     public void EnablePanel()
     {
         gameObject.SetActive(true);
-        hud.SetActive(false);
+        hud = GameObject.FindGameObjectWithTag("HUD");
+        originalHUDPos = hud.gameObject.transform.position;
+        hud.gameObject.transform.position = new Vector3(10000, 10000, 10000);
 
         EventManager.Instance.InvokeOnEnteringUpgradeScreen();
     }
@@ -137,7 +140,8 @@ public class QuestBoardUIPanel : MonoBehaviour
     public void DisablePanel()
     {
         gameObject.SetActive(false);
-        hud.SetActive(true);
+        hud = GameObject.FindGameObjectWithTag("HUD");
+        hud.gameObject.transform.position = originalHUDPos;
         EventManager.Instance.InvokeOnExitingUpgradeScreen();
         Transform panel = transform.Find("RightPanel");
         foreach (Transform child in panel)

@@ -19,6 +19,7 @@ public class IntroDialogue : MonoBehaviour
 
     private bool pointerActive = false;
     Vector3 currentPosition;
+    Vector3 originalHUDPos;
     private int index;
 
     // Start is called before the first frame update
@@ -35,7 +36,8 @@ public class IntroDialogue : MonoBehaviour
     void OnEnable()
     {
         HUD = GameObject.FindGameObjectWithTag("HUD");
-        HUD.SetActive(false);
+        originalHUDPos = HUD.gameObject.transform.position;
+        HUD.gameObject.transform.position = new Vector3(10000, 10000, 10000);
         QuestState.Instance.pausedForDialogue = true;
         textComponent.text = string.Empty;
         StartDialogue();
@@ -98,7 +100,7 @@ public class IntroDialogue : MonoBehaviour
             PlayerStats.Instance.initSpeed = 5;
 
             player.gameObject.transform.position = new Vector3(735.2f, 53.7f, 280.3f);
-            HUD.SetActive(true);
+            HUD.gameObject.transform.position = originalHUDPos;
             
             Debug.Log("inside end state");
         }

@@ -15,6 +15,7 @@ public class FootprintsDialogue : MonoBehaviour
 
     private bool pointerActive = false;
     Vector3 currentPosition;
+    Vector3 originalHUDPos;
     private int index;
 
     // Start is called before the first frame update
@@ -28,7 +29,8 @@ public class FootprintsDialogue : MonoBehaviour
     void OnEnable()
     {
         HUD = GameObject.FindGameObjectWithTag("HUD");
-        HUD.SetActive(false);
+        originalHUDPos = HUD.gameObject.transform.position;
+        HUD.gameObject.transform.position = new Vector3(10000, 10000, 10000);
         QuestState.Instance.pausedForDialogue = true;
         if(QuestState.Instance.footprintsRepeat)
         {
@@ -90,7 +92,7 @@ public class FootprintsDialogue : MonoBehaviour
             pointerActive = false;
             QuestState.Instance.footprintsRepeat = true;
             QuestState.Instance.pausedForDialogue = false;
-            HUD.SetActive(true);
+            HUD.gameObject.transform.position = originalHUDPos;
             
             Debug.Log("inside end state");
         }

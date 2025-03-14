@@ -22,7 +22,7 @@ public class MudArmor : BaseSkill
     {
         player = GameObject.FindWithTag("Player");
         animator = player.GetComponentInChildren<Animator>();
-        mannyBody = GameObject.FindGameObjectWithTag("MannyBody").GetComponent<SkinnedMeshRenderer>();
+        mannyBody = GameObject.FindGameObjectWithTag("Player").GetComponentsInChildren<MSAnimController>(true)[0].GetComponentsInChildren<SkinnedMeshRenderer>(true)[0];
         
         isMudArmorHash = Animator.StringToHash("isMudarmor");
         maxCharges = 1;

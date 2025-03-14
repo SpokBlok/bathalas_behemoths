@@ -7,7 +7,6 @@ public class MCSkillCD : MonoBehaviour
 {
     public Image img;
     public Coroutine coolingDown;
-    public bool skillInCooldown = false;
     public float cdTime;
 
     // Start is called before the first frame update
@@ -20,14 +19,24 @@ public class MCSkillCD : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(PlayerSkills.Instance.skillBeingEquipped || cdTime == 0)
+        if(cdTime == 0)
         {
+            // Debug.Log("cdTime setup");
             cdTime = PlayerSkills.Instance.mainCharacterSkillChargeTimer;
         }
 
-        if(PlayerSkills.Instance.skillCooldownStart != null && PlayerSkills.Instance.mainCharacterSkillCharges != null && PlayerSkills.Instance.mainCharacterSkill != null)
-        {    
-            if((PlayerSkills.Instance.skillCooldownStart && !skillInCooldown) && (PlayerSkills.Instance.mainCharacterSkillCharges != PlayerSkills.Instance.mainCharacterSkill.maxCharges))
+        if(PlayerSkills.Instance.skillMCBeingEquipped)
+        {
+            // Debug.Log("cdTime change to new skill");
+            img.fillAmount = 1.0f;
+            cdTime = PlayerSkills.Instance.mainCharacterSkillChargeTimer;
+            PlayerSkills.Instance.skillMCCDStart = false;
+        }
+
+        if(PlayerSkills.Instance.mainCharacterSkillCharges != null && PlayerSkills.Instance.mainCharacterSkill != null)
+        {   
+            // Debug.Log("Calling MC Skill stuff not null");
+            if(PlayerSkills.Instance.skillMCCDStart)
             {
                 CoolDownStart();
             }
@@ -36,21 +45,15 @@ public class MCSkillCD : MonoBehaviour
     
     public void CoolDownStart()
     {
-        if((coolingDown == null && !skillInCooldown) && !QuestState.Instance.pausedForDialogue)
+        if(coolingDown == null && !QuestState.Instance.pausedForDialogue)
         {
-            coolingDown = StartCoroutine(CoolDown());
-        }
-        else if((coolingDown != null && !skillInCooldown) && !QuestState.Instance.pausedForDialogue)
-        {
-            StopCoroutine(coolingDown);
             coolingDown = StartCoroutine(CoolDown());
         }
     }
 
     IEnumerator CoolDown()
     {
-        Debug.Log("Skill E Cooling Down");
-        skillInCooldown = true;
+        Debug.Log("MC Skill Cooling Down");
 
         float duration = cdTime;
         float elapsedTime = 0f;
@@ -67,6 +70,6 @@ public class MCSkillCD : MonoBehaviour
         }
         
         img.fillAmount = endValue; // Ensure it fully reaches the target
-        skillInCooldown = false;
+        coolingDown = null;
     }
 }

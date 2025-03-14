@@ -51,7 +51,7 @@ public class CDClock : MonoBehaviour
         Debug.Log("Basic Attack Cooling Down");
         isBasicAttacking = true;
 
-        float duration = 1.0f;
+        float duration = 0.94f;
         float elapsedTime = 0f;
         float startValue = 1.0f;
         float endValue = 0.0f;

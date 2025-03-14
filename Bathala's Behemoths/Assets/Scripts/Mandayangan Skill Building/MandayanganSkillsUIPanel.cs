@@ -80,8 +80,10 @@ public class MandayanganSkillsUIPanel : MonoBehaviour
     public void EnablePanel()
     {
         gameObject.SetActive(true);
+        QuestState.Instance.pausedForDialogue = true;
         hud = GameObject.FindGameObjectWithTag("HUD");
         originalHUDPos = hud.gameObject.transform.position;
+        Debug.Log("OG HUD Position: " + originalHUDPos);
         hud.gameObject.transform.position = new Vector3(10000, 10000, 10000);
         EventManager.Instance.InvokeOnEnteringUpgradeScreen();
 
@@ -96,6 +98,7 @@ public class MandayanganSkillsUIPanel : MonoBehaviour
     public void DisablePanel()
     {
         gameObject.SetActive(false);
+        QuestState.Instance.pausedForDialogue = false;
         hud = GameObject.FindGameObjectWithTag("HUD");
         hud.gameObject.transform.position = originalHUDPos;
         EventManager.Instance.InvokeOnExitingUpgradeScreen();

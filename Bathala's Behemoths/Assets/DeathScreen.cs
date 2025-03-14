@@ -5,10 +5,14 @@ using UnityEngine.SceneManagement;
 
 public class DeathScreen : MonoBehaviour
 {
+    private GameObject HUD;
+    private Vector3 originalHUDPos;
     // Start is called before the first frame update
     void Start()
     {
-
+        HUD = GameObject.FindGameObjectWithTag("HUD");
+        originalHUDPos = HUD.gameObject.transform.position;
+        HUD.gameObject.transform.position = new Vector3(10000, 10000, 10000);
     }
 
     // Update is called once per frame
@@ -25,6 +29,8 @@ public class DeathScreen : MonoBehaviour
         PlayerStats.Instance.ruinsScene = true;
         PlayerStats.Instance.currentHealth = PlayerStats.Instance.maxHealth;
         PlayerStats.Instance.speedMultiplier = 1;
+        QuestState.Instance.pausedForDialogue = false;
+        HUD.gameObject.transform.position = originalHUDPos;
         BathalasBlessing bbSkill = FindObjectOfType<BathalasBlessing>();
         bbSkill.RechargeUsages();
         SceneManager.LoadScene(2);

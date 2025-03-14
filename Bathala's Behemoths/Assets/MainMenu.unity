@@ -182,7 +182,7 @@ MonoBehaviour:
   m_text: Bathala's Behemoths
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2100000, guid: e73a58f6e2794ae7b1b7e50b7fb811b0, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -313,6 +313,7 @@ MonoBehaviour:
   skillsTutorialTrigger: 0
   tambanokanoFound: 0
   markupoFound: 0
+  pausedForDialogue: 0
 --- !u!4 &74505582
 Transform:
   m_ObjectHideFlags: 0
@@ -488,7 +489,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   clearColorMode: 1
-  backgroundColorHDR: {r: 0.5345911, g: 0.32645142, b: 0.13953161, a: 0}
+  backgroundColorHDR: {r: 0.76729554, g: 0.37996623, b: 0.19061732, a: 0}
   clearDepth: 1
   volumeLayerMask:
     serializedVersion: 2
@@ -1025,6 +1026,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7d9c9a6e25b8e14e84fc124727244aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  HUD: {fileID: 0}
+  initSpeed: 0
   speed: 0
   speedMultiplier: 0
   basicAttackDamage: 0
@@ -1045,6 +1048,11 @@ MonoBehaviour:
   clue6: 0
   tammyFound: 0
   markyFound: 0
+  tammyScene: 0
+  markyScene: 0
+  skillESound: {fileID: 0}
+  skillQSound: {fileID: 0}
+  mcSkillSound: {fileID: 0}
 --- !u!4 &1393869588
 Transform:
   m_ObjectHideFlags: 0

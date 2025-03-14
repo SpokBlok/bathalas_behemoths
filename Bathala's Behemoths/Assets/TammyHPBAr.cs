@@ -21,11 +21,20 @@ public class TammyHPBAr : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(tammy == null)
+        {
+            tammy = GameObject.FindGameObjectWithTag("Tambanokano").GetComponent<Tambanokano>();
+        }
+        if(HPText == null)
+        {
+            HPText = GetComponentInChildren<TextMeshProUGUI>();
+        }
+
         if(maxHP == 0f)
         {
             maxHP = tammy.health;
         }
-        HPText.text = "HP: " + tammy.health + "/" + maxHP + " HP";
+        HPText.text = tammy.health + "/" + maxHP + " HP";
         healthBar.fillAmount = tammy.health/maxHP;
     }
 }

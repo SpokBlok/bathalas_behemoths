@@ -182,13 +182,11 @@ public class PlayerMovement : MonoBehaviour
     {
         if (context.performed && !QuestState.Instance.pausedForDialogue)
         {
-            if (context.performed && !isAttacking && stats.introDone && stats.outdoorsScene)
+            if (context.performed && !isAttacking && stats.introDone && (stats.outdoorsScene || stats.tammyScene || stats.markyScene))
             {
                 ChangeState(PlayerState.Attacking);
                 attackOngoing = true;
                 basicAttackCoroutine = StartCoroutine(BasicAttack());
-                AudioSource.PlayClipAtPoint(basicAttackAudio, Camera.main.transform.position + Camera.main.transform.forward * 2f, 1f);
-        
             }
         }
     }
@@ -197,7 +195,7 @@ public class PlayerMovement : MonoBehaviour
         
         if (context.performed)
         {
-            if (context.performed && !isAttacking && stats.introDone && stats.outdoorsScene)
+            if (context.performed && !isAttacking && stats.introDone && (stats.outdoorsScene || stats.tammyScene || stats.markyScene))
             {
                 ChangeState(PlayerState.Attacking);
                 GameObject skillManager = GameObject.FindGameObjectWithTag("Player Skills");
@@ -212,7 +210,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (context.performed)
         {
-            if (context.performed && !isAttacking && stats.introDone && stats.outdoorsScene)
+            if (context.performed && !isAttacking && stats.introDone && (stats.outdoorsScene || stats.tammyScene || stats.markyScene))
             {
                 ChangeState(PlayerState.Attacking);
                 GameObject skillManager = GameObject.FindGameObjectWithTag("Player Skills");
@@ -227,7 +225,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (context.performed)
         {
-            if (context.performed && !isAttacking && stats.introDone && stats.outdoorsScene)
+            if (context.performed && !isAttacking && stats.introDone && (stats.outdoorsScene || stats.tammyScene || stats.markyScene))
             {
                 ChangeState(PlayerState.Attacking);
                 GameObject skillManager = GameObject.FindGameObjectWithTag("Player Skills");
@@ -347,16 +345,23 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
+    private IEnumerator PlayBAAudio()
+    {
+        AudioSource.PlayClipAtPoint(basicAttackAudio, Camera.main.transform.position + Camera.main.transform.forward * 2f, 1f);
+
+        yield return null;
+    }
+
     private IEnumerator BasicAttack()
     {
         isAttacking = true;
 
         animator.SetBool(basicAttackHash, true);
-        yield return new WaitForSeconds(0.5f / stats.speedMultiplier); // Wait for attack duration
+        StartCoroutine(PlayBAAudio());
+        yield return new WaitForSeconds(0.47f / stats.speedMultiplier); // Wait for attack duration
         BasicAttackHitboxCheck(Physics.OverlapBox(worldCenter, worldSize, basicAttackHitbox.transform.rotation));
-        yield return new WaitForSeconds(0.5f / stats.speedMultiplier);
+        yield return new WaitForSeconds(0.47f / stats.speedMultiplier);
         BasicAttackHitboxCheck(Physics.OverlapBox(worldCenter, worldSize, basicAttackHitbox.transform.rotation));
-        animator.SetBool(basicAttackHash, false);
 
         if (mouseAction.action.ReadValue<float>() > 0)
         {
@@ -366,6 +371,7 @@ public class PlayerMovement : MonoBehaviour
         {
             isAttacking = false;
             basicAttackCoroutine = null;
+            animator.SetBool(basicAttackHash, false);
 
             StateCheck();
         }
@@ -432,7 +438,7 @@ public class PlayerMovement : MonoBehaviour
         }
 
         EventManager.Instance.InvokeOnTakingDamage();
-        if (stats.currentHealth < 0)
+        if (stats.currentHealth <= 0)
         {
             Debug.Log("Dead");
             //trigger death cutscene
@@ -441,6 +447,7 @@ public class PlayerMovement : MonoBehaviour
             ui.gameObject.SetActive(false);
             PlayerStats.Instance.tammyScene = false;
             PlayerStats.Instance.markyScene = false;
+            QuestState.Instance.pausedForDialogue = true;
             SceneManager.LoadScene("DeathScreen");
         }
     }
@@ -487,6 +494,7 @@ public class PlayerMovement : MonoBehaviour
         fightStanceValue = endValue; // Ensure it fully reaches the target
         animator.SetLayerWeight(1, fightStanceValue);
         isExitingFightStance = false;
+        exitFightingStance = null;
     }
 
     IEnumerator SwitchToDamagedTex()
@@ -532,7 +540,7 @@ public class PlayerMovement : MonoBehaviour
                 isAttacking = false;
                 // Debug.Log("Idle State");
                 // Debug.Log("Objects inside: " + objsInRange.Length);
-                if((fightStanceValue >= 0.69f && !enemyFound))
+                if((fightStanceValue >= 0.69f && !enemyFound && exitFightingStance == null))
                 {
                     exitFightingStance = StartCoroutine(ExitFightingStance());
                     enemyFound = false;
@@ -544,7 +552,7 @@ public class PlayerMovement : MonoBehaviour
                 isAttacking = false;
                 // Debug.Log("Moving State");
                 // Debug.Log("Objects inside: " + objsInRange.Length);
-                if((fightStanceValue >= 0.69f && !enemyFound))
+                if((fightStanceValue >= 0.69f && !enemyFound && exitFightingStance == null))
                 {
                     exitFightingStance = StartCoroutine(ExitFightingStance());
                     enemyFound = false;
@@ -554,19 +562,20 @@ public class PlayerMovement : MonoBehaviour
             case PlayerState.Attacking:
                 // Enter Attacking logic
                 // Debug.Log("Attack State");
+                if(exitFightingStance != null)
+                {
+                    StopCoroutine(exitFightingStance);
+                    exitFightingStance = null;
+                }
                 if(fightStanceValue == 0)
                 {
                     enterFightingStance = StartCoroutine(EnterFightingStance());
                 }
                 // Debug.Log("Objects inside: " + objsInRange.Length);
-                if((fightStanceValue >= 0.69f && !enemyFound))
+                if((fightStanceValue >= 0.69f && !enemyFound && exitFightingStance == null))
                 {
                     exitFightingStance = StartCoroutine(ExitFightingStance());
                     enemyFound = false;
-                }
-                if(isExitingFightStance && exitFightingStance != null)
-                {
-                    StopCoroutine(exitFightingStance);
                 }
                 break;
 
@@ -575,7 +584,7 @@ public class PlayerMovement : MonoBehaviour
                 isAttacking = false;
                 // Debug.Log("Knockback State");
                 // Debug.Log("Objects inside: " + objsInRange.Length);
-                if((fightStanceValue >= 0.69f && !enemyFound))
+                if((fightStanceValue >= 0.69f && !enemyFound && exitFightingStance == null))
                 {
                     exitFightingStance = StartCoroutine(ExitFightingStance());
                     enemyFound = false;

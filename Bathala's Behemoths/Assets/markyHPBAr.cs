@@ -21,11 +21,20 @@ public class markyHPBAr : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(marky == null)
+        {
+            marky = GameObject.FindGameObjectWithTag("Markupo").GetComponent<MarkupoScript>();
+        }
+        if(HPText == null)
+        {
+            HPText = GetComponentInChildren<TextMeshProUGUI>();
+        }
+
         if(maxHP == 0f)
         {
             maxHP = marky.health;
         }
-        HPText.text = "HP: " + marky.health + "/" + maxHP + " HP";
+        HPText.text = marky.health + "/" + maxHP + " HP";
         healthBar.fillAmount = marky.health/maxHP;
     }
 }

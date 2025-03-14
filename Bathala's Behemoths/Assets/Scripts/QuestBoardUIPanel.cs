@@ -130,6 +130,7 @@ public class QuestBoardUIPanel : MonoBehaviour
     public void EnablePanel()
     {
         gameObject.SetActive(true);
+        QuestState.Instance.pausedForDialogue = true;
         hud = GameObject.FindGameObjectWithTag("HUD");
         originalHUDPos = hud.gameObject.transform.position;
         hud.gameObject.transform.position = new Vector3(10000, 10000, 10000);
@@ -140,8 +141,9 @@ public class QuestBoardUIPanel : MonoBehaviour
     public void DisablePanel()
     {
         gameObject.SetActive(false);
+        QuestState.Instance.pausedForDialogue = false;
         hud = GameObject.FindGameObjectWithTag("HUD");
-        hud.gameObject.transform.position = originalHUDPos;
+        hud.gameObject.transform.position = new Vector3(859.20f, 640.80f, 0.00f);
         EventManager.Instance.InvokeOnExitingUpgradeScreen();
         Transform panel = transform.Find("RightPanel");
         foreach (Transform child in panel)

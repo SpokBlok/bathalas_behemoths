@@ -28,6 +28,7 @@ public class MoonBraceletSightingDia : MonoBehaviour
         HUD = GameObject.FindGameObjectWithTag("HUD");
         originalHUDPos = HUD.gameObject.transform.position;
         HUD.gameObject.transform.position = new Vector3(10000, 10000, 10000);
+        QuestState.Instance.pausedForDialogue = true;
         textComponent.text = string.Empty;
         StartDialogue();
     }
@@ -80,6 +81,7 @@ public class MoonBraceletSightingDia : MonoBehaviour
             pointer.SetActive(false);
             pointerActive = false;
             QuestState.Instance.moonSightingTrigger = true;
+            QuestState.Instance.pausedForDialogue = false;
             HUD.gameObject.transform.position = originalHUDPos;
             index = 0;
             

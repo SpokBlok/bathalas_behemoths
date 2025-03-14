@@ -14,8 +14,6 @@ public class HealthBar : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        EventManager.OnEnteringUpgradeScreen += DisableUI;
-        EventManager.OnExitingUpgradeScreen += EnableUI;
         HPText = GetComponentInChildren<TextMeshProUGUI>();
     }
 

@@ -47,10 +47,12 @@ public class BathalasBlessing : BaseSkill
         yield return new WaitForSeconds(10);
         
         AudioSource.PlayClipAtPoint(bbSound, Camera.main.transform.position + Camera.main.transform.forward * 2f, 1f);
-        
-        playerScript.transform.localScale *= 0.5f;
+        if(playerScript != null)
+        {
+            playerScript.transform.localScale *= 0.5f;
+            playerScript.isBerserk = false;
+        }
         PlayerStats.Instance.speedMultiplier = 1;
-        playerScript.isBerserk = false;
         yield return null;
     }
 

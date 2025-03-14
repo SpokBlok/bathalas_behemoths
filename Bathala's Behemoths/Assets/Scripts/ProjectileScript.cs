@@ -6,6 +6,7 @@ public class ProjectileScript : MonoBehaviour
 {
     public CharacterController charControl;
     public AudioClip ballHit;
+    private Tambanokano tammy;
 
     // Start is called before the first frame update
     void Start()
@@ -59,14 +60,23 @@ public class ProjectileScript : MonoBehaviour
         if (other.gameObject.CompareTag("Enemy") || other.gameObject.CompareTag("Tambanokano"))
         {
             EnemyMob enemy = other.GetComponent<EnemyMob>();
-            Tambanokano tammy = GameObject.FindWithTag("Tambanokano").GetComponent<Tambanokano>();
+            if(PlayerStats.Instance.tammyScene)
+            {
+                tammy = GameObject.FindWithTag("Tambanokano").GetComponent<Tambanokano>();
+            }
+
             if (enemy.health - PlayerStats.Instance.basicAttackDamage > 0)
             {
-                enemy.StartCoroutine(other.gameObject.GetComponent<EnemyMob>().Stun(2));
+                Debug.Log("Kapre Collided With, Stunning it!!!");
+                enemy.StartCoroutine(other.gameObject.GetComponent<EnemyMob>().Stun(3));
                 AudioSource.PlayClipAtPoint(ballHit, Camera.main.transform.position + Camera.main.transform.forward * 2f, 1f);
             }
             enemy.TakeDamage(PlayerStats.Instance.basicAttackDamage);
-            tammy.GetMudStunned();
+
+            if(tammy != null)
+            {
+                tammy.GetMudStunned();
+            }
         }
     }
 }

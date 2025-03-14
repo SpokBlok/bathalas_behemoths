@@ -51,6 +51,7 @@ public class QuestBoardScript : MonoBehaviour
     // Called when entering the trigger
     private void OnTriggerEnter(Collider other)
     {
+        // Debug.Log("Inside Trigger Enter of QuestBoard");
         if (other.CompareTag("Player"))
         {
             isInTrigger = true;
@@ -61,12 +62,16 @@ public class QuestBoardScript : MonoBehaviour
     // Called when exiting the trigger
     private void OnTriggerExit(Collider other)
     {
+        // Debug.Log("Inside Trigger Exit of QuestBoard");
         if (other.CompareTag("Player"))
         {
             isInTrigger = false;
             isPanelUp = false;
             popUp.gameObject.SetActive(false);
-            questUIPanel.DisablePanel();
+            if(questUIPanel != null)
+            {
+                questUIPanel.DisablePanel();
+            }
         }
     }
 }

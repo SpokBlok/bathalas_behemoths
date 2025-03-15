@@ -13,6 +13,8 @@ public class Tambanokano : EnemyMob
     public GameObject trailingLightningPrefab;
     public GameObject arenaWideLightingPrefab;
     public GameObject massiveAOEPrefab;
+    public GameObject HUD;
+    public TammyHPBarCanvas tammyHPBar;
 
     private Coroutine randomAttackCoroutine;
     private Coroutine getStunned;
@@ -49,6 +51,21 @@ public class Tambanokano : EnemyMob
         player = GameObject.FindWithTag("Player");
         tamRend = GameObject.FindWithTag("TambanokanoBody").GetComponent<Renderer>();
         tammy = GameObject.FindWithTag("TammyModel");
+
+        HUD = GameObject.FindWithTag("HUD");
+        if (HUD != null)
+        {
+            // Search for tammyHPBarBG inside the HUD parent
+            Transform hpBarTransform = HUD.transform.Find("TammyHPBarBG");
+
+                if (hpBarTransform != null)
+                {
+                    // Activate the tammyHPBarBG GameObject
+                    hpBarTransform.gameObject.SetActive(true);
+                    Debug.Log("TammyHPBarBG activated!");
+                }
+        }
+        
         health = 3500f;
 
         isLightingStriking = false;

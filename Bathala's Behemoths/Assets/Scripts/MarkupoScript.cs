@@ -10,6 +10,8 @@ public class MarkupoScript : EnemyMob
 
     public GameObject tailSwipePrefab;
     public GameObject poisonSprayPrefab;
+    public GameObject HUD;
+    public GameObject markyHPBar;
     public bool isSpraying;
     public bool isSpinning;
 
@@ -37,7 +39,22 @@ public class MarkupoScript : EnemyMob
 
         player = GameObject.FindWithTag("Player");
         PlayerStats.Instance.markyScene = true;
-        health = 2000f;
+        
+        HUD = GameObject.FindWithTag("HUD");
+        if (HUD != null)
+        {
+            // Search for markyHPBarBG inside the HUD parent
+            Transform hpBarTransform = HUD.transform.Find("MarkyHPBarBG");
+
+                if (hpBarTransform != null)
+                {
+                    // Activate the markyHPBarBG GameObject
+                    hpBarTransform.gameObject.SetActive(true);
+                    Debug.Log("MarkyHPBarBG activated!");
+                }
+        }
+
+        health = 1500f;
 
         stunned = false;
 

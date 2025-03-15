@@ -30,6 +30,24 @@ public class TriggerToMarkupo : MonoBehaviour
             PlayerStats.Instance.outdoorsScene = false;
             PlayerStats.Instance.speedMultiplier = 1.5f;
             SceneManager.LoadScene("Marky");
+
+            if(PlayerSkills.Instance.mainCharacterSkillCoroutine != null)
+            {
+                StopCoroutine(PlayerSkills.Instance.mainCharacterSkillCoroutine);
+                PlayerSkills.Instance.mainCharacterSkillCoroutine = null;
+            }
+            
+            if(PlayerSkills.Instance.behemothSkillQCoroutine != null)
+            {
+                StopCoroutine(PlayerSkills.Instance.behemothSkillQCoroutine);
+                PlayerSkills.Instance.behemothSkillQCoroutine = null;
+            }
+
+            if(PlayerSkills.Instance.behemothSkillECoroutine != null)
+            {
+                StopCoroutine(PlayerSkills.Instance.behemothSkillECoroutine);
+                PlayerSkills.Instance.behemothSkillECoroutine = null;
+            }
         }
     }
 }

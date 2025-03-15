@@ -26,6 +26,7 @@ public class TammyTamedDialogue : MonoBehaviour
 
     void OnEnable()
     {
+        PlayerStats.Instance.currentHealth = PlayerStats.Instance.maxHealth;
         HUD = GameObject.FindGameObjectWithTag("HUD");
         originalHUDPos = HUD.gameObject.transform.position;
         HUD.gameObject.transform.position = new Vector3(10000, 10000, 10000);

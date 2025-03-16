@@ -9,6 +9,7 @@ public class LatticeLightning : AOEAttackRadius
 
     private float timer;
     public float attackDuration;
+    public AudioClip thunderSound;
 
     // Start is called before the first frame update
     void Start()
@@ -26,6 +27,7 @@ public class LatticeLightning : AOEAttackRadius
         else
         {
             Tambanokano tammy = GameObject.FindWithTag("Tambanokano").GetComponent<Tambanokano>();
+            AudioSource.PlayClipAtPoint(thunderSound, Camera.main.transform.position + Camera.main.transform.forward * 1f, 1f);
             tammy.BlinkOnce();
             Damage();
             Destroy(gameObject);

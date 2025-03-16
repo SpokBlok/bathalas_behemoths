@@ -11,6 +11,7 @@ public class MoonBraceletDialogue : MonoBehaviour
     public string[] currentLines;
     public float textInterval;
     public GameObject pointer;
+    public GameObject postBraceletMarker;
     public GameObject HUD;
 
     private bool pointerActive = false;
@@ -90,6 +91,7 @@ public class MoonBraceletDialogue : MonoBehaviour
             gameObject.SetActive(false);
             pointer.SetActive(false);
             pointerActive = false;
+            postBraceletMarker.SetActive(true);
             QuestState.Instance.pausedForDialogue = false;
             HUD.gameObject.transform.position = originalHUDPos;
             

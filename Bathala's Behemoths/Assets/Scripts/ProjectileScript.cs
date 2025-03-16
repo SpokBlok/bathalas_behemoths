@@ -57,7 +57,7 @@ public class ProjectileScript : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Enemy") || other.gameObject.CompareTag("Tambanokano"))
+        if (other.gameObject.CompareTag("Enemy") || other.gameObject.CompareTag("Tambanokano") || other.gameObject.CompareTag("Tambanokano"))
         {
             EnemyMob enemy = other.GetComponent<EnemyMob>();
             if(PlayerStats.Instance.tammyScene)

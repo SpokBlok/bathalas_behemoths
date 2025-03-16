@@ -226,11 +226,16 @@ public class KapreMob : EnemyMob
 
     public override IEnumerator Stun(float duration)
     {
+        kapreModel.setStunned(true);
         ChangeState(KapreState.Stunned);
-        StopCoroutine(basicAttackCoroutine);
+        if(basicAttackCoroutine != null)
+        {
+            StopCoroutine(basicAttackCoroutine);
+        }
         yield return new WaitForSeconds(duration);
         radius.TriggerCheck();
         yield return null;
+        kapreModel.setStunned(false);
     }
 
     IEnumerator SwitchToDamagedTex()

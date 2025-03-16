@@ -52,6 +52,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackDamage: 10
   attackDuration: 5
+  thunderSound: {fileID: 8300000, guid: f1cb5d83282f2904a85f73111d068616, type: 3}
 --- !u!1 &414992118269931261
 GameObject:
   m_ObjectHideFlags: 0

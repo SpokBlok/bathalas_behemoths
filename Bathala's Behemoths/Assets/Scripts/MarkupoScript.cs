@@ -14,6 +14,8 @@ public class MarkupoScript : EnemyMob
     public GameObject markyHPBar;
     public bool isSpraying;
     public bool isSpinning;
+    public bool isNormStunned;
+    public bool isFluteStunned;
 
     public float distanceFromTarget;
 
@@ -93,12 +95,16 @@ public class MarkupoScript : EnemyMob
 
     public void GetFluteStunned()
     {
-        getStunned = StartCoroutine(Stun(10));
+        isFluteStunned = true;
     }
 
     public override IEnumerator Stun(float duration)
     {       
         stunned = true;
+        if(!isFluteStunned)
+        {
+            isNormStunned = true;
+        }
         foreach (Transform child in transform)
         {
             Destroy(child.gameObject);
@@ -106,9 +112,11 @@ public class MarkupoScript : EnemyMob
         StopAllCoroutines();
         randomAttackCoroutine = null;
         
-        //stun animation
+        // stun animation
         // stunMoving = StartCoroutine(StunMovement());
         yield return new WaitForSeconds(duration);
+        isNormStunned = false;
+        isFluteStunned = false;
         stunned = false;
     }
 

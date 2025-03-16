@@ -23,7 +23,10 @@ public class TammyHPBAr : MonoBehaviour
     {
         if(tammy == null)
         {
-            tammy = GameObject.FindGameObjectWithTag("Tambanokano").GetComponent<Tambanokano>();
+            if(GameObject.FindGameObjectWithTag("Tambanokano") != null)
+            {
+                tammy = GameObject.FindGameObjectWithTag("Tambanokano").GetComponent<Tambanokano>();
+            }
         }
         if(HPText == null)
         {

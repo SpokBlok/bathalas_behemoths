@@ -9,6 +9,8 @@ public class TrailingLightningStrike : MonoBehaviour
     private float timer = 0;
     public float attackGapDuration;
     public float attacksLeft;
+    public AudioClip thunderSound;
+    public AudioClip overlaySound;
 
     // Start is called before the first frame update
     void Start()
@@ -27,6 +29,7 @@ public class TrailingLightningStrike : MonoBehaviour
         else if (attacksLeft > 0)
         {
             FillEffect lightning = Instantiate(lightningPrefab, player.transform.position, Quaternion.identity);
+            lightning.SetSFX(thunderSound, overlaySound);
             lightning.gameObject.transform.SetParent(gameObject.transform, false);
             timer = 0f;
             attacksLeft--;

@@ -25,6 +25,7 @@ public class GardenerDialogue : MonoBehaviour
         index = 0;
         QuestState.Instance.gardenerRepeat = false;
         currentPosition = gameObject.transform.localPosition;
+        QuestState.Instance.frightenedDwendeRepeat = false;
     }
 
     void OnEnable()
@@ -32,6 +33,7 @@ public class GardenerDialogue : MonoBehaviour
         HUD = GameObject.FindGameObjectWithTag("HUD");
         originalHUDPos = HUD.gameObject.transform.position;
         HUD.gameObject.transform.position = new Vector3(10000, 10000, 10000);
+        QuestState.Instance.pausedForDialogue = true;
         if(QuestState.Instance.gardenerRepeat)
         {
             currentLines = linesRepeat;
@@ -92,6 +94,7 @@ public class GardenerDialogue : MonoBehaviour
             fertilizerMarker.SetActive(true);
             pointerActive = false;
             HUD.gameObject.transform.position = originalHUDPos;
+            QuestState.Instance.pausedForDialogue = false;
             
             Debug.Log("inside end state");
         }

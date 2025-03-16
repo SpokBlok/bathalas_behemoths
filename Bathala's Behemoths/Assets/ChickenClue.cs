@@ -94,7 +94,7 @@ public class ChickenClue : MonoBehaviour
         Terrain myTerrain = GameObject.Find("Terrain").GetComponent<Terrain>();
         float terrainHeight = myTerrain.SampleHeight(transform.position);
         Vector3 newPosition = transform.position;
-        newPosition.y = terrainHeight + 4.5f;
+        newPosition.y = terrainHeight + 2.5f;
         transform.position = newPosition;
     }
 

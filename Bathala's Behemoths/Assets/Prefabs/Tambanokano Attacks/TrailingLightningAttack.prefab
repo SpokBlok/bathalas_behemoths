@@ -48,3 +48,5 @@ MonoBehaviour:
     type: 3}
   attackGapDuration: 2.5
   attacksLeft: 6
+  thunderSound: {fileID: 8300000, guid: f1cb5d83282f2904a85f73111d068616, type: 3}
+  overlaySound: {fileID: 8300000, guid: 1eb7cbaf61d23a64bbd36c0a38b5cb0c, type: 3}

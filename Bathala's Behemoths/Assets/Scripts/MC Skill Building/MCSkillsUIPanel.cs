@@ -33,6 +33,7 @@ public class MCSkillsUIPanel : MonoBehaviour
 
     public GameObject hud;
     public Vector3 originalHUDPos;
+    public bool obtainedOGPos;
 
     // Start is called before the first frame update
     void Start()
@@ -64,6 +65,7 @@ public class MCSkillsUIPanel : MonoBehaviour
         playerSkills = PlayerSkills.Instance;
         
         hud = GameObject.FindGameObjectWithTag("HUD");
+        // originalHUDPos = hud.gameObject.transform.position;
     }
 
     public void EnablePanel()
@@ -72,6 +74,7 @@ public class MCSkillsUIPanel : MonoBehaviour
         QuestState.Instance.pausedForDialogue = true;
         hud = GameObject.FindGameObjectWithTag("HUD");
         originalHUDPos = hud.gameObject.transform.position;
+        obtainedOGPos = true;
         hud.gameObject.transform.position = new Vector3(10000, 10000, 10000);
         EventManager.Instance.InvokeOnEnteringUpgradeScreen();
 
@@ -88,7 +91,10 @@ public class MCSkillsUIPanel : MonoBehaviour
         gameObject.SetActive(false);
         QuestState.Instance.pausedForDialogue = false;
         hud = GameObject.FindGameObjectWithTag("HUD");
-        hud.gameObject.transform.position = originalHUDPos;
+        if(obtainedOGPos)
+        {
+            hud.gameObject.transform.position = originalHUDPos;
+        }
         EventManager.Instance.InvokeOnExitingUpgradeScreen();
         Transform panel = transform.Find("RightPanel");
         foreach (Transform child in panel)

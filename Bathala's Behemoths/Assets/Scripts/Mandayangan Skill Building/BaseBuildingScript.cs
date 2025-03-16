@@ -32,6 +32,15 @@ public class BaseBuildingScript : MonoBehaviour
         }
     }
 
+    private void Awake()
+    {
+        uiList = Resources.FindObjectsOfTypeAll<MandayanganSkillsUIPanel>();
+        foreach (MandayanganSkillsUIPanel UI in uiList)
+        {
+            upgradePanel = UI;
+        }
+    }
+
     public void OnInteract(InputAction.CallbackContext context)
     {
         UpdateCanvas();
@@ -72,8 +81,11 @@ public class BaseBuildingScript : MonoBehaviour
             isInTrigger = false;
             isPanelUp = false;
             popUp.gameObject.SetActive(false);
-            upgradePanel.DisablePanel();
-            Debug.Log("Player exited the trigger");
+            if(upgradePanel != null)
+            {
+                upgradePanel.DisablePanel();
+            }
+            // Debug.Log("Player exited the trigger");
         }
     }
 }

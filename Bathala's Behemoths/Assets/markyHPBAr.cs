@@ -23,7 +23,10 @@ public class markyHPBAr : MonoBehaviour
     {
         if(marky == null)
         {
-            marky = GameObject.FindGameObjectWithTag("Markupo").GetComponent<MarkupoScript>();
+            if(GameObject.FindGameObjectWithTag("Markupo") != null)
+            {
+                marky = GameObject.FindGameObjectWithTag("Markupo").GetComponent<MarkupoScript>();
+            }
         }
         if(HPText == null)
         {

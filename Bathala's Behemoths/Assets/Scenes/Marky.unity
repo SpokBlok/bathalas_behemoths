@@ -3167,8 +3167,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -140.42, y: -7.79}
-  m_SizeDelta: {x: 200, y: 50}
+  m_AnchoredPosition: {x: -110, y: -7.79}
+  m_SizeDelta: {x: 350, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &155155275
 MonoBehaviour:
@@ -13339,7 +13339,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 751998755}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5288419bdcb621c4f84f50ccbc84db1d, type: 3}
   m_Name: 
@@ -13359,7 +13359,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -13996,6 +13996,8 @@ MonoBehaviour:
     type: 3}
   poisonSprayPrefab: {fileID: 2349935447013016804, guid: 56bec873859ccf447a35be7482b50825,
     type: 3}
+  HUD: {fileID: 0}
+  markyHPBar: {fileID: 434217754}
   isSpraying: 0
   isSpinning: 0
   distanceFromTarget: 20
@@ -14005,7 +14007,6 @@ MonoBehaviour:
   - {fileID: 170647747}
   markupoModel: {fileID: 1375299662}
   endDialogue: {fileID: 669359639}
-  markyHPBar: {fileID: 434217754}
 --- !u!1 &767920476
 GameObject:
   m_ObjectHideFlags: 0
@@ -20580,6 +20581,7 @@ MonoBehaviour:
   equip2Mudfling: {fileID: 0}
   hud: {fileID: 0}
   originalHUDPos: {x: 0, y: 0, z: 0}
+  obtainedOGPos: 0
 --- !u!114 &1160294910
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -30337,6 +30339,7 @@ MonoBehaviour:
   clue6Tracking: {fileID: 929846683}
   hud: {fileID: 0}
   originalHUDPos: {x: 0, y: 0, z: 0}
+  obtainedOGPos: 0
 --- !u!114 &1736781543
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -31627,8 +31630,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -140, y: -8.5}
-  m_SizeDelta: {x: 200, y: 50}
+  m_AnchoredPosition: {x: -110, y: -8.5}
+  m_SizeDelta: {x: 350, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1802921566
 MonoBehaviour:
@@ -35554,6 +35557,7 @@ MonoBehaviour:
   equip2Flute: {fileID: 0}
   hud: {fileID: 0}
   originalHUDPos: {x: 0, y: 0, z: 0}
+  obtainedOGPos: 0
 --- !u!114 &2029706783
 MonoBehaviour:
   m_ObjectHideFlags: 0

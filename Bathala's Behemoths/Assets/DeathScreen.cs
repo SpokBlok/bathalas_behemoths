@@ -18,7 +18,10 @@ public class DeathScreen : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if(HUD == null)
+        {
+            HUD = GameObject.FindGameObjectWithTag("HUD");
+        }
     }
 
     public void PressContinue()
@@ -30,7 +33,11 @@ public class DeathScreen : MonoBehaviour
         PlayerStats.Instance.currentHealth = PlayerStats.Instance.maxHealth;
         PlayerStats.Instance.speedMultiplier = 1;
         QuestState.Instance.pausedForDialogue = false;
-        HUD.gameObject.transform.position = originalHUDPos;
+        HUD = GameObject.FindGameObjectWithTag("HUD");
+        if(HUD != null)
+        {
+            HUD.gameObject.transform.position = originalHUDPos;
+        }
         BathalasBlessing bbSkill = FindObjectOfType<BathalasBlessing>();
         bbSkill.RechargeUsages();
         SceneManager.LoadScene(2);

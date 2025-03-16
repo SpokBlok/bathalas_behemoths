@@ -9,6 +9,7 @@ public class CharredTreeClue : MonoBehaviour
     public PlayerStats playerStats;
     public TextMeshProUGUI popUp;
     public GameObject dialogue;
+    public GameObject marker;
     
     private bool isInTrigger;
 
@@ -31,6 +32,10 @@ public class CharredTreeClue : MonoBehaviour
         if (context.performed && isInTrigger)
         {
             PlayerStats.Instance.clue1 = true;
+            if(marker != null)
+            {
+                marker.SetActive(false);
+            }
             dialogue.SetActive(true);
         }
     }

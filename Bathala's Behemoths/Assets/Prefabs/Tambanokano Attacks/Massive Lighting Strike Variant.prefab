@@ -85,6 +85,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6853585377040579723, guid: 346abac7785fbd64bb2dd5cbdc7f7988,
         type: 3}
+      propertyPath: overlaySound
+      value: 
+      objectReference: {fileID: 8300000, guid: 1eb7cbaf61d23a64bbd36c0a38b5cb0c, type: 3}
+    - target: {fileID: 6853585377040579723, guid: 346abac7785fbd64bb2dd5cbdc7f7988,
+        type: 3}
+      propertyPath: thunderSound
+      value: 
+      objectReference: {fileID: 8300000, guid: f1cb5d83282f2904a85f73111d068616, type: 3}
+    - target: {fileID: 6853585377040579723, guid: 346abac7785fbd64bb2dd5cbdc7f7988,
+        type: 3}
       propertyPath: attackDuration
       value: 10
       objectReference: {fileID: 0}

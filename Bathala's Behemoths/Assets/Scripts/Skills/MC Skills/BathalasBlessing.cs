@@ -47,12 +47,20 @@ public class BathalasBlessing : BaseSkill
         yield return new WaitForSeconds(10);
         
         AudioSource.PlayClipAtPoint(bbSound, Camera.main.transform.position + Camera.main.transform.forward * 2f, 1f);
-        if(playerScript != null)
+        if(playerScript != null && !(PlayerStats.Instance.tammyScene || PlayerStats.Instance.markyScene))
         {
             playerScript.transform.localScale *= 0.5f;
             playerScript.isBerserk = false;
         }
-        PlayerStats.Instance.speedMultiplier = 1;
+        
+        if(PlayerStats.Instance.tammyScene || PlayerStats.Instance.markyScene)
+        {
+            PlayerStats.Instance.speedMultiplier = 1.5f;
+        }
+        else
+        {
+            PlayerStats.Instance.speedMultiplier = 1;
+        }
         yield return null;
     }
 

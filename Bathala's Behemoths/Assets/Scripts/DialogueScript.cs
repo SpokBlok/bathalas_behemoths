@@ -24,6 +24,7 @@ public class DialogueScript : MonoBehaviour
         index = 0;
         QuestState.Instance.frightenedDwendeRepeat = false;
         currentPosition = gameObject.transform.localPosition;
+        HUD = GameObject.FindGameObjectWithTag("HUD");
     }
 
     void OnEnable()

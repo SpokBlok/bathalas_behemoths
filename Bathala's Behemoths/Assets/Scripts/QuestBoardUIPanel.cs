@@ -30,6 +30,7 @@ public class QuestBoardUIPanel : MonoBehaviour
 
     public GameObject hud;
     public Vector3 originalHUDPos;
+    public bool obtainedOGPos;
 
     // Start is called before the first frame update
     void Start()
@@ -43,6 +44,7 @@ public class QuestBoardUIPanel : MonoBehaviour
         selectedClue3Image = transform.Find("LeftPanel/Selected Clue 3").GetComponentInChildren<Image>();
     
         hud = GameObject.FindGameObjectWithTag("HUD");
+        // originalHUDPos = hud.gameObject.transform.position;
     }
 
     void OnEnable()
@@ -130,9 +132,10 @@ public class QuestBoardUIPanel : MonoBehaviour
     public void EnablePanel()
     {
         gameObject.SetActive(true);
-        QuestState.Instance.pausedForDialogue = true;
+        // QuestState.Instance.pausedForDialogue = true;
         hud = GameObject.FindGameObjectWithTag("HUD");
         originalHUDPos = hud.gameObject.transform.position;
+        obtainedOGPos = true;
         hud.gameObject.transform.position = new Vector3(10000, 10000, 10000);
 
         EventManager.Instance.InvokeOnEnteringUpgradeScreen();
@@ -143,7 +146,11 @@ public class QuestBoardUIPanel : MonoBehaviour
         gameObject.SetActive(false);
         QuestState.Instance.pausedForDialogue = false;
         hud = GameObject.FindGameObjectWithTag("HUD");
-        hud.gameObject.transform.position = new Vector3(859.20f, 640.80f, 0.00f);
+        // hud.gameObject.transform.position = new Vector3(859.20f, 640.80f, 0.00f);
+        if(obtainedOGPos)
+        {
+            hud.gameObject.transform.position = originalHUDPos;
+        }
         EventManager.Instance.InvokeOnExitingUpgradeScreen();
         Transform panel = transform.Find("RightPanel");
         foreach (Transform child in panel)

@@ -21,6 +21,27 @@ public class QuestBoardScript : MonoBehaviour
         UpdateCanvas();
     }
 
+    void update()
+    {
+        if(questUIList == null || questUIPanel == null)
+        {
+            questUIList = Resources.FindObjectsOfTypeAll<QuestBoardUIPanel>();
+            foreach (QuestBoardUIPanel UI in questUIList)
+            {
+                questUIPanel = UI;
+            }
+        }
+    }
+
+    private void Awake()
+    {
+        questUIList = Resources.FindObjectsOfTypeAll<QuestBoardUIPanel>();
+        foreach (QuestBoardUIPanel UI in questUIList)
+        {
+            questUIPanel = UI;
+        }
+    }
+
     void UpdateCanvas()
     {
         questUIList = Resources.FindObjectsOfTypeAll<QuestBoardUIPanel>();

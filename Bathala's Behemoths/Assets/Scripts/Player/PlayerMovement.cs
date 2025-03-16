@@ -444,8 +444,8 @@ public class PlayerMovement : MonoBehaviour
             Debug.Log("Dead");
             //trigger death cutscene
 
-            // Go to DeathScreen
-            ui.gameObject.SetActive(false);
+            // // Go to DeathScreen
+            // ui.gameObject.SetActive(false);
             PlayerStats.Instance.tammyScene = false;
             PlayerStats.Instance.markyScene = false;
             QuestState.Instance.pausedForDialogue = true;

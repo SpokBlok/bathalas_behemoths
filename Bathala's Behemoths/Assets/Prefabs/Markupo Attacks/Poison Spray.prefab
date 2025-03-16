@@ -118,6 +118,8 @@ MonoBehaviour:
   attackDuration: 6
   finalScaleX: 8.2
   finalScaleY: 17.5
+  thunderSound: {fileID: 8300000, guid: 21c4a490b24ba2045bc815f7626a40ef, type: 3}
+  overlaySound: {fileID: 8300000, guid: a652877b012108e41871f867ada9f176, type: 3}
 --- !u!1 &4529991483768076436
 GameObject:
   m_ObjectHideFlags: 0

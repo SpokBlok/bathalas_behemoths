@@ -21,6 +21,7 @@ public class FluteSIghtingDia : MonoBehaviour
     {
         index = 0;
         currentPosition = gameObject.transform.localPosition;
+        QuestState.Instance.frightenedDwendeRepeat = false;
     }
 
     void OnEnable()
@@ -28,6 +29,7 @@ public class FluteSIghtingDia : MonoBehaviour
         HUD = GameObject.FindGameObjectWithTag("HUD");
         originalHUDPos = HUD.gameObject.transform.position;
         HUD.gameObject.transform.position = new Vector3(10000, 10000, 10000);
+        QuestState.Instance.pausedForDialogue = true;
         textComponent.text = string.Empty;
         StartDialogue();
     }
@@ -81,6 +83,7 @@ public class FluteSIghtingDia : MonoBehaviour
             pointerActive = false;
             QuestState.Instance.fluteSightTrigger = true;
             HUD.gameObject.transform.position = originalHUDPos;
+            QuestState.Instance.pausedForDialogue = false;
             index = 0;
             
             Debug.Log("inside end state");

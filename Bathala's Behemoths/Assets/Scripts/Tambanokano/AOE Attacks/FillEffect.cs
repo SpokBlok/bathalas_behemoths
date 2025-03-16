@@ -11,6 +11,8 @@ public class FillEffect : MonoBehaviour
     public float finalScaleY;
 
     private AOEAttackRadius attackRadius;
+    public AudioClip thunderSound;
+    public AudioClip overlaySound;
 
     void Start()
     {
@@ -33,7 +35,16 @@ public class FillEffect : MonoBehaviour
         else
         {
             attackRadius.Damage();
+            AudioSource.PlayClipAtPoint(thunderSound, Camera.main.transform.position + Camera.main.transform.forward * 2f, 1f);
+            AudioSource.PlayClipAtPoint(overlaySound, Camera.main.transform.position + Camera.main.transform.forward * 2f, 1f);
+            
             Destroy(gameObject);
         }
+    }
+
+    public void SetSFX(AudioClip clip1, AudioClip clip2)
+    {
+        thunderSound = clip1;
+        overlaySound = clip2;
     }
 }

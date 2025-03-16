@@ -15,6 +15,7 @@ public class TheMoonDialogue : MonoBehaviour
     public GameObject pointer;
     public GameObject clueImage;
     public GameObject HUD;
+    public GameObject endQuestMarker;
 
     private bool imageActive = false;
     Vector3 currentPosition;
@@ -110,6 +111,7 @@ public class TheMoonDialogue : MonoBehaviour
             {
                 PlayerStats.Instance.clue3 = true;
                 clueImage.SetActive(true);
+                endQuestMarker.SetActive(false);
             }
             else
             {

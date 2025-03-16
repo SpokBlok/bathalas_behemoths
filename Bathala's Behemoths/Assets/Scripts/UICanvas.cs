@@ -16,14 +16,30 @@ public class UICanvas : MonoBehaviour
         
     }
 
+    public static UICanvas Instance { get; private set; }
+
     private void Awake()
     {
-        if (FindObjectsOfType<UICanvas>().Length > 1)
+        if (Instance == null)
         {
-            Destroy(gameObject);
-            return;
+            Instance = this;
+            DontDestroyOnLoad(gameObject); // Keep this object across scenes
         }
-
-        DontDestroyOnLoad(gameObject);
+        else
+        {
+            Destroy(gameObject); // Destroy duplicate instance
+        }
     }
+
+    // private void Awake()
+    // {
+    //     if (FindObjectsOfType<UICanvas>().Length > 1)
+    //     {
+    //         // Destroy(gameObject);
+    //         // Destroy(FindObjectsOfType<UICanvas>()[0])
+    //         return;
+    //     }
+
+    //     DontDestroyOnLoad(gameObject);
+    // }
 }

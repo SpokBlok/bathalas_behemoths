@@ -7,6 +7,8 @@ public class markyAnim : MonoBehaviour
     public Animator animator;
     int isPoisonSprayingHash;
     int isTailSpinningHash;
+    int isNormStunnedHash;
+    int isFluteStunnedHash;
     public MarkupoScript marky;
 
     // Start is called before the first frame update
@@ -15,6 +17,8 @@ public class markyAnim : MonoBehaviour
         animator = GetComponent<Animator>();
         isPoisonSprayingHash = Animator.StringToHash("isPoisonSpraying");
         isTailSpinningHash = Animator.StringToHash("isTailSpinning");
+        isNormStunnedHash = Animator.StringToHash("NormStunnedg");
+        isFluteStunnedHash = Animator.StringToHash("isFluteStunned");
         marky = GameObject.FindGameObjectWithTag("Markupo").GetComponent<MarkupoScript>();
     }
 
@@ -29,10 +33,20 @@ public class markyAnim : MonoBehaviour
         {
             animator.SetBool(isTailSpinningHash, true);
         }
+        else if(marky.isFluteStunned)
+        {
+            animator.SetBool(isFluteStunnedHash, true);
+        }
+        else if(marky.isNormStunned)
+        {
+            animator.SetBool(isNormStunnedHash, true);
+        }
         else
         {
             animator.SetBool(isPoisonSprayingHash, false);
             animator.SetBool(isTailSpinningHash, false);
+            animator.SetBool(isNormStunnedHash, false);
+            animator.SetBool(isFluteStunnedHash, false);
         }
     }
 }

@@ -39,6 +39,13 @@ public class PlayerStats : MonoBehaviour
     public bool clue5;
     public bool clue6;
 
+    public bool activeQuest1;
+    public bool activeQuest2;
+    public bool activeQuest3;
+    public bool activeQuest4;
+    public bool activeQuest5;
+    public bool activeQuest6;
+
     public bool tammyFound;
     public bool markyFound;
     public bool tammyScene;
@@ -92,6 +99,13 @@ public class PlayerStats : MonoBehaviour
             speedMultiplier = 1.0f;
         }
 
+        activeQuest1 = false;
+        activeQuest2 = false;
+        activeQuest3 = false;
+        activeQuest4 = false;
+        activeQuest5 = false;
+        activeQuest6 = false;
+
         basicAttackDamage = 25;
         maxHealth = 50;
         currentHealth = maxHealth;
@@ -129,5 +143,15 @@ public class PlayerStats : MonoBehaviour
     public bool IsMaxHealth()
     {
         return (currentHealth == maxHealth);
+    }
+
+    public void ActiveQuestReset()
+    {
+        activeQuest1 = false;
+        activeQuest2 = false;
+        activeQuest3 = false;
+        activeQuest4 = false;
+        activeQuest5 = false;
+        activeQuest6 = false;
     }
 }

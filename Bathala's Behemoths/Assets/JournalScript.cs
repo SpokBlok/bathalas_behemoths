@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
+using static UnityEngine.Rendering.DebugUI;
 
 public class JournalScript : MonoBehaviour
 {
@@ -197,6 +198,34 @@ public class JournalScript : MonoBehaviour
         {
             isPanelUp = false;
             DisablePanel();
+        }
+    }
+
+    public void SetActiveQuest()
+    {
+        GameObject clickedObject = EventSystem.current.currentSelectedGameObject;
+        string questNumber = clickedObject.GetComponentInChildren<TextMeshProUGUI>().name;
+        PlayerStats.Instance.ActiveQuestReset();
+        switch (questNumber)
+        {
+            case "1":
+                PlayerStats.Instance.activeQuest1 = true;
+                break;
+            case "2":
+                PlayerStats.Instance.activeQuest2 = true;
+                break;
+            case "3":
+                PlayerStats.Instance.activeQuest3 = true;
+                break;
+            case "4":
+                PlayerStats.Instance.activeQuest4 = true;
+                break;
+            case "5":
+                PlayerStats.Instance.activeQuest5 = true;
+                break;
+            case "6":
+                PlayerStats.Instance.activeQuest6 = true;
+                break;
         }
     }
 }

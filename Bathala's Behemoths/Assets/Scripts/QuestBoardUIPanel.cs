@@ -132,7 +132,7 @@ public class QuestBoardUIPanel : MonoBehaviour
     public void EnablePanel()
     {
         gameObject.SetActive(true);
-        // QuestState.Instance.pausedForDialogue = true;
+        QuestState.Instance.pausedForDialogue = true;
         hud = GameObject.FindGameObjectWithTag("HUD");
         originalHUDPos = hud.gameObject.transform.position;
         obtainedOGPos = true;

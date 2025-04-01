@@ -59,6 +59,82 @@ public class JournalScript : MonoBehaviour
         }
     }
 
+    void OnEnable()
+    {
+        if (PlayerStats.Instance.clue1 == true)
+        {
+            clue1.SetActive(true);
+            clue1Tracking.SetActive(false);
+            Debug.Log("Clue 1 is true");
+        }
+        else
+        {
+            clue1.SetActive(false);
+            clue1Tracking.SetActive(true);
+        }
+
+        if (PlayerStats.Instance.clue2 == true)
+        {
+            clue2.SetActive(true);
+            clue2Tracking.SetActive(false);
+            Debug.Log("Clue 2 is true");
+        }
+        else
+        {
+            clue2.SetActive(false);
+            clue2Tracking.SetActive(true);
+        }
+
+        if (PlayerStats.Instance.clue3 == true)
+        {
+            clue3.SetActive(true);
+            clue3Tracking.SetActive(false);
+            Debug.Log("Clue 3 is true");
+        }
+        else
+        {
+            clue3.SetActive(false);
+            clue3Tracking.SetActive(true);
+        }
+
+        if (PlayerStats.Instance.clue4 == true)
+        {
+            clue4.SetActive(true);
+            clue4Tracking.SetActive(false);
+            Debug.Log("Clue 4 is true");
+        }
+        else
+        {
+            clue4.SetActive(false);
+            clue4Tracking.SetActive(true);
+        }
+
+        if (PlayerStats.Instance.clue5 == true)
+        {
+            clue5.SetActive(true);
+            clue5Tracking.SetActive(false);
+            Debug.Log("Clue 5 is true");
+        }
+        else
+        {
+            clue5.SetActive(false);
+            clue5Tracking.SetActive(true);
+        }
+
+        if (PlayerStats.Instance.clue6 == true)
+        {
+            clue6.SetActive(true);
+            clue6Tracking.SetActive(false);
+            Debug.Log("Clue 6 is true");
+        }
+        else
+        {
+            clue6.SetActive(false);
+            clue6Tracking.SetActive(true);
+        }
+
+    }
+
     public void EnablePanel()
     {
         gameObject.SetActive(true);
@@ -68,6 +144,7 @@ public class JournalScript : MonoBehaviour
         obtainedOGPos = true;
         hud.gameObject.transform.position = new Vector3(10000, 10000, 10000);
 
+        QuestState.Instance.pausedForDialogue = true;
         EventManager.Instance.InvokeOnEnteringUpgradeScreen();
     }
 
@@ -81,6 +158,7 @@ public class JournalScript : MonoBehaviour
         {
             hud.gameObject.transform.position = originalHUDPos;
         }
+        QuestState.Instance.pausedForDialogue = false;
         EventManager.Instance.InvokeOnExitingUpgradeScreen();
         Transform panel = transform.Find("RightPanel");
         foreach (Transform child in panel)
@@ -110,7 +188,7 @@ public class JournalScript : MonoBehaviour
     {
 
         // Check for the key press only when inside the trigger
-        if (context.performed && !isPanelUp)
+        if (context.performed && !isPanelUp && !QuestState.Instance.pausedForDialogue)
         {
             isPanelUp = true;
             EnablePanel();

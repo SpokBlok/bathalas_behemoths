@@ -38,13 +38,7 @@ public class Dash : BaseSkill
         playerMovement.CollisionToggle();
         gameObject.layer = LayerMask.NameToLayer("Pushback");
 
-        Vector3 direction = -playerMovement.lookPos.normalized;
-        if (playerMovement.move.magnitude > 0)
-        {
-            direction = playerMovement.move.normalized;
-            direction.z = direction.y;
-            direction.y = 0;
-        }
+        Vector3 direction = playerMovement.lookPos.normalized;
 
         input.actions["Move"].Disable(); //Prevent moving while dashing
         float dashDuration = 0.4f; // Time for the dash

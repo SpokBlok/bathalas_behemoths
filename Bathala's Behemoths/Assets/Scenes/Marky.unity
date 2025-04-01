@@ -14000,6 +14000,8 @@ MonoBehaviour:
   markyHPBar: {fileID: 434217754}
   isSpraying: 0
   isSpinning: 0
+  isNormStunned: 0
+  isFluteStunned: 0
   distanceFromTarget: 20
   modelRenderer:
   - {fileID: 1960363789}
@@ -28552,7 +28554,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -0, y: 0}
-  m_SizeDelta: {x: 200, y: 130}
+  m_SizeDelta: {x: 190, y: 106}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1651247987
 MonoBehaviour:

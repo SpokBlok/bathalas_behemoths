@@ -57,7 +57,8 @@ public class QuestBoardScript : MonoBehaviour
         UpdateCanvas();
         
         // Check for the key press only when inside the trigger
-        if (context.performed && isInTrigger && !isPanelUp)
+        if (context.performed && isInTrigger && !isPanelUp && 
+            !QuestState.Instance.pausedForDialogue)
         {
             isPanelUp = true;
             questUIPanel.EnablePanel();

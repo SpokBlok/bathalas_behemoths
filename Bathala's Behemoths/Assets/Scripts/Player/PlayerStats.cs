@@ -50,6 +50,7 @@ public class PlayerStats : MonoBehaviour
     public bool markyFound;
     public bool tammyScene;
     public bool markyScene;
+    public bool ruinsVisitedOnce;
 
     public AudioClip skillESound;
     public AudioClip skillQSound;
@@ -75,6 +76,7 @@ public class PlayerStats : MonoBehaviour
         ruinsScene = false; // set to false by default
         introDone = false; // set to false by default
         tutorialDone = true; // set to false by default
+        ruinsVisitedOnce = false; // set to false by default
 
         // Set default values
         if(ruinsScene && introDone)

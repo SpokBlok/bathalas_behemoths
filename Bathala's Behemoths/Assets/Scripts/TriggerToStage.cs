@@ -27,6 +27,7 @@ public class TriggerToStage : MonoBehaviour
             SceneManager.LoadScene("OutdoorsSceneFinal");
             PlayerStats.Instance.outdoorsScene = true;
             PlayerStats.Instance.ruinsScene = false;
+            PlayerStats.Instance.ruinsVisitedOnce = true;
             PlayerStats.Instance.speed = 45;
         }
     }

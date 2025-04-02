@@ -32,8 +32,8 @@ public class ProjectileScript : MonoBehaviour
         float projectileSpeed = 200f;
         while ((elapsedTime < attackDuration))
         {
-            TerrainGravity();
             charControl.Move(direction * projectileSpeed * Time.deltaTime);
+            TerrainGravity();
             elapsedTime += Time.deltaTime;
             yield return null; // Wait for the next frame
         }
@@ -45,9 +45,9 @@ public class ProjectileScript : MonoBehaviour
     public void TerrainGravity()
     {
         Vector3 position = charControl.transform.position;
-
+        Terrain myTerrain = GameObject.Find("Terrain").GetComponent<Terrain>();
         // Get the terrain height at the character's current position (X, Z)
-        float terrainHeight = Terrain.activeTerrain.SampleHeight(position);
+        float terrainHeight = myTerrain.SampleHeight(position);
 
         // Set the character's Y position to match the terrain height + 1, more if berserk
         position.y = terrainHeight + 1.2f;

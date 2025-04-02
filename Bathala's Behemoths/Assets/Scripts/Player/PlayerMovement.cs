@@ -450,6 +450,7 @@ public class PlayerMovement : MonoBehaviour
         {
             Debug.Log("Dead");
             //trigger death cutscene
+            PlayerStats.Instance.dead = true;
 
             // // Go to DeathScreen
             // ui.gameObject.SetActive(false);

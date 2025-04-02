@@ -39,6 +39,7 @@ public class ChickenClue : MonoBehaviour
         if(QuestState.Instance.chickenRepeat)
         {
             marker.SetActive(false);
+            PlayerStats.Instance.activeQuest4 = false;
         }
         
         isInTrigger = false;

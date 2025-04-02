@@ -100,6 +100,7 @@ public class TheMoonDialogue : MonoBehaviour
             pointer.SetActive(false);
             imageActive = false;
             QuestState.Instance.pausedForDialogue = false;
+            PlayerStats.Instance.activeQuest3 = false;
             HUD.gameObject.transform.position = originalHUDPos;
             
             Debug.Log("inside end state");

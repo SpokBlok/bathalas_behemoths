@@ -51,6 +51,7 @@ public class Waypoints : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
         if(PlayerStats.Instance.activeQuest1)
         {
             trackedClue = clue1Target;

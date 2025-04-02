@@ -290,7 +290,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5725552720055748903}
-  m_Mesh: {fileID: 0}
+  m_Mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!23 &694013808577806116
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -310,8 +310,7 @@ MeshRenderer:
   m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 2100000, guid: e0622b4cfde779743831fa8f89e5b6e5, type: 2}
+  m_Materials: []
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -411,6 +410,7 @@ MonoBehaviour:
   - {fileID: 6730637473240653346}
   - {fileID: 2817963349740969752}
   ui: {fileID: 0}
+  journal: {fileID: 0}
   basicAttackAudio: {fileID: 8300000, guid: b1790fe4dfa754e96a722bad2b5aaff1, type: 3}
 --- !u!114 &1879604765750739598
 MonoBehaviour:
@@ -541,8 +541,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 0}
-  acceleration: 50
-  deceleration: 100
+  accelerationTime: 0.5
   shiftPressed: 0
 --- !u!95 &4163153480500981305
 Animator:
@@ -716,8 +715,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 0}
-  acceleration: 50
-  deceleration: 100
+  accelerationTime: 0.5
   shiftPressed: 0
 --- !u!95 &6621215511150831328
 Animator:

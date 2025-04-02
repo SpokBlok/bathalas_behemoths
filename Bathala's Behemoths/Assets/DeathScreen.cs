@@ -40,7 +40,7 @@ public class DeathScreen : MonoBehaviour
         }
         BathalasBlessing bbSkill = FindObjectOfType<BathalasBlessing>();
         bbSkill.RechargeUsages();
-        SceneManager.LoadScene(2);
+        SceneManager.LoadScene(3);
     }
 
     public void PressQuitToDesktop()

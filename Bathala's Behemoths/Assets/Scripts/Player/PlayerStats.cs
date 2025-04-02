@@ -23,6 +23,7 @@ public class PlayerStats : MonoBehaviour
     public float currentHealth;
     public float maxHealth;
 
+    public bool dead;
     public bool hasMudArmor;
 
     public bool introDone;
@@ -77,6 +78,7 @@ public class PlayerStats : MonoBehaviour
         introDone = false; // set to false by default
         tutorialDone = true; // set to false by default
         ruinsVisitedOnce = false; // set to false by default
+        dead = false; // duh
 
         // Set default values
         if(ruinsScene && introDone)

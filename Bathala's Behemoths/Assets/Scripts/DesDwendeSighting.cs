@@ -15,7 +15,10 @@ public class DesDwendeSighting : MonoBehaviour
     void Start()
     {
         isInTrigger = false;
-        QuestState.Instance.desponDwendeSightTrigger = false;
+        if(QuestState.Instance.desponDwendeSightTrigger)
+        {
+            gameObject.SetActive(false);
+        }
     }
 
     // Update is called once per frame

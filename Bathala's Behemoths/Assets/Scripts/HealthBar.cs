@@ -20,7 +20,7 @@ public class HealthBar : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        HPText.text = "HP: " + PlayerStats.Instance.currentHealth + "/" + PlayerStats.Instance.maxHealth + " HP";
+        HPText.text = "HP: " + PlayerStats.Instance.currentHealth.ToString("0") + "/" + PlayerStats.Instance.maxHealth + " HP";
         healthBar.fillAmount = PlayerStats.Instance.currentHealth/PlayerStats.Instance.maxHealth;
     }
 

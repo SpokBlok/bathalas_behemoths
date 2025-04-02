@@ -9,6 +9,7 @@ public class markyHPBAr : MonoBehaviour
     public TextMeshProUGUI HPText;
     public Image healthBar;
     public MarkupoScript marky;
+    public GameObject hpHUD;
     public float maxHP = 0.0f;
 
     // Start is called before the first frame update
@@ -21,6 +22,10 @@ public class markyHPBAr : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(PlayerStats.Instance.dead)
+        {
+            hpHUD.SetActive(false);
+        }
         if(marky == null)
         {
             if(GameObject.FindGameObjectWithTag("Markupo") != null)
@@ -37,7 +42,7 @@ public class markyHPBAr : MonoBehaviour
         {
             maxHP = marky.health;
         }
-        HPText.text = marky.health + "/" + maxHP + " HP";
+        HPText.text = marky.health.ToString("0") + "/" + maxHP + " HP";
         healthBar.fillAmount = marky.health/maxHP;
     }
 }

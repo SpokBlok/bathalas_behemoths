@@ -13,6 +13,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Massive Lighting Strike Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 2546221918347375240, guid: 346abac7785fbd64bb2dd5cbdc7f7988,
+        type: 3}
+      propertyPath: m_DecalLayerMask
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2765294025915842083, guid: 346abac7785fbd64bb2dd5cbdc7f7988,
         type: 3}
       propertyPath: attackDamage

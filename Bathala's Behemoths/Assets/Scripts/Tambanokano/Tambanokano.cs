@@ -51,6 +51,7 @@ public class Tambanokano : EnemyMob
 
         player = GameObject.FindWithTag("Player");
         tamRend = GameObject.FindWithTag("TambanokanoBody").GetComponent<Renderer>();
+        tamRend.material = eyesClosedMat;
         tammy = GameObject.FindWithTag("TammyModel");
 
         HUD = GameObject.FindWithTag("HUD");
@@ -124,12 +125,14 @@ public class Tambanokano : EnemyMob
     public void BlinkOnce()
     {
         blinking = StartCoroutine(blink(0.5f));
+        tamRend.material = eyesOpenMat;
     }
 
     public void GetMudStunned()
     {
         getStunned = StartCoroutine(Stun(3));
-        blinking = StartCoroutine(blink(3f));
+        blinking = StartCoroutine(blink(0.5f));
+        tamRend.material = eyesClosedMat;
     }
 
     public IEnumerator blink(float duration)
@@ -139,6 +142,8 @@ public class Tambanokano : EnemyMob
             tamRend.material = eyesClosedMat;
             yield return new WaitForSeconds(duration);
             tamRend.material = eyesOpenMat;
+            yield return new WaitForSeconds(0.3f);
+            tamRend.material = eyesClosedMat;
         }
     }
 
@@ -261,14 +266,14 @@ public class Tambanokano : EnemyMob
     private IEnumerator ClawSwipe()
     {
         //attack animation
-        GameObject claw = Instantiate(clawSwipePrefab, new Vector3(Random.Range(400f, 500f), 170f, Random.Range(350f, 400f)), Quaternion.Euler(0f, 90f, 0f));
+        GameObject claw = Instantiate(clawSwipePrefab, new Vector3(Random.Range(400f, 500f), 170f, Random.Range(400f, 400f)), Quaternion.Euler(0f, 90f, 0f));
         claw.transform.parent = transform;
         yield return new WaitForSeconds(claw.GetComponent<FillEffect>().attackDuration);
         StartCoroutine(PlayClawSwipeAnimation());
         yield return new WaitForSeconds(2f);
 
         //attack animation
-        claw = Instantiate(clawSwipePrefab, new Vector3(Random.Range(400f, 500f), 170f, Random.Range(350f, 400f)), Quaternion.Euler(0f, 90f, 0f));
+        claw = Instantiate(clawSwipePrefab, new Vector3(Random.Range(400f, 500f), 170f, Random.Range(400f, 400f)), Quaternion.Euler(0f, 90f, 0f));
         yield return new WaitForSeconds(claw.GetComponent<FillEffect>().attackDuration);
         StartCoroutine(PlayClawSwipeAnimation());
         yield return new WaitForSeconds(2f);
@@ -279,6 +284,7 @@ public class Tambanokano : EnemyMob
     private IEnumerator TrailingLightning()
     {
         isLightingStriking = true;
+        tamRend.material = eyesOpenMat;
         
         GameObject lightning = Instantiate(trailingLightningPrefab, new Vector3(0f, 0f, 0f), Quaternion.identity);
         lightning.transform.parent = transform;
@@ -293,20 +299,22 @@ public class Tambanokano : EnemyMob
         
         yield return new WaitForSeconds(duration + 7f);
 
+        tamRend.material = eyesClosedMat;
         randomAttackCoroutine = null;
     }
 
     private IEnumerator ArenaWideLightning()
     {
         isLightingStriking = true;
+        tamRend.material = eyesOpenMat;
 
         GameObject lightning = Instantiate(arenaWideLightingPrefab, 
             new Vector3(Random.Range(380f, 420f), 300f, Random.Range(260f, 360f)),
             Quaternion.Euler(0f, Random.Range(0f, 90f), 0f));
         lightning.transform.parent = transform;
-        yield return new WaitForSeconds(6);
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(6f);
 
+        tamRend.material = eyesClosedMat;
         randomAttackCoroutine = null;
     }
 

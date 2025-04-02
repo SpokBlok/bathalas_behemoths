@@ -975,6 +975,7 @@ MonoBehaviour:
   animator: {fileID: 0}
   moving: 0
   attacking: 0
+  stunned: 0
 --- !u!137 &4279643568908815687 stripped
 SkinnedMeshRenderer:
   m_CorrespondingSourceObject: {fileID: 4112984690662791721, guid: 656f2508aa90b23499d2d31e4894da51,

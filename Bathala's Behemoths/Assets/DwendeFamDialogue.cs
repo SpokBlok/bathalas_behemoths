@@ -91,6 +91,7 @@ public class DwendeFamDialogue : MonoBehaviour
             pointer.SetActive(false);
             pointerActive = false;
             QuestState.Instance.pausedForDialogue = false;
+            PlayerStats.Instance.activeQuest2 = false;
             HUD.gameObject.transform.position = originalHUDPos;
             
             Debug.Log("inside end state");

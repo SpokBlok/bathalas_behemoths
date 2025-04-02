@@ -3396,6 +3396,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -6075573064332056684, guid: 1bbc0c0a7a4ce024cb5ec79f37b85b31,
         type: 3}
+      propertyPath: m_RenderingLayerMask
+      value: 513
+      objectReference: {fileID: 0}
+    - target: {fileID: -6075573064332056684, guid: 1bbc0c0a7a4ce024cb5ec79f37b85b31,
+        type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: e9302b979e5c5da48b3bdbe82e690124, type: 2}
@@ -3571,6 +3576,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1630794972795428178, guid: 1bbc0c0a7a4ce024cb5ec79f37b85b31,
         type: 3}
+      propertyPath: m_RenderingLayerMask
+      value: 513
+      objectReference: {fileID: 0}
+    - target: {fileID: 1630794972795428178, guid: 1bbc0c0a7a4ce024cb5ec79f37b85b31,
+        type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: e9302b979e5c5da48b3bdbe82e690124, type: 2}
@@ -3653,6 +3663,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: -11.112
+      objectReference: {fileID: 0}
+    - target: {fileID: 7114950274198619892, guid: 1bbc0c0a7a4ce024cb5ec79f37b85b31,
+        type: 3}
+      propertyPath: m_RenderingLayerMask
+      value: 513
       objectReference: {fileID: 0}
     - target: {fileID: 7114950274198619892, guid: 1bbc0c0a7a4ce024cb5ec79f37b85b31,
         type: 3}
@@ -4537,6 +4552,7 @@ MonoBehaviour:
   HPText: {fileID: 0}
   healthBar: {fileID: 182493447}
   tammy: {fileID: 0}
+  hpHUD: {fileID: 0}
   maxHP: 0
 --- !u!114 &182493447
 MonoBehaviour:
@@ -8183,6 +8199,7 @@ MonoBehaviour:
   basicAttackDamage: 0
   currentHealth: 0
   maxHealth: 0
+  dead: 0
   hasMudArmor: 0
   introDone: 0
   tutorialDone: 0
@@ -8206,6 +8223,7 @@ MonoBehaviour:
   markyFound: 0
   tammyScene: 0
   markyScene: 1
+  ruinsVisitedOnce: 0
   skillESound: {fileID: 0}
   skillQSound: {fileID: 0}
   mcSkillSound: {fileID: 0}
@@ -46179,6 +46197,7 @@ MonoBehaviour:
   HPText: {fileID: 0}
   healthBar: {fileID: 1981895690}
   marky: {fileID: 0}
+  hpHUD: {fileID: 0}
   maxHP: 0
 --- !u!114 &1981895690
 MonoBehaviour:

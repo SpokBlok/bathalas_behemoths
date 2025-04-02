@@ -37,6 +37,7 @@ public class LSSDwendeDialogue : MonoBehaviour
         if(QuestState.Instance.lssDwendeRepeat && QuestState.Instance.fluteGet)
         {
             QuestState.Instance.lssDwendeRan = true;
+            PlayerStats.Instance.activeQuest6 = false;
             currentLines = linesRepeat;
         }
         else if(QuestState.Instance.lssDwendeRepeat)

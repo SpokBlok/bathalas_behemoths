@@ -9,6 +9,7 @@ public class TammyHPBAr : MonoBehaviour
     public TextMeshProUGUI HPText;
     public Image healthBar;
     public Tambanokano tammy;
+    public GameObject hpHUD;
     public float maxHP = 0.0f;
 
     // Start is called before the first frame update
@@ -21,6 +22,10 @@ public class TammyHPBAr : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(PlayerStats.Instance.dead)
+        {
+            hpHUD.SetActive(false);
+        }
         if(tammy == null)
         {
             if(GameObject.FindGameObjectWithTag("Tambanokano") != null)
@@ -37,7 +42,7 @@ public class TammyHPBAr : MonoBehaviour
         {
             maxHP = tammy.health;
         }
-        HPText.text = tammy.health + "/" + maxHP + " HP";
+        HPText.text = tammy.health.ToString("0") + "/" + maxHP + " HP";
         healthBar.fillAmount = tammy.health/maxHP;
     }
 }

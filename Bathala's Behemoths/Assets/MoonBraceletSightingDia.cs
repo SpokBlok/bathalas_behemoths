@@ -8,6 +8,7 @@ public class MoonBraceletSightingDia : MonoBehaviour
     public TextMeshProUGUI textComponent;
     public string[] lines;
     public float textInterval;
+    public GameObject trigger;
     public GameObject pointer;
     public GameObject HUD;
 
@@ -79,6 +80,7 @@ public class MoonBraceletSightingDia : MonoBehaviour
             gameObject.transform.localPosition = currentPosition;
             gameObject.SetActive(false);
             pointer.SetActive(false);
+            trigger.SetActive(false);
             pointerActive = false;
             QuestState.Instance.moonSightingTrigger = true;
             QuestState.Instance.pausedForDialogue = false;

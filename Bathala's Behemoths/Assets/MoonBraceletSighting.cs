@@ -15,8 +15,10 @@ public class MoonBraceletSighting : MonoBehaviour
     void Start()
     {
         isInTrigger = false;
-        QuestState.Instance.moonSightingTrigger = false;
-        QuestState.Instance.moonQuestTrigger = false;
+        if(QuestState.Instance.moonSightingTrigger)
+        {
+            gameObject.SetActive(false);
+        }
     }
 
     // Update is called once per frame

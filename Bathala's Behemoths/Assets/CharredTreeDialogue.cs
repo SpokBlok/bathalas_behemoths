@@ -92,6 +92,7 @@ public class CharredTreeDialogue : MonoBehaviour
             pointerActive = false;
             QuestState.Instance.charredTreeRepeat = true;
             QuestState.Instance.pausedForDialogue = false;
+            PlayerStats.Instance.activeQuest1 = false;
             HUD.gameObject.transform.position = originalHUDPos;
             
             Debug.Log("inside end state");

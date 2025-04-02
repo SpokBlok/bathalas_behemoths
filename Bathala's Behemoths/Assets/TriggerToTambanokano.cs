@@ -27,6 +27,7 @@ public class TriggerToTambanokano : MonoBehaviour
             }
             PlayerStats.Instance.tammyScene = true;
             PlayerStats.Instance.outdoorsScene = false;
+            PlayerStats.Instance.dead = false;
             PlayerStats.Instance.speedMultiplier = 1.5f;
             SceneManager.LoadScene("Tammy");
 

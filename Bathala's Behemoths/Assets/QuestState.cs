@@ -72,11 +72,14 @@ public class QuestState : MonoBehaviour
         moonQuestEnded = false;
         moonChunkGet = false;
         moonNPCRepeat = false;
+        desponDwendeSightTrigger = false;
         chickenSightTrigger = false;
         fluteGet = false;
         lssDwendeRepeat = false;
         fluteQuestTrigger = false;
         fluteSightTrigger = false;
+        moonSightingTrigger = false;
+        moonQuestTrigger = false;
 
         tambanokanoFound = false;
         markupoFound = false;

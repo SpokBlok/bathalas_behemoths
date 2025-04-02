@@ -137,7 +137,7 @@ public class PlayerSkills : MonoBehaviour
     {
         if (!isEquipped)
         {
-            return;;
+            return;
         }
 
         if (charges < maxCharges)

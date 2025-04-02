@@ -34,6 +34,7 @@ public class Tambanokano : EnemyMob
     public Material eyesClosedMat;
     public Renderer tamRend;
     public GameObject tammy;
+    public GameObject stunSymbol;
     public bool isClawSwiping;
 
     public SkinnedMeshRenderer[] modelRenderer;
@@ -143,6 +144,7 @@ public class Tambanokano : EnemyMob
 
     public override IEnumerator Stun(float duration)
     {
+        stunSymbol.SetActive(true);
         if (isLightingStriking)
         {
             stunned = true;
@@ -159,6 +161,8 @@ public class Tambanokano : EnemyMob
         stunMoving = StartCoroutine(StunMovement());
         yield return new WaitForSeconds(duration);
         stunned = false;
+        
+        stunSymbol.SetActive(false);
     }
 
     IEnumerator StunMovement()

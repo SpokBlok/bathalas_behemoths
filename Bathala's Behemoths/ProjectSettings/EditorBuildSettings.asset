@@ -12,6 +12,9 @@ EditorBuildSettings:
     path: Assets/MainMenu.unity
     guid: ed6a61a25b0de3b41af39b22a0398646
   - enabled: 1
+    path: Assets/Scenes/Prologue.unity
+    guid: 5737a5f84d538864b8c35015a13cf6a5
+  - enabled: 1
     path: Assets/Scenes/OutdoorsSceneFinal.unity
     guid: 785636f98c2c31348807ab8d88423963
   - enabled: 1

@@ -22,7 +22,7 @@ public class MudArmor : BaseSkill
     {
         player = GameObject.FindWithTag("Player");
         animator = player.GetComponentInChildren<Animator>();
-        mannyBody = GameObject.FindGameObjectWithTag("Player").GetComponentsInChildren<MSAnimController>(true)[0].GetComponentsInChildren<SkinnedMeshRenderer>(true)[0];
+        mannyBody = GameObject.FindGameObjectWithTag("Player").GetComponentsInChildren<MSAnimController>(true)[0].GetComponentsInChildren<SkinnedMeshRenderer>(true)[2];
         
         isMudArmorHash = Animator.StringToHash("isMudarmor");
         maxCharges = 1;
@@ -30,9 +30,18 @@ public class MudArmor : BaseSkill
         skillCode = 2;
     }
 
+    void Update()
+    {
+    }
+
     IEnumerator EnterMudStance()
     {
         player = GameObject.FindWithTag("Player");
+        if(mannyBody == null)
+        {
+            mannyBody = GameObject.FindGameObjectWithTag("Player").GetComponentsInChildren<MSAnimController>(true)[0].GetComponentsInChildren<SkinnedMeshRenderer>(true)[2];
+        }
+        mannyBody.material = armoredManny;
         animator = player.GetComponentInChildren<Animator>();
         
         float duration = 0.5f;
@@ -55,6 +64,12 @@ public class MudArmor : BaseSkill
 
     IEnumerator ExitMudStance()
     {
+        if(mannyBody == null)
+        {
+            mannyBody = GameObject.FindGameObjectWithTag("Player").GetComponentsInChildren<MSAnimController>(true)[0].GetComponentsInChildren<SkinnedMeshRenderer>(true)[2];
+        }
+        mannyBody.material = normalManny;
+
         float duration = 0.5f;
         float elapsedTime = 0f;
         float startValue = 1.0f;
@@ -78,7 +93,6 @@ public class MudArmor : BaseSkill
         enterMudStance = StartCoroutine(EnterMudStance());
         animator.SetFloat(isMudArmorHash, 1.0f);
         player = GameObject.FindWithTag("Player");
-        mannyBody.material = armoredManny;
         
         AudioSource.PlayClipAtPoint(armoredGruntSound, Camera.main.transform.position + Camera.main.transform.forward * 2f, 1f);
         
@@ -88,7 +102,6 @@ public class MudArmor : BaseSkill
         
         AudioSource.PlayClipAtPoint(releaseArmorSound, Camera.main.transform.position + Camera.main.transform.forward * 2f, 1f);
         
-        mannyBody.material = normalManny;
         PlayerStats.Instance.hasMudArmor = false;
         exitMudStance = StartCoroutine(ExitMudStance());
     }

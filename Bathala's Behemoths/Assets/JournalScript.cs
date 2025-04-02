@@ -44,21 +44,21 @@ public class JournalScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
-    private void Awake()
-    {
-        if (Instance == null)
-        {
-            Instance = this;
-            DontDestroyOnLoad(gameObject); // Keep this object across scenes
-        }
-        else
-        {
-            Destroy(gameObject); // Destroy duplicate instance
-        }
-    }
+    // private void Awake()
+    // {
+    //     if (Instance == null)
+    //     {
+    //         Instance = this;
+    //         DontDestroyOnLoad(gameObject); // Keep this object across scenes
+    //     }
+    //     else
+    //     {
+    //         Destroy(gameObject); // Destroy duplicate instance
+    //     }
+    // }
 
     void OnEnable()
     {
@@ -138,6 +138,7 @@ public class JournalScript : MonoBehaviour
 
     public void EnablePanel()
     {
+        if(!PlayerStats.Instance.introDone) {return;}
         gameObject.SetActive(true);
         // QuestState.Instance.pausedForDialogue = true;
         hud = GameObject.FindGameObjectWithTag("HUD");
@@ -185,21 +186,38 @@ public class JournalScript : MonoBehaviour
         }
     }
 
-    public void OnInteract(InputAction.CallbackContext context)
+    public void OnInteract()
     {
 
         // Check for the key press only when inside the trigger
-        if (context.performed && !isPanelUp && !QuestState.Instance.pausedForDialogue)
+        if (!isPanelUp && !QuestState.Instance.pausedForDialogue)
         {
             isPanelUp = true;
             EnablePanel();
         }
-        else if (context.performed && isPanelUp)
+        else if (isPanelUp)
         {
             isPanelUp = false;
             DisablePanel();
         }
     }
+
+    // OG Migs Code for opening journal
+    // public void OnInteract(InputAction.CallbackContext context)
+    // {
+
+    //     // Check for the key press only when inside the trigger
+    //     if (context.performed && !isPanelUp && !QuestState.Instance.pausedForDialogue)
+    //     {
+    //         isPanelUp = true;
+    //         EnablePanel();
+    //     }
+    //     else if (context.performed && isPanelUp)
+    //     {
+    //         isPanelUp = false;
+    //         DisablePanel();
+    //     }
+    // }
 
     public void SetActiveQuest()
     {

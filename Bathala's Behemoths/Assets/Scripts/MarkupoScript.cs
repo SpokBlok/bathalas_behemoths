@@ -30,6 +30,7 @@ public class MarkupoScript : EnemyMob
     public Coroutine takingDamage;
     public GameObject endDialogue;
     private Coroutine getStunned;
+    public GameObject stunSymbol;
 
     // Start is called before the first frame update
     void Start()
@@ -101,6 +102,7 @@ public class MarkupoScript : EnemyMob
     public override IEnumerator Stun(float duration)
     {       
         stunned = true;
+        stunSymbol.SetActive(true);
         if(!isFluteStunned)
         {
             isNormStunned = true;
@@ -118,6 +120,7 @@ public class MarkupoScript : EnemyMob
         isNormStunned = false;
         isFluteStunned = false;
         stunned = false;
+        stunSymbol.SetActive(false);
     }
 
     IEnumerator SwitchToDamagedTex()

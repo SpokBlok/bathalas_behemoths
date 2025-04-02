@@ -10,6 +10,7 @@ public class MCSkillHUD : MonoBehaviour
     public Image firstAid;
     public Image musicalFlute;
     public Image blank;
+    public Image blankReady;
 
     public AudioClip bbSound;
     public AudioClip firstAidSound;
@@ -24,6 +25,15 @@ public class MCSkillHUD : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(PlayerSkills.Instance.mainCharacterSkillCharges > 0)
+        {
+            blankReady.gameObject.SetActive(true);
+        }
+        else
+        {
+            blankReady.gameObject.SetActive(false);
+        }
+
         if(PlayerSkills.Instance.skillMCBeingUnequipped)
         {
             ClearMCSkillHUD();

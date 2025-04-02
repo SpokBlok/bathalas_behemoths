@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class CDClock : MonoBehaviour
 {
     public Image img;
+    public Image blankReady;
     public Coroutine coolingDown;
     public bool isBasicAttacking = false;
     public PlayerMovement player;
@@ -50,6 +51,7 @@ public class CDClock : MonoBehaviour
     {
         Debug.Log("Basic Attack Cooling Down");
         isBasicAttacking = true;
+        blankReady.gameObject.SetActive(false);
 
         float duration = 0.94f;
         float elapsedTime = 0f;
@@ -67,5 +69,6 @@ public class CDClock : MonoBehaviour
         
         img.fillAmount = endValue; // Ensure it fully reaches the target
         isBasicAttacking = false;
+        blankReady.gameObject.SetActive(true);
     }
 }

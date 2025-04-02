@@ -10,6 +10,7 @@ public class VetDwende : MonoBehaviour
     public TextMeshProUGUI popUp;
     public GameObject dialogue;
     public GameObject marker;
+    public GameObject gardener;
     
     private bool isInTrigger;
 
@@ -37,6 +38,7 @@ public class VetDwende : MonoBehaviour
         {
             dialogue.SetActive(true);
             marker.SetActive(false);
+            gardener.SetActive(true);
             QuestState.Instance.vetFarmerRepeat = true;
         }
     }

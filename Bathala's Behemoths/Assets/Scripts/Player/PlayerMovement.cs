@@ -72,6 +72,7 @@ public class PlayerMovement : MonoBehaviour
 
     private PauseSystem pauseSystem;
     public UICanvas ui;
+    public JournalScript journal;
     public AudioClip basicAttackAudio;
 
     private void Start()
@@ -82,6 +83,7 @@ public class PlayerMovement : MonoBehaviour
         }
         ui = GameObject.FindObjectOfType<UICanvas>();
         pauseSystem = FindObjectOfType<PauseSystem>();
+        journal = FindObjectsOfType<JournalScript>(true)[0];
 
         // Get references to char controller + collider
         charControl = GetComponent<CharacterController>();
@@ -398,6 +400,11 @@ public class PlayerMovement : MonoBehaviour
                 col.enabled = !col.enabled;
             }
         }
+    }
+
+    public void OpenJournal(InputAction.CallbackContext context)
+    {
+        journal.OnInteract();
     }
 
     public void Heal(float percent)

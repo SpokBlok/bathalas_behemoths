@@ -10,6 +10,7 @@ public class SkillQHUD : MonoBehaviour
     public Image mudfling;
     public Image tornadoPunch;
     public Image blank;
+    public Image blankReady;
 
     public AudioClip dashSound;
     public AudioClip mudArmorSound;
@@ -25,6 +26,15 @@ public class SkillQHUD : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(PlayerSkills.Instance.behemothSkillQCharges > 0)
+        {
+            blankReady.gameObject.SetActive(true);
+        }
+        else
+        {
+            blankReady.gameObject.SetActive(false);
+        }
+
         if(PlayerSkills.Instance.skillQBeingUnequipped)
         {
             ClearSkillQHUD();

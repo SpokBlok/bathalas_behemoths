@@ -24,6 +24,8 @@ public class FillEffect : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(QuestState.Instance.pausedForDialogue) {return;} // Prevents continued function while taming dialogue is active
+
         if (timer <= attackDuration)
         {
             timer += Time.deltaTime;

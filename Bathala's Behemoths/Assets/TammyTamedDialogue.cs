@@ -80,7 +80,7 @@ public class TammyTamedDialogue : MonoBehaviour
             gameObject.transform.localPosition = currentPosition;
             QuestState.Instance.pausedForDialogue = false;
             HUD.gameObject.transform.position = originalHUDPos;
-            SceneManager.LoadScene("MainMenu");
+            SceneManager.LoadScene("Credits");
             
             Debug.Log("inside end state");
         }

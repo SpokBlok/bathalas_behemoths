@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class MainMenu : MonoBehaviour
+public class Credits : MonoBehaviour
 {
     // Start is called before the first frame update
     void Start()
@@ -12,8 +12,10 @@ public class MainMenu : MonoBehaviour
         Destroy (GameObject.Find("PlayerStats"));
         Destroy (GameObject.Find("QuestState"));
         Destroy (GameObject.Find("PlayerSkills"));
+        
+        StartCoroutine(StartPrologue());
     }
-    
+
     void OnAwake()
     {
         Destroy (GameObject.Find("UICanvas"));
@@ -21,6 +23,8 @@ public class MainMenu : MonoBehaviour
         Destroy (GameObject.Find("PlayerStats"));
         Destroy (GameObject.Find("QuestState"));
         Destroy (GameObject.Find("PlayerSkills"));
+
+        StartCoroutine(StartPrologue());
     }
 
     // Update is called once per frame
@@ -29,18 +33,14 @@ public class MainMenu : MonoBehaviour
         
     }
 
-    public void pressStart()
+    IEnumerator StartPrologue()
     {
-        SceneManager.LoadScene(1);
+        yield return new WaitForSeconds(53f);
+        SceneManager.LoadScene(0);
     }
 
-    public void pressCredits()
+    public void pressBBMM()
     {
-        SceneManager.LoadScene(7);
-    }
-
-    public void pressQuit()
-    {
-        Application.Quit();
+        SceneManager.LoadScene(0);
     }
 }

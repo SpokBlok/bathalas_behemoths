@@ -6,17 +6,20 @@ public class PlayerModelPicker : MonoBehaviour
 {
     public SteveAnimController steveModel = null;
     public MSAnimController mountedModel = null;
+    public FollowTargetSwitcher camTargetSwitcher;
 
     // Start is called before the first frame update
     void Start()
     {
         steveModel = FindAnyObjectByType<SteveAnimController>(FindObjectsInactive.Include);
         mountedModel = FindAnyObjectByType<MSAnimController>(FindObjectsInactive.Include);
+        camTargetSwitcher = FindAnyObjectByType<FollowTargetSwitcher>(FindObjectsInactive.Include);
 
         if(PlayerStats.Instance.tammyScene || PlayerStats.Instance.markyScene)
         {
             steveModel.gameObject.SetActive(false);
             mountedModel.gameObject.SetActive(true);
+            camTargetSwitcher.SwitchFollowTarget();
         }
         else if(PlayerStats.Instance.ruinsScene)
         {
@@ -36,6 +39,7 @@ public class PlayerModelPicker : MonoBehaviour
         {
             steveModel.gameObject.SetActive(false);
             mountedModel.gameObject.SetActive(true);
+            camTargetSwitcher.SwitchFollowTarget();
         }
     }
 

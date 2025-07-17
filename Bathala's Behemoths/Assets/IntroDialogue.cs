@@ -14,6 +14,7 @@ public class IntroDialogue : MonoBehaviour
     public GameObject player;
     public SteveAnimController steveModel;
     public MSAnimController mountedModel;
+    public FollowTargetSwitcher virtualCam;
     public GameObject HUD;
 
 
@@ -116,5 +117,6 @@ public class IntroDialogue : MonoBehaviour
     {
         steveModel.gameObject.SetActive(false);
         mountedModel.gameObject.SetActive(true);
+        virtualCam.SwitchFollowTarget();
     }
 }

@@ -26,7 +26,19 @@ public class PauseSystem : MonoBehaviour
     public void TogglePauseOnEscape()
     {
         isPaused = !isPaused;
+        QuestState.Instance.pausedForDialogue = !QuestState.Instance.pausedForDialogue;
         Time.timeScale = isPaused ? 0 : 1;
+
+        // Show cursor when menu is open
+        UnityEngine.Cursor.visible = isPaused;
+        if(isPaused)
+        {
+            UnityEngine.Cursor.lockState = CursorLockMode.None;
+        }
+        else
+        {
+            UnityEngine.Cursor.lockState = CursorLockMode.Locked;
+        }
 
         // Call the UI to be activated when paused
         if(pauseMenu != null)

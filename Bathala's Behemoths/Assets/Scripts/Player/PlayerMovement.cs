@@ -17,6 +17,13 @@ public enum PlayerState
 
 public class PlayerMovement : MonoBehaviour
 {
+    // [SerializeField] Transform cam;
+    // private Vector3 camForward;
+    // private Vector3 camRight;
+    // private Vector3 forwardRelative;
+    // private Vector3 rightRelative;
+    // private Vector3 moveDir;
+
     // Look rotation variables
     private Vector2 mouseLook;
     private Vector3 rotationTarget;
@@ -33,6 +40,12 @@ public class PlayerMovement : MonoBehaviour
 
     // Movement variables
     public Vector2 move;
+    public Vector3 currentVelocity = Vector3.zero;
+    
+    // Camera Controls
+    private float yaw = 0f;
+    private float pitch = 0f;
+    [SerializeField] private float mouseSensitivity = 100f;
 
     // Knockback variables
     public float pushBackDuration = 0.5f;
@@ -77,6 +90,17 @@ public class PlayerMovement : MonoBehaviour
 
     private void Start()
     {
+        UnityEngine.Cursor.visible = false;
+        UnityEngine.Cursor.lockState = CursorLockMode.Locked;
+        
+        yaw = transform.eulerAngles.y;
+        pitch = 0f;
+
+        transform.localRotation = Quaternion.Euler(pitch, yaw, 0);
+
+        UnityEngine.Cursor.visible = false;
+        UnityEngine.Cursor.lockState = CursorLockMode.Locked;
+
         if (modelRenderer == null)
         {
             modelRenderer = msModel.GetComponentsInChildren<SkinnedMeshRenderer>();
@@ -298,27 +322,21 @@ public class PlayerMovement : MonoBehaviour
 
     public void UpdateRotationTarget()
     {
-        //Create a plane on the player's position
-        Plane playerPlane = new Plane(Vector3.up, transform.position);
-        Ray ray = Camera.main.ScreenPointToRay(mouseLook);
+        float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity * Time.deltaTime;
+        float mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity * Time.deltaTime;
 
-        //Get mouse pointer position
-        if (playerPlane.Raycast(ray, out float distance))
-        {
-            Vector3 targetPoint = ray.GetPoint(distance);
-            rotationTarget = targetPoint;
-        }
+        yaw += mouseX;
+        pitch -= mouseY;
+        pitch = Mathf.Clamp(pitch, -60f, 60f); // Limit vertical look angle
 
-        //Create vector from player position to mouse pointer
-        lookPos = rotationTarget - transform.position;
-        lookPos.y = 0;
+        // Rotate player body horizontally (yaw)
+        // playerBody.rotation = Quaternion.Euler(0f, yaw, 0f);
 
-        //Rotate player toward mouse pointer
-        if (lookPos.magnitude > minDistanceToLook)
-        {
-            Quaternion targetRotation = Quaternion.LookRotation(lookPos);
-            transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, 1f);
-        }
+        // Rotate camera vertically (pitch)
+        // virtualCamTransform.localRotation = Quaternion.Euler(pitch, yaw, 0f);
+
+        // Rotate Player object (the parent obj) to reflect the mouseLook direction
+        transform.localRotation = Quaternion.Euler(pitch, yaw, 0);
     }
 
     private void UpdateBasicAttackHitboxPosition()
@@ -330,21 +348,43 @@ public class PlayerMovement : MonoBehaviour
 
     public void MovePlayer()
     {
-        Vector3 moveDirection = new Vector3(move.x, 0f, move.y) * stats.speed;
-        Vector3 currentVelocity = Vector3.zero;
+        // Old movement code
+        // Vector3 moveDirection = new Vector3(move.x, 0f, move.y) * stats.speed;
+
+        // New movement code
+
+        // Get Main Camera's normalized directional vectors
+        Vector3 forward = Camera.main.transform.forward;
+        Vector3 right = Camera.main.transform.right;
+        forward.y = 0;
+        right.y = 0;
+        forward = forward.normalized;
+        right = right.normalized;
+
+        // Create cam-direction-relative input vectors
+        Vector3 forwardRelativeInput = move.y * forward;
+        Vector3 rightRelativeInput = move.x * right;
+
+        // Apply camera relative movement
+        Vector3 cameraRelativeMove = forwardRelativeInput + rightRelativeInput;
+        Vector3 moveDirection = cameraRelativeMove.normalized * stats.speed;
+        lookPos = moveDirection;
+
+        // Debug.Log(moveDirection);
+
         // Smooth Acceleration and Deceleration
         currentVelocity = Vector3.Lerp(currentVelocity, moveDirection, (moveDirection.magnitude > 0 ? acceleration : deceleration) * Time.deltaTime);
         if (isSkillingOrUlting)
         {
-            charControl.Move(moveDirection * 0);
+            charControl.Move(currentVelocity * 0);
         }
         else if (isAttacking)
         {
-            charControl.Move(((moveDirection / 5) * stats.speedMultiplier) * Time.deltaTime);
+            charControl.Move(((currentVelocity / 5) * stats.speedMultiplier) * Time.deltaTime);
         } 
         else
         {
-            charControl.Move((moveDirection) * stats.speedMultiplier * Time.deltaTime);
+            charControl.Move((currentVelocity) * stats.speedMultiplier * Time.deltaTime);
         }
     }
 

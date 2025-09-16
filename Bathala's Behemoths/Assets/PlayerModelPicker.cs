@@ -15,21 +15,23 @@ public class PlayerModelPicker : MonoBehaviour
         mountedModel = FindAnyObjectByType<MSAnimController>(FindObjectsInactive.Include);
         camTargetSwitcher = FindAnyObjectByType<FollowTargetSwitcher>(FindObjectsInactive.Include);
 
-        if(PlayerStats.Instance.tammyScene || PlayerStats.Instance.markyScene)
+        if (PlayerStats.Instance.tammyScene || PlayerStats.Instance.markyScene)
         {
             steveModel.gameObject.SetActive(false);
             mountedModel.gameObject.SetActive(true);
-            camTargetSwitcher.SwitchFollowTarget();
+            camTargetSwitcher.FollowManny();
         }
-        else if(PlayerStats.Instance.ruinsScene)
+        else if (PlayerStats.Instance.ruinsScene)
         {
             steveModel.gameObject.SetActive(true);
             mountedModel.gameObject.SetActive(false);
+            camTargetSwitcher.FollowSteve();
         }
-        else if(PlayerStats.Instance.outdoorsScene && PlayerStats.Instance.introDone == false)
+        else if (PlayerStats.Instance.outdoorsScene && PlayerStats.Instance.introDone == false)
         {
             steveModel.gameObject.SetActive(true);
             mountedModel.gameObject.SetActive(false);
+            camTargetSwitcher.FollowSteve();
 
             // For testing Purposes on the Anim Test Scene
             // steveModel.gameObject.SetActive(false);
@@ -39,7 +41,7 @@ public class PlayerModelPicker : MonoBehaviour
         {
             steveModel.gameObject.SetActive(false);
             mountedModel.gameObject.SetActive(true);
-            camTargetSwitcher.SwitchFollowTarget();
+            camTargetSwitcher.FollowManny();
         }
     }
 

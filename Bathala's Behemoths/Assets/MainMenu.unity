@@ -314,6 +314,8 @@ MonoBehaviour:
   tambanokanoFound: 0
   markupoFound: 0
   pausedForDialogue: 0
+  menuActive: 0
+  pauseActive: 0
 --- !u!4 &74505582
 Transform:
   m_ObjectHideFlags: 0
@@ -1605,7 +1607,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0.7647059, b: 0.50980395, a: 0.392}
+  m_Color: {r: 1, g: 0.809101, b: 0.5943395, a: 0.09803922}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1

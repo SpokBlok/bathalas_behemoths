@@ -42,6 +42,22 @@ public class FollowTargetSwitcher : MonoBehaviour
         }
     }
 
+    public void FollowSteve()
+    {
+        if (virtualCam != null && newFollowTarget != null)
+        {
+            virtualCam.Follow = SteveTarget;
+        }
+    }
+
+    public void FollowManny()
+    {
+        if (virtualCam != null && newFollowTarget != null)
+        {
+            virtualCam.Follow = MountedModelTarget;
+        }
+    }
+
     public void SetFollowTarget(Transform target)
     {
         newFollowTarget = target;

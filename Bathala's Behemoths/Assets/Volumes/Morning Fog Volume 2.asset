@@ -44,7 +44,7 @@ MonoBehaviour:
     m_Value: {r: 1, g: 1, b: 1, a: 1}
   maxFogDistance:
     m_OverrideState: 1
-    m_Value: 5000
+    m_Value: 100000
   mipFogMaxMip:
     m_OverrideState: 1
     m_Value: 0.5
@@ -55,14 +55,14 @@ MonoBehaviour:
     m_OverrideState: 1
     m_Value: 1000
   baseHeight:
-    m_OverrideState: 1
-    m_Value: 2
+    m_OverrideState: 0
+    m_Value: 0
   maximumHeight:
     m_OverrideState: 1
-    m_Value: 285.1
+    m_Value: 4000
   meanFreePath:
     m_OverrideState: 1
-    m_Value: 295.98
+    m_Value: 1000
   enableVolumetricFog:
     m_OverrideState: 1
     m_Value: 1

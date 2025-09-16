@@ -23,6 +23,16 @@ public class KapreMob : EnemyMob
     public int speed;
     public float attackDamage;
 
+    // Variables cached for referencing later
+    public Vector3 moveDirection;
+    public Vector3 terrainMoveDirection;
+    public Vector3 newPosition;
+    public float terrainHeight;
+    public Terrain myTerrain;
+    public Plane playerPlane;
+    public Vector3 lookPos;
+    Quaternion targetRotation;
+
     //For intro kill quest tutorial maybe?
     public KillQuestUI[] killQuestUIList;
     public KillQuestUI killQuestUI;
@@ -70,6 +80,7 @@ public class KapreMob : EnemyMob
         }
 
         kapreControl = GetComponent<CharacterController>();
+        myTerrain = GameObject.Find("Terrain").GetComponent<Terrain>();
 
         //Start off on terrain height
         TerrainGravity();
@@ -122,9 +133,8 @@ public class KapreMob : EnemyMob
     }
     private void TerrainGravity()
     {
-        Terrain myTerrain = GameObject.Find("Terrain").GetComponent<Terrain>();
-        float terrainHeight = myTerrain.SampleHeight(transform.position);
-        Vector3 newPosition = transform.position;
+        terrainHeight = myTerrain.SampleHeight(transform.position);
+        newPosition = transform.position;
         newPosition.y = terrainHeight + 1.2f;
         transform.position = newPosition;
     }
@@ -133,8 +143,8 @@ public class KapreMob : EnemyMob
     {
         target = playerTransform;
         //Get vector from enemy to player and assign to x and z axes
-        Vector3 moveDirection = (target.position - transform.position).normalized;
-        Vector3 terrainMoveDirection = new Vector3(moveDirection.x, 0f, moveDirection.z) * speed;
+        moveDirection = (target.position - transform.position).normalized;
+        terrainMoveDirection = new Vector3(moveDirection.x, 0f, moveDirection.z) * speed;
 
         // Move the enemy in the x and z direction
         kapreControl.Move(terrainMoveDirection * Time.deltaTime);
@@ -145,14 +155,14 @@ public class KapreMob : EnemyMob
     public void UpdateRotationTarget()
     {
         //Create a plane on the player's position
-        Plane playerPlane = new Plane(Vector3.up, transform.position);
+        playerPlane = new Plane(Vector3.up, transform.position);
 
         //Create vector from player position to mouse pointer
-        var lookPos = (target.position - transform.position).normalized;
+        lookPos = (target.position - transform.position).normalized;
         lookPos.y = 0;
 
         //Rotate enemy toward player
-        Quaternion targetRotation = Quaternion.LookRotation(lookPos);
+        targetRotation = Quaternion.LookRotation(lookPos);
         transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, 0.15f);
     }
 

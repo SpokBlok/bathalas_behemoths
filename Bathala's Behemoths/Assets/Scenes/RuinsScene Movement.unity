@@ -6015,6 +6015,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa15a3e1dffa0b641a88b46afeb69f6d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!4 &211558156 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 9110787785456594749, guid: e2befb3480872ac4d860e47a6b28741a,
+    type: 3}
+  m_PrefabInstance: {fileID: 211558154}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &211558157 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8627736155082654891, guid: e2befb3480872ac4d860e47a6b28741a,
@@ -6027,6 +6033,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78bff5074b5f8eb45a23c5e1ec642d2d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!4 &211558158 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7151211337291549734, guid: e2befb3480872ac4d860e47a6b28741a,
+    type: 3}
+  m_PrefabInstance: {fileID: 211558154}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &221271362
 GameObject:
   m_ObjectHideFlags: 0
@@ -21554,7 +21566,7 @@ Camera:
     width: 1
     height: 1
   near clip plane: 0.3
-  far clip plane: 2500
+  far clip plane: 600
   field of view: 65
   orthographic: 0
   orthographic size: 5
@@ -30851,6 +30863,8 @@ MonoBehaviour:
   tambanokanoFound: 0
   markupoFound: 0
   pausedForDialogue: 0
+  menuActive: 0
+  pauseActive: 0
 --- !u!4 &1189274036
 Transform:
   m_ObjectHideFlags: 0
@@ -42324,10 +42338,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   virtualCam: {fileID: 1656264857}
-  SteveTarget: {fileID: 0}
-  MountedModelTarget: {fileID: 0}
-  newFollowTarget: {fileID: 0}
-  currentFollowTarget: {fileID: 0}
+  SteveTarget: {fileID: 211558156}
+  MountedModelTarget: {fileID: 211558158}
+  newFollowTarget: {fileID: 211558158}
+  currentFollowTarget: {fileID: 211558156}
 --- !u!114 &1656264857
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -42352,7 +42366,7 @@ MonoBehaviour:
     FieldOfView: 65
     OrthographicSize: 5
     NearClipPlane: 0.3
-    FarClipPlane: 2500
+    FarClipPlane: 600
     Dutch: 0
     ModeOverride: 0
     LensShift: {x: 0, y: 0}

@@ -12,6 +12,7 @@ public class Mudfling : BaseSkill
 
     public GameObject projectilePrefab;
     private PlayerMovement playerMovement;
+    private ProjectileScript projectileScript;
 
     // Start is called before the first frame update
     void Start()
@@ -23,12 +24,6 @@ public class Mudfling : BaseSkill
         maxCharges = 2;
         cooldown = 16;
         skillCode = 3;
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 
     public override IEnumerator RunSkill()
@@ -47,8 +42,8 @@ public class Mudfling : BaseSkill
         playerMovement.ChangeState(PlayerState.Idle);
         yield return new WaitForSeconds(1); //Charge up time, animation of making mudball
         GameObject projectile = Instantiate(projectilePrefab, player.transform.position, Quaternion.identity);
-        ProjectileScript projectileScript = projectile.GetComponent<ProjectileScript>();
-        StartCoroutine(projectileScript.Move(player.GetComponent<PlayerMovement>().lookPos.normalized));
+        projectileScript = projectile.GetComponent<ProjectileScript>();
+        StartCoroutine(projectileScript.Move(playerMovement.forwardDirection.normalized));
         playerMovement.StateCheck();
         animator.SetBool(isMudflingHash, false);
     }

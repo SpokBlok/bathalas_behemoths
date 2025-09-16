@@ -44,22 +44,33 @@ public class BaseBuildingScript : MonoBehaviour
     public void OnInteract(InputAction.CallbackContext context)
     {
         UpdateCanvas();
-
-        // Check for the key press only when inside the trigger
-        if (context.performed && isInTrigger && !isPanelUp)
+        if(!QuestState.Instance.pauseActive)
         {
-            isPanelUp = true;
-            upgradePanel.EnablePanel();
-            if (!isBuilt)
+            // Check for the key press only when inside the trigger
+            if (context.performed && isInTrigger && !isPanelUp)
             {
-                gameObject.GetComponent<MeshRenderer>().enabled = true;
-                isBuilt = true;
+                isPanelUp = true;
+                upgradePanel.EnablePanel();
+                QuestState.Instance.menuActive = true;
+                
+                UnityEngine.Cursor.visible = true;
+                UnityEngine.Cursor.lockState = CursorLockMode.None;
+
+                if (!isBuilt)
+                {
+                    gameObject.GetComponent<MeshRenderer>().enabled = true;
+                    isBuilt = true;
+                }
+            } 
+            else if (context.performed && isInTrigger && isPanelUp)
+            {
+                isPanelUp = false;
+                upgradePanel.DisablePanel();
+                QuestState.Instance.menuActive = false;
+
+                UnityEngine.Cursor.visible = false;
+                UnityEngine.Cursor.lockState = CursorLockMode.Locked;
             }
-        } 
-        else if (context.performed && isInTrigger && isPanelUp)
-        {
-            isPanelUp = false;
-            upgradePanel.DisablePanel();
         }
     }
 

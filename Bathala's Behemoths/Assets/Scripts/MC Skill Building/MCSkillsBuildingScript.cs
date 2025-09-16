@@ -55,16 +55,27 @@ public class MCSkillsBuildingScript : MonoBehaviour
     public void OnInteract(InputAction.CallbackContext context)
     {
         UpdateCanvas();
-        // Check for the key press only when inside the trigger
-        if (context.performed && isInTrigger && !isPanelUp)
+        if(!QuestState.Instance.pauseActive)
         {
-            isPanelUp = true;
-            upgradePanel.EnablePanel();
-        }
-        else if (context.performed && isInTrigger && isPanelUp)
-        {
-            isPanelUp = false;
-            upgradePanel.DisablePanel();
+            // Check for the key press only when inside the trigger
+            if (context.performed && isInTrigger && !isPanelUp)
+            {
+                isPanelUp = true;
+                upgradePanel.EnablePanel();
+                QuestState.Instance.menuActive = true;
+
+                UnityEngine.Cursor.visible = true;
+                UnityEngine.Cursor.lockState = CursorLockMode.None;
+            }
+            else if (context.performed && isInTrigger && isPanelUp)
+            {
+                isPanelUp = false;
+                upgradePanel.DisablePanel();
+                QuestState.Instance.menuActive = false;
+
+                UnityEngine.Cursor.visible = false;
+                UnityEngine.Cursor.lockState = CursorLockMode.Locked;
+            }
         }
     }
 

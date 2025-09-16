@@ -40,20 +40,9 @@ public class MCSkillHUD : MonoBehaviour
             PlayerSkills.Instance.skillMCBeingUnequipped = false;
         }
 
-        if(PlayerSkills.Instance.mainCharacterSkill != null && PlayerSkills.Instance.mainCharacterSkill.skillCode == 1)
+        if (PlayerSkills.Instance.skillMCBeingEquipped)
         {
-            SetHUDToBathBless();
-            PlayerStats.Instance.mcSkillSound = bbSound;
-        }
-        else if(PlayerSkills.Instance.mainCharacterSkill != null && PlayerSkills.Instance.mainCharacterSkill.skillCode == 2)
-        {
-            SetHUDToFirstAid();
-            PlayerStats.Instance.mcSkillSound = firstAidSound;
-        }
-        else if(PlayerSkills.Instance.mainCharacterSkill != null && PlayerSkills.Instance.mainCharacterSkill.skillCode == 3)
-        {
-            SetHUDToMusicalFlute();
-            PlayerStats.Instance.mcSkillSound = musicalFluteSound;
+            ChangeSkill(); // If skill is not in the process of being equipped, exit the method
         }
     }
 
@@ -63,6 +52,25 @@ public class MCSkillHUD : MonoBehaviour
         bathBless.gameObject.SetActive(false);
         firstAid.gameObject.SetActive(false);
         musicalFlute.gameObject.SetActive(false);
+    }
+
+    public void ChangeSkill()
+    {
+        if (PlayerSkills.Instance.mainCharacterSkill != null && PlayerSkills.Instance.mainCharacterSkill.skillCode == 1)
+        {
+            SetHUDToBathBless();
+            PlayerStats.Instance.mcSkillSound = bbSound;
+        }
+        else if (PlayerSkills.Instance.mainCharacterSkill != null && PlayerSkills.Instance.mainCharacterSkill.skillCode == 2)
+        {
+            SetHUDToFirstAid();
+            PlayerStats.Instance.mcSkillSound = firstAidSound;
+        }
+        else if (PlayerSkills.Instance.mainCharacterSkill != null && PlayerSkills.Instance.mainCharacterSkill.skillCode == 3)
+        {
+            SetHUDToMusicalFlute();
+            PlayerStats.Instance.mcSkillSound = musicalFluteSound;
+        }
     }
 
     public void SetHUDToBathBless()

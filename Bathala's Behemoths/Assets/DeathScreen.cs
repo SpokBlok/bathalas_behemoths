@@ -10,6 +10,9 @@ public class DeathScreen : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        UnityEngine.Cursor.visible = true;
+        UnityEngine.Cursor.lockState = CursorLockMode.None;
+        
         HUD = GameObject.FindGameObjectWithTag("HUD");
         originalHUDPos = HUD.gameObject.transform.position;
         HUD.gameObject.transform.position = new Vector3(10000, 10000, 10000);
@@ -33,6 +36,7 @@ public class DeathScreen : MonoBehaviour
         PlayerStats.Instance.currentHealth = PlayerStats.Instance.maxHealth;
         PlayerStats.Instance.speedMultiplier = 1;
         QuestState.Instance.pausedForDialogue = false;
+        QuestState.Instance.menuActive = false;
         HUD = GameObject.FindGameObjectWithTag("HUD");
         if(HUD != null)
         {
@@ -45,11 +49,13 @@ public class DeathScreen : MonoBehaviour
 
     public void PressQuitToDesktop()
     {
+        QuestState.Instance.menuActive = false;
         Application.Quit();
     }
 
     public void PressQuitToMenu()
     {
+        QuestState.Instance.menuActive = false;
         SceneManager.LoadScene(0);
     }
 }

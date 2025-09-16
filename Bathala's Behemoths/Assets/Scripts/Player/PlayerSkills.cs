@@ -36,12 +36,6 @@ public class PlayerSkills : MonoBehaviour
     public bool skillQBeingUnequipped = false;
     public bool skillEBeingUnequipped = false;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
     // Update is called once per frame
     void Update()
     {
@@ -143,25 +137,30 @@ public class PlayerSkills : MonoBehaviour
         if (charges < maxCharges)
         {
             isCharging = true;
+            skillMCCDStart = true;
         }
 
         if (isCharging)
         {
-            if (charges >= maxCharges)
-            {
-                isCharging = false;
-                chargeTimer = cooldown;
-                skillMCCDStart = false;
-            }
-            else if (chargeTimer <= 0)
+            if (chargeTimer <= 0)
             {
                 charges++;
-                chargeTimer = cooldown;
+
+                if (charges >= maxCharges)
+                {
+                    isCharging = false;
+                    chargeTimer = cooldown;
+                    skillMCCDStart = false;
+                }
+                else
+                {
+                    chargeTimer = cooldown;
+                    skillMCCDStart = true;
+                }
             }
             else
             {
                 chargeTimer -= Time.deltaTime;
-                skillMCCDStart = true;
             }
             // Debug.Log("skillMCCDStart value: " + skillMCCDStart);
         }
@@ -177,25 +176,31 @@ public class PlayerSkills : MonoBehaviour
         if (charges < maxCharges)
         {
             isCharging = true;
+            skillECDStart = true;
         }
 
         if (isCharging)
         {
-            if (charges >= maxCharges)
-            {
-                isCharging = false;
-                chargeTimer = cooldown;
-                skillECDStart = false;
-            }
-            else if (chargeTimer <= 0)
+            if (chargeTimer <= 0)
             {
                 charges++;
-                chargeTimer = cooldown;
+
+                if (charges >= maxCharges)
+                {
+                    isCharging = false;
+                    chargeTimer = cooldown;
+                    skillECDStart = false;
+                }
+                else
+                {
+                    chargeTimer = cooldown;
+                    skillECDStart = true;
+                }
+                
             }
             else
             {
                 chargeTimer -= Time.deltaTime;
-                skillECDStart = true;
             }
         }
     }
@@ -210,25 +215,30 @@ public class PlayerSkills : MonoBehaviour
         if (charges < maxCharges)
         {
             isCharging = true;
+            skillQCDStart = true;
         }
 
         if (isCharging)
         {
-            if (charges >= maxCharges)
-            {
-                isCharging = false;
-                chargeTimer = cooldown;
-                skillQCDStart = false;
-            }
-            else if (chargeTimer <= 0)
+            if (chargeTimer <= 0)
             {
                 charges++;
-                chargeTimer = cooldown;
+
+                if (charges >= maxCharges)
+                {
+                    isCharging = false;
+                    chargeTimer = cooldown;
+                    skillQCDStart = false;
+                }
+                else
+                {
+                    chargeTimer = cooldown;
+                    skillQCDStart = true;
+                }
             }
             else
             {
                 chargeTimer -= Time.deltaTime;
-                skillQCDStart = true;
             }
         }
     }

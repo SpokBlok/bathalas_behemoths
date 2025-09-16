@@ -37,6 +37,8 @@ public class QuestState : MonoBehaviour
     public bool markupoFound;
 
     public bool pausedForDialogue = false;
+    public bool menuActive = false;
+    public bool pauseActive = false;
 
     // Start is called before the first frame update
     void Start()

@@ -41,25 +41,9 @@ public class SkillEHUD : MonoBehaviour
             PlayerSkills.Instance.skillEBeingUnequipped = false;
         }
 
-        if(PlayerSkills.Instance.behemothSkillE != null && PlayerSkills.Instance.behemothSkillE.skillCode == 1)
+        if (PlayerSkills.Instance.skillEBeingEquipped)
         {
-            SetHUDToDash();
-            PlayerStats.Instance.skillESound = dashSound;
-        }
-        else if(PlayerSkills.Instance.behemothSkillE != null && PlayerSkills.Instance.behemothSkillE.skillCode == 2)
-        {
-            SetHUDToMudArmor();
-            PlayerStats.Instance.skillESound = mudArmorSound;
-        }
-        else if(PlayerSkills.Instance.behemothSkillE != null && PlayerSkills.Instance.behemothSkillE.skillCode == 3)
-        {
-            SetHUDToMudfling();
-            PlayerStats.Instance.skillESound = mudFlingSound;
-        }
-        else if(PlayerSkills.Instance.behemothSkillE != null && PlayerSkills.Instance.behemothSkillE.skillCode == 4)
-        {
-            SetHUDToTornadoPunch();
-            PlayerStats.Instance.skillESound = tornadoPunchSound;
+            ChangeSkill(); // If skill is not in the process of being equipped, exit the method
         }
     }
 
@@ -70,6 +54,30 @@ public class SkillEHUD : MonoBehaviour
         mudArmor.gameObject.SetActive(false);
         mudfling.gameObject.SetActive(false);
         tornadoPunch.gameObject.SetActive(false);
+    }
+
+    public void ChangeSkill()
+    {
+        if (PlayerSkills.Instance.behemothSkillE != null && PlayerSkills.Instance.behemothSkillE.skillCode == 1)
+        {
+            SetHUDToDash();
+            PlayerStats.Instance.skillESound = dashSound;
+        }
+        else if (PlayerSkills.Instance.behemothSkillE != null && PlayerSkills.Instance.behemothSkillE.skillCode == 2)
+        {
+            SetHUDToMudArmor();
+            PlayerStats.Instance.skillESound = mudArmorSound;
+        }
+        else if (PlayerSkills.Instance.behemothSkillE != null && PlayerSkills.Instance.behemothSkillE.skillCode == 3)
+        {
+            SetHUDToMudfling();
+            PlayerStats.Instance.skillESound = mudFlingSound;
+        }
+        else if (PlayerSkills.Instance.behemothSkillE != null && PlayerSkills.Instance.behemothSkillE.skillCode == 4)
+        {
+            SetHUDToTornadoPunch();
+            PlayerStats.Instance.skillESound = tornadoPunchSound;
+        }
     }
 
     public void SetHUDToDash()

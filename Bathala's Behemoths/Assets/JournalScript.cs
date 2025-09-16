@@ -188,17 +188,28 @@ public class JournalScript : MonoBehaviour
 
     public void OnInteract()
     {
+        if(!QuestState.Instance.pauseActive)
+        {
+            // Check for the key press only when inside the trigger
+            if (!isPanelUp && !QuestState.Instance.pausedForDialogue)
+            {
+                isPanelUp = true;
+                EnablePanel();
+                QuestState.Instance.menuActive = true;
+                
+                UnityEngine.Cursor.visible = true;
+                UnityEngine.Cursor.lockState = CursorLockMode.None;
 
-        // Check for the key press only when inside the trigger
-        if (!isPanelUp && !QuestState.Instance.pausedForDialogue)
-        {
-            isPanelUp = true;
-            EnablePanel();
-        }
-        else if (isPanelUp)
-        {
-            isPanelUp = false;
-            DisablePanel();
+            }
+            else if (isPanelUp)
+            {
+                isPanelUp = false;
+                DisablePanel();
+                QuestState.Instance.menuActive = false;
+
+                UnityEngine.Cursor.visible = false;
+                UnityEngine.Cursor.lockState = CursorLockMode.Locked;
+            }
         }
     }
 

@@ -19,7 +19,7 @@ public class SkillECD : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(cdTime == 0)
+        if(cdTime != PlayerSkills.Instance.behemothSkillEChargeTimer)
         {
             cdTime = PlayerSkills.Instance.behemothSkillEChargeTimer;
         }
@@ -50,7 +50,13 @@ public class SkillECD : MonoBehaviour
 
     IEnumerator CoolDown()
     {
-        Debug.Log("Skill E Cooling Down");
+        // Debug.Log("Skill E Cooling Down");
+
+        if (!PlayerSkills.Instance.skillECDStart)
+        {
+            coolingDown = null;
+            yield break; // Exit the coroutine if skillECDStart is false
+        }
 
         float duration = cdTime;
         float elapsedTime = 0f;

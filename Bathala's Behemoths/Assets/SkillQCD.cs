@@ -19,7 +19,7 @@ public class SkillQCD : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(cdTime == 0)
+        if(cdTime != PlayerSkills.Instance.behemothSkillQChargeTimer)
         {
             cdTime = PlayerSkills.Instance.behemothSkillQChargeTimer;
         }
@@ -50,7 +50,7 @@ public class SkillQCD : MonoBehaviour
 
     IEnumerator CoolDown()
     {
-        Debug.Log("Skill Q Cooling Down");
+        // Debug.Log("Skill Q Cooling Down");
 
         float duration = cdTime;
         float elapsedTime = 0f;

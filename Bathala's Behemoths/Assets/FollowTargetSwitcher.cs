@@ -15,7 +15,11 @@ public class FollowTargetSwitcher : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        virtualCam.Follow = GameObject.Find("SteveFollowTarget").transform;
+        if(PlayerStats.Instance.outdoorsScene && PlayerStats.Instance.introDone == true)
+            virtualCam.Follow = GameObject.Find("MannyFollowTarget").transform;
+        else
+            virtualCam.Follow = GameObject.Find("SteveFollowTarget").transform;
+
         SteveTarget = FindAnyObjectByType<SteveFollowTarget>(FindObjectsInactive.Include).transform;
         MountedModelTarget = FindAnyObjectByType<MannyFollowTarget>(FindObjectsInactive.Include).transform;
         currentFollowTarget = SteveTarget;
@@ -32,9 +36,9 @@ public class FollowTargetSwitcher : MonoBehaviour
             virtualCam.Follow = newFollowTarget;
 
             // Reassigns current and new followTargets so that next switch is correct
-            // followHolder = currentFollowTarget;
-            // currentFollowTarget = newFollowTarget;
-            // newFollowTarget = followHolder;
+            followHolder = currentFollowTarget;
+            currentFollowTarget = newFollowTarget;
+            newFollowTarget = followHolder;
         }
     }
 

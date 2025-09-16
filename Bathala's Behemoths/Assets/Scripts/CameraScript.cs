@@ -8,12 +8,14 @@ public class CameraScript : MonoBehaviour
     public float smoothTime = 0.3f;
     public Vector3 offset;
     private Vector3 velocity = Vector3.zero;
+    private Vector3 targetPosition;
+
     // Start is called before the first frame update
     void Start()
     {
         if (target != null)
         {
-            Vector3 targetPosition = target.position + offset;
+            targetPosition = target.position + offset;
 
             transform.position = Vector3.SmoothDamp(transform.position, targetPosition, ref velocity, 0f);
         }
@@ -24,7 +26,7 @@ public class CameraScript : MonoBehaviour
     {
         if (target != null)
         {
-            Vector3 targetPosition = target.position + offset;
+            targetPosition = target.position + offset;
 
             transform.position = Vector3.SmoothDamp(transform.position, targetPosition, ref velocity, 0f);
         }

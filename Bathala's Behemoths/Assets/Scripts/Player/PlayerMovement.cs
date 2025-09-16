@@ -29,6 +29,7 @@ public class PlayerMovement : MonoBehaviour
     private Vector3 rotationTarget;
     public float minDistanceToLook = 0.1f;
     public Vector3 lookPos;
+    public Vector3 forwardDirection;
 
     public Animator animator;
     public Coroutine enterFightingStance;
@@ -88,11 +89,38 @@ public class PlayerMovement : MonoBehaviour
     public JournalScript journal;
     public AudioClip basicAttackAudio;
 
+    // Variable caching for performance
+    private Vector3 position;
+    private Terrain myTerrain;
+    private float terrainHeight;
+    private Vector3 moveDirection;
+    private Vector3 forward;
+    private Vector3 right;
+    private float mouseX;
+    private float mouseY;
+    private Vector3 forwardRelativeInput;
+    private Vector3 rightRelativeInput;
+    private Vector3 cameraRelativeMove;
+    private float currentHealth;
+    private float maxHealth;
+    private float healAmount;
+
+
+    private Camera mainCamera;
+
     private void Start()
     {
-        UnityEngine.Cursor.visible = false;
-        UnityEngine.Cursor.lockState = CursorLockMode.Locked;
-        
+        if (!QuestState.Instance.menuActive)
+        {
+            UnityEngine.Cursor.visible = false;
+            UnityEngine.Cursor.lockState = CursorLockMode.Locked;
+        }
+        else
+        {
+            UnityEngine.Cursor.visible = true;
+            UnityEngine.Cursor.lockState = CursorLockMode.None;
+        }
+
         yaw = transform.eulerAngles.y;
         pitch = 0f;
 
@@ -125,36 +153,38 @@ public class PlayerMovement : MonoBehaviour
         //Starting alignment with terrain
         TerrainGravity();
 
+        mainCamera = Camera.main;
+
 
         basicAttackHitbox = transform.Find("Basic Attack/Basic Attack Hitbox").GetComponent<BoxCollider>();
 
-        if(PlayerStats.Instance.tammyScene && !stats.outdoorsScene)
+        if (stats.tammyScene && !stats.outdoorsScene)
         {
             gameObject.transform.position = new Vector3(463.2f, 175.2f, 100f);
         }
-        else if(PlayerStats.Instance.markyScene && !stats.outdoorsScene)
+        else if (stats.markyScene && !stats.outdoorsScene)
         {
             gameObject.transform.position = new Vector3(240f, 20f, 100f);
         }
-        else if(stats.tammyScene && stats.outdoorsScene)
+        else if (stats.tammyScene && stats.outdoorsScene)
         {
             gameObject.transform.position = new Vector3(676f, 62.5f, 1336.6f);
-            PlayerStats.Instance.tammyScene = false;
+            stats.tammyScene = false;
         }
-        else if(stats.markyScene && stats.outdoorsScene)
+        else if (stats.markyScene && stats.outdoorsScene)
         {
             gameObject.transform.position = new Vector3(997f, 70.2f, 276.5f);
-            PlayerStats.Instance.markyScene = false;
+            stats.markyScene = false;
         }
         else if (stats.introDone && stats.outdoorsScene)
         {
             gameObject.transform.position = new Vector3(632.2f, 59.5f, 285.138f);
         }
-        else if(stats.outdoorsScene)
+        else if (stats.outdoorsScene)
         {
             gameObject.transform.position = new Vector3(876.24f, 79.24f, 72.68f);
         }
-        else if(stats.ruinsScene)
+        else if (stats.ruinsScene)
         {
             ui.gameObject.SetActive(true);
         }
@@ -185,6 +215,7 @@ public class PlayerMovement : MonoBehaviour
     public void OnMouseLook(InputAction.CallbackContext context)
     {
         mouseLook = context.ReadValue<Vector2>();
+        forwardDirection = mainCamera.transform.forward;
     }
 
     // Detects any Enemy entering the sphere collider and if so, activates combat layer to blend with movement layer
@@ -308,11 +339,11 @@ public class PlayerMovement : MonoBehaviour
     }
 
     public void TerrainGravity(){
-        Vector3 position = charControl.transform.position;
+        position = charControl.transform.position;
 
         // Get the terrain height at the character's current position (X, Z)
-        Terrain myTerrain = GameObject.Find("Terrain").GetComponent<Terrain>();
-        float terrainHeight = myTerrain.SampleHeight(position);
+        myTerrain = GameObject.Find("Terrain").GetComponent<Terrain>();
+        terrainHeight = myTerrain.SampleHeight(position);
 
         // Set the character's Y position to match the terrain height + 1, more if berserk
         position.y = terrainHeight + 2.1f;
@@ -322,8 +353,8 @@ public class PlayerMovement : MonoBehaviour
 
     public void UpdateRotationTarget()
     {
-        float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity * Time.deltaTime;
-        float mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity * Time.deltaTime;
+        mouseX = Input.GetAxis("Mouse X") * mouseSensitivity * Time.deltaTime;
+        mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity * Time.deltaTime;
 
         yaw += mouseX;
         pitch -= mouseY;
@@ -354,20 +385,20 @@ public class PlayerMovement : MonoBehaviour
         // New movement code
 
         // Get Main Camera's normalized directional vectors
-        Vector3 forward = Camera.main.transform.forward;
-        Vector3 right = Camera.main.transform.right;
+        forward = mainCamera.transform.forward;
+        right = mainCamera.transform.right;
         forward.y = 0;
         right.y = 0;
         forward = forward.normalized;
         right = right.normalized;
 
         // Create cam-direction-relative input vectors
-        Vector3 forwardRelativeInput = move.y * forward;
-        Vector3 rightRelativeInput = move.x * right;
+        forwardRelativeInput = move.y * forward;
+        rightRelativeInput = move.x * right;
 
         // Apply camera relative movement
-        Vector3 cameraRelativeMove = forwardRelativeInput + rightRelativeInput;
-        Vector3 moveDirection = cameraRelativeMove.normalized * stats.speed;
+        cameraRelativeMove = forwardRelativeInput + rightRelativeInput;
+        moveDirection = cameraRelativeMove.normalized * stats.speed;
         lookPos = moveDirection;
 
         // Debug.Log(moveDirection);
@@ -390,7 +421,7 @@ public class PlayerMovement : MonoBehaviour
 
     private IEnumerator PlayBAAudio()
     {
-        AudioSource.PlayClipAtPoint(basicAttackAudio, Camera.main.transform.position + Camera.main.transform.forward * 2f, 1f);
+        AudioSource.PlayClipAtPoint(basicAttackAudio, mainCamera.transform.position + mainCamera.transform.forward * 2f, 1f);
 
         yield return null;
     }
@@ -426,7 +457,7 @@ public class PlayerMovement : MonoBehaviour
         {
             if (collider.TryGetComponent<EnemyMob>(out var mob))
             {
-                mob.TakeDamage(PlayerStats.Instance.basicAttackDamage / 2);
+                mob.TakeDamage(stats.basicAttackDamage / 2);
             }
         }
     }
@@ -451,10 +482,10 @@ public class PlayerMovement : MonoBehaviour
     {
         percent *= 0.01f;
 
-        float currentHealth = stats.currentHealth;
-        float maxHealth = stats.maxHealth;
+        currentHealth = stats.currentHealth;
+        maxHealth = stats.maxHealth;
 
-        float healAmount = maxHealth * percent;
+        healAmount = maxHealth * percent;
         //Sets the current health as the smaller number between the current health + healed amount
         //and the max possible health
         stats.currentHealth = Mathf.Min(currentHealth + healAmount, maxHealth);
@@ -476,7 +507,7 @@ public class PlayerMovement : MonoBehaviour
             takingDamage = StartCoroutine(SwitchToDamagedTex());
         }
 
-        if (PlayerStats.Instance.hasMudArmor)
+        if (stats.hasMudArmor)
         {
             stats.currentHealth -= damage / 1.5f;
         } 
@@ -490,13 +521,15 @@ public class PlayerMovement : MonoBehaviour
         {
             Debug.Log("Dead");
             //trigger death cutscene
-            PlayerStats.Instance.dead = true;
+            stats.dead = true;
 
             // // Go to DeathScreen
             // ui.gameObject.SetActive(false);
-            PlayerStats.Instance.tammyScene = false;
-            PlayerStats.Instance.markyScene = false;
+            stats.tammyScene = false;
+            stats.markyScene = false;
             QuestState.Instance.pausedForDialogue = true;
+
+            QuestState.Instance.menuActive = true;
             SceneManager.LoadScene("DeathScreen");
         }
     }

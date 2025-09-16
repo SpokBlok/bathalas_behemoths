@@ -55,18 +55,28 @@ public class QuestBoardScript : MonoBehaviour
     public void OnInteract(InputAction.CallbackContext context)
     {
         UpdateCanvas();
-        
-        // Check for the key press only when inside the trigger
-        if (context.performed && isInTrigger && !isPanelUp && 
-            !QuestState.Instance.pausedForDialogue)
+        if(!QuestState.Instance.pauseActive)
         {
-            isPanelUp = true;
-            questUIPanel.EnablePanel();
-        }
-        else if (context.performed && isInTrigger && isPanelUp)
-        {
-            isPanelUp = false;
-            questUIPanel.DisablePanel();
+            // Check for the key press only when inside the trigger
+            if (context.performed && isInTrigger && !isPanelUp && 
+                !QuestState.Instance.pausedForDialogue)
+            {
+                isPanelUp = true;
+                questUIPanel.EnablePanel();
+                QuestState.Instance.menuActive = true;
+
+                UnityEngine.Cursor.visible = true;
+                UnityEngine.Cursor.lockState = CursorLockMode.None;
+            }
+            else if (context.performed && isInTrigger && isPanelUp)
+            {
+                isPanelUp = false;
+                questUIPanel.DisablePanel();
+                QuestState.Instance.menuActive = false;
+
+                UnityEngine.Cursor.visible = false;
+                UnityEngine.Cursor.lockState = CursorLockMode.Locked;
+            }
         }
     }
 

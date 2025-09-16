@@ -12,14 +12,14 @@ public class MCSkillCD : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        img.fillAmount = 0.0f;
+        img.fillAmount = 1.0f;
         cdTime = PlayerSkills.Instance.mainCharacterSkillChargeTimer;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(cdTime == 0)
+        if(cdTime != PlayerSkills.Instance.mainCharacterSkillChargeTimer)
         {
             // Debug.Log("cdTime setup");
             cdTime = PlayerSkills.Instance.mainCharacterSkillChargeTimer;
@@ -27,7 +27,7 @@ public class MCSkillCD : MonoBehaviour
 
         if(PlayerSkills.Instance.skillMCBeingEquipped)
         {
-            // Debug.Log("cdTime change to new skill");
+            // Debug.Log("MC skill change to new skill");
             img.fillAmount = 1.0f;
             cdTime = PlayerSkills.Instance.mainCharacterSkillChargeTimer;
             PlayerSkills.Instance.skillMCCDStart = false;
@@ -53,7 +53,7 @@ public class MCSkillCD : MonoBehaviour
 
     IEnumerator CoolDown()
     {
-        Debug.Log("MC Skill Cooling Down");
+        // Debug.Log("MC Skill Cooling Down");
 
         float duration = cdTime;
         float elapsedTime = 0f;

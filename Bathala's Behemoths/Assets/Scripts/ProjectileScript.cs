@@ -7,6 +7,13 @@ public class ProjectileScript : MonoBehaviour
     public CharacterController charControl;
     public AudioClip ballHit;
     private Tambanokano tammy;
+    private EnemyMob enemy;
+
+    // Cached variables for referencing
+    private Vector3 position;
+    private Terrain myTerrain;
+    private float terrainHeight;
+
 
     // Start is called before the first frame update
     void Start()
@@ -44,10 +51,10 @@ public class ProjectileScript : MonoBehaviour
 
     public void TerrainGravity()
     {
-        Vector3 position = charControl.transform.position;
-        Terrain myTerrain = GameObject.Find("Terrain").GetComponent<Terrain>();
+        position = charControl.transform.position;
+        myTerrain = GameObject.Find("Terrain").GetComponent<Terrain>();
         // Get the terrain height at the character's current position (X, Z)
-        float terrainHeight = myTerrain.SampleHeight(position);
+        terrainHeight = myTerrain.SampleHeight(position);
 
         // Set the character's Y position to match the terrain height + 1, more if berserk
         position.y = terrainHeight + 1.2f;
@@ -59,7 +66,7 @@ public class ProjectileScript : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Enemy") || other.gameObject.CompareTag("Tambanokano") || other.gameObject.CompareTag("Tambanokano"))
         {
-            EnemyMob enemy = other.GetComponent<EnemyMob>();
+            enemy = other.GetComponent<EnemyMob>();
             if(PlayerStats.Instance.tammyScene)
             {
                 tammy = GameObject.FindWithTag("Tambanokano").GetComponent<Tambanokano>();

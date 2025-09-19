@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using TMPro;
+using UnityEngine.Playables;
 
 public class IntroScript : MonoBehaviour
 {
@@ -12,6 +13,7 @@ public class IntroScript : MonoBehaviour
     public GameObject instructions;
     
     private bool isInTrigger;
+    [SerializeField] public PlayableDirector _cutsceneTimeline;
 
     // Start is called before the first frame update
     void Start()
@@ -36,10 +38,14 @@ public class IntroScript : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             isInTrigger = true;
-            if(PlayerStats.Instance.introDone == false)
+            if (PlayerStats.Instance.introDone == false)
             {
+                _cutsceneTimeline.Play();
                 dialogue.SetActive(true);
                 instructions.SetActive(false);
+                
+                //SceneManager.LoadScene("OutdoorsSceneFinalCutscene");
+                
             }
         }
     }

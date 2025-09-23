@@ -24,7 +24,9 @@ public class PlayerStats : MonoBehaviour
     public float maxHealth;
 
     public bool dead;
+    public bool hasMandayanganStatUp;
     public bool hasMudArmor;
+    public bool hasTambanokanoStatUp;
 
     public bool introDone;
     public bool tutorialDone;
@@ -114,7 +116,9 @@ public class PlayerStats : MonoBehaviour
         maxHealth = 50;
         currentHealth = maxHealth;
 
+        hasMandayanganStatUp = false;        
         hasMudArmor = false;
+        hasTambanokanoStatUp = false;
 
         kapreCigars = 0;
 }

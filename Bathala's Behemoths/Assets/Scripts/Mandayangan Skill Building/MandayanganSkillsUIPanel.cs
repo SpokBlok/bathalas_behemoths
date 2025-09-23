@@ -188,6 +188,7 @@ public class MandayanganSkillsUIPanel : MonoBehaviour
             TextMeshProUGUI text = EventSystem.current.currentSelectedGameObject.GetComponentInChildren<TextMeshProUGUI>();
             text.text = "Purchased";
             playerStats.basicAttackDamage *= 1.25f;
+            playerStats.hasMandayanganStatUp = true;
         }
     }
 

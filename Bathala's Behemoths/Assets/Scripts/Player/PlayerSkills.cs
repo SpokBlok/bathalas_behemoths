@@ -307,7 +307,7 @@ public class PlayerSkills : MonoBehaviour
             (behemothSkillQCharges > 0
             || behemothSkillQ.oneTimeUseAvailable))
         {
-            AudioSource.PlayClipAtPoint(PlayerStats.Instance.skillQSound, Camera.main.transform.position + Camera.main.transform.forward * 2f, 1f);
+            //AudioSource.PlayClipAtPoint(PlayerStats.Instance.skillQSound, Camera.main.transform.position + Camera.main.transform.forward * 2f, 1f);
         
             behemothSkillQCharges--;
             behemothSkillQ.oneTimeUseAvailable = false;
@@ -323,7 +323,7 @@ public class PlayerSkills : MonoBehaviour
             (behemothSkillECharges > 0
             || behemothSkillE.oneTimeUseAvailable))
         {
-            AudioSource.PlayClipAtPoint(PlayerStats.Instance.skillESound, Camera.main.transform.position + Camera.main.transform.forward * 2f, 1f);
+            //AudioSource.PlayClipAtPoint(PlayerStats.Instance.skillESound, Camera.main.transform.position + Camera.main.transform.forward * 2f, 1f);
         
             behemothSkillECharges--;
             behemothSkillE.oneTimeUseAvailable = false;

@@ -74,9 +74,9 @@ public class PlayerMovement : MonoBehaviour
     private PlayerStats stats;
 
     //For basic attack logic
-    private BoxCollider basicAttackHitbox;
-    private Vector3 worldCenter;
-    private Vector3 worldSize;
+    public BoxCollider basicAttackHitbox;
+    public Vector3 worldCenter;
+    public Vector3 worldSize;
     public Coroutine basicAttackCoroutine;
     public InputActionReference mouseAction;
 

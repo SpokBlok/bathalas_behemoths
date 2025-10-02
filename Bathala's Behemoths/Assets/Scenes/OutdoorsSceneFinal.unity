@@ -13263,6 +13263,7 @@ Transform:
   m_Children:
   - {fileID: 1850913659}
   - {fileID: 1135062458}
+  - {fileID: 846033131}
   m_Father: {fileID: 1298946644}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &245758173
@@ -45970,6 +45971,54 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 840308040}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &846033130
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 846033131}
+  - component: {fileID: 846033132}
+  m_Layer: 0
+  m_Name: Protect
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &846033131
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 846033130}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 245568393}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &846033132
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 846033130}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae8f233d5435bf74fa09e29decdc0095, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cooldown: 0
+  maxCharges: 0
+  oneTimeUseAvailable: 0
+  skillCode: 0
 --- !u!1 &846544774 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 80680072311424613, guid: a598e80007fac304c9bed9c008bc76f9,
@@ -82289,6 +82338,7 @@ MonoBehaviour:
   hasMandayanganStatUp: 0
   hasMudArmor: 0
   hasTambanokanoStatUp: 0
+  hasProtect: 0
   introDone: 1
   tutorialDone: 0
   ruinsScene: 0

@@ -27,6 +27,7 @@ public class PlayerStats : MonoBehaviour
     public bool hasMandayanganStatUp;
     public bool hasMudArmor;
     public bool hasTambanokanoStatUp;
+    public bool hasProtect;
 
     public bool introDone;
     public bool tutorialDone;

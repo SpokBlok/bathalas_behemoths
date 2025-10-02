@@ -510,7 +510,11 @@ public class PlayerMovement : MonoBehaviour
         if (stats.hasMudArmor)
         {
             stats.currentHealth -= damage / 1.5f;
-        } 
+        }
+        else if (stats.hasProtect)
+        {
+            stats.currentHealth -= damage * 0.5f;
+        }
         else
         {
             stats.currentHealth -= damage;

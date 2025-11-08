@@ -90,7 +90,10 @@ public class MandayanganSkillsUIPanel : MonoBehaviour
         hud.gameObject.transform.position = new Vector3(10000, 10000, 10000);
         EventManager.Instance.InvokeOnEnteringUpgradeScreen();
 
-        if(PlayerStats.Instance.clue1)
+        UnityEngine.Cursor.visible = true;
+        UnityEngine.Cursor.lockState = CursorLockMode.None;
+
+        if (PlayerStats.Instance.clue1)
         {
             purchaseMudfling.SetActive(false);
             equip1Mudfling.SetActive(true);
@@ -103,6 +106,10 @@ public class MandayanganSkillsUIPanel : MonoBehaviour
         gameObject.SetActive(false);
         QuestState.Instance.pausedForDialogue = false;
         hud = GameObject.FindGameObjectWithTag("HUD");
+
+        UnityEngine.Cursor.visible = false;
+        UnityEngine.Cursor.lockState = CursorLockMode.Locked;
+
         if(obtainedOGPos)
         {
             hud.gameObject.transform.position = originalHUDPos;

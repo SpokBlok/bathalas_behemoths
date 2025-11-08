@@ -84,6 +84,10 @@ public class NotifDialogue : MonoBehaviour
             PlayerStats.Instance.tammyFound = false;
             PlayerStats.Instance.markyFound = false;
             index = 0;
+
+                
+            UnityEngine.Cursor.visible = false;
+            UnityEngine.Cursor.lockState = CursorLockMode.Locked;
             
             Debug.Log("inside end state");
         }

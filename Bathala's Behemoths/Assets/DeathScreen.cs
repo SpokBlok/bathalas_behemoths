@@ -12,7 +12,7 @@ public class DeathScreen : MonoBehaviour
     {
         UnityEngine.Cursor.visible = true;
         UnityEngine.Cursor.lockState = CursorLockMode.None;
-        
+
         HUD = GameObject.FindGameObjectWithTag("HUD");
         originalHUDPos = HUD.gameObject.transform.position;
         HUD.gameObject.transform.position = new Vector3(10000, 10000, 10000);
@@ -21,9 +21,14 @@ public class DeathScreen : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(HUD == null)
+        if (HUD == null)
         {
             HUD = GameObject.FindGameObjectWithTag("HUD");
+        }
+        if(!UnityEngine.Cursor.visible)
+        {
+            UnityEngine.Cursor.visible = true;
+            UnityEngine.Cursor.lockState = CursorLockMode.None;
         }
     }
 

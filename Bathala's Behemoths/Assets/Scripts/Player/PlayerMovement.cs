@@ -91,7 +91,7 @@ public class PlayerMovement : MonoBehaviour
 
     // Variable caching for performance
     private Vector3 position;
-    private Terrain myTerrain;
+    [SerializeField]private Terrain myTerrain;
     private float terrainHeight;
     private Vector3 moveDirection;
     private Vector3 forward;
@@ -160,11 +160,11 @@ public class PlayerMovement : MonoBehaviour
 
         if (stats.tammyScene && !stats.outdoorsScene)
         {
-            gameObject.transform.position = new Vector3(463.2f, 175.2f, 100f);
+            gameObject.transform.position = new Vector3(999.1f, 187.2f, 390f);
         }
         else if (stats.markyScene && !stats.outdoorsScene)
         {
-            gameObject.transform.position = new Vector3(240f, 20f, 100f);
+            gameObject.transform.position = new Vector3(978.8f, 60f, 263.1f);
         }
         else if (stats.tammyScene && stats.outdoorsScene)
         {

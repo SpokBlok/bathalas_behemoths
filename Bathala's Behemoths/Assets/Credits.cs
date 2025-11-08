@@ -11,7 +11,10 @@ public class Credits : MonoBehaviour
         Destroy (GameObject.Find("UI Canvas"));
         Destroy (GameObject.Find("PlayerStats"));
         Destroy (GameObject.Find("QuestState"));
-        Destroy (GameObject.Find("PlayerSkills"));
+        Destroy(GameObject.Find("PlayerSkills"));
+        
+        UnityEngine.Cursor.visible = true;
+        UnityEngine.Cursor.lockState = CursorLockMode.None;
         
         StartCoroutine(StartPrologue());
     }
@@ -24,6 +27,9 @@ public class Credits : MonoBehaviour
         Destroy (GameObject.Find("QuestState"));
         Destroy (GameObject.Find("PlayerSkills"));
 
+        UnityEngine.Cursor.visible = true;
+        UnityEngine.Cursor.lockState = CursorLockMode.None;
+        
         StartCoroutine(StartPrologue());
     }
 

@@ -78,6 +78,9 @@ public class MCSkillsUIPanel : MonoBehaviour
         hud.gameObject.transform.position = new Vector3(10000, 10000, 10000);
         EventManager.Instance.InvokeOnEnteringUpgradeScreen();
 
+        UnityEngine.Cursor.visible = true;
+        UnityEngine.Cursor.lockState = CursorLockMode.None;
+
         if(PlayerStats.Instance.clue6)
         {
             purchaseFlute.SetActive(false);
@@ -91,7 +94,11 @@ public class MCSkillsUIPanel : MonoBehaviour
         gameObject.SetActive(false);
         QuestState.Instance.pausedForDialogue = false;
         hud = GameObject.FindGameObjectWithTag("HUD");
-        if(obtainedOGPos)
+
+        UnityEngine.Cursor.visible = false;
+        UnityEngine.Cursor.lockState = CursorLockMode.Locked;
+
+        if (obtainedOGPos)
         {
             hud.gameObject.transform.position = originalHUDPos;
         }

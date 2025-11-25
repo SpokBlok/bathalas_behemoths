@@ -309,7 +309,7 @@ public class Tambanokano : EnemyMob
         tamRend.material = eyesOpenMat;
 
         GameObject lightning = Instantiate(arenaWideLightingPrefab, 
-            new Vector3(Random.Range(380f, 420f), 300f, Random.Range(260f, 360f)),
+            new Vector3(Random.Range(500f, 800f), 300f, Random.Range(400f, 800f)),
             Quaternion.Euler(0f, Random.Range(0f, 90f), 0f));
         lightning.transform.parent = transform;
         yield return new WaitForSeconds(6f);
@@ -334,7 +334,7 @@ public class Tambanokano : EnemyMob
         StartCoroutine(ArenaWideLightning());
 
         yield return new WaitForSeconds(9);
-        GameObject lightning = Instantiate(massiveAOEPrefab, new Vector3(440f, 160f, 240f), Quaternion.identity);
+        GameObject lightning = Instantiate(massiveAOEPrefab, new Vector3(1000f, 160f, 700f), Quaternion.identity);
         lightning.transform.parent = transform;
 
         yield return new WaitForSeconds(14);

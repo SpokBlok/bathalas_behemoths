@@ -252,10 +252,10 @@ MonoBehaviour:
     m_Value: {x: 0, y: 0}
   bottomAltitude:
     m_OverrideState: 1
-    m_Value: 1200
+    m_Value: 0.01
   altitudeRange:
     m_OverrideState: 1
-    m_Value: 2000
+    m_Value: 1500
   fadeInMode:
     m_OverrideState: 1
     m_Value: 0
@@ -284,7 +284,7 @@ MonoBehaviour:
     m_Value: 0
   m_CloudPreset:
     m_OverrideState: 1
-    m_Value: 1
+    m_Value: 4
   cumulusMap:
     m_OverrideState: 1
     m_Value: {fileID: 0}
@@ -429,16 +429,16 @@ MonoBehaviour:
     m_Value: 0.5
   densityMultiplier:
     m_OverrideState: 1
-    m_Value: 0.4
+    m_Value: 0.5
   shapeFactor:
     m_OverrideState: 1
-    m_Value: 0.875
+    m_Value: 0.805
   shapeScale:
     m_OverrideState: 1
     m_Value: 5
   shapeOffset:
     m_OverrideState: 1
-    m_Value: {x: 0, y: 0, z: 0}
+    m_Value: {x: -0.89, y: 0, z: 0.2}
   erosionFactor:
     m_OverrideState: 1
     m_Value: 0.9

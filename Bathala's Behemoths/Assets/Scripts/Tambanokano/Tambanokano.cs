@@ -238,7 +238,12 @@ public class Tambanokano : EnemyMob
         {
             //trigger winning cutscene
             isAlive = false;
-            
+            QuestState.Instance.tambanokanoDefeated = true;
+            if(QuestState.Instance.tambanokanoDefeated && QuestState.Instance.markupoDefeated)
+            {
+                PlayerStats.Instance.apolakiFound = true;
+            }
+
             if(isAlive == false)
             {
                 StopAllCoroutines();

@@ -155,6 +155,11 @@ public class MarkupoScript : EnemyMob
         {
             //trigger winning cutscene
             isAlive = false;
+            QuestState.Instance.markupoDefeated = true;
+            if(QuestState.Instance.tambanokanoDefeated && QuestState.Instance.markupoDefeated)
+            {
+                PlayerStats.Instance.apolakiFound = true;
+            }
             
             if(isAlive == false)
             {

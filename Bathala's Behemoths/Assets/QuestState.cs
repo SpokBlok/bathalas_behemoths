@@ -35,6 +35,8 @@ public class QuestState : MonoBehaviour
     // Boss Scene Triggers
     public bool tambanokanoFound;
     public bool markupoFound;
+    public bool tambanokanoDefeated;
+    public bool markupoDefeated;
 
     public bool pausedForDialogue = false;
     public bool menuActive = false;

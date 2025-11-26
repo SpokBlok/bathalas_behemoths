@@ -166,6 +166,10 @@ public class PlayerMovement : MonoBehaviour
         {
             gameObject.transform.position = new Vector3(978.8f, 60f, 263.1f);
         }
+        else if (stats.apolakiScene && !stats.outdoorsScene)
+        {
+            gameObject.transform.position = new Vector3(999.1f, 187.2f, 390f);
+        }
         else if (stats.tammyScene && stats.outdoorsScene)
         {
             gameObject.transform.position = new Vector3(676f, 62.5f, 1336.6f);
@@ -527,6 +531,7 @@ public class PlayerMovement : MonoBehaviour
             // ui.gameObject.SetActive(false);
             stats.tammyScene = false;
             stats.markyScene = false;
+            stats.apolakiScene = false;
             QuestState.Instance.pausedForDialogue = true;
 
             QuestState.Instance.menuActive = true;

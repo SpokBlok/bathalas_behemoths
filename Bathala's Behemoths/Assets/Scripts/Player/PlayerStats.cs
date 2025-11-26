@@ -4,16 +4,6 @@ using UnityEngine;
 
 public class PlayerStats : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-    }
-
     public static PlayerStats Instance { get; private set; }
 
     public int initSpeed;
@@ -49,8 +39,10 @@ public class PlayerStats : MonoBehaviour
 
     public bool tammyFound;
     public bool markyFound;
+    public bool apolakiFound;
     public bool tammyScene;
     public bool markyScene;
+    public bool apolakiScene;
     public bool ruinsVisitedOnce;
 
     public AudioClip skillESound;

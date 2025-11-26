@@ -255,7 +255,7 @@ MonoBehaviour:
     m_Value: 0.01
   altitudeRange:
     m_OverrideState: 1
-    m_Value: 1500
+    m_Value: 2100
   fadeInMode:
     m_OverrideState: 1
     m_Value: 0

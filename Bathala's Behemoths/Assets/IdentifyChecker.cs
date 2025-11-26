@@ -6,6 +6,7 @@ public class IdentifyChecker : MonoBehaviour
 {
     public GameObject tammyNotif;
     public GameObject markyNotif;
+    public GameObject apolakiNotif;
     // Start is called before the first frame update
     void Start()
     {
@@ -22,6 +23,10 @@ public class IdentifyChecker : MonoBehaviour
         else if(PlayerStats.Instance.markyFound)
         {
             markyNotif.SetActive(true);
+        }
+        else if(PlayerStats.Instance.apolakiFound)
+        {
+            apolakiNotif.SetActive(true);
         }
     }
 }

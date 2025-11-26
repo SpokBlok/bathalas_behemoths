@@ -83,6 +83,7 @@ public class NotifDialogue : MonoBehaviour
 
             PlayerStats.Instance.tammyFound = false;
             PlayerStats.Instance.markyFound = false;
+            PlayerStats.Instance.apolakiFound = false;
             index = 0;
 
                 

@@ -54,7 +54,7 @@ public class Tambanokano : EnemyMob
         tamRend.material = eyesClosedMat;
         tammy = GameObject.FindWithTag("TammyModel");
 
-        HUD = GameObject.FindWithTag("HUD");
+        HUD = GameObject.FindWithTag("HUD"); // Gets cut off if the tammyModel from above is not assigned (like a break())
         if (HUD != null)
         {
             // Search for tammyHPBarBG inside the HUD parent
@@ -242,6 +242,7 @@ public class Tambanokano : EnemyMob
             if(QuestState.Instance.tambanokanoDefeated && QuestState.Instance.markupoDefeated)
             {
                 PlayerStats.Instance.apolakiFound = true;
+                PlayerStats.Instance.apolakiUnlocked = true;
             }
 
             if(isAlive == false)

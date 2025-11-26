@@ -159,6 +159,7 @@ public class MarkupoScript : EnemyMob
             if(QuestState.Instance.tambanokanoDefeated && QuestState.Instance.markupoDefeated)
             {
                 PlayerStats.Instance.apolakiFound = true;
+                PlayerStats.Instance.apolakiUnlocked = true;
             }
             
             if(isAlive == false)

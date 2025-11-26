@@ -10,15 +10,10 @@ public class ToApolakiVisibility : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(PlayerStats.Instance.apolakiFound)
+        if(PlayerStats.Instance.apolakiUnlocked)
         {
             translabel.SetActive(true);
             transition.SetActive(true);
-        }
-        else
-        {
-            translabel.SetActive(false);
-            transition.SetActive(false);
         }
     }
 }

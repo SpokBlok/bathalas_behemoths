@@ -5,17 +5,40 @@ using UnityEngine.SceneManagement;
 
 public class TriggerToApolaki : MonoBehaviour
 {
-
+    public GameObject apolakiHPBar;
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player") && PlayerStats.Instance.apolakiFound)
+        if (other.CompareTag("Player"))
         {
-            SceneManager.LoadScene("Apolaki");
+            if(apolakiHPBar != null)
+            {
+                apolakiHPBar.SetActive(true);
+            }
+
             PlayerStats.Instance.apolakiScene = true;
+            PlayerStats.Instance.outdoorsScene = false;
             PlayerStats.Instance.ruinsScene = false;
-            PlayerStats.Instance.ruinsVisitedOnce = true;
             PlayerStats.Instance.dead = false;
-            PlayerStats.Instance.speed = 45;
+            PlayerStats.Instance.speedMultiplier = 1.5f;
+            SceneManager.LoadScene("Apolaki");
+
+            if(PlayerSkills.Instance.mainCharacterSkillCoroutine != null)
+            {
+                StopCoroutine(PlayerSkills.Instance.mainCharacterSkillCoroutine);
+                PlayerSkills.Instance.mainCharacterSkillCoroutine = null;
+            }
+            
+            if(PlayerSkills.Instance.behemothSkillQCoroutine != null)
+            {
+                StopCoroutine(PlayerSkills.Instance.behemothSkillQCoroutine);
+                PlayerSkills.Instance.behemothSkillQCoroutine = null;
+            }
+
+            if(PlayerSkills.Instance.behemothSkillECoroutine != null)
+            {
+                StopCoroutine(PlayerSkills.Instance.behemothSkillECoroutine);
+                PlayerSkills.Instance.behemothSkillECoroutine = null;
+            }
         }
     }
 }

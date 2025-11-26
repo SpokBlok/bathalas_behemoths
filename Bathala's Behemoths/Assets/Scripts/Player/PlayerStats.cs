@@ -43,6 +43,7 @@ public class PlayerStats : MonoBehaviour
     public bool tammyScene;
     public bool markyScene;
     public bool apolakiScene;
+    public bool apolakiUnlocked;
     public bool ruinsVisitedOnce;
 
     public AudioClip skillESound;

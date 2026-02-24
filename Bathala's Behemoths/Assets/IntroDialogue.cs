@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.Playables;
 
 public class IntroDialogue : MonoBehaviour
 {
@@ -22,6 +23,8 @@ public class IntroDialogue : MonoBehaviour
     Vector3 currentPosition;
     Vector3 originalHUDPos;
     private int index;
+
+    [SerializeField] public PlayableDirector _cutsceneTimeline;
 
     // Start is called before the first frame update
     void Start()
@@ -97,6 +100,9 @@ public class IntroDialogue : MonoBehaviour
 
             introScene.SetActive(false);
             introScene2.SetActive(true);
+
+             _cutsceneTimeline.Play();
+             
             switchToManny();
             PlayerStats.Instance.initSpeed = 5;
 

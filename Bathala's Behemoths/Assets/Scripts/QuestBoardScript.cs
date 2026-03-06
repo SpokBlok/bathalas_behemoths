@@ -25,7 +25,7 @@ public class QuestBoardScript : MonoBehaviour
     {
         if(questUIList == null || questUIPanel == null)
         {
-            questUIList = Resources.FindObjectsOfTypeAll<QuestBoardUIPanel>();
+            questUIList = Object.FindObjectsByType<QuestBoardUIPanel>(FindObjectsInactive.Include, FindObjectsSortMode.None);
             foreach (QuestBoardUIPanel UI in questUIList)
             {
                 questUIPanel = UI;
@@ -35,7 +35,7 @@ public class QuestBoardScript : MonoBehaviour
 
     private void Awake()
     {
-        questUIList = Resources.FindObjectsOfTypeAll<QuestBoardUIPanel>();
+        questUIList = Object.FindObjectsByType<QuestBoardUIPanel>(FindObjectsInactive.Include, FindObjectsSortMode.None);
         foreach (QuestBoardUIPanel UI in questUIList)
         {
             questUIPanel = UI;
@@ -44,7 +44,7 @@ public class QuestBoardScript : MonoBehaviour
 
     void UpdateCanvas()
     {
-        questUIList = Resources.FindObjectsOfTypeAll<QuestBoardUIPanel>();
+        questUIList = Object.FindObjectsByType<QuestBoardUIPanel>(FindObjectsInactive.Include, FindObjectsSortMode.None);
 
         foreach (QuestBoardUIPanel UI in questUIList)
         {
@@ -100,6 +100,7 @@ public class QuestBoardScript : MonoBehaviour
             isInTrigger = false;
             isPanelUp = false;
             popUp.gameObject.SetActive(false);
+            QuestState.Instance.menuActive = false;
             if(questUIPanel != null)
             {
                 questUIPanel.DisablePanel();

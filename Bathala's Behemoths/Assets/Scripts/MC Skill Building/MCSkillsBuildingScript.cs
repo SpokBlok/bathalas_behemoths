@@ -21,11 +21,11 @@ public class MCSkillsBuildingScript : MonoBehaviour
         UpdateCanvas();
     }
 
-    void update()
+    void Update()
     {
         if(uiList == null || upgradePanel == null)
         {
-            uiList = Resources.FindObjectsOfTypeAll<MCSkillsUIPanel>();
+            uiList = Object.FindObjectsByType<MCSkillsUIPanel>(FindObjectsInactive.Include, FindObjectsSortMode.None);
             foreach (MCSkillsUIPanel UI in uiList)
             {
                 upgradePanel = UI;
@@ -35,7 +35,7 @@ public class MCSkillsBuildingScript : MonoBehaviour
 
     private void Awake()
     {
-        uiList = Resources.FindObjectsOfTypeAll<MCSkillsUIPanel>();
+        uiList = Object.FindObjectsByType<MCSkillsUIPanel>(FindObjectsInactive.Include, FindObjectsSortMode.None);
         foreach (MCSkillsUIPanel UI in uiList)
         {
             upgradePanel = UI;
@@ -44,7 +44,7 @@ public class MCSkillsBuildingScript : MonoBehaviour
 
     public void UpdateCanvas()
     {
-        uiList = Resources.FindObjectsOfTypeAll<MCSkillsUIPanel>();
+        uiList = Object.FindObjectsByType<MCSkillsUIPanel>(FindObjectsInactive.Include, FindObjectsSortMode.None);
 
         foreach (MCSkillsUIPanel UI in uiList)
         {
@@ -95,6 +95,7 @@ public class MCSkillsBuildingScript : MonoBehaviour
             isInTrigger = false;
             isPanelUp = false;
             popUp.gameObject.SetActive(false);
+            QuestState.Instance.menuActive = false;
             if(upgradePanel != null)
             {
                 upgradePanel.DisablePanel();

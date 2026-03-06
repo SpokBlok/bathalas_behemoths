@@ -32,6 +32,12 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Credits.unity
     guid: 27b820b833ef21747a5f87a8b94e7948
+  - enabled: 1
+    path: Assets/Scenes/OutdoorsSceneApolaki.unity
+    guid: 362f4432e5f2b5648b38bdeea24e7d67
+  - enabled: 1
+    path: Assets/Scenes/Apolaki.unity
+    guid: 1b54dca0beff6934d8f28b01f2101e55
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: f612e8e80fb42e84bacb7788ff9f2c98,
       type: 3}

@@ -134,8 +134,8 @@ public class PlayerMovement : MonoBehaviour
             modelRenderer = msModel.GetComponentsInChildren<SkinnedMeshRenderer>();
         }
         ui = GameObject.FindObjectOfType<UICanvas>();
-        pauseSystem = FindObjectOfType<PauseSystem>();
-        journal = FindObjectsOfType<JournalScript>(true)[0];
+        pauseSystem = UnityEngine.Object.FindObjectsByType<PauseSystem>(FindObjectsInactive.Include, FindObjectsSortMode.None)[0];
+        journal = UnityEngine.Object.FindObjectsByType<JournalScript>(FindObjectsInactive.Include, FindObjectsSortMode.None)[0];
 
         // Get references to char controller + collider
         charControl = GetComponent<CharacterController>();
@@ -323,6 +323,16 @@ public class PlayerMovement : MonoBehaviour
 
             case PlayerState.Knockback:
                 break;
+        }
+
+        if(journal == null)
+        {
+            journal = UnityEngine.Object.FindObjectsByType<JournalScript>(FindObjectsInactive.Include, FindObjectsSortMode.None)[0];
+        }
+        
+        if(pauseSystem == null)
+        {
+            pauseSystem = UnityEngine.Object.FindObjectsByType<PauseSystem>(FindObjectsInactive.Include, FindObjectsSortMode.None)[0];
         }
     }
 

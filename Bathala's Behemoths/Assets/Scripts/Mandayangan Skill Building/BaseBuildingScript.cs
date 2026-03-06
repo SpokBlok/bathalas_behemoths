@@ -24,7 +24,7 @@ public class BaseBuildingScript : MonoBehaviour
 
     public void UpdateCanvas()
     {
-        uiList = Resources.FindObjectsOfTypeAll<MandayanganSkillsUIPanel>();
+        uiList = Object.FindObjectsByType<MandayanganSkillsUIPanel>(FindObjectsInactive.Include, FindObjectsSortMode.None);
 
         foreach (MandayanganSkillsUIPanel UI in uiList)
         {
@@ -34,7 +34,7 @@ public class BaseBuildingScript : MonoBehaviour
 
     private void Awake()
     {
-        uiList = Resources.FindObjectsOfTypeAll<MandayanganSkillsUIPanel>();
+        uiList = Object.FindObjectsByType<MandayanganSkillsUIPanel>(FindObjectsInactive.Include, FindObjectsSortMode.None);
         foreach (MandayanganSkillsUIPanel UI in uiList)
         {
             upgradePanel = UI;
@@ -92,6 +92,7 @@ public class BaseBuildingScript : MonoBehaviour
             isInTrigger = false;
             isPanelUp = false;
             popUp.gameObject.SetActive(false);
+            QuestState.Instance.menuActive = false;
             if(upgradePanel != null)
             {
                 upgradePanel.DisablePanel();

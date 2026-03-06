@@ -50,6 +50,8 @@ public class PlayerStats : MonoBehaviour
     public AudioClip skillQSound;
     public AudioClip mcSkillSound;
 
+    public int playerModelIndex = 1; // 1 for Manny, 2 for Tammy, 3 for Marky
+
     private void Awake()
     {
         if (Instance == null)

@@ -8,6 +8,7 @@ public class FollowTargetSwitcher : MonoBehaviour
     [SerializeField] private CinemachineVirtualCamera virtualCam;
     [SerializeField] private Transform SteveTarget;
     [SerializeField] private Transform MountedModelTarget;
+    [SerializeField] private Transform MountedModelBossFightTarget;
     private Transform followHolder;
     public Transform newFollowTarget;
     public Transform currentFollowTarget;
@@ -20,8 +21,22 @@ public class FollowTargetSwitcher : MonoBehaviour
         else
             virtualCam.Follow = GameObject.Find("SteveFollowTarget").transform;
 
+        if(PlayerStats.Instance.tammyScene || PlayerStats.Instance.markyScene)
+        {
+            virtualCam.m_Lens.FarClipPlane = 1300f;
+        }
+        else if(PlayerStats.Instance.apolakiScene)
+        {
+            virtualCam.m_Lens.FarClipPlane = 3000f;
+        }
+        else
+        {
+            virtualCam.m_Lens.FarClipPlane = 800f;
+        }
+
         SteveTarget = FindAnyObjectByType<SteveFollowTarget>(FindObjectsInactive.Include).transform;
         MountedModelTarget = FindAnyObjectByType<MannyFollowTarget>(FindObjectsInactive.Include).transform;
+        MountedModelBossFightTarget = FindAnyObjectByType<MannyFollowTargetBossFight>(FindObjectsInactive.Include).transform;
         currentFollowTarget = SteveTarget;
         newFollowTarget = MountedModelTarget;
 
@@ -63,9 +78,4 @@ public class FollowTargetSwitcher : MonoBehaviour
         newFollowTarget = target;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

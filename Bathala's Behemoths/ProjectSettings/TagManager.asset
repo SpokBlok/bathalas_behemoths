@@ -23,6 +23,8 @@ TagManager:
   - Markupo
   - MannyBody
   - Journal
+  - ApolakiModel
+  - Apolaki
   layers:
   - Default
   - TransparentFX

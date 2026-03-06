@@ -5,15 +5,28 @@ using UnityEngine;
 public class PlayerModelPicker : MonoBehaviour
 {
     public SteveAnimController steveModel = null;
-    public MSAnimController mountedModel = null;
+    public MonoBehaviour mountedModel = null;
     public FollowTargetSwitcher camTargetSwitcher;
 
     // Start is called before the first frame update
     void Start()
     {
         steveModel = FindAnyObjectByType<SteveAnimController>(FindObjectsInactive.Include);
-        mountedModel = FindAnyObjectByType<MSAnimController>(FindObjectsInactive.Include);
         camTargetSwitcher = FindAnyObjectByType<FollowTargetSwitcher>(FindObjectsInactive.Include);
+
+        // If playerModelIndex is 1, then Manny is selected. If it's 2, then Tammy is selected. If it's 3, then Marky is selected.
+        if(PlayerStats.Instance.playerModelIndex == 1)
+        {
+            mountedModel = FindAnyObjectByType<MSAnimController>(FindObjectsInactive.Include);
+        }
+        else if(PlayerStats.Instance.playerModelIndex == 2)
+        {
+            mountedModel = FindAnyObjectByType<TSAnimController>(FindObjectsInactive.Include);
+        }
+        else if(PlayerStats.Instance.playerModelIndex == 3)
+        {
+            mountedModel = FindAnyObjectByType<SSAnimController>(FindObjectsInactive.Include);
+        }
 
         if (PlayerStats.Instance.tammyScene || PlayerStats.Instance.markyScene)
         {

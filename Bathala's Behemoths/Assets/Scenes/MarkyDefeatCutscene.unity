@@ -8438,12 +8438,16 @@ MonoBehaviour:
   activeQuest6: 0
   tammyFound: 0
   markyFound: 0
+  apolakiFound: 0
   tammyScene: 0
   markyScene: 1
+  apolakiScene: 0
+  apolakiUnlocked: 0
   ruinsVisitedOnce: 0
   skillESound: {fileID: 0}
   skillQSound: {fileID: 0}
   mcSkillSound: {fileID: 0}
+  playerModelIndex: 1
 --- !u!4 &366404717
 Transform:
   m_ObjectHideFlags: 0
@@ -15357,7 +15361,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &669359640
 RectTransform:
   m_ObjectHideFlags: 0
@@ -15401,6 +15405,7 @@ MonoBehaviour:
   textInterval: 0.03
   pointer: {fileID: 1651247985}
   HUD: {fileID: 0}
+  bbSkill: {fileID: 0}
 --- !u!114 &669359642
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17914,6 +17919,7 @@ MonoBehaviour:
   markupoModel: {fileID: 1375299662}
   endDialogue: {fileID: 669359639}
   stunSymbol: {fileID: 1653868686}
+  hpBarTransform: {fileID: 0}
 --- !u!1 &772174524
 GameObject:
   m_ObjectHideFlags: 0
@@ -22982,6 +22988,8 @@ MonoBehaviour:
   skillsTutorialTrigger: 0
   tambanokanoFound: 0
   markupoFound: 0
+  tambanokanoDefeated: 0
+  markupoDefeated: 0
   pausedForDialogue: 0
   menuActive: 0
   pauseActive: 0
@@ -28644,6 +28652,7 @@ MonoBehaviour:
   virtualCam: {fileID: 1267529966}
   SteveTarget: {fileID: 1191615336}
   MountedModelTarget: {fileID: 1191615333}
+  MountedModelBossFightTarget: {fileID: 0}
   newFollowTarget: {fileID: 0}
   currentFollowTarget: {fileID: 0}
 --- !u!114 &1267529966
@@ -38215,7 +38224,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1671734911
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -43016,9 +43025,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1837340172}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.00000026449564, y: -0.00000049918896, z: 0.00000013690443,
-    w: 1}
-  m_LocalPosition: {x: 829.5794, y: 45.43232, z: 313.1929}
+  m_LocalRotation: {x: 0.06285021, y: -0.1209335, z: 0.033673126, w: 0.99009657}
+  m_LocalPosition: {x: 986.57715, y: 79.29507, z: 252.28111}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -50665,9 +50673,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2101604265}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.00000026449564, y: -0.00000049918896, z: 0.00000013690443,
-    w: 1}
-  m_LocalPosition: {x: 829.5794, y: 45.43232, z: 313.1929}
+  m_LocalRotation: {x: 0.06285021, y: -0.1209335, z: 0.033673126, w: 0.99009657}
+  m_LocalPosition: {x: 986.57715, y: 79.29507, z: 252.28111}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

@@ -8433,12 +8433,16 @@ MonoBehaviour:
   activeQuest6: 0
   tammyFound: 0
   markyFound: 0
+  apolakiFound: 0
   tammyScene: 0
   markyScene: 1
+  apolakiScene: 0
+  apolakiUnlocked: 0
   ruinsVisitedOnce: 0
   skillESound: {fileID: 0}
   skillQSound: {fileID: 0}
   mcSkillSound: {fileID: 0}
+  playerModelIndex: 1
 --- !u!4 &366404717
 Transform:
   m_ObjectHideFlags: 0
@@ -15396,6 +15400,7 @@ MonoBehaviour:
   textInterval: 0.03
   pointer: {fileID: 1651247985}
   HUD: {fileID: 0}
+  bbSkill: {fileID: 0}
 --- !u!114 &669359642
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17822,6 +17827,7 @@ MonoBehaviour:
   markupoModel: {fileID: 1375299662}
   endDialogue: {fileID: 669359639}
   stunSymbol: {fileID: 1653868686}
+  hpBarTransform: {fileID: 0}
 --- !u!1 &772174524
 GameObject:
   m_ObjectHideFlags: 0
@@ -22890,6 +22896,8 @@ MonoBehaviour:
   skillsTutorialTrigger: 0
   tambanokanoFound: 0
   markupoFound: 0
+  tambanokanoDefeated: 0
+  markupoDefeated: 0
   pausedForDialogue: 0
   menuActive: 0
   pauseActive: 0
@@ -28215,6 +28223,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1250405131}
   - component: {fileID: 1250405130}
+  - component: {fileID: 1250405132}
   m_Layer: 0
   m_Name: MarkyIntroCutsceneManager
   m_TagString: Untagged
@@ -28260,6 +28269,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1250405132
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1250405129}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f0b6734a753137438516631c16afeb5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cutsceneTimeline: {fileID: 1250405130}
 --- !u!1 &1259806938
 GameObject:
   m_ObjectHideFlags: 0
@@ -28575,6 +28597,7 @@ MonoBehaviour:
   virtualCam: {fileID: 1267529966}
   SteveTarget: {fileID: 1191615336}
   MountedModelTarget: {fileID: 1191615333}
+  MountedModelBossFightTarget: {fileID: 0}
   newFollowTarget: {fileID: 0}
   currentFollowTarget: {fileID: 0}
 --- !u!114 &1267529966
@@ -31253,6 +31276,20 @@ PlayableDirector:
     value: {fileID: 1837340172}
   - key: {fileID: 4553751885006556407, guid: 005aa02918d9f450993fbd6e78300802, type: 2}
     value: {fileID: 1837340179}
+  - key: {fileID: -866842026383643698, guid: 005aa02918d9f450993fbd6e78300802, type: 2}
+    value: {fileID: 0}
+  - key: {fileID: 7614935827918390717, guid: 005aa02918d9f450993fbd6e78300802, type: 2}
+    value: {fileID: 0}
+  - key: {fileID: -5493702558725521760, guid: 005aa02918d9f450993fbd6e78300802, type: 2}
+    value: {fileID: 0}
+  - key: {fileID: -3791448240972539746, guid: 005aa02918d9f450993fbd6e78300802, type: 2}
+    value: {fileID: 0}
+  - key: {fileID: 6628674993056803656, guid: 005aa02918d9f450993fbd6e78300802, type: 2}
+    value: {fileID: 0}
+  - key: {fileID: -1900325069222060940, guid: 005aa02918d9f450993fbd6e78300802, type: 2}
+    value: {fileID: 0}
+  - key: {fileID: -8397521340977077355, guid: 005aa02918d9f450993fbd6e78300802, type: 2}
+    value: {fileID: 0}
   m_ExposedReferences:
     m_References: []
 --- !u!4 &1413417149

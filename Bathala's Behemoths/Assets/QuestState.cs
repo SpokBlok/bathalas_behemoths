@@ -37,6 +37,7 @@ public class QuestState : MonoBehaviour
     public bool markupoFound;
     public bool tambanokanoDefeated;
     public bool markupoDefeated;
+    public bool apolakiDefeated;
 
     public bool pausedForDialogue = false;
     public bool menuActive = false;

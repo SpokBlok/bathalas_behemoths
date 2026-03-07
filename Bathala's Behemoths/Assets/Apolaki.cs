@@ -9,9 +9,9 @@ public class Apolaki : EnemyMob
 
     //Attack prefabs
     public GameObject meleeAttackPrefab; // Formerly clawSwipePrefab
-    public GameObject cometStrikePrefab; // Formerly trailingLightningPrefab
-    public GameObject lavaGroundPrefab; // Formerly arenaWideLightingPrefab
-    public GameObject massiveAOEPrefab; // Formerly massiveAOEPrefab
+    public GameObject meteorShowerPrefab; // Formerly trailingLightningPrefab
+    public GameObject crossSlashPrefab; // Formerly arenaWideLightingPrefab
+    public GameObject ultimatePrefab; // Formerly massiveAOEPrefab
     public GameObject HUD; // CHANGE to apolakiHPBar Canvas
 
     private Coroutine randomAttackCoroutine;
@@ -19,21 +19,19 @@ public class Apolaki : EnemyMob
     private Coroutine stunMoving;
     private Coroutine blinking;
     private bool isAlive;
-    private bool isUlting;
-
-    private bool isLightingStriking;
     public bool stunned;
 
     public int attacksPassed;
 
     public float duration;
 
-    public Material eyesOpenMat;
-    public Material eyesClosedMat;
-    public Renderer tamRend;
-    public GameObject tammy;
+    public GameObject appy;
     public GameObject stunSymbol;
-    public bool isClawSwiping;
+    public bool isMeleeAttacking;
+    public bool isMeteorShower;
+    public bool isCrossSlash;
+    public bool isUltimate;
+    public bool isStunned;
 
     public SkinnedMeshRenderer[] modelRenderer;
     public ApolakiAnimController apolakiModel;
@@ -50,9 +48,7 @@ public class Apolaki : EnemyMob
         }
 
         player = GameObject.FindWithTag("Player");
-        // tamRend = GameObject.FindWithTag("TambanokanoBody").GetComponent<Renderer>();
-        // tamRend.material = eyesClosedMat;
-        tammy = GameObject.FindWithTag("ApolakiModel");
+        appy = GameObject.FindWithTag("ApolakiModel");
 
         HUD = GameObject.FindWithTag("HUD"); // Gets cut off if the tammyModel from above is not assigned (like a break())
         if (HUD != null)
@@ -81,8 +77,10 @@ public class Apolaki : EnemyMob
             goodEnding = false;
         }
 
-        isLightingStriking = false;
+        isMeteorShower = false;
         stunned = false;
+        isUltimate = false;
+        isStunned = false;
     }
 
     // Update is called once per frame
@@ -93,14 +91,14 @@ public class Apolaki : EnemyMob
         {
             PlayerStats.Instance.tammyScene = true;
         }
-        if (randomAttackCoroutine == null && !isUlting && !stunned)
+        if (randomAttackCoroutine == null && !isUltimate && !stunned)
         {
             foreach (Transform child in transform)
             {
                 Destroy(child.gameObject);
             }
 
-            isLightingStriking = false;
+            isMeteorShower = false;
             int index = Random.Range(0, 3);
             if (attacksPassed >= 10)
             {
@@ -111,57 +109,36 @@ public class Apolaki : EnemyMob
             switch(index)
             {
                 case 0:
-                    randomAttackCoroutine = StartCoroutine(ClawSwipe());
+                    randomAttackCoroutine = StartCoroutine(MeleeAttack());
                     break;
 
                 case 1:
-                    randomAttackCoroutine = StartCoroutine(TrailingLightning());
-                    isLightingStriking = true;
+                    randomAttackCoroutine = StartCoroutine(MeteorShower());
+                    isMeteorShower = true;
                     break;
 
                 case 2:
-                    randomAttackCoroutine = StartCoroutine(ArenaWideLightning());
-                    isLightingStriking = true;
+                    randomAttackCoroutine = StartCoroutine(CrossSlash());
                     break;
 
                 case 3:
                     randomAttackCoroutine = StartCoroutine(UltimateAttack());
-                    isLightingStriking = true;
                     attacksPassed = 0;
                     break;
             }
         }
     }
 
-    public void BlinkOnce()
-    {
-        blinking = StartCoroutine(blink(0.5f));
-        tamRend.material = eyesOpenMat;
-    }
-
     public void GetMudStunned()
     {
         getStunned = StartCoroutine(Stun(3));
-        blinking = StartCoroutine(blink(0.5f));
-        tamRend.material = eyesClosedMat;
-    }
-
-    public IEnumerator blink(float duration)
-    {
-        if (tamRend != null && eyesClosedMat != null && eyesOpenMat != null)
-        {
-            tamRend.material = eyesClosedMat;
-            yield return new WaitForSeconds(duration);
-            tamRend.material = eyesOpenMat;
-            yield return new WaitForSeconds(0.3f);
-            tamRend.material = eyesClosedMat;
-        }
     }
 
     public override IEnumerator Stun(float duration)
     {
         stunSymbol.SetActive(true);
-        if (isLightingStriking)
+        isStunned = true;
+        if (isMeteorShower)
         {
             stunned = true;
             foreach (Transform child in transform)
@@ -170,13 +147,14 @@ public class Apolaki : EnemyMob
             }
             StopAllCoroutines();
             randomAttackCoroutine = null;
-            isLightingStriking = false;
-            isUlting = false;
+            isMeteorShower = false;
+            isUltimate = false;
         }
         //stun animation
         stunMoving = StartCoroutine(StunMovement());
         yield return new WaitForSeconds(duration);
         stunned = false;
+        isStunned = false;
         
         stunSymbol.SetActive(false);
     }
@@ -188,19 +166,19 @@ public class Apolaki : EnemyMob
         float elapsedTime = 0.0f;
         float startValue = 0.0f;
         float endValue = -10.0f;
-        Debug.Log("Tammy Stun Movement Start");
+        Debug.Log("Apolaki Stun Movement Start");
 
         while (elapsedTime < duration)
         {
             elapsedTime += Time.deltaTime;
             float t = elapsedTime / duration;
             degreeRot = Mathf.Lerp(startValue, endValue, t);
-            tammy.transform.rotation = Quaternion.Euler(degreeRot, 180, 0);
+            appy.transform.rotation = Quaternion.Euler(degreeRot, 180, 0);
             yield return null;
         }
         
         degreeRot = endValue; // Ensure it fully reaches the target
-        tammy.transform.rotation = Quaternion.Euler(degreeRot, 180, 0);
+        appy.transform.rotation = Quaternion.Euler(degreeRot, 180, 0);
         elapsedTime = 0.0f;
         yield return new WaitForSeconds(2.2f);
 
@@ -209,12 +187,12 @@ public class Apolaki : EnemyMob
             elapsedTime += Time.deltaTime;
             float t = elapsedTime / duration;
             degreeRot = Mathf.Lerp(endValue, startValue, t);
-            tammy.transform.rotation = Quaternion.Euler(degreeRot, 180, 0);
+            appy.transform.rotation = Quaternion.Euler(degreeRot, 180, 0);
             yield return null;
         }
         
         degreeRot = startValue; // Ensure it fully reaches the target
-        tammy.transform.rotation = Quaternion.Euler(degreeRot, 180, 0);
+        appy.transform.rotation = Quaternion.Euler(degreeRot, 180, 0);
     }
 
     IEnumerator SwitchToDamagedTex()
@@ -224,7 +202,7 @@ public class Apolaki : EnemyMob
             bodypart.material.color = Color.red; // Change color to red
         }
         
-        yield return new WaitForSeconds(0.2f); // Wait
+        yield return new WaitForSeconds(0.1f); // Wait
 
         foreach(SkinnedMeshRenderer bodypart in modelRenderer)
         {
@@ -264,99 +242,143 @@ public class Apolaki : EnemyMob
         }
     }
 
-    private IEnumerator SingleClawSwipe()
+    private IEnumerator SingleMeleeAttack()
     {
         //attack animation
-        GameObject claw = Instantiate(meleeAttackPrefab, new Vector3(Random.Range(400f, 500f), 170f, Random.Range(285f, 425f)), Quaternion.Euler(0f, 90f, 0f));
-        claw.transform.parent = transform;
-        yield return new WaitForSeconds(claw.GetComponent<FillEffect>().attackDuration);
+        GameObject spear = Instantiate(meleeAttackPrefab, new Vector3(Random.Range(400f, 500f), 170f, Random.Range(285f, 425f)), Quaternion.Euler(0f, 90f, 0f));
+        spear.transform.parent = transform;
+        yield return new WaitForSeconds(spear.GetComponent<FillEffect>().attackDuration);
         yield return new WaitForSeconds(2f);
     }
 
-    private IEnumerator PlayClawSwipeAnimation()
+    private IEnumerator PlayMeleeAttackAnimation()
     {
-        isClawSwiping = true;
+        isMeleeAttacking = true;
         yield return new WaitForSeconds(0.5f);
-        isClawSwiping = false;
+        isMeleeAttacking = false;
     }
 
-    private IEnumerator ClawSwipe()
+    private IEnumerator MoveInFrontOfPlayer(float distance, float dashDuration)
     {
-        //attack animation
-        GameObject claw = Instantiate(meleeAttackPrefab, new Vector3(Random.Range(400f, 500f), 170f, Random.Range(400f, 400f)), Quaternion.Euler(0f, 90f, 0f));
-        claw.transform.parent = transform;
-        yield return new WaitForSeconds(claw.GetComponent<FillEffect>().attackDuration);
-        StartCoroutine(PlayClawSwipeAnimation());
-        yield return new WaitForSeconds(2f);
+        if (player == null)
+        {
+            yield break;
+        }
+
+        Vector3 playerPosition = player.transform.position;
+        Vector3 playerForward = player.transform.forward;
+
+        Vector3 startPosition = transform.position;
+        Quaternion startRotation = transform.rotation;
+
+        Vector3 targetPosition = playerPosition - playerForward * distance;
+        targetPosition.y = startPosition.y;
+
+        // Face the player only on the horizontal plane (no vertical tilt)
+        Vector3 toPlayer = playerPosition - targetPosition;
+        toPlayer.y = 0f;
+        Quaternion targetRotation = transform.rotation;
+        if (toPlayer.sqrMagnitude > 0.0001f)
+        {
+            targetRotation = Quaternion.LookRotation(toPlayer, Vector3.up);
+        }
+
+        float elapsed = 0f;
+        while (elapsed < dashDuration)
+        {
+            elapsed += Time.deltaTime;
+            float t = elapsed / dashDuration;
+            transform.position = Vector3.Lerp(startPosition, targetPosition, t);
+            transform.rotation = Quaternion.Slerp(startRotation, targetRotation, t);
+            
+            appy.transform.position = Vector3.Lerp(startPosition, targetPosition, t);
+            yield return null;
+        }
+
+        transform.position = targetPosition;
+        transform.rotation = targetRotation;
+        appy.transform.position = targetPosition;
+        appy.transform.rotation = targetRotation;
+    }
+
+    private IEnumerator MeleeAttack()
+    {
+        // Quickly move Apolaki in front of the player before attacking
+        yield return StartCoroutine(MoveInFrontOfPlayer(3f, 1.0f));
 
         //attack animation
-        claw = Instantiate(meleeAttackPrefab, new Vector3(Random.Range(400f, 500f), 170f, Random.Range(400f, 400f)), Quaternion.Euler(0f, 90f, 0f));
-        yield return new WaitForSeconds(claw.GetComponent<FillEffect>().attackDuration);
-        StartCoroutine(PlayClawSwipeAnimation());
+        GameObject spear = Instantiate(meleeAttackPrefab, new Vector3(transform.position.x, transform.position.y, transform.position.z), Quaternion.Euler(0f, 90f, 0f));
+        spear.transform.parent = transform;
+        yield return new WaitForSeconds(spear.GetComponent<FillEffect>().attackDuration);
+        StartCoroutine(PlayMeleeAttackAnimation());
+
+        yield return StartCoroutine(MoveInFrontOfPlayer(3f, 1.0f));
+        //attack animation
+        spear = Instantiate(meleeAttackPrefab, new Vector3(transform.position.x, transform.position.y, transform.position.z), Quaternion.Euler(0f, 90f, 0f));
+        yield return new WaitForSeconds(spear.GetComponent<FillEffect>().attackDuration);
+        StartCoroutine(PlayMeleeAttackAnimation());
         yield return new WaitForSeconds(2f);
 
         randomAttackCoroutine = null;
     }
 
-    private IEnumerator TrailingLightning()
+    private IEnumerator MeteorShower()
     {
-        isLightingStriking = true;
-        tamRend.material = eyesOpenMat;
+        isMeteorShower = true;
         
-        GameObject lightning = Instantiate(cometStrikePrefab, new Vector3(0f, 0f, 0f), Quaternion.identity);
-        lightning.transform.parent = transform;
-        TrailingLightningStrike lightningComponent = lightning.GetComponent<TrailingLightningStrike>();
-        if (lightningComponent == null)
+        GameObject meteor = Instantiate(meteorShowerPrefab, new Vector3(0f, 0f, 0f), Quaternion.identity);
+        meteor.transform.parent = transform;
+        TrailingLightningStrike meteorComponent = meteor.GetComponent<TrailingLightningStrike>();
+        if (meteorComponent == null)
         {
-            Debug.LogError("TrailingLightningStrike component not found on lightning prefab.");
+            Debug.LogError("TrailingLightningStrike component not found on Meteor Shower prefab.");
             yield break; // Exit the coroutine if the component is not found
         }
 
-        duration = lightningComponent.attackGapDuration * (lightningComponent.attacksLeft);
+        duration = meteorComponent.attackGapDuration * (meteorComponent.attacksLeft);
         
         yield return new WaitForSeconds(duration + 7f);
 
-        tamRend.material = eyesClosedMat;
+        isMeteorShower = false;
         randomAttackCoroutine = null;
     }
 
-    private IEnumerator ArenaWideLightning()
+    private IEnumerator CrossSlash()
     {
-        isLightingStriking = true;
-        tamRend.material = eyesOpenMat;
 
-        GameObject lightning = Instantiate(lavaGroundPrefab, 
+        GameObject slash = Instantiate(crossSlashPrefab, 
             new Vector3(Random.Range(500f, 800f), 300f, Random.Range(400f, 800f)),
             Quaternion.Euler(0f, Random.Range(0f, 90f), 0f));
-        lightning.transform.parent = transform;
+        slash.transform.parent = transform;
+        isCrossSlash = true;
         yield return new WaitForSeconds(6f);
+        isCrossSlash = false;
 
-        tamRend.material = eyesClosedMat;
         randomAttackCoroutine = null;
     }
 
     private IEnumerator UltimateAttack()
     {
-        isUlting = true;
-        StartCoroutine(TrailingLightning());
-        StartCoroutine(ArenaWideLightning());
+        isUltimate = true;
+        StartCoroutine(MeteorShower());
+        StartCoroutine(CrossSlash());
 
         yield return new WaitForSeconds(7);
-        StartCoroutine(ClawSwipe());
+        StartCoroutine(MeleeAttack());
 
         yield return new WaitForSeconds(1.25f);
-        StartCoroutine(TrailingLightning());
+        StartCoroutine(MeteorShower());
 
         yield return new WaitForSeconds(6);
-        StartCoroutine(ArenaWideLightning());
+        StartCoroutine(CrossSlash());
 
         yield return new WaitForSeconds(9);
-        GameObject lightning = Instantiate(massiveAOEPrefab, new Vector3(1000f, 160f, 700f), Quaternion.identity);
-        lightning.transform.parent = transform;
+        GameObject ultimate = Instantiate(ultimatePrefab, new Vector3(1000f, 160f, 700f), Quaternion.identity);
+        ultimate.transform.parent = transform;
 
         yield return new WaitForSeconds(14);
 
-        isUlting = false;
+        isUltimate = false;
         randomAttackCoroutine = null;
     }
     

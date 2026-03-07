@@ -923,6 +923,7 @@ MonoBehaviour:
   isClawSwiping: 0
   modelRenderer: []
   tammyModel: {fileID: 0}
+  hpBarTransform: {fileID: 0}
 --- !u!65 &254176168
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2112,6 +2113,7 @@ MonoBehaviour:
   markupoFound: 0
   tambanokanoDefeated: 0
   markupoDefeated: 0
+  apolakiDefeated: 0
   pausedForDialogue: 0
   menuActive: 0
   pauseActive: 0
@@ -3766,6 +3768,7 @@ MonoBehaviour:
   isClawSwiping: 0
   modelRenderer: []
   tammyModel: {fileID: 0}
+  hpBarTransform: {fileID: 0}
 --- !u!65 &1451421641
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4088,6 +4091,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: tambanokanoShorterAnim
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f513dfe3c9aec5f43847779135df51eb,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: f513dfe3c9aec5f43847779135df51eb,
         type: 3}
@@ -5164,6 +5172,7 @@ MonoBehaviour:
   modelRenderer:
   - {fileID: 423252089}
   tammyModel: {fileID: 1538033628}
+  hpBarTransform: {fileID: 0}
 --- !u!65 &1871873205
 BoxCollider:
   m_ObjectHideFlags: 0

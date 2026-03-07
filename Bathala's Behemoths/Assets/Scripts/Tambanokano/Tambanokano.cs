@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Tambanokano : EnemyMob
 {
@@ -40,6 +41,7 @@ public class Tambanokano : EnemyMob
     public SkinnedMeshRenderer[] modelRenderer;
     public TammyAnimController tammyModel;
     public Coroutine takingDamage;
+    public Transform hpBarTransform;
 
     // Start is called before the first frame update
     void Start()
@@ -58,7 +60,7 @@ public class Tambanokano : EnemyMob
         if (HUD != null)
         {
             // Search for tammyHPBarBG inside the HUD parent
-            Transform hpBarTransform = HUD.transform.Find("TammyHPBarBG");
+            hpBarTransform = HUD.transform.Find("TammyHPBarBG");
 
                 if (hpBarTransform != null)
                 {
@@ -248,7 +250,12 @@ public class Tambanokano : EnemyMob
             if(isAlive == false)
             {
                 StopAllCoroutines();
-                endDialogue.SetActive(true);
+                if (hpBarTransform != null)
+                {
+                    hpBarTransform.gameObject.SetActive(false);
+                }
+                SceneManager.LoadScene("TammyDefeatCutscene");
+                // endDialogue.SetActive(true);
             }
         }
     }
@@ -272,14 +279,14 @@ public class Tambanokano : EnemyMob
     private IEnumerator ClawSwipe()
     {
         //attack animation
-        GameObject claw = Instantiate(clawSwipePrefab, new Vector3(Random.Range(400f, 500f), 170f, Random.Range(400f, 400f)), Quaternion.Euler(0f, 90f, 0f));
+        GameObject claw = Instantiate(clawSwipePrefab, new Vector3(Random.Range(900f, 1100f), 3f, Random.Range(1350f, 1400f)), Quaternion.Euler(0f, 90f, 0f));
         claw.transform.parent = transform;
         yield return new WaitForSeconds(claw.GetComponent<FillEffect>().attackDuration);
         StartCoroutine(PlayClawSwipeAnimation());
         yield return new WaitForSeconds(2f);
 
         //attack animation
-        claw = Instantiate(clawSwipePrefab, new Vector3(Random.Range(400f, 500f), 170f, Random.Range(400f, 400f)), Quaternion.Euler(0f, 90f, 0f));
+        claw = Instantiate(clawSwipePrefab, new Vector3(Random.Range(900f, 1100f), 3f, Random.Range(1350f, 1400f)), Quaternion.Euler(0f, 90f, 0f));
         yield return new WaitForSeconds(claw.GetComponent<FillEffect>().attackDuration);
         StartCoroutine(PlayClawSwipeAnimation());
         yield return new WaitForSeconds(2f);

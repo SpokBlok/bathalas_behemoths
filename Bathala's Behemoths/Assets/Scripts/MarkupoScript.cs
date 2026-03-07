@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using static UnityEngine.GraphicsBuffer;
+using UnityEngine.SceneManagement;
 
 public class MarkupoScript : EnemyMob
 {
@@ -31,6 +32,7 @@ public class MarkupoScript : EnemyMob
     public GameObject endDialogue;
     private Coroutine getStunned;
     public GameObject stunSymbol;
+    public Transform hpBarTransform;
 
     // Start is called before the first frame update
     void Start()
@@ -47,7 +49,7 @@ public class MarkupoScript : EnemyMob
         if (HUD != null)
         {
             // Search for markyHPBarBG inside the HUD parent
-            Transform hpBarTransform = HUD.transform.Find("MarkyHPBarBG");
+            hpBarTransform = HUD.transform.Find("MarkyHPBarBG");
 
                 if (hpBarTransform != null)
                 {
@@ -165,7 +167,12 @@ public class MarkupoScript : EnemyMob
             if(isAlive == false)
             {
                 StopAllCoroutines();
-                endDialogue.SetActive(true);
+                if (hpBarTransform != null)
+                {
+                    hpBarTransform.gameObject.SetActive(false);
+                }
+                SceneManager.LoadScene("MarkyDefeatCutscene");
+                // endDialogue.SetActive(true);
             }
         }
     }

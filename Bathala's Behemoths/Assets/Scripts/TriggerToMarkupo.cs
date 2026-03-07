@@ -30,7 +30,7 @@ public class TriggerToMarkupo : MonoBehaviour
             PlayerStats.Instance.outdoorsScene = false;
             PlayerStats.Instance.dead = false;
             PlayerStats.Instance.speedMultiplier = 1.5f;
-            SceneManager.LoadScene("Marky");
+            SceneManager.LoadScene("MarkyIntroCutscene");
 
             if(PlayerSkills.Instance.mainCharacterSkillCoroutine != null)
             {

@@ -24,7 +24,7 @@ RenderSettings:
   m_AmbientEquatorColor: {r: 0.114, g: 0.125, b: 0.133, a: 1}
   m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
   m_AmbientIntensity: 1
-  m_AmbientMode: 4
+  m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
   m_SkyboxMaterial: {fileID: 0}
   m_HaloStrength: 0.5
@@ -4918,7 +4918,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &239847528
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6900,7 +6900,7 @@ Camera:
     width: 1
     height: 1
   near clip plane: 0.3
-  far clip plane: 800
+  far clip plane: 1300
   field of view: 65
   orthographic: 0
   orthographic size: 5
@@ -6927,8 +6927,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 267623441}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0.0000000032596295, w: 1}
-  m_LocalPosition: {x: 1014.63245, y: 229.5108, z: 654.33044}
+  m_LocalRotation: {x: 0.06366301, y: -0.0964338, z: 0.032109987, w: 0.9927822}
+  m_LocalPosition: {x: 999.3175, y: 216.57005, z: 376.64316}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -11999,7 +11999,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &532134476
 RectTransform:
   m_ObjectHideFlags: 0
@@ -12037,12 +12037,13 @@ MonoBehaviour:
   currentLines:
   - The Tambanokano is incapacitated but attempts to thrash about, to no avail.
   - You gift the massive crustacean with one big blow to the head
+  - You tame the mighty Tambanokano with Manny's help.
   - The Tambanokano is knocked unconscious, and surprisingly...
   - It shrinks to roughly the size of Manny.
-  - You tame the mighty Tambanokano with Manny's help.
   textInterval: 0.03
   pointer: {fileID: 1495265774}
   HUD: {fileID: 0}
+  bbSkill: {fileID: 0}
 --- !u!114 &532134479
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20644,6 +20645,8 @@ MonoBehaviour:
   skillsTutorialTrigger: 0
   tambanokanoFound: 0
   markupoFound: 0
+  tambanokanoDefeated: 0
+  markupoDefeated: 0
   pausedForDialogue: 0
   menuActive: 0
   pauseActive: 0
@@ -23922,7 +23925,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1007151448
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -27318,7 +27321,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1167231246
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -27359,12 +27362,16 @@ MonoBehaviour:
   activeQuest6: 0
   tammyFound: 0
   markyFound: 0
+  apolakiFound: 0
   tammyScene: 1
   markyScene: 0
+  apolakiScene: 0
+  apolakiUnlocked: 0
   ruinsVisitedOnce: 0
   skillESound: {fileID: 0}
   skillQSound: {fileID: 0}
   mcSkillSound: {fileID: 0}
+  playerModelIndex: 1
 --- !u!4 &1167231247
 Transform:
   m_ObjectHideFlags: 0
@@ -30871,7 +30878,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1338734090
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -38462,8 +38469,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1651152443}
   - component: {fileID: 1651152442}
+  - component: {fileID: 1651152444}
   m_Layer: 0
-  m_Name: CutsceneManager
+  m_Name: TammyTamedCutsceneManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -38515,6 +38523,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1651152444
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1651152441}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e88ad712111804f4c932d8e254e87e60, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cutsceneTimeline: {fileID: 1651152442}
+  bbSkill: {fileID: 0}
 --- !u!114 &1652767712
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -42159,7 +42181,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: New Text
+  m_text: The battle is over.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2100000, guid: e73a58f6e2794ae7b1b7e50b7fb811b0, type: 2}
@@ -45785,6 +45807,7 @@ MonoBehaviour:
   virtualCam: {fileID: 1888073019}
   SteveTarget: {fileID: 580446872}
   MountedModelTarget: {fileID: 580446873}
+  MountedModelBossFightTarget: {fileID: 0}
   newFollowTarget: {fileID: 0}
   currentFollowTarget: {fileID: 0}
 --- !u!114 &1888073019
@@ -46696,7 +46719,7 @@ Camera:
     width: 1
     height: 1
   near clip plane: 0.3
-  far clip plane: 800
+  far clip plane: 1300
   field of view: 65
   orthographic: 0
   orthographic size: 5

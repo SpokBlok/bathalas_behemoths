@@ -22,7 +22,7 @@ public class TammyHPBAr : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(PlayerStats.Instance.dead)
+        if(PlayerStats.Instance.dead || !PlayerStats.Instance.tammyScene)
         {
             hpHUD.SetActive(false);
         }

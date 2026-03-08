@@ -44,9 +44,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e81d14fbd19a50443a986b6b75fe17b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lightningPrefab: {fileID: 6853585377040579723, guid: 346abac7785fbd64bb2dd5cbdc7f7988,
+  lightningPrefab: {fileID: 6853585377040579723, guid: 079b5eeea1651034eb24b80cc8384f8d,
     type: 3}
-  attackGapDuration: 2.5
+  attackGapDuration: 2
   attacksLeft: 6
   thunderSound: {fileID: 8300000, guid: f1cb5d83282f2904a85f73111d068616, type: 3}
   overlaySound: {fileID: 8300000, guid: 1eb7cbaf61d23a64bbd36c0a38b5cb0c, type: 3}

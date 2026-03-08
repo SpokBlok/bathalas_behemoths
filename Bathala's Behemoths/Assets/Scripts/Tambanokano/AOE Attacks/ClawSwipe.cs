@@ -9,10 +9,12 @@ public class ClawSwipe : AOEAttackRadius
     private Vector3 worldSize;
 
     public float attackDamage;
+    private bool hasDamagedPlayer;
 
     // Start is called before the first frame update
     void Start()
     {
+        hasDamagedPlayer = false;
         radiusCollider = GetComponent<BoxCollider>();
 
         // Get the terrain height at the object's current position (X, Z)
@@ -30,9 +32,10 @@ public class ClawSwipe : AOEAttackRadius
 
         foreach (Collider hitCollider in hitColliders)
         {
-            if (hitCollider.CompareTag("Player"))
+            if (hitCollider.CompareTag("Player") && !hasDamagedPlayer)
             {
                 hitCollider.GetComponent<PlayerMovement>().TakeDamage(attackDamage);
+                hasDamagedPlayer = true;
             }
             else if (hitCollider.CompareTag("Enemy"))
             {

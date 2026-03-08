@@ -22,7 +22,7 @@ public class ApolakiHPBar : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(PlayerStats.Instance.dead)
+        if(PlayerStats.Instance.dead || !PlayerStats.Instance.apolakiScene)
         {
             hpHUD.SetActive(false);
         }

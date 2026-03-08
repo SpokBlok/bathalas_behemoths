@@ -1708,10 +1708,20 @@ PrefabInstance:
       propertyPath: m_Radius
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1387107307263334671, guid: e2befb3480872ac4d860e47a6b28741a,
+        type: 3}
+      propertyPath: m_RenderingLayerMask
+      value: 513
+      objectReference: {fileID: 0}
     - target: {fileID: 4689692903261357202, guid: e2befb3480872ac4d860e47a6b28741a,
         type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4803669915113931279, guid: e2befb3480872ac4d860e47a6b28741a,
+        type: 3}
+      propertyPath: m_RenderingLayerMask
+      value: 513
       objectReference: {fileID: 0}
     - target: {fileID: 5358987193863904808, guid: e2befb3480872ac4d860e47a6b28741a,
         type: 3}
@@ -1727,6 +1737,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalPosition.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5407332154306142791, guid: e2befb3480872ac4d860e47a6b28741a,
+        type: 3}
+      propertyPath: m_ProvidesContacts
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5725552720055748903, guid: e2befb3480872ac4d860e47a6b28741a,
         type: 3}
@@ -1812,6 +1827,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_ConstrainProportionsScale
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8395154886269452766, guid: e2befb3480872ac4d860e47a6b28741a,
+        type: 3}
+      propertyPath: m_RenderingLayerMask
+      value: 513
       objectReference: {fileID: 0}
     - target: {fileID: 8448202413094103549, guid: e2befb3480872ac4d860e47a6b28741a,
         type: 3}
@@ -2114,6 +2134,7 @@ MonoBehaviour:
   tambanokanoDefeated: 0
   markupoDefeated: 0
   apolakiDefeated: 0
+  goodEnding: 0
   pausedForDialogue: 0
   menuActive: 0
   pauseActive: 0
@@ -2858,7 +2879,7 @@ Camera:
     width: 1
     height: 1
   near clip plane: 0.3
-  far clip plane: 1300
+  far clip plane: 2500
   field of view: 65
   orthographic: 0
   orthographic size: 5
@@ -3071,7 +3092,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1179000861
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3504,7 +3525,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1338734090
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5312,7 +5333,7 @@ MonoBehaviour:
     FieldOfView: 65
     OrthographicSize: 5
     NearClipPlane: 0.3
-    FarClipPlane: 1300
+    FarClipPlane: 2500
     Dutch: 0
     ModeOverride: 0
     LensShift: {x: 0, y: 0}

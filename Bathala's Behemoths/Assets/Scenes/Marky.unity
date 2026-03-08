@@ -2110,6 +2110,7 @@ MonoBehaviour:
   markupoModel: {fileID: 1375299662}
   endDialogue: {fileID: 669359639}
   stunSymbol: {fileID: 1653868686}
+  hpBarTransform: {fileID: 0}
 --- !u!1 &772300157
 GameObject:
   m_ObjectHideFlags: 0
@@ -2636,6 +2637,7 @@ MonoBehaviour:
   markupoFound: 0
   tambanokanoDefeated: 0
   markupoDefeated: 0
+  apolakiDefeated: 0
   pausedForDialogue: 0
   menuActive: 0
   pauseActive: 0
@@ -2932,7 +2934,7 @@ PrefabInstance:
     - target: {fileID: 4689692903261357202, guid: e2befb3480872ac4d860e47a6b28741a,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4958812543795710122, guid: e2befb3480872ac4d860e47a6b28741a,
         type: 3}

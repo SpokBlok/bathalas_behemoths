@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Apolaki : EnemyMob
 {
@@ -37,8 +38,6 @@ public class Apolaki : EnemyMob
     public ApolakiAnimController apolakiModel;
     public Coroutine takingDamage;
 
-    public bool goodEnding = false;
-
     // Start is called before the first frame update
     void Start()
     {
@@ -50,7 +49,7 @@ public class Apolaki : EnemyMob
         player = GameObject.FindWithTag("Player");
         appy = GameObject.FindWithTag("ApolakiModel");
 
-        HUD = GameObject.FindWithTag("HUD"); // Gets cut off if the tammyModel from above is not assigned (like a break())
+        HUD = GameObject.FindWithTag("HUD"); // Gets cut off if the apolakiModel from above is not assigned (like a break())
         if (HUD != null)
         {
             // Search for apolakiHPBarBG inside the HUD parent
@@ -63,21 +62,24 @@ public class Apolaki : EnemyMob
                     Debug.Log("ApolakiHPBarBG activated!");
                 }
         }
-        
-        float health = 6000f;
+
+        health = 6000f;
         // Special QuestState flag/s to make Apolaki fight easier
-        if(QuestState.Instance.tambanokanoDefeated && !QuestState.Instance.markupoDefeated)
+        if(QuestState.Instance.tambanokanoDefeated && QuestState.Instance.markupoDefeated)
         {
             health = 3500f;
-            goodEnding = true;
+            QuestState.Instance.goodEnding = true;
         }
         else
         {
             health = 6000f;
-            goodEnding = false;
+            QuestState.Instance.goodEnding = false;
         }
 
         isMeteorShower = false;
+        isAlive = true;
+        isCrossSlash = false;
+        isMeleeAttacking = false;
         stunned = false;
         isUltimate = false;
         isStunned = false;
@@ -87,9 +89,9 @@ public class Apolaki : EnemyMob
     void Update()
     {
         if(QuestState.Instance.pausedForDialogue) {return;}
-        if(!PlayerStats.Instance.tammyScene)
+        if(!PlayerStats.Instance.apolakiScene)
         {
-            PlayerStats.Instance.tammyScene = true;
+            PlayerStats.Instance.apolakiScene = true;
         }
         if (randomAttackCoroutine == null && !isUltimate && !stunned)
         {
@@ -99,6 +101,7 @@ public class Apolaki : EnemyMob
             }
 
             isMeteorShower = false;
+            isCrossSlash = false;
             int index = Random.Range(0, 3);
             if (attacksPassed >= 10)
             {
@@ -227,17 +230,13 @@ public class Apolaki : EnemyMob
         {
             //trigger winning cutscene
             isAlive = false;
-            QuestState.Instance.tambanokanoDefeated = true;
-            if(QuestState.Instance.tambanokanoDefeated || QuestState.Instance.markupoDefeated)
-            {
-                PlayerStats.Instance.apolakiFound = true;
-                PlayerStats.Instance.apolakiUnlocked = true;
-            }
+            QuestState.Instance.apolakiDefeated = true;
 
             if(isAlive == false)
             {
                 StopAllCoroutines();
-                endDialogue.SetActive(true);
+                SceneManager.LoadScene("ApolakiDefeatScene");
+                // endDialogue.SetActive(true);
             }
         }
     }
@@ -345,14 +344,13 @@ public class Apolaki : EnemyMob
 
     private IEnumerator CrossSlash()
     {
+        isCrossSlash = true;
 
         GameObject slash = Instantiate(crossSlashPrefab, 
-            new Vector3(Random.Range(500f, 800f), 300f, Random.Range(400f, 800f)),
+            new Vector3(Random.Range(500f, 800f), 1000f, Random.Range(400f, 800f)),
             Quaternion.Euler(0f, Random.Range(0f, 90f), 0f));
         slash.transform.parent = transform;
-        isCrossSlash = true;
         yield return new WaitForSeconds(6f);
-        isCrossSlash = false;
 
         randomAttackCoroutine = null;
     }

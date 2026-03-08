@@ -243,7 +243,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (context.performed && !QuestState.Instance.pausedForDialogue)
         {
-            if (context.performed && !isAttacking && stats.introDone && (stats.outdoorsScene || stats.tammyScene || stats.markyScene))
+            if (context.performed && !isAttacking && stats.introDone && (stats.outdoorsScene || stats.tammyScene || stats.markyScene || stats.apolakiScene))
             {
                 ChangeState(PlayerState.Attacking);
                 attackOngoing = true;

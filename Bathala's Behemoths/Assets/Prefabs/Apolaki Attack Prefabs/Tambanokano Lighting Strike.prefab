@@ -47,11 +47,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7834c39ddfd64bb41be460590aba1adb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackDuration: 5
+  attackDuration: 4
   finalScaleX: 13
   finalScaleY: 13
   thunderSound: {fileID: 0}
   overlaySound: {fileID: 0}
+  lightning: {fileID: 0}
+  lightningSpawned: 0
 --- !u!1 &2943237318426240122
 GameObject:
   m_ObjectHideFlags: 0

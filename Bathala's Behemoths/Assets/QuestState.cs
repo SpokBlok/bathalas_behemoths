@@ -39,6 +39,8 @@ public class QuestState : MonoBehaviour
     public bool markupoDefeated;
     public bool apolakiDefeated;
 
+    public bool goodEnding;
+
     public bool pausedForDialogue = false;
     public bool menuActive = false;
     public bool pauseActive = false;

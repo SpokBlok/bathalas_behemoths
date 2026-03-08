@@ -44664,7 +44664,6 @@ GameObject:
   - component: {fileID: 3173211282800854217}
   - component: {fileID: 2203528438947615041}
   - component: {fileID: 6885673067998443800}
-  - component: {fileID: 6026073973168018165}
   - component: {fileID: 5284598641034090492}
   m_Layer: 5
   m_Name: HP Bar
@@ -44731,23 +44730,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &6026073973168018165
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8651781705700308788}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 14234787699e1084aad261080573cd7f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  HPText: {fileID: 0}
-  healthBar: {fileID: 6885673067998443800}
-  tammy: {fileID: 0}
-  hpHUD: {fileID: 0}
-  maxHP: 0
 --- !u!114 &5284598641034090492
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -44761,7 +44743,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   HPText: {fileID: 0}
-  healthBar: {fileID: 0}
+  healthBar: {fileID: 6885673067998443800}
   apolaki: {fileID: 0}
   hpHUD: {fileID: 0}
   maxHP: 0

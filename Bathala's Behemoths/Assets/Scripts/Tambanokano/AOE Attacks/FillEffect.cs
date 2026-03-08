@@ -14,6 +14,12 @@ public class FillEffect : MonoBehaviour
     public AudioClip thunderSound;
     public AudioClip overlaySound;
 
+    public GameObject lightning;
+    public bool lightningSpawned = false;
+    public bool audioSpawned = false;
+
+    private GameObject spawnedLightning;
+
     void Start()
     {
         timer = 0;
@@ -36,11 +42,23 @@ public class FillEffect : MonoBehaviour
         }
         else
         {
+            if (!lightningSpawned && lightning != null)
+            {
+                spawnedLightning = Instantiate(lightning, transform.position + new Vector3(0f, 0f, -1f), Quaternion.identity);
+                spawnedLightning.transform.localScale = new Vector3(15.0f, 30.0f, 15.0f);
+                lightningSpawned = true;
+            }
+
             attackRadius.Damage();
-            AudioSource.PlayClipAtPoint(thunderSound, Camera.main.transform.position + Camera.main.transform.forward * 2f, 1f);
-            AudioSource.PlayClipAtPoint(overlaySound, Camera.main.transform.position + Camera.main.transform.forward * 2f, 1f);
-            
-            Destroy(gameObject);
+            if (!audioSpawned)
+            {
+                AudioSource.PlayClipAtPoint(thunderSound, transform.position, 1f);
+                AudioSource.PlayClipAtPoint(overlaySound, transform.position, 1f);
+                audioSpawned = true;
+            }
+
+            Destroy(spawnedLightning, 1.0f); // Destroys the lightning effect after 0.5 seconds
+            Destroy(gameObject); // Destroys the fill effect after 0.5 seconds
         }
     }
 

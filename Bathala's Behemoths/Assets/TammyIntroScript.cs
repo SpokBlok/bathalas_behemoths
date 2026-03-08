@@ -20,10 +20,4 @@ public class TammyIntroScript : MonoBehaviour
         cutsceneTimeline.stopped -= OnPlayableDirectorStopped;
         SceneManager.LoadScene("Tammy");
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

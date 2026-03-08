@@ -10,9 +10,12 @@ public class TambanokanoLightningStrike : AOEAttackRadius
 
     public float attackDamage;
 
+    private bool hasDamagedPlayer;
+
     // Start is called before the first frame update
     void Start()
     {
+        hasDamagedPlayer = false;
         float scaleX = transform.parent.GetComponentInChildren<FillEffect>().finalScaleX;
         transform.localScale = new(scaleX, scaleX, scaleX);
 
@@ -37,9 +40,10 @@ public class TambanokanoLightningStrike : AOEAttackRadius
 
         foreach (Collider hitCollider in hitColliders)
         {
-            if (hitCollider.CompareTag("Player"))
+            if (hitCollider.CompareTag("Player") && !hasDamagedPlayer)
             {
                 hitCollider.GetComponent<PlayerMovement>().TakeDamage(attackDamage);
+                hasDamagedPlayer = true;
             }
             else if (hitCollider.CompareTag("Enemy"))
             {

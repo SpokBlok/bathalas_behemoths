@@ -30,22 +30,25 @@ public class Waypoints : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if(PlayerStats.Instance.introDone && PlayerStats.Instance.ruinsVisitedOnce)
+        if(clueWaypoint != null)
         {
-            clueWaypoint.gameObject.SetActive(true);
-        }
-        else
-        {
-            clueWaypoint.gameObject.SetActive(false);
-        }
+            if(PlayerStats.Instance.introDone && PlayerStats.Instance.ruinsVisitedOnce)
+            {
+                clueWaypoint.gameObject.SetActive(true);
+            }
+            else
+            {
+                clueWaypoint.gameObject.SetActive(false);
+            }
 
-        minX = clueWaypoint.GetPixelAdjustedRect().width / 2 + 5;
-        maxX = Screen.width - minX;
+            minX = clueWaypoint.GetPixelAdjustedRect().width / 2 + 5;
+            maxX = Screen.width - minX;
 
-        minY = clueWaypoint.GetPixelAdjustedRect().height / 2 + 5;
-        maxY = Screen.height - minY;
-        
-        trackedClue = clue1Target;
+            minY = clueWaypoint.GetPixelAdjustedRect().height / 2 + 5;
+            maxY = Screen.height - minY;
+            
+            trackedClue = clue1Target;
+        }
     }
 
     // Update is called once per frame
@@ -77,30 +80,33 @@ public class Waypoints : MonoBehaviour
             trackedClue = clue6Target;
         }
 
-        dist = Vector3.Distance(trackedClue.position, transform.position);
-        pos = Camera.main.WorldToScreenPoint(trackedClue.position + offset);
+        if(trackedClue != null)
+        {
+            dist = Vector3.Distance(trackedClue.position, transform.position);
+            pos = Camera.main.WorldToScreenPoint(trackedClue.position + offset);
 
-        if(dist > 400)
-        {
-            pos.y = maxY;
-        }
-        
-        if(Vector3.Dot((trackedClue.position - transform.position), transform.forward) < 0)
-        {
-            if(pos.y < Screen.height / 2)
+            if(dist > 400)
             {
                 pos.y = maxY;
             }
-            else
+            
+            if(Vector3.Dot((trackedClue.position - transform.position), transform.forward) < 0)
             {
-                pos.y = minY;
+                if(pos.y < Screen.height / 2)
+                {
+                    pos.y = maxY;
+                }
+                else
+                {
+                    pos.y = minY;
+                }
             }
+
+            pos.x = Mathf.Clamp(pos.x, minX, maxX);
+            pos.y = Mathf.Clamp(pos.y, minY, maxY);
+
+            clueWaypoint.transform.position = pos;
+            clueWPMeter.text = (Vector3.Distance(trackedClue.position, transform.position)).ToString("0") + "m";
         }
-
-        pos.x = Mathf.Clamp(pos.x, minX, maxX);
-        pos.y = Mathf.Clamp(pos.y, minY, maxY);
-
-        clueWaypoint.transform.position = pos;
-        clueWPMeter.text = (Vector3.Distance(trackedClue.position, transform.position)).ToString("0") + "m";
     }
 }

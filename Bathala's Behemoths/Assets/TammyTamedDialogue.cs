@@ -95,7 +95,6 @@ public class TammyTamedDialogue : MonoBehaviour
 
     void GoToBase()
     {
-        SceneManager.LoadScene("RuinsScene Movement");
         PlayerStats.Instance.introDone = true;
         PlayerStats.Instance.outdoorsScene = false;
         PlayerStats.Instance.ruinsScene = true;
@@ -104,9 +103,9 @@ public class TammyTamedDialogue : MonoBehaviour
         PlayerStats.Instance.currentHealth = PlayerStats.Instance.maxHealth;
 
         PlayerMovement playerScript = GameObject.FindWithTag("Player").GetComponent<PlayerMovement>();
+        PlayerStats.Instance.speedMultiplier = 1;
         if(playerScript.isBerserk)
         {
-            PlayerStats.Instance.speedMultiplier = 1;
             playerScript.isBerserk = false;
         }
         bbSkill = FindObjectOfType<BathalasBlessing>();
@@ -129,5 +128,7 @@ public class TammyTamedDialogue : MonoBehaviour
             StopCoroutine(PlayerSkills.Instance.behemothSkillECoroutine);
             PlayerSkills.Instance.behemothSkillECoroutine = null;
         }
+        
+        SceneManager.LoadScene("RuinsScene Movement");
     }
 }

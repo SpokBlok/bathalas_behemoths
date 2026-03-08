@@ -23,7 +23,7 @@ public class TrailingLightningStrike : MonoBehaviour
     {
 
         if (timer < attackGapDuration)
-            {
+        {
             timer += Time.deltaTime;
         }
         else if (attacksLeft > 0)
@@ -35,9 +35,12 @@ public class TrailingLightningStrike : MonoBehaviour
             attacksLeft--;
 
             Tambanokano tammy = GameObject.FindWithTag("Tambanokano").GetComponent<Tambanokano>();
-            tammy.BlinkOnce();
+            if(tammy != null)
+            {
+                tammy.BlinkOnce();
+            }
         } 
-        else
+        else if (attacksLeft <= 0 && transform.childCount == 0)
         {
             Destroy(gameObject);
         }

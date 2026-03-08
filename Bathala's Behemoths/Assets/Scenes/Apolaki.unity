@@ -1575,10 +1575,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: cdceda78948206740a4f18ce86be3499,
         type: 3}
       insertIndex: -1
-      addedObject: {fileID: 545006170}
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: cdceda78948206740a4f18ce86be3499,
-        type: 3}
-      insertIndex: -1
       addedObject: {fileID: 545006177}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: cdceda78948206740a4f18ce86be3499,
         type: 3}
@@ -1618,43 +1614,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &545006170
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 545006168}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 01f7c81f9be8c2140900121deac15463, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  health: 10
-  endDialogue: {fileID: 532134475}
-  clawSwipePrefab: {fileID: 505469977504410164, guid: 0422f13dab3528e418388532b0b4a481,
-    type: 3}
-  trailingLightningPrefab: {fileID: 8001276351152198224, guid: 8ab1eb436dd2d3547bcc898e3419fbae,
-    type: 3}
-  arenaWideLightingPrefab: {fileID: 146772456262885631, guid: 05a44c696608cd444ab9136a8c3a7a20,
-    type: 3}
-  massiveAOEPrefab: {fileID: 5264218506392493291, guid: 6b48735cd54a48e4a9e06cb6bbc8f919,
-    type: 3}
-  HUD: {fileID: 0}
-  tammyHPBar: {fileID: 0}
-  stunned: 0
-  attacksPassed: 0
-  duration: 0
-  eyesOpenMat: {fileID: 2100000, guid: e65d2288223134a46b9763f936a11e5e, type: 2}
-  eyesClosedMat: {fileID: 2100000, guid: 95995c0d862209d498ee9e141e72ef4f, type: 2}
-  tamRend: {fileID: 0}
-  tammy: {fileID: 0}
-  stunSymbol: {fileID: 0}
-  isClawSwiping: 0
-  modelRenderer:
-  - {fileID: 0}
-  tammyModel: {fileID: 0}
-  hpBarTransform: {fileID: 0}
 --- !u!65 &545006171
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1730,7 +1689,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3746558a1d3cefa46a2461361b0bfb71, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 0
+  health: 6000
   endDialogue: {fileID: 532134475}
   meleeAttackPrefab: {fileID: 505469977504410164, guid: bd72ef2fb0a3c524c94644fdedf4be45,
     type: 3}
@@ -1753,7 +1712,6 @@ MonoBehaviour:
   isStunned: 0
   modelRenderer: []
   apolakiModel: {fileID: 0}
-  goodEnding: 0
 --- !u!1001 &548765097
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1861,10 +1819,20 @@ PrefabInstance:
       propertyPath: m_Radius
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3343903127290275398, guid: e2befb3480872ac4d860e47a6b28741a,
+        type: 3}
+      propertyPath: m_RenderingLayerMask
+      value: 513
+      objectReference: {fileID: 0}
     - target: {fileID: 4689692903261357202, guid: e2befb3480872ac4d860e47a6b28741a,
         type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4745575988031694686, guid: e2befb3480872ac4d860e47a6b28741a,
+        type: 3}
+      propertyPath: m_RenderingLayerMask
+      value: 513
       objectReference: {fileID: 0}
     - target: {fileID: 5358987193863904808, guid: e2befb3480872ac4d860e47a6b28741a,
         type: 3}
@@ -1980,6 +1948,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_TagString
       value: MannyBody
+      objectReference: {fileID: 0}
+    - target: {fileID: 8835632563037732269, guid: e2befb3480872ac4d860e47a6b28741a,
+        type: 3}
+      propertyPath: m_RenderingLayerMask
+      value: 513
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2332,6 +2305,7 @@ MonoBehaviour:
   tambanokanoDefeated: 0
   markupoDefeated: 0
   apolakiDefeated: 0
+  goodEnding: 0
   pausedForDialogue: 0
   menuActive: 0
   pauseActive: 0
@@ -2794,7 +2768,7 @@ Camera:
     width: 1
     height: 1
   near clip plane: 0.3
-  far clip plane: 1500
+  far clip plane: 3500
   field of view: 65
   orthographic: 0
   orthographic size: 5
@@ -2913,7 +2887,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1179000861
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3307,7 +3281,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1338734090
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3533,6 +3507,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0.000061035156
+      objectReference: {fileID: 0}
+    - target: {fileID: 6885673067998443800, guid: bfbfd621e2b6fdd488959dd9c35453e0,
+        type: 3}
+      propertyPath: m_FillAmount
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -4367,7 +4346,7 @@ MonoBehaviour:
     FieldOfView: 65
     OrthographicSize: 5
     NearClipPlane: 0.3
-    FarClipPlane: 1500
+    FarClipPlane: 3500
     Dutch: 0
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
@@ -5014,8 +4993,8 @@ SceneRoots:
   - {fileID: 880765552}
   - {fileID: 2143968289}
   - {fileID: 2107649348}
-  - {fileID: 254453885}
   - {fileID: 545006167}
+  - {fileID: 254453885}
   - {fileID: 1338734093}
   - {fileID: 1179000864}
   - {fileID: 75886982}

@@ -20,7 +20,7 @@ public class TriggerToApolaki : MonoBehaviour
             PlayerStats.Instance.ruinsScene = false;
             PlayerStats.Instance.dead = false;
             PlayerStats.Instance.speedMultiplier = 1.5f;
-            SceneManager.LoadScene("Apolaki");
+            SceneManager.LoadScene("ApolakiIntroScene");
 
             if(PlayerSkills.Instance.mainCharacterSkillCoroutine != null)
             {

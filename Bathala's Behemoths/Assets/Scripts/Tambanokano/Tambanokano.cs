@@ -254,7 +254,12 @@ public class Tambanokano : EnemyMob
                 {
                     hpBarTransform.gameObject.SetActive(false);
                 }
-                SceneManager.LoadScene("TammyDefeatCutscene");
+
+                // Only load Tammy cutscene only if we are in tammyScene
+                if (PlayerStats.Instance.tammyScene)
+                {
+                    SceneManager.LoadScene("TammyDefeatCutscene");
+                }
                 // endDialogue.SetActive(true);
             }
         }
@@ -322,7 +327,7 @@ public class Tambanokano : EnemyMob
         tamRend.material = eyesOpenMat;
 
         GameObject lightning = Instantiate(arenaWideLightingPrefab, 
-            new Vector3(Random.Range(500f, 800f), 300f, Random.Range(400f, 800f)),
+            new Vector3(Random.Range(500f, 800f), 800f, Random.Range(400f, 800f)),
             Quaternion.Euler(0f, Random.Range(0f, 90f), 0f));
         lightning.transform.parent = transform;
         yield return new WaitForSeconds(6f);

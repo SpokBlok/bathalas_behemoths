@@ -50,9 +50,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e8d0287e185c5245a467740e772f4c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackDamage: 10
+  attackDamage: 20
   attackDuration: 5
-  thunderSound: {fileID: 8300000, guid: f1cb5d83282f2904a85f73111d068616, type: 3}
+  thunderSound: {fileID: 8300000, guid: 1dabd037812bed242babbe28c8d4679d, type: 3}
+  lightning: {fileID: 5627696518775099638, guid: 543d521d2176ace4aba4667ddca92d97,
+    type: 3}
+  lightningSpawned: 0
 --- !u!1 &414992118269931261
 GameObject:
   m_ObjectHideFlags: 0

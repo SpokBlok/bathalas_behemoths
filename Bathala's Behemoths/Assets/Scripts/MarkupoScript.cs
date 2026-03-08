@@ -171,7 +171,12 @@ public class MarkupoScript : EnemyMob
                 {
                     hpBarTransform.gameObject.SetActive(false);
                 }
-                SceneManager.LoadScene("MarkyDefeatCutscene");
+
+                // Only load Marky cutscene only if we are in markyScene
+                if(PlayerStats.Instance.markyScene)
+                {
+                    SceneManager.LoadScene("MarkyDefeatCutscene");
+                }
                 // endDialogue.SetActive(true);
             }
         }

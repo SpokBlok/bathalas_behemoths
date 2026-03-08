@@ -4918,7 +4918,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &239847528
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6262,6 +6262,7 @@ MonoBehaviour:
   isClawSwiping: 0
   modelRenderer: []
   tammyModel: {fileID: 0}
+  hpBarTransform: {fileID: 0}
 --- !u!65 &254176168
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -20647,6 +20648,7 @@ MonoBehaviour:
   markupoFound: 0
   tambanokanoDefeated: 0
   markupoDefeated: 0
+  apolakiDefeated: 0
   pausedForDialogue: 0
   menuActive: 0
   pauseActive: 0
@@ -23925,7 +23927,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1007151448
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -27321,7 +27323,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1167231246
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -32682,6 +32684,7 @@ MonoBehaviour:
   isClawSwiping: 0
   modelRenderer: []
   tammyModel: {fileID: 0}
+  hpBarTransform: {fileID: 0}
 --- !u!65 &1451421641
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -45599,6 +45602,7 @@ MonoBehaviour:
   modelRenderer:
   - {fileID: 423252089}
   tammyModel: {fileID: 1538033628}
+  hpBarTransform: {fileID: 0}
 --- !u!65 &1871873205
 BoxCollider:
   m_ObjectHideFlags: 0

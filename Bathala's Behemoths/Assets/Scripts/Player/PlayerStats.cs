@@ -89,7 +89,7 @@ public class PlayerStats : MonoBehaviour
             initSpeed = 5;
         }
 
-        if(tammyScene || markyScene) 
+        if(tammyScene || markyScene || apolakiScene) 
         {
             speedMultiplier = 1.5f;
         }

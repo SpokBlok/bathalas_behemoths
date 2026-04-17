@@ -15,6 +15,7 @@ public class PlayerStats : MonoBehaviour
 
     public bool dead;
     public bool hasMudArmor;
+    public bool hasProtect;
 
     public bool introDone;
     public bool tutorialDone;
@@ -135,6 +136,7 @@ public class PlayerStats : MonoBehaviour
         currentHealth = maxHealth;
 
         hasMudArmor = false;
+        hasProtect = false;
 
         kapreCigars = 0;
 }
@@ -190,6 +192,8 @@ public class PlayerStats : MonoBehaviour
 
         data.dead = dead;
         data.hasMudArmor = hasMudArmor;
+        data.hasProtect = hasProtect;
+
 
         data.introDone = introDone;
         data.tutorialDone = tutorialDone;
@@ -253,6 +257,7 @@ public class PlayerStats : MonoBehaviour
 
         dead = data.dead;
         hasMudArmor = data.hasMudArmor;
+        hasProtect = data.hasProtect;
 
         introDone = data.introDone;
         tutorialDone = data.tutorialDone;
@@ -320,6 +325,7 @@ public class PlayerStats : MonoBehaviour
         questComp = false;
         dead = false;
         hasMudArmor = false;
+        hasProtect = false;
 
         // Stat values
         if (ruinsScene && introDone)
@@ -437,6 +443,7 @@ public struct PlayerStatsSaveData
 
     public bool dead;
     public bool hasMudArmor;
+    public bool hasProtect;
 
     public bool introDone;
     public bool tutorialDone;

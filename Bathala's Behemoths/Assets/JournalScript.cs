@@ -141,10 +141,7 @@ public class JournalScript : MonoBehaviour
         if(!PlayerStats.Instance.introDone) {return;}
         gameObject.SetActive(true);
         // QuestState.Instance.pausedForDialogue = true;
-        hud = GameObject.FindGameObjectWithTag("HUD");
-        originalHUDPos = hud.gameObject.transform.position;
-        obtainedOGPos = true;
-        hud.gameObject.transform.position = new Vector3(10000, 10000, 10000);
+        HUDHider.Hide();
 
         QuestState.Instance.pausedForDialogue = true;
         EventManager.Instance.InvokeOnEnteringUpgradeScreen();
@@ -154,12 +151,7 @@ public class JournalScript : MonoBehaviour
     {
         gameObject.SetActive(false);
         QuestState.Instance.pausedForDialogue = false;
-        hud = GameObject.FindGameObjectWithTag("HUD");
-        // hud.gameObject.transform.position = new Vector3(859.20f, 640.80f, 0.00f);
-        if (obtainedOGPos)
-        {
-            hud.gameObject.transform.position = originalHUDPos;
-        }
+        HUDHider.Show();
         QuestState.Instance.pausedForDialogue = false;
         EventManager.Instance.InvokeOnExitingUpgradeScreen();
         Transform panel = transform.Find("RightPanel");

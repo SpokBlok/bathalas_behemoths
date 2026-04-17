@@ -27,6 +27,7 @@ public class TriggerToBase : MonoBehaviour
             PlayerStats.Instance.outdoorsScene = false;
             PlayerStats.Instance.ruinsScene = true;
             PlayerStats.Instance.currentHealth = PlayerStats.Instance.maxHealth;
+            PlayerStats.Instance.SetScenePosition();
 
             PlayerMovement playerScript = GameObject.FindWithTag("Player").GetComponent<PlayerMovement>();
             if(playerScript.isBerserk)

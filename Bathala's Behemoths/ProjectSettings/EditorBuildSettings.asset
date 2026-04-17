@@ -41,6 +41,24 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Apolaki.unity
     guid: 1b54dca0beff6934d8f28b01f2101e55
+  - enabled: 1
+    path: Assets/Scenes/ApolakiIntroScene.unity
+    guid: ddca48b08c0f44e3a85048e13c926cad
+  - enabled: 1
+    path: Assets/Scenes/ApolakiDefeatScene.unity
+    guid: bb0fca897821949cf9675fdd2c00f3c6
+  - enabled: 1
+    path: Assets/Scenes/MarkyIntroCutscene.unity
+    guid: dafbd94705fda452fa26246bb7a248e5
+  - enabled: 1
+    path: Assets/Scenes/MarkyDefeatCutscene.unity
+    guid: e9c40654832fd4668a2914ae7b17ad0b
+  - enabled: 1
+    path: Assets/Scenes/TammyIntroCutscene.unity
+    guid: d934bafdf40fe47e1a0b4e4f99898187
+  - enabled: 1
+    path: Assets/Scenes/TammyDefeatCutscene.unity
+    guid: da665354a5a094f919f7d336585f6a7b
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: f612e8e80fb42e84bacb7788ff9f2c98,
       type: 3}

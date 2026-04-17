@@ -113,10 +113,7 @@ public class BehemothSwitchUIPanel : MonoBehaviour
     {
         gameObject.SetActive(true);
         QuestState.Instance.pausedForDialogue = true;
-        hud = GameObject.FindGameObjectWithTag("HUD");
-        originalHUDPos = hud.gameObject.transform.position;
-        obtainedOGPos = true;
-        hud.gameObject.transform.position = new Vector3(10000, 10000, 10000);
+        HUDHider.Hide();
         EventManager.Instance.InvokeOnEnteringUpgradeScreen();
 
         UnityEngine.Cursor.visible = true;
@@ -127,15 +124,11 @@ public class BehemothSwitchUIPanel : MonoBehaviour
     {
         gameObject.SetActive(false);
         QuestState.Instance.pausedForDialogue = false;
-        hud = GameObject.FindGameObjectWithTag("HUD");
 
         UnityEngine.Cursor.visible = false;
         UnityEngine.Cursor.lockState = CursorLockMode.Locked;
 
-        if (obtainedOGPos)
-        {
-            hud.gameObject.transform.position = originalHUDPos;
-        }
+        HUDHider.Show();
         EventManager.Instance.InvokeOnExitingUpgradeScreen();
         Transform panel = transform.Find("RightPanel");
         foreach (Transform child in panel)

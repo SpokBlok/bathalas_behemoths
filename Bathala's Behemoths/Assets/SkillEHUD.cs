@@ -20,7 +20,7 @@ public class SkillEHUD : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        ChangeSkill();
     }
 
     // Update is called once per frame
@@ -77,6 +77,10 @@ public class SkillEHUD : MonoBehaviour
         {
             SetHUDToTornadoPunch();
             PlayerStats.Instance.skillESound = tornadoPunchSound;
+        }
+        else
+        {
+            return;
         }
     }
 

@@ -5,26 +5,17 @@ using UnityEngine.SceneManagement;
 
 public class DeathScreen : MonoBehaviour
 {
-    private GameObject HUD;
-    private Vector3 originalHUDPos;
     // Start is called before the first frame update
     void Start()
     {
         UnityEngine.Cursor.visible = true;
         UnityEngine.Cursor.lockState = CursorLockMode.None;
-
-        HUD = GameObject.FindGameObjectWithTag("HUD");
-        originalHUDPos = HUD.gameObject.transform.position;
-        HUD.gameObject.transform.position = new Vector3(10000, 10000, 10000);
+        HUDHider.Hide();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (HUD == null)
-        {
-            HUD = GameObject.FindGameObjectWithTag("HUD");
-        }
         if(!UnityEngine.Cursor.visible)
         {
             UnityEngine.Cursor.visible = true;
@@ -42,25 +33,24 @@ public class DeathScreen : MonoBehaviour
         PlayerStats.Instance.speedMultiplier = 1;
         QuestState.Instance.pausedForDialogue = false;
         QuestState.Instance.menuActive = false;
-        HUD = GameObject.FindGameObjectWithTag("HUD");
-        if(HUD != null)
-        {
-            HUD.gameObject.transform.position = originalHUDPos;
-        }
+        HUDHider.Reset();
         BathalasBlessing bbSkill = FindObjectOfType<BathalasBlessing>();
         bbSkill.RechargeUsages();
+        PlayerStats.Instance.SetScenePosition();
         SceneManager.LoadScene(3);
     }
 
     public void PressQuitToDesktop()
     {
         QuestState.Instance.menuActive = false;
+        HUDHider.Reset();
         Application.Quit();
     }
 
     public void PressQuitToMenu()
     {
         QuestState.Instance.menuActive = false;
+        HUDHider.Reset();
         SceneManager.LoadScene(0);
     }
 }

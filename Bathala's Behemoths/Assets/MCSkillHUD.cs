@@ -19,7 +19,7 @@ public class MCSkillHUD : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        ChangeSkill();
     }
 
     // Update is called once per frame
@@ -70,6 +70,10 @@ public class MCSkillHUD : MonoBehaviour
         {
             SetHUDToMusicalFlute();
             PlayerStats.Instance.mcSkillSound = musicalFluteSound;
+        }
+        else
+        {
+            return;
         }
     }
 

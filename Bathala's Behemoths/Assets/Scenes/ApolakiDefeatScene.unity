@@ -2573,14 +2573,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   textComponent: {fileID: 1753624969}
   badEndingLines:
-  - Bad ending achieved - apolaki leaves spitefully
-  - Bruh go defeat and tame both behemoths to get the good ending
-  - Congrats on finishing the game!
+  - 'Apolaki: Mark my words; my remaining servants here will make quick work of you.
+    You do not deserve stewardship over yourselves!'
+  - Outraged and humiliated, Apolaki retreats to the realm of the Gods.
+  - Steve, having defeated the deity, breathes a sigh of relief.
+  - The lands are free of tyranny... or so it seems.
   goodEndingLines:
-  - Good ending achieved - apolaki leaves things to humanity
-  - You just won the game, noice - if you wanna get the other ending just don't tame
-    both of the other two behemoths
-  - Congrats on finishing the game!
+  - 'Apolaki: I understand now why Tambanokano and Markupo chose you to be their
+    master.'
+  - Apolaki acknowledges your strength of will and of character.
+  - The deity bestows a blessing upon you and returns to the realm of the Gods, entrusting
+    you with stewardiship over the mortal realm.
+  - Steve, having been given the ultimate responsibility, whimpers under the weight
+    of his newfound standing.
+  - The mortal realm is safe... for now.
   currentLines:
   - current 1
   - current 2
@@ -4142,7 +4148,7 @@ Camera:
     width: 1
     height: 1
   near clip plane: 0.3
-  far clip plane: 800
+  far clip plane: 3500
   field of view: 65
   orthographic: 0
   orthographic size: 5
@@ -4169,7 +4175,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 917360088}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.06366299, y: -0.0964338, z: 0.032109976, w: 0.9927822}
+  m_LocalRotation: {x: 0.063663006, y: -0.0964338, z: 0.032109983, w: 0.9927822}
   m_LocalPosition: {x: 999.3175, y: 216.57005, z: 376.64316}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -5497,6 +5503,18 @@ MonoBehaviour:
   skillESound: {fileID: 0}
   skillQSound: {fileID: 0}
   mcSkillSound: {fileID: 0}
+  DashPurchased: 0
+  MudflingPurchased: 0
+  AtkUpPurchased: 0
+  TornadoPurchased: 0
+  MudArmorPurchased: 0
+  FirstAidPurchased: 0
+  HpUpPurchased: 0
+  FlutePurchased: 0
+  RegenPurchased: 0
+  BBPurchased: 0
+  player: {fileID: 0}
+  playerSavePosition: {x: 0, y: 0, z: 0}
   playerModelIndex: 1
 --- !u!4 &1167231247
 Transform:

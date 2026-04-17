@@ -100,6 +100,7 @@ public class TammyTamedDialogue : MonoBehaviour
         PlayerStats.Instance.ruinsScene = true;
         PlayerStats.Instance.tammyScene = false;
         PlayerStats.Instance.markyScene = false;
+        PlayerStats.Instance.apolakiUnlocked = true;
         PlayerStats.Instance.currentHealth = PlayerStats.Instance.maxHealth;
 
         PlayerMovement playerScript = GameObject.FindWithTag("Player").GetComponent<PlayerMovement>();
@@ -129,6 +130,7 @@ public class TammyTamedDialogue : MonoBehaviour
             PlayerSkills.Instance.behemothSkillECoroutine = null;
         }
         
+        PlayerStats.Instance.SetScenePosition();
         SceneManager.LoadScene("RuinsScene Movement");
     }
 }

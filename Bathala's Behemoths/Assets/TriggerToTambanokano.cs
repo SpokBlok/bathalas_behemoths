@@ -30,6 +30,7 @@ public class TriggerToTambanokano : MonoBehaviour
             PlayerStats.Instance.dead = false;
             PlayerStats.Instance.speedMultiplier = 1.5f;
             SceneManager.LoadScene("TammyIntroCutscene");
+            PlayerStats.Instance.SetScenePosition();
 
             if(PlayerSkills.Instance.mainCharacterSkillCoroutine != null)
             {

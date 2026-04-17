@@ -5,6 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class PauseSystem : MonoBehaviour
 {
+    public GameObject saveNotif;
+    public GameObject loadNotif;
     bool isPaused = false;
     public GameObject pauseMenu;
 
@@ -29,7 +31,15 @@ public class PauseSystem : MonoBehaviour
         {
             isPaused = !isPaused;
             QuestState.Instance.pauseActive = isPaused;
-            QuestState.Instance.pausedForDialogue = !QuestState.Instance.pausedForDialogue;
+            if(isPaused)
+            {
+                QuestState.Instance.pausedForDialogue = true;
+            }
+            else
+            {
+                QuestState.Instance.pausedForDialogue = false;
+            }
+            // QuestState.Instance.pausedForDialogue = !QuestState.Instance.pausedForDialogue;
             Time.timeScale = isPaused ? 0 : 1;
 
             // Show cursor when menu is open
@@ -59,8 +69,67 @@ public class PauseSystem : MonoBehaviour
     public void ReturnToTitle()
     {
         pauseMenu.SetActive(false);
+        QuestState.Instance.pausedForDialogue = false;
+        QuestState.Instance.menuActive = false;
+        QuestState.Instance.pauseActive = false;
         isPaused = false;
         Time.timeScale = 1;
         SceneManager.LoadScene("MainMenu");
+    }
+
+    public void SaveGame()
+    {
+        loadNotif.SetActive(false);
+        saveNotif.SetActive(true);
+        
+        if(SaveSystem.Instance != null)
+        {
+            SaveSystem.Instance.Save();
+        }
+    }
+
+    public void LoadGame()
+    {   
+        if(!SaveSystem.Instance.hasSave) {return;}
+
+        saveNotif.SetActive(false);
+        loadNotif.SetActive(true);
+        pressLoad();
+    }
+
+    public void pressLoad()
+    {
+        if(SaveSystem.Instance != null)
+        {
+            SaveSystem.Instance.Load();
+            QuestState.Instance.pausedForDialogue = false;
+            QuestState.Instance.menuActive = false;
+            QuestState.Instance.pauseActive = false;
+        }
+        
+        if(PlayerStats.Instance.outdoorsScene)
+        {
+            SceneManager.LoadScene("OutdoorsSceneFinal");
+        }
+        else if(PlayerStats.Instance.ruinsScene)
+        {
+            SceneManager.LoadScene("RuinsScene Movement");
+        }
+        else if(PlayerStats.Instance.tammyScene)
+        {
+            SceneManager.LoadScene("Tammy");
+        }
+        else if(PlayerStats.Instance.markyScene)
+        {
+            SceneManager.LoadScene("Marky");
+        }
+        else if(PlayerStats.Instance.apolakiScene)
+        {
+            SceneManager.LoadScene("Apolaki");
+        }
+        else
+        {
+            SceneManager.LoadScene("OutdoorsSceneFinal");
+        }
     }
 }

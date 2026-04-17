@@ -30,8 +30,7 @@ public class DialogueScript : MonoBehaviour
     void OnEnable()
     {
         HUD = GameObject.FindGameObjectWithTag("HUD");
-        originalHUDPos = HUD.gameObject.transform.position;
-        HUD.gameObject.transform.position = new Vector3(10000, 10000, 10000);
+        HUDHider.Hide();
         QuestState.Instance.pausedForDialogue = true;
         if(QuestState.Instance.frightenedDwendeRepeat)
         {
@@ -93,7 +92,7 @@ public class DialogueScript : MonoBehaviour
             pointerActive = false;
             QuestState.Instance.frightenedDwendeRepeat = true;
             QuestState.Instance.pausedForDialogue = false;
-            HUD.gameObject.transform.position = originalHUDPos;
+            HUDHider.Show();
             
             Debug.Log("inside end state");
         }

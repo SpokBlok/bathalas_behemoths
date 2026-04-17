@@ -9,9 +9,9 @@ public class Prologue : MonoBehaviour
     void Start()
     {
         Destroy (GameObject.Find("UI Canvas"));
-        Destroy (GameObject.Find("PlayerStats"));
-        Destroy (GameObject.Find("QuestState"));
-        Destroy (GameObject.Find("PlayerSkills"));
+        // Destroy (GameObject.Find("PlayerStats"));
+        // Destroy (GameObject.Find("QuestState"));
+        // Destroy (GameObject.Find("PlayerSkills"));
         
         StartCoroutine(StartPrologue());
     }
@@ -19,10 +19,10 @@ public class Prologue : MonoBehaviour
     void OnAwake()
     {
         Destroy (GameObject.Find("UICanvas"));
-        Destroy (GameObject.Find("PauseSystem"));
-        Destroy (GameObject.Find("PlayerStats"));
-        Destroy (GameObject.Find("QuestState"));
-        Destroy (GameObject.Find("PlayerSkills"));
+        // Destroy (GameObject.Find("PauseSystem"));
+        // Destroy (GameObject.Find("PlayerStats"));
+        // Destroy (GameObject.Find("QuestState"));
+        // Destroy (GameObject.Find("PlayerSkills"));
 
         StartCoroutine(StartPrologue());
     }

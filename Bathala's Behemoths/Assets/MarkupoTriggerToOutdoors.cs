@@ -21,6 +21,7 @@ public class MarkupoTriggerToOutdoors : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             PlayerStats.Instance.outdoorsScene = true;
+            PlayerStats.Instance.SetScenePosition();
             SceneManager.LoadScene("OutdoorsSceneFinal");
         }
     }

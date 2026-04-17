@@ -7,6 +7,14 @@ public class ToApolakiVisibility : MonoBehaviour
     [SerializeField] GameObject translabel;
     [SerializeField] GameObject transition;
 
+    void Start()
+    {
+        if(QuestState.Instance.tambanokanoDefeated || QuestState.Instance.markupoDefeated)
+        {
+            PlayerStats.Instance.apolakiUnlocked = true;
+        }
+    }
+
     // Update is called once per frame
     void Update()
     {

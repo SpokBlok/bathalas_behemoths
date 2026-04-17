@@ -133,10 +133,7 @@ public class QuestBoardUIPanel : MonoBehaviour
     {
         gameObject.SetActive(true);
         QuestState.Instance.pausedForDialogue = true;
-        hud = GameObject.FindGameObjectWithTag("HUD");
-        originalHUDPos = hud.gameObject.transform.position;
-        obtainedOGPos = true;
-        hud.gameObject.transform.position = new Vector3(10000, 10000, 10000);
+        HUDHider.Hide();
 
         EventManager.Instance.InvokeOnEnteringUpgradeScreen();
     }
@@ -145,12 +142,7 @@ public class QuestBoardUIPanel : MonoBehaviour
     {
         gameObject.SetActive(false);
         QuestState.Instance.pausedForDialogue = false;
-        hud = GameObject.FindGameObjectWithTag("HUD");
-        // hud.gameObject.transform.position = new Vector3(859.20f, 640.80f, 0.00f);
-        if(obtainedOGPos)
-        {
-            hud.gameObject.transform.position = originalHUDPos;
-        }
+        HUDHider.Show();
         EventManager.Instance.InvokeOnExitingUpgradeScreen();
         Transform panel = transform.Find("RightPanel");
         foreach (Transform child in panel)

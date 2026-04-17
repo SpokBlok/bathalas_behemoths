@@ -24,6 +24,7 @@ public class FollowTargetSwitcher : MonoBehaviour
         if(PlayerStats.Instance.tammyScene || PlayerStats.Instance.markyScene || PlayerStats.Instance.apolakiScene)
         {
             virtualCam.m_Lens.FarClipPlane = 3500f;
+            virtualCam.m_Lens.FieldOfView = 100f;
         }
         else
         {
@@ -32,7 +33,7 @@ public class FollowTargetSwitcher : MonoBehaviour
 
         SteveTarget = FindAnyObjectByType<SteveFollowTarget>(FindObjectsInactive.Include).transform;
         MountedModelTarget = FindAnyObjectByType<MannyFollowTarget>(FindObjectsInactive.Include).transform;
-        MountedModelBossFightTarget = FindAnyObjectByType<MannyFollowTargetBossFight>(FindObjectsInactive.Include).transform;
+        // MountedModelBossFightTarget = FindAnyObjectByType<MannyFollowTargetBossFight>(FindObjectsInactive.Include).transform;
         currentFollowTarget = SteveTarget;
         newFollowTarget = MountedModelTarget;
 

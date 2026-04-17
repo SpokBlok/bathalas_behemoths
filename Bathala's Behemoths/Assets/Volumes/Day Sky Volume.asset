@@ -240,9 +240,6 @@ MonoBehaviour:
   cloudControl:
     m_OverrideState: 1
     m_Value: 0
-  cloudSimpleMode:
-    m_OverrideState: 1
-    m_Value: 1
   m_CloudPreset:
     m_OverrideState: 1
     m_Value: 4
@@ -418,15 +415,6 @@ MonoBehaviour:
   erosionNoiseType:
     m_OverrideState: 1
     m_Value: 0
-  microErosion:
-    m_OverrideState: 1
-    m_Value: 0
-  microErosionFactor:
-    m_OverrideState: 1
-    m_Value: 0.65
-  microErosionScale:
-    m_OverrideState: 1
-    m_Value: 300
   ambientLightProbeDimmer:
     m_OverrideState: 1
     m_Value: 1
@@ -483,6 +471,9 @@ MonoBehaviour:
   shadowResolution:
     m_OverrideState: 1
     m_Value: 256
+  shadowPlaneHeightOffset:
+    m_OverrideState: 0
+    m_Value: 0
   shadowDistance:
     m_OverrideState: 1
     m_Value: 8000
@@ -554,13 +545,6 @@ MonoBehaviour:
   type:
     m_OverrideState: 1
     m_Value: 0
-  renderingMode:
-    m_OverrideState: 1
-    m_Value: 0
-  material:
-    m_OverrideState: 1
-    m_Value: {fileID: -876546973899608171, guid: 02532cbb810fb404db49da84f1efe41e,
-      type: 3}
   sphericalMode:
     m_OverrideState: 1
     m_Value: 1
@@ -600,9 +584,6 @@ MonoBehaviour:
   aerosolAnisotropy:
     m_OverrideState: 1
     m_Value: 0
-  numberOfBounces:
-    m_OverrideState: 1
-    m_Value: 3
   groundTint:
     m_OverrideState: 1
     m_Value: {r: 1, g: 1, b: 1, a: 1}
@@ -645,6 +626,9 @@ MonoBehaviour:
   horizonZenithShift:
     m_OverrideState: 1
     m_Value: 0
+  numberOfBounces:
+    m_OverrideState: 1
+    m_Value: 3
   m_SkyVersion: 2
   m_ObsoleteEarthPreset:
     m_OverrideState: 1

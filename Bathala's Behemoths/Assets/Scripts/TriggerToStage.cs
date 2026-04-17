@@ -30,6 +30,7 @@ public class TriggerToStage : MonoBehaviour
             PlayerStats.Instance.ruinsVisitedOnce = true;
             PlayerStats.Instance.dead = false;
             // PlayerStats.Instance.speed = 45;
+            PlayerStats.Instance.SetScenePosition();
         }
     }
 }

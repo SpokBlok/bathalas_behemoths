@@ -1061,6 +1061,18 @@ MonoBehaviour:
   skillESound: {fileID: 0}
   skillQSound: {fileID: 0}
   mcSkillSound: {fileID: 0}
+  DashPurchased: 0
+  MudflingPurchased: 0
+  AtkUpPurchased: 0
+  TornadoPurchased: 0
+  MudArmorPurchased: 0
+  FirstAidPurchased: 0
+  HpUpPurchased: 0
+  FlutePurchased: 0
+  RegenPurchased: 0
+  BBPurchased: 0
+  player: {fileID: 0}
+  playerSavePosition: {x: 0, y: 0, z: 0}
   playerModelIndex: 1
 --- !u!4 &366404717
 Transform:
@@ -2638,6 +2650,7 @@ MonoBehaviour:
   tambanokanoDefeated: 0
   markupoDefeated: 0
   apolakiDefeated: 0
+  goodEnding: 0
   pausedForDialogue: 0
   menuActive: 0
   pauseActive: 0
@@ -3219,7 +3232,7 @@ MonoBehaviour:
   m_LookAt: {fileID: 0}
   m_Follow: {fileID: 1191615333}
   m_Lens:
-    FieldOfView: 65
+    FieldOfView: 100
     OrthographicSize: 5
     NearClipPlane: 0.3
     FarClipPlane: 10000
@@ -4722,7 +4735,7 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 10000
-  field of view: 65
+  field of view: 100
   orthographic: 0
   orthographic size: 5
   m_Depth: -1

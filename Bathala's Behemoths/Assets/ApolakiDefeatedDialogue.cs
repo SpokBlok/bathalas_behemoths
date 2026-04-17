@@ -29,6 +29,7 @@ public class ApolakiDefeatedDialogue : MonoBehaviour
 
     void OnEnable()
     {
+        currentLines = badEndingLines;
         if(QuestState.Instance.goodEnding)
         {
             currentLines = goodEndingLines;

@@ -14,6 +14,7 @@ public class TriggerToApolaki : MonoBehaviour
             {
                 apolakiHPBar.SetActive(true);
             }
+            
 
             PlayerStats.Instance.apolakiScene = true;
             PlayerStats.Instance.outdoorsScene = false;
@@ -21,6 +22,7 @@ public class TriggerToApolaki : MonoBehaviour
             PlayerStats.Instance.dead = false;
             PlayerStats.Instance.speedMultiplier = 1.5f;
             SceneManager.LoadScene("ApolakiIntroScene");
+            PlayerStats.Instance.SetScenePosition();
 
             if(PlayerSkills.Instance.mainCharacterSkillCoroutine != null)
             {

@@ -158,40 +158,7 @@ public class PlayerMovement : MonoBehaviour
 
         basicAttackHitbox = transform.Find("Basic Attack/Basic Attack Hitbox").GetComponent<BoxCollider>();
 
-        if (stats.tammyScene && !stats.outdoorsScene)
-        {
-            gameObject.transform.position = new Vector3(999.1f, 187.2f, 390f);
-        }
-        else if (stats.markyScene && !stats.outdoorsScene)
-        {
-            gameObject.transform.position = new Vector3(978.8f, 60f, 263.1f);
-        }
-        else if (stats.apolakiScene && !stats.outdoorsScene)
-        {
-            gameObject.transform.position = new Vector3(999.1f, 187.2f, 390f);
-        }
-        else if (stats.tammyScene && stats.outdoorsScene)
-        {
-            gameObject.transform.position = new Vector3(676f, 62.5f, 1336.6f);
-            stats.tammyScene = false;
-        }
-        else if (stats.markyScene && stats.outdoorsScene)
-        {
-            gameObject.transform.position = new Vector3(997f, 70.2f, 276.5f);
-            stats.markyScene = false;
-        }
-        else if (stats.introDone && stats.outdoorsScene)
-        {
-            gameObject.transform.position = new Vector3(632.2f, 59.5f, 285.138f);
-        }
-        else if (stats.outdoorsScene)
-        {
-            gameObject.transform.position = new Vector3(876.24f, 79.24f, 72.68f);
-        }
-        else if (stats.ruinsScene)
-        {
-            ui.gameObject.SetActive(true);
-        }
+        transform.position = PlayerStats.Instance.playerSavePosition;
     }
 
     public void OnMove(InputAction.CallbackContext context)
@@ -257,7 +224,7 @@ public class PlayerMovement : MonoBehaviour
         // Debug.Log("Calling OnMCSkillTrigger!!!");
         if (context.performed)
         {
-            if (context.performed && !isAttacking && stats.introDone && (stats.outdoorsScene || stats.tammyScene || stats.markyScene))
+            if (context.performed && !isAttacking && stats.introDone && (stats.outdoorsScene || stats.tammyScene || stats.markyScene || stats.apolakiScene))
             {
                 ChangeState(PlayerState.Attacking);
                 GameObject skillManager = GameObject.FindGameObjectWithTag("Player Skills");
@@ -272,7 +239,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (context.performed)
         {
-            if (context.performed && !isAttacking && stats.introDone && (stats.outdoorsScene || stats.tammyScene || stats.markyScene))
+            if (context.performed && !isAttacking && stats.introDone && (stats.outdoorsScene || stats.tammyScene || stats.markyScene || stats.apolakiScene))
             {
                 ChangeState(PlayerState.Attacking);
                 GameObject skillManager = GameObject.FindGameObjectWithTag("Player Skills");
@@ -287,7 +254,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (context.performed)
         {
-            if (context.performed && !isAttacking && stats.introDone && (stats.outdoorsScene || stats.tammyScene || stats.markyScene))
+            if (context.performed && !isAttacking && stats.introDone && (stats.outdoorsScene || stats.tammyScene || stats.markyScene || stats.apolakiScene))
             {
                 ChangeState(PlayerState.Attacking);
                 GameObject skillManager = GameObject.FindGameObjectWithTag("Player Skills");

@@ -62,6 +62,7 @@ public class PlayerStats : MonoBehaviour
     public bool FlutePurchased;
     public bool RegenPurchased;
     public bool BBPurchased;
+    public bool RockyShellPurchased;
 
     public GameObject player;
     public Vector3 playerSavePosition;
@@ -232,6 +233,7 @@ public class PlayerStats : MonoBehaviour
         data.DashPurchased = DashPurchased;
         data.MudflingPurchased = MudflingPurchased;
         data.AtkUpPurchased = AtkUpPurchased;
+        data.RockyShellPurchased = RockyShellPurchased;
         data.TornadoPurchased = TornadoPurchased;
         data.MudArmorPurchased = MudArmorPurchased;
         data.FirstAidPurchased = FirstAidPurchased;
@@ -296,6 +298,7 @@ public class PlayerStats : MonoBehaviour
         DashPurchased = data.DashPurchased;
         MudflingPurchased = data.MudflingPurchased;
         AtkUpPurchased = data.AtkUpPurchased;
+        RockyShellPurchased = data.RockyShellPurchased;
         TornadoPurchased = data.TornadoPurchased;
         MudArmorPurchased = data.MudArmorPurchased;
         FirstAidPurchased = data.FirstAidPurchased;
@@ -378,6 +381,7 @@ public class PlayerStats : MonoBehaviour
         DashPurchased = false;
         MudflingPurchased = false;
         AtkUpPurchased = false;
+        RockyShellPurchased = false;
         TornadoPurchased = false;
         MudArmorPurchased = false;
         FirstAidPurchased = false;
@@ -482,6 +486,7 @@ public struct PlayerStatsSaveData
     public bool DashPurchased;
     public bool MudflingPurchased;
     public bool AtkUpPurchased;
+    public bool RockyShellPurchased;
     public bool TornadoPurchased;
     public bool MudArmorPurchased;
     public bool FirstAidPurchased;

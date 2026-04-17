@@ -37,8 +37,8 @@ public class Protect : BaseSkill
 
         isProtectHash = Animator.StringToHash("isProtect");
         maxCharges = 1;
-        cooldown = 40;
-        skillCode = 2;
+        cooldown = 25;
+        skillCode = 6;
     }
 
     void Update()
@@ -119,11 +119,13 @@ public class Protect : BaseSkill
         
         yield return new WaitForSeconds(1f); //Skill animation
         PlayerStats.Instance.hasProtect = true;
-        yield return new WaitForSeconds(20);
+        PlayerStats.Instance.speedMultiplier -= 0.2f;
+        yield return new WaitForSeconds(10);
         
         AudioSource.PlayClipAtPoint(releaseArmorSound, Camera.main.transform.position + Camera.main.transform.forward * 2f, 1f);
         
         PlayerStats.Instance.hasProtect = false;
+        PlayerStats.Instance.speedMultiplier += 0.2f;
         exitProtectStance = StartCoroutine(ExitProtectStance());
     }
 }

@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 6f4bb3991795fdf4986d7085b92c4abe
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - thunderSound: {fileID: 8300000, guid: f1cb5d83282f2904a85f73111d068616, type: 3}
+  - overlaySound: {fileID: 8300000, guid: 1eb7cbaf61d23a64bbd36c0a38b5cb0c, type: 3}
+  - lightning: {fileID: 1083680755275985701, guid: 749f09165d367f248a0879cdb753d512,
+      type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

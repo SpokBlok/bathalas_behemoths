@@ -9,6 +9,14 @@ public class SkillEHUD : MonoBehaviour
     public Image mudArmor;
     public Image mudfling;
     public Image tornadoPunch;
+    public Image hypnotize;
+    public Image poisonBreath;
+    public Image slither;
+    public Image tailSlap;
+    public Image lightningStrike;
+    public Image protect;
+    public Image swipe;
+    public Image rockyShell;
     public Image blank;
     public Image blankReady;
 
@@ -47,68 +55,177 @@ public class SkillEHUD : MonoBehaviour
         }
     }
 
+    private void SetImageActive(Image image, bool isActive)
+    {
+        if (image != null)
+        {
+            image.gameObject.SetActive(isActive);
+        }
+    }
+
     public void ClearSkillEHUD()
     {
-        blank.gameObject.SetActive(false);
-        dash.gameObject.SetActive(false);
-        mudArmor.gameObject.SetActive(false);
-        mudfling.gameObject.SetActive(false);
-        tornadoPunch.gameObject.SetActive(false);
+        SetImageActive(blank, false);
+        SetImageActive(dash, false);
+        SetImageActive(mudArmor, false);
+        SetImageActive(mudfling, false);
+        SetImageActive(tornadoPunch, false);
+        SetImageActive(hypnotize, false);
+        SetImageActive(poisonBreath, false);
+        SetImageActive(slither, false);
+        SetImageActive(tailSlap, false);
+        SetImageActive(lightningStrike, false);
+        SetImageActive(protect, false);
+        SetImageActive(swipe, false);
+        SetImageActive(rockyShell, false);
     }
 
     public void ChangeSkill()
     {
-        if (PlayerSkills.Instance.behemothSkillE != null && PlayerSkills.Instance.behemothSkillE.skillCode == 1)
+        BaseSkill equippedSkill = PlayerSkills.Instance.behemothSkillE;
+
+        if (equippedSkill == null)
+        {
+            ClearSkillEHUD();
+            PlayerStats.Instance.skillESound = null;
+            PlayerSkills.Instance.skillEBeingEquipped = false;
+            return;
+        }
+
+        if (equippedSkill is Dash)
         {
             SetHUDToDash();
             PlayerStats.Instance.skillESound = dashSound;
         }
-        else if (PlayerSkills.Instance.behemothSkillE != null && PlayerSkills.Instance.behemothSkillE.skillCode == 2)
+        else if (equippedSkill is MudArmor)
         {
             SetHUDToMudArmor();
             PlayerStats.Instance.skillESound = mudArmorSound;
         }
-        else if (PlayerSkills.Instance.behemothSkillE != null && PlayerSkills.Instance.behemothSkillE.skillCode == 3)
+        else if (equippedSkill is Mudfling)
         {
             SetHUDToMudfling();
             PlayerStats.Instance.skillESound = mudFlingSound;
         }
-        else if (PlayerSkills.Instance.behemothSkillE != null && PlayerSkills.Instance.behemothSkillE.skillCode == 4)
+        else if (equippedSkill is TornadoPunch)
         {
             SetHUDToTornadoPunch();
             PlayerStats.Instance.skillESound = tornadoPunchSound;
         }
+        else if (equippedSkill is Hypnotize)
+        {
+            SetHUDToHypnotize();
+            PlayerStats.Instance.skillESound = null;
+            // PlayerStats.Instance.skillESound = hypnotizeSound;
+        }
+        else if (equippedSkill is Poisonbreath)
+        {
+            SetHUDToPoisonBreath();
+            PlayerStats.Instance.skillESound = null;
+            // PlayerStats.Instance.skillESound = poisonBreathSound;
+        }
+        else if (equippedSkill is Slither)
+        {
+            SetHUDToSlither();
+            PlayerStats.Instance.skillESound = null;
+            // PlayerStats.Instance.skillESound = slitherSound;
+        }
+        else if (equippedSkill is TailSlap)
+        {
+            SetHUDToTailSlap();
+            PlayerStats.Instance.skillESound = null;
+            // PlayerStats.Instance.skillESound = tailSlapSound;
+        }
+        else if (equippedSkill is Lightning)
+        {
+            SetHUDToLightningStrike();
+            PlayerStats.Instance.skillESound = null;
+            // PlayerStats.Instance.skillESound = lightningStrikeSound;
+        }
+        else if (equippedSkill is Protect)
+        {
+            SetHUDToProtect();
+            PlayerStats.Instance.skillESound = null;
+            // PlayerStats.Instance.skillESound = protectSound;
+        }
+        else if (equippedSkill is Swipe)
+        {
+            SetHUDToSwipe();
+            PlayerStats.Instance.skillESound = null;
+            // PlayerStats.Instance.skillESound = swipeSound;
+        }
         else
         {
-            return;
+            ClearSkillEHUD();
+            PlayerStats.Instance.skillESound = null;
+            PlayerSkills.Instance.skillEBeingEquipped = false;
         }
+    }
+
+    private void SetSkillEHUD(Image skillImage)
+    {
+        ClearSkillEHUD();
+        SetImageActive(skillImage, true);
+        PlayerSkills.Instance.skillEBeingEquipped = false;
     }
 
     public void SetHUDToDash()
     {
-        ClearSkillEHUD();
-        dash.gameObject.SetActive(true);
-        PlayerSkills.Instance.skillEBeingEquipped = false;
+        SetSkillEHUD(dash);
     }
 
     public void SetHUDToMudArmor()
     {
-        ClearSkillEHUD();
-        mudArmor.gameObject.SetActive(true);
-        PlayerSkills.Instance.skillEBeingEquipped = false;
+        SetSkillEHUD(mudArmor);
     }
 
     public void SetHUDToMudfling()
     {
-        ClearSkillEHUD();
-        mudfling.gameObject.SetActive(true);
-        PlayerSkills.Instance.skillEBeingEquipped = false;
+        SetSkillEHUD(mudfling);
     }
     
     public void SetHUDToTornadoPunch()
     {
-        ClearSkillEHUD();
-        tornadoPunch.gameObject.SetActive(true);
-        PlayerSkills.Instance.skillEBeingEquipped = false;
+        SetSkillEHUD(tornadoPunch);
+    }
+
+    public void SetHUDToHypnotize()
+    {
+        SetSkillEHUD(hypnotize);
+    }
+
+    public void SetHUDToPoisonBreath()
+    {
+        SetSkillEHUD(poisonBreath);
+    }
+
+    public void SetHUDToSlither()
+    {
+        SetSkillEHUD(slither);
+    }
+
+    public void SetHUDToTailSlap()
+    {
+        SetSkillEHUD(tailSlap);
+    }
+
+    public void SetHUDToLightningStrike()
+    {
+        SetSkillEHUD(lightningStrike);
+    }
+
+    public void SetHUDToProtect()
+    {
+        SetSkillEHUD(protect);
+    }
+
+    public void SetHUDToSwipe()
+    {
+        SetSkillEHUD(swipe);
+    }
+
+    public void SetHUDToRockyShell()
+    {
+        SetSkillEHUD(rockyShell);
     }
 }

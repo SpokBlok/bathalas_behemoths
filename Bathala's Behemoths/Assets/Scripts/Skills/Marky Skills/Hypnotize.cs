@@ -20,7 +20,7 @@ public class Hypnotize : BaseSkill
         isFluteHash = Animator.StringToHash("isFlute");
         playerMovement = player.GetComponent<PlayerMovement>();
         maxCharges = 2;
-        cooldown = 40;
+        cooldown = 20;
         skillCode = 3;
     }
 
@@ -52,16 +52,13 @@ public class Hypnotize : BaseSkill
             if (collider.TryGetComponent<EnemyMob>(out var mob))
             {
                 Debug.Log("Stunned");
-                if(mob.CompareTag("Markupo"))
+                if (mob.CompareTag("Markupo"))
                 {
                     MarkupoScript marky = GameObject.FindWithTag("Markupo").GetComponent<MarkupoScript>();
                     marky.GetFluteStunned();
-                    StartCoroutine(mob.Stun(10));
                 }
-                else
-                {
-                    StartCoroutine(mob.Stun(5));
-                }
+
+                StartCoroutine(mob.Stun(5));
             }
         }
         playerMovement.StateCheck();

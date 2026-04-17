@@ -9,6 +9,7 @@ public class TambanokanoLightningStrike : AOEAttackRadius
     private float sphereRadius;
 
     public float attackDamage;
+    public float stunDuration;
 
     private bool hasDamagedPlayer;
 
@@ -47,7 +48,14 @@ public class TambanokanoLightningStrike : AOEAttackRadius
             }
             else if (hitCollider.CompareTag("Enemy"))
             {
-                hitCollider.GetComponent<EnemyMob>().TakeDamage(attackDamage);
+                if (hitCollider.TryGetComponent<EnemyMob>(out var mob))
+                {
+                    mob.TakeDamage(attackDamage);
+                    if (stunDuration > 0f)
+                    {
+                        mob.StartCoroutine(mob.Stun(stunDuration));
+                    }
+                }
             }
         }
     }

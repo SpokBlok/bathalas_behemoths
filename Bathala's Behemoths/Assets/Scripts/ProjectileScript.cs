@@ -6,6 +6,13 @@ public class ProjectileScript : MonoBehaviour
 {
     public CharacterController charControl;
     public AudioClip ballHit;
+    public bool applyStun = true;
+    public float stunDuration = 3f;
+    public bool applyDamageOverTime;
+    public float damageOverTimeDamage;
+    public int damageOverTimeTicks;
+    public float damageOverTimeInterval = 1f;
+
     private Tambanokano tammy;
     private EnemyMob enemy;
 
@@ -62,6 +69,16 @@ public class ProjectileScript : MonoBehaviour
         charControl.transform.position = position;
     }
 
+    public void ConfigureHitEffects(bool shouldStun, float newStunDuration, float tickDamage = 0f, int tickCount = 0, float tickInterval = 1f)
+    {
+        applyStun = shouldStun;
+        stunDuration = newStunDuration;
+        applyDamageOverTime = tickDamage > 0f && tickCount > 0;
+        damageOverTimeDamage = tickDamage;
+        damageOverTimeTicks = tickCount;
+        damageOverTimeInterval = tickInterval;
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Enemy") || other.gameObject.CompareTag("Tambanokano") || other.gameObject.CompareTag("Tambanokano"))
@@ -72,15 +89,21 @@ public class ProjectileScript : MonoBehaviour
                 tammy = GameObject.FindWithTag("Tambanokano").GetComponent<Tambanokano>();
             }
 
-            if (enemy.health - PlayerStats.Instance.basicAttackDamage > 0)
+            if (applyStun && enemy.health - PlayerStats.Instance.basicAttackDamage > 0)
             {
                 Debug.Log("Kapre Collided With, Stunning it!!!");
-                enemy.StartCoroutine(other.gameObject.GetComponent<EnemyMob>().Stun(3));
-                AudioSource.PlayClipAtPoint(ballHit, Camera.main.transform.position + Camera.main.transform.forward * 2f, 1f);
+                enemy.StartCoroutine(other.gameObject.GetComponent<EnemyMob>().Stun(stunDuration));
             }
+
+            AudioSource.PlayClipAtPoint(ballHit, Camera.main.transform.position + Camera.main.transform.forward * 2f, 1f);
             enemy.TakeDamage(PlayerStats.Instance.basicAttackDamage);
 
-            if(tammy != null)
+            if (applyDamageOverTime && enemy.health > 0f)
+            {
+                enemy.ApplyDamageOverTime(damageOverTimeDamage, damageOverTimeTicks, damageOverTimeInterval);
+            }
+
+            if(tammy != null && applyStun)
             {
                 tammy.GetMudStunned();
             }

@@ -11,6 +11,10 @@ public class Poisonbreath : BaseSkill
     int isPoisonbreathHash;
 
     public GameObject projectilePrefab;
+    public float poisonTickDamage = 2f;
+    public int poisonTickCount = 3;
+    public float poisonTickInterval = 1f;
+
     private PlayerMovement playerMovement;
     private ProjectileScript projectileScript;
 
@@ -43,6 +47,7 @@ public class Poisonbreath : BaseSkill
         yield return new WaitForSeconds(1); //Charge up time, animation of making mudball
         GameObject projectile = Instantiate(projectilePrefab, player.transform.position, Quaternion.identity);
         projectileScript = projectile.GetComponent<ProjectileScript>();
+        projectileScript.ConfigureHitEffects(false, 0f, poisonTickDamage, poisonTickCount, poisonTickInterval);
         StartCoroutine(projectileScript.Move(playerMovement.forwardDirection.normalized));
         playerMovement.StateCheck();
         // animator.SetBool(isPoisonbreathHash, false);

@@ -5,11 +5,13 @@ using UnityEngine;
 public class Lightning : BaseSkill
 {
     public Animator animator;
-    public FillEffect lightningPrefab;
+    public SkillLightningFill lightningPrefab;
     public AudioClip punchSound;
     public AudioClip blowLands;
     public AudioClip thunderSound;
     public AudioClip overlaySound;
+    public float spawnDistance = 3f;
+    public float stunDuration = 5f;
     
     // Start is called before the first frame update
     void Start()
@@ -31,40 +33,25 @@ public class Lightning : BaseSkill
     public override IEnumerator RunSkill()
     {
         player = GameObject.FindWithTag("Player");
-        if (player == null)
+        if (player == null || lightningPrefab == null)
         {
             yield break;
         }
 
-        animator = player.GetComponentInChildren<Animator>();
-
         AudioSource.PlayClipAtPoint(punchSound, Camera.main.transform.position + Camera.main.transform.forward * 2f, 1f);
         AudioSource.PlayClipAtPoint(blowLands, Camera.main.transform.position + Camera.main.transform.forward * 2f, 1f);
 
-        if (lightningPrefab != null)
-        {
-            FillEffect lightning = Instantiate(lightningPrefab, player.transform.position, Quaternion.identity);
-            lightning.SetSFX(thunderSound, overlaySound);
+        Vector3 spawnPosition = player.transform.position + player.transform.forward * spawnDistance;
+        SkillLightningFill lightning = Instantiate(lightningPrefab, spawnPosition, Quaternion.identity);
+        lightning.SetSFX(thunderSound, overlaySound);
 
-            TambanokanoLightningStrike strike = lightning.GetComponentInChildren<TambanokanoLightningStrike>();
-            if (strike != null)
-            {
-                strike.attackDamage = PlayerStats.Instance.basicAttackDamage;
-            }
-
-            yield return new WaitForSeconds(lightning.attackDuration + 0.1f);
-        }
-        else
+        TammySkillLightning strike = lightning.GetComponentInChildren<TammySkillLightning>();
+        if (strike != null)
         {
-            yield return new WaitForSeconds(2.0f);
-            Collider[] colliders = Physics.OverlapSphere(player.transform.position, 15.0f);
-            foreach (Collider collider in colliders)
-            {
-                if (collider.TryGetComponent<EnemyMob>(out var mob))
-                {
-                    mob.TakeDamage(PlayerStats.Instance.basicAttackDamage);
-                }
-            }
+            strike.attackDamage = PlayerStats.Instance.basicAttackDamage;
+            strike.stunDuration = stunDuration;
         }
+
+        yield return new WaitForSeconds(lightning.attackDuration + 0.1f);
     }
 }

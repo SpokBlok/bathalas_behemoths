@@ -63,7 +63,13 @@ public class MCSkillsUIPanel : MonoBehaviour
 
         if(PlayerStats.Instance.clue6)
         {
-            purchaseFlute.text = "Equip";
+            FlutePurchased = true;
+            PlayerStats.Instance.FlutePurchased = true;
+
+            if (purchaseFlute != null)
+            {
+                purchaseFlute.text = "Equip";
+            }
         }
 
         // Auto-update UI for already purchased skills based on flags

@@ -81,6 +81,8 @@ public class MarkupoSkillsUIPanel : MonoBehaviour
 
         if (PlayerStats.Instance.clue1)
         {
+            MudflingPurchased = true;
+            PlayerStats.Instance.MudflingPurchased = true;
             purchaseMudfling.SetActive(false);
             equip1Mudfling.SetActive(true);
             equip2Mudfling.SetActive(true);
@@ -364,6 +366,7 @@ public class MarkupoSkillsUIPanel : MonoBehaviour
             }
             playerStats.AddKapreCigars(-5);
             AtkUpPurchased = true;
+            PlayerStats.Instance.AtkUpPurchased = true;
             TextMeshProUGUI text = EventSystem.current.currentSelectedGameObject.GetComponentInChildren<TextMeshProUGUI>();
             text.text = "Purchased";
             playerStats.basicAttackDamage *= 1.25f;

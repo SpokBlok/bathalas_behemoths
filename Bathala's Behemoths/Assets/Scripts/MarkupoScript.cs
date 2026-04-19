@@ -186,7 +186,7 @@ public class MarkupoScript : EnemyMob
     {
         GameObject tailSwipe = Instantiate(tailSwipePrefab, gameObject.transform.position, Quaternion.identity);
         tailSwipe.transform.parent = transform;
-        yield return new WaitForSeconds(5f); // Let the attack charge before playing animation
+        yield return new WaitForSeconds(9f); // Let the attack charge before playing animation
 
         isSpinning = true;
         yield return new WaitForSeconds(2f);
@@ -207,7 +207,7 @@ public class MarkupoScript : EnemyMob
         GameObject poisonSpray = Instantiate(poisonSprayPrefab, 
             spawnPosition, Quaternion.LookRotation(directionToTarget));
         poisonSpray.transform.parent = transform;
-        yield return new WaitForSeconds(5f); // Let the attack charge before playing animation
+        yield return new WaitForSeconds(7f); // Let the attack charge before playing animation
 
         isSpraying = true;
         yield return new WaitForSeconds(2f);

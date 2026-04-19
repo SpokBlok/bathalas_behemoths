@@ -36594,7 +36594,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 1
-  m_BoundingSphereOverride: {x: 0, y: 5.38e-43, z: 0, w: 0}
+  m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
   m_UseBoundingSphereOverride: 0
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
@@ -54930,7 +54930,7 @@ MonoBehaviour:
   oneTimeUseAvailable: 0
   skillCode: 0
   animator: {fileID: 0}
-  mannyBody: {fileID: 0}
+  tambanokanoBody: {fileID: 0}
   normalManny: {fileID: 0}
   armoredManny: {fileID: 0}
   armoredGruntSound: {fileID: 0}
@@ -63699,7 +63699,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 7000
   m_UseColorTemperature: 1
-  m_BoundingSphereOverride: {x: 7.65e-43, y: 1.61e-43, z: 0, w: -2.2560482e-27}
+  m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: -2.2560482e-27}
   m_UseBoundingSphereOverride: 0
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0

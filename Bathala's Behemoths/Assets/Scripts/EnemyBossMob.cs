@@ -18,7 +18,11 @@ public class EnemyBossMob : MonoBehaviour
     void Start()
     {
         playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
-        spawner  = GameObject.FindGameObjectWithTag("Spawner").GetComponent<SpawnerScript>();
+        GameObject spawnerObject = GameObject.FindGameObjectWithTag("Spawner");
+        if (spawnerObject != null)
+        {
+            spawner = spawnerObject.GetComponent<SpawnerScript>();
+        }
         enemyControl = GetComponent<CharacterController>();
 
         //Start off on terrain height
@@ -39,7 +43,10 @@ public class EnemyBossMob : MonoBehaviour
         health -= damage;
         if (health <= 0)
         {
-            spawner.enemyCount--;
+            if (spawner != null)
+            {
+                spawner.enemyCount--;
+            }
             Destroy(gameObject);
         }
     }

@@ -235,7 +235,14 @@ public class Apolaki : EnemyMob
             if(isAlive == false)
             {
                 StopAllCoroutines();
-                SceneManager.LoadScene("ApolakiDefeatScene");
+                if(QuestState.Instance.tambanokanoDefeated && QuestState.Instance.markupoDefeated)
+                {
+                    SceneManager.LoadScene("ApolakiDefeatScene");
+                }
+                else
+                {
+                    SceneManager.LoadScene("ApolakiDefeatBadEndScene");
+                }
                 // endDialogue.SetActive(true);
             }
         }

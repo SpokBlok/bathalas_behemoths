@@ -38,10 +38,22 @@ public class Lightning : BaseSkill
             yield break;
         }
 
-        AudioSource.PlayClipAtPoint(punchSound, Camera.main.transform.position + Camera.main.transform.forward * 2f, 1f);
-        AudioSource.PlayClipAtPoint(blowLands, Camera.main.transform.position + Camera.main.transform.forward * 2f, 1f);
+        if (Camera.main != null)
+        {
+            Vector3 audioPosition = Camera.main.transform.position + Camera.main.transform.forward * 2f;
+            if (punchSound != null)
+            {
+                AudioSource.PlayClipAtPoint(punchSound, audioPosition, 1f);
+            }
 
-        Vector3 spawnPosition = player.transform.position + player.transform.forward * spawnDistance;
+            if (blowLands != null)
+            {
+                AudioSource.PlayClipAtPoint(blowLands, audioPosition, 1f);
+            }
+        }
+
+        Vector3 horizontalForward = Quaternion.Euler(0f, player.transform.eulerAngles.y, 0f) * Vector3.forward;
+        Vector3 spawnPosition = player.transform.position + horizontalForward * spawnDistance;
         SkillLightningFill lightning = Instantiate(lightningPrefab, spawnPosition, Quaternion.identity);
         lightning.SetSFX(thunderSound, overlaySound);
 

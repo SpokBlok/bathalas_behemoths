@@ -312,13 +312,13 @@ CharacterController:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Height: 7
-  m_Radius: 1
+  m_Height: 30
+  m_Radius: 7
   m_SlopeLimit: 45
   m_StepOffset: 0.3
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: 3, z: 0}
+  m_Center: {x: 0, y: 15.21, z: 0}
 --- !u!114 &6080050113629792048
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -336,6 +336,12 @@ MonoBehaviour:
   playerInRange: 0
   speed: 20
   attackDamage: 1
+  moveDirection: {x: 0, y: 0, z: 0}
+  terrainMoveDirection: {x: 0, y: 0, z: 0}
+  newPosition: {x: 0, y: 0, z: 0}
+  terrainHeight: 0
+  myTerrain: {fileID: 0}
+  lookPos: {x: 0, y: 0, z: 0}
   killQuestUIList: []
   killQuestUI: {fileID: 0}
   kapreState: 0
@@ -449,8 +455,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.7, y: 7, z: 3}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 0.7, y: 8.84, z: 8.84}
+  m_Center: {x: 0, y: 0, z: 2.38}
 --- !u!1001 &175667796477941614
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -976,6 +982,8 @@ MonoBehaviour:
   moving: 0
   attacking: 0
   stunned: 0
+  dead: 0
+  dying: 0
 --- !u!137 &4279643568908815687 stripped
 SkinnedMeshRenderer:
   m_CorrespondingSourceObject: {fileID: 4112984690662791721, guid: 656f2508aa90b23499d2d31e4894da51,

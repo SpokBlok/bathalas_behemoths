@@ -6,6 +6,7 @@ public class ToApolakiVisibility : MonoBehaviour
 {
     [SerializeField] GameObject translabel;
     [SerializeField] GameObject transition;
+    [SerializeField] GameObject dwende;
 
     void Start()
     {
@@ -22,6 +23,7 @@ public class ToApolakiVisibility : MonoBehaviour
         {
             translabel.SetActive(true);
             transition.SetActive(true);
+            dwende.SetActive(true);
         }
     }
 }

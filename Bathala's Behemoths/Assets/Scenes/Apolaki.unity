@@ -266,7 +266,7 @@ MonoBehaviour:
   oneTimeUseAvailable: 0
   skillCode: 0
   animator: {fileID: 0}
-  mannyBody: {fileID: 0}
+  tambanokanoBody: {fileID: 0}
   normalManny: {fileID: 0}
   armoredManny: {fileID: 0}
   armoredGruntSound: {fileID: 0}
@@ -2992,7 +2992,7 @@ Camera:
     width: 1
     height: 1
   near clip plane: 0.3
-  far clip plane: 3500
+  far clip plane: 5000
   field of view: 100
   orthographic: 0
   orthographic size: 5
@@ -4746,7 +4746,7 @@ MonoBehaviour:
     FieldOfView: 100
     OrthographicSize: 5
     NearClipPlane: 0.3
-    FarClipPlane: 3500
+    FarClipPlane: 5000
     Dutch: 0
     ModeOverride: 0
     LensShift: {x: 0, y: 0}

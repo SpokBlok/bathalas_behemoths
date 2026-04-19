@@ -1,11 +1,9 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class TammySkillLightning : AOEAttackRadius
 {
     public SphereCollider radiusCollider;
-    private Vector3 sphereCenter;
-    private float sphereRadius;
-
     public float attackDamage;
     public float stunDuration;
 
@@ -31,12 +29,6 @@ public class TammySkillLightning : AOEAttackRadius
             transform.position = new Vector3(position.x, terrainHeight, position.z);
         }
 
-        sphereCenter = radiusCollider.transform.position + radiusCollider.center;
-        sphereRadius = radiusCollider.radius * Mathf.Max(
-            radiusCollider.transform.lossyScale.x,
-            radiusCollider.transform.lossyScale.y,
-            radiusCollider.transform.lossyScale.z
-        );
     }
 
     public override void Damage()
@@ -46,10 +38,20 @@ public class TammySkillLightning : AOEAttackRadius
             return;
         }
 
-        Collider[] hitColliders = Physics.OverlapSphere(sphereCenter, sphereRadius);
+        Bounds radiusBounds = radiusCollider.bounds;
+        float sphereRadius = Mathf.Max(radiusBounds.extents.x, radiusBounds.extents.y, radiusBounds.extents.z);
+        Collider[] hitColliders = Physics.OverlapSphere(radiusBounds.center, sphereRadius);
+        HashSet<EnemyMob> hitEnemies = new HashSet<EnemyMob>();
+
         foreach (Collider hitCollider in hitColliders)
         {
-            if (!hitCollider.TryGetComponent<EnemyMob>(out var mob))
+            EnemyMob mob = hitCollider.GetComponent<EnemyMob>();
+            if (mob == null)
+            {
+                mob = hitCollider.GetComponentInParent<EnemyMob>();
+            }
+
+            if (mob == null || !hitEnemies.Add(mob))
             {
                 continue;
             }

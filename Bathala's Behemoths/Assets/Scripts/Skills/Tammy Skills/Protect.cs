@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class Protect : BaseSkill
 {
@@ -10,30 +11,90 @@ public class Protect : BaseSkill
     float ProtectStanceValue = 0.0f;
     public Coroutine enterProtectStance;
     public Coroutine exitProtectStance;
-    public SkinnedMeshRenderer mannyBody;
+    [FormerlySerializedAs("mannyBody")]
+    public SkinnedMeshRenderer tambanokanoBody;
 
     public Material normalManny;
     public Material armoredManny;
     public AudioClip armoredGruntSound;
     public AudioClip releaseArmorSound;
 
-    private Color originalMannyColor;
+    private Color originalTambanokanoColor;
     private Color protectStanceColor;
     [SerializeField]
     private float protectDarkenFactor = 0.5f;
+
+    private bool TryResolveTambanokanoBody()
+    {
+        if (tambanokanoBody != null)
+        {
+            return true;
+        }
+
+        if (player == null)
+        {
+            player = GameObject.FindWithTag("Player");
+        }
+
+        if (player == null)
+        {
+            return false;
+        }
+
+        TSAnimController tambanokanoModel = player.GetComponentInChildren<TSAnimController>(true);
+        if (tambanokanoModel == null)
+        {
+            tambanokanoModel = FindAnyObjectByType<TSAnimController>(FindObjectsInactive.Include);
+        }
+
+        if (tambanokanoModel == null)
+        {
+            return false;
+        }
+
+        SkinnedMeshRenderer[] renderers = tambanokanoModel.GetComponentsInChildren<SkinnedMeshRenderer>(true);
+        foreach (SkinnedMeshRenderer renderer in renderers)
+        {
+            if (renderer != null && renderer.enabled)
+            {
+                tambanokanoBody = renderer;
+                return true;
+            }
+        }
+
+        if (renderers.Length > 0)
+        {
+            tambanokanoBody = renderers[0];
+        }
+
+        return tambanokanoBody != null;
+    }
+
+    private void CacheProtectStanceColors()
+    {
+        if (!TryResolveTambanokanoBody())
+        {
+            return;
+        }
+
+        originalTambanokanoColor = tambanokanoBody.material.color;
+        protectStanceColor = new Color(
+            originalTambanokanoColor.r * protectDarkenFactor,
+            originalTambanokanoColor.g * protectDarkenFactor,
+            originalTambanokanoColor.b * protectDarkenFactor,
+            originalTambanokanoColor.a);
+    }
 
     // Start is called before the first frame update
     void Start()
     {
         player = GameObject.FindWithTag("Player");
-        animator = player.GetComponentInChildren<Animator>();
-        mannyBody = GameObject.FindGameObjectWithTag("Player").GetComponentsInChildren<MSAnimController>(true)[0].GetComponentsInChildren<SkinnedMeshRenderer>(true)[2];
-        
-        if (mannyBody != null)
+        if (player != null)
         {
-            originalMannyColor = mannyBody.material.color;
-            protectStanceColor = new Color(originalMannyColor.r * protectDarkenFactor, originalMannyColor.g * protectDarkenFactor, originalMannyColor.b * protectDarkenFactor, originalMannyColor.a);
+            animator = player.GetComponentInChildren<Animator>();
         }
+
+        CacheProtectStanceColors();
 
         isProtectHash = Animator.StringToHash("isProtect");
         maxCharges = 1;
@@ -52,16 +113,7 @@ public class Protect : BaseSkill
             player = GameObject.FindWithTag("Player");
         }
 
-        if (mannyBody == null)
-        {
-            mannyBody = GameObject.FindGameObjectWithTag("Player").GetComponentsInChildren<MSAnimController>(true)[0].GetComponentsInChildren<SkinnedMeshRenderer>(true)[2];
-        }
-
-        if (mannyBody != null)
-        {
-            originalMannyColor = mannyBody.material.color;
-            protectStanceColor = new Color(originalMannyColor.r * protectDarkenFactor, originalMannyColor.g * protectDarkenFactor, originalMannyColor.b * protectDarkenFactor, originalMannyColor.a);
-        }
+        CacheProtectStanceColors();
 
         float duration = 0.5f;
         float elapsedTime = 0f;
@@ -70,25 +122,22 @@ public class Protect : BaseSkill
         {
             elapsedTime += Time.deltaTime;
             float t = elapsedTime / duration;
-            if (mannyBody != null)
+            if (tambanokanoBody != null)
             {
-                mannyBody.material.color = Color.Lerp(originalMannyColor, protectStanceColor, t);
+                tambanokanoBody.material.color = Color.Lerp(originalTambanokanoColor, protectStanceColor, t);
             }
             yield return null;
         }
 
-        if (mannyBody != null)
+        if (tambanokanoBody != null)
         {
-            mannyBody.material.color = protectStanceColor;
+            tambanokanoBody.material.color = protectStanceColor;
         }
     }
 
     IEnumerator ExitProtectStance()
     {
-        if (mannyBody == null)
-        {
-            mannyBody = GameObject.FindGameObjectWithTag("Player").GetComponentsInChildren<MSAnimController>(true)[0].GetComponentsInChildren<SkinnedMeshRenderer>(true)[2];
-        }
+        TryResolveTambanokanoBody();
 
         float duration = 0.5f;
         float elapsedTime = 0f;
@@ -97,16 +146,16 @@ public class Protect : BaseSkill
         {
             elapsedTime += Time.deltaTime;
             float t = elapsedTime / duration;
-            if (mannyBody != null)
+            if (tambanokanoBody != null)
             {
-                mannyBody.material.color = Color.Lerp(protectStanceColor, originalMannyColor, t);
+                tambanokanoBody.material.color = Color.Lerp(protectStanceColor, originalTambanokanoColor, t);
             }
             yield return null;
         }
 
-        if (mannyBody != null)
+        if (tambanokanoBody != null)
         {
-            mannyBody.material.color = originalMannyColor;
+            tambanokanoBody.material.color = originalTambanokanoColor;
         }
     }
 

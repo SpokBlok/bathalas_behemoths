@@ -6873,6 +6873,58 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 123408227}
   m_CullTransparentMesh: 1
+--- !u!1 &123870048
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 123870049}
+  - component: {fileID: 123870050}
+  m_Layer: 0
+  m_Name: Slither
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &123870049
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 123870048}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1298946644}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &123870050
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 123870048}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 129aa3bd51daa9f4a96a0c4bd94c01e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cooldown: 0
+  maxCharges: 0
+  oneTimeUseAvailable: 0
+  skillCode: 0
+  animator: {fileID: 0}
+  speedBoostAmount: 0.8
+  speedBoostDuration: 8
+  animationDuration: 0.4
 --- !u!1 &124252192
 GameObject:
   m_ObjectHideFlags: 0
@@ -9682,6 +9734,61 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!1 &159969498
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 159969499}
+  - component: {fileID: 159969500}
+  m_Layer: 0
+  m_Name: Protect
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &159969499
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 159969498}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1298946644}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &159969500
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 159969498}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd056a0198dfd634084fa1f03ee9650e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cooldown: 0
+  maxCharges: 0
+  oneTimeUseAvailable: 0
+  skillCode: 0
+  animator: {fileID: 0}
+  mannyBody: {fileID: 0}
+  normalManny: {fileID: 0}
+  armoredManny: {fileID: 0}
+  armoredGruntSound: {fileID: 0}
+  releaseArmorSound: {fileID: 0}
+  protectDarkenFactor: 0.5
 --- !u!1 &161145494 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: bd49b90bec685f44b8ac83d6e875df8c,
@@ -13843,6 +13950,57 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 253571298}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &254434912
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 254434913}
+  - component: {fileID: 254434914}
+  m_Layer: 0
+  m_Name: Swipe
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &254434913
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 254434912}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1298946644}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &254434914
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 254434912}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1983fe68286089a4d8e0b776950512ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cooldown: 0
+  maxCharges: 0
+  oneTimeUseAvailable: 0
+  skillCode: 0
+  animator: {fileID: 0}
+  punchSound: {fileID: 0}
+  blowLands: {fileID: 0}
 --- !u!1001 &255528057
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -28851,6 +29009,63 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &514216309
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 514216310}
+  - component: {fileID: 514216311}
+  m_Layer: 0
+  m_Name: Lightning
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &514216310
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 514216309}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1298946644}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &514216311
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 514216309}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d305352736d5a34479aaa9c95abf87da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cooldown: 0
+  maxCharges: 0
+  oneTimeUseAvailable: 0
+  skillCode: 0
+  animator: {fileID: 0}
+  lightningPrefab: {fileID: 6853585377040579723, guid: 749f09165d367f248a0879cdb753d512,
+    type: 3}
+  punchSound: {fileID: 0}
+  blowLands: {fileID: 0}
+  thunderSound: {fileID: 8300000, guid: 5a9bb0e555e58384180555f82f97e00f, type: 3}
+  overlaySound: {fileID: 8300000, guid: bec65274311aa5f4d97534392e70be60, type: 3}
+  spawnDistance: 3
+  stunDuration: 5
 --- !u!114 &519473761
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -33759,6 +33974,7 @@ MonoBehaviour:
   mountedModel: {fileID: 0}
   virtualCam: {fileID: 743642095}
   HUD: {fileID: 0}
+  _cutsceneTimeline: {fileID: 0}
 --- !u!1 &596777119
 GameObject:
   m_ObjectHideFlags: 0
@@ -34687,6 +34903,14 @@ MonoBehaviour:
   mudArmor: {fileID: 858027211}
   mudfling: {fileID: 2048878408}
   tornadoPunch: {fileID: 105250792}
+  hypnotize: {fileID: 0}
+  poisonBreath: {fileID: 0}
+  slither: {fileID: 0}
+  tailSlap: {fileID: 0}
+  lightningStrike: {fileID: 0}
+  protect: {fileID: 0}
+  swipe: {fileID: 0}
+  rockyShell: {fileID: 0}
   blank: {fileID: 2080926211}
   blankReady: {fileID: 157280867}
   dashSound: {fileID: 8300000, guid: c91fcf414acc0344cb03b13996f1bf3b, type: 3}
@@ -40817,6 +41041,7 @@ MonoBehaviour:
   virtualCam: {fileID: 743642094}
   SteveTarget: {fileID: 38991915}
   MountedModelTarget: {fileID: 1879826179}
+  MountedModelBossFightTarget: {fileID: 0}
   newFollowTarget: {fileID: 1879826179}
   currentFollowTarget: {fileID: 38991915}
 --- !u!1 &745668992
@@ -43205,6 +43430,14 @@ MonoBehaviour:
   mudArmor: {fileID: 193282993}
   mudfling: {fileID: 61217775}
   tornadoPunch: {fileID: 13033556}
+  hypnotize: {fileID: 0}
+  poisonBreath: {fileID: 0}
+  slither: {fileID: 0}
+  tailSlap: {fileID: 0}
+  lightningStrike: {fileID: 0}
+  protect: {fileID: 0}
+  swipe: {fileID: 0}
+  rockyShell: {fileID: 0}
   blank: {fileID: 115517474}
   blankReady: {fileID: 2021723464}
   dashSound: {fileID: 8300000, guid: c91fcf414acc0344cb03b13996f1bf3b, type: 3}
@@ -59264,6 +59497,60 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1110619726}
   m_CullTransparentMesh: 1
+--- !u!1 &1111511794
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1111511795}
+  - component: {fileID: 1111511796}
+  m_Layer: 0
+  m_Name: PoisonBreath
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1111511795
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1111511794}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1298946644}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1111511796
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1111511794}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a703e5232cbf2574aa3d8820425fc8c3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cooldown: 0
+  maxCharges: 0
+  oneTimeUseAvailable: 0
+  skillCode: 0
+  animator: {fileID: 0}
+  projectilePrefab: {fileID: 1190830937122899381, guid: 8f24ee9f44305394883fbf6d7daf670a,
+    type: 3}
+  poisonTickDamage: 2
+  poisonTickCount: 3
+  poisonTickInterval: 1
 --- !u!1 &1116795188
 GameObject:
   m_ObjectHideFlags: 0
@@ -62459,6 +62746,10 @@ MonoBehaviour:
   skillsTutorialTrigger: 0
   tambanokanoFound: 0
   markupoFound: 0
+  tambanokanoDefeated: 0
+  markupoDefeated: 0
+  apolakiDefeated: 0
+  goodEnding: 0
   pausedForDialogue: 0
   menuActive: 0
   pauseActive: 0
@@ -62667,8 +62958,17 @@ MonoBehaviour:
   HPRegenPrefab: {fileID: 3398947920121525138, guid: 83f34bb29fe96094bbb8d5dee561848d,
     type: 3}
   purchaseFlute: {fileID: 0}
-  equip1Flute: {fileID: 0}
-  equip2Flute: {fileID: 0}
+  FirstAidPurchased: 0
+  HpUpPurchased: 0
+  FlutePurchased: 0
+  RegenPurchased: 0
+  BBPurchased: 0
+  rightPanel: {fileID: 0}
+  Skill1Text: {fileID: 0}
+  Skill2Text: {fileID: 0}
+  Skill3Text: {fileID: 0}
+  Skill4Text: {fileID: 0}
+  Skill5Text: {fileID: 0}
   hud: {fileID: 0}
   originalHUDPos: {x: 0, y: 0, z: 0}
   obtainedOGPos: 0
@@ -69067,6 +69367,13 @@ Transform:
   - {fileID: 1612903449}
   - {fileID: 1590518305}
   - {fileID: 392975645}
+  - {fileID: 254434913}
+  - {fileID: 159969499}
+  - {fileID: 514216310}
+  - {fileID: 1111511795}
+  - {fileID: 1727798033}
+  - {fileID: 123870049}
+  - {fileID: 1454457215}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1301070811
@@ -74683,6 +74990,7 @@ MonoBehaviour:
   introScene: {fileID: 1961769434}
   introScene2: {fileID: 1348849510}
   instructions: {fileID: 944287426}
+  _cutsceneTimeline: {fileID: 0}
 --- !u!114 &1399603997
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -75738,6 +76046,20 @@ MonoBehaviour:
   purchaseMudfling: {fileID: 0}
   equip1Mudfling: {fileID: 0}
   equip2Mudfling: {fileID: 0}
+  skill1: {fileID: 0}
+  skill2: {fileID: 0}
+  skill4: {fileID: 0}
+  skill5: {fileID: 0}
+  purchaseButton: {fileID: 0}
+  rightPanel: {fileID: 0}
+  Skill1TextQ: {fileID: 0}
+  Skill1TextE: {fileID: 0}
+  Skill2TextQ: {fileID: 0}
+  Skill2TextE: {fileID: 0}
+  Skill4TextQ: {fileID: 0}
+  Skill4TextE: {fileID: 0}
+  Skill5TextQ: {fileID: 0}
+  Skill5TextE: {fileID: 0}
   hud: {fileID: 0}
   originalHUDPos: {x: 0, y: 0, z: 0}
   obtainedOGPos: 0
@@ -77966,6 +78288,60 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1451544448}
   m_CullTransparentMesh: 1
+--- !u!1 &1454457214
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1454457215}
+  - component: {fileID: 1454457216}
+  m_Layer: 0
+  m_Name: TailSlap
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1454457215
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1454457214}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1298946644}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1454457216
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1454457214}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c947ddc18328dd74e8299be8eeb88bac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cooldown: 0
+  maxCharges: 0
+  oneTimeUseAvailable: 0
+  skillCode: 0
+  animator: {fileID: 0}
+  punchSound: {fileID: 8300000, guid: fd25a15f9797641458336cccfb445343, type: 3}
+  blowLands: {fileID: 8300000, guid: b7b5a6156961bac44a67504d42ce6fcf, type: 3}
+  castDuration: 2
+  coneRange: 15
+  coneAngle: 90
 --- !u!1001 &1456444987
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -82228,6 +82604,7 @@ MonoBehaviour:
   maxHealth: 0
   dead: 0
   hasMudArmor: 0
+  hasProtect: 0
   introDone: 1
   tutorialDone: 0
   ruinsScene: 0
@@ -82248,12 +82625,36 @@ MonoBehaviour:
   activeQuest6: 0
   tammyFound: 0
   markyFound: 0
+  apolakiFound: 0
   tammyScene: 0
   markyScene: 0
+  apolakiScene: 0
+  apolakiUnlocked: 0
   ruinsVisitedOnce: 0
   skillESound: {fileID: 0}
   skillQSound: {fileID: 0}
   mcSkillSound: {fileID: 0}
+  DashPurchased: 0
+  MudflingPurchased: 0
+  AtkUpPurchased: 0
+  TornadoPurchased: 0
+  MudArmorPurchased: 0
+  FirstAidPurchased: 0
+  HpUpPurchased: 0
+  FlutePurchased: 0
+  RegenPurchased: 0
+  BBPurchased: 0
+  RockyShellPurchased: 0
+  TammySwipePurchased: 0
+  TammyLightningPurchased: 0
+  TammyProtectPurchased: 0
+  MarkySlitherPurchased: 0
+  MarkyHypnotizePurchased: 0
+  MarkyPoisonBreathPurchased: 0
+  MarkyTailSlapPurchased: 0
+  player: {fileID: 0}
+  playerSavePosition: {x: 0, y: 0, z: 0}
+  playerModelIndex: 1
 --- !u!4 &1553742831
 Transform:
   m_ObjectHideFlags: 0
@@ -90572,6 +90973,55 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1724543954}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1727798032
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1727798033}
+  - component: {fileID: 1727798034}
+  m_Layer: 0
+  m_Name: Hypnotize
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1727798033
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1727798032}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1298946644}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1727798034
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1727798032}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b318b5a27bf4ab44580bca97682661fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cooldown: 0
+  maxCharges: 0
+  oneTimeUseAvailable: 0
+  skillCode: 0
+  animator: {fileID: 0}
 --- !u!1 &1727958452
 GameObject:
   m_ObjectHideFlags: 0
@@ -110567,6 +111017,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e5bb38ef99ef074190e6a2fb9d26872, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  saveNotif: {fileID: 0}
+  loadNotif: {fileID: 0}
   pauseMenu: {fileID: 2127846537}
 --- !u!114 &2129652994
 MonoBehaviour:

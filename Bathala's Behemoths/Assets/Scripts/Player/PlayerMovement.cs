@@ -488,18 +488,7 @@ public class PlayerMovement : MonoBehaviour
             takingDamage = StartCoroutine(SwitchToDamagedTex());
         }
 
-        if (stats.hasMudArmor)
-        {
-            stats.currentHealth -= damage / 1.7f;
-        } 
-        else if(stats.hasProtect && stats.playerModelIndex == 2)
-        {
-            stats.currentHealth -= damage / 1.5f;
-        }
-        else
-        {
-            stats.currentHealth -= damage;
-        }
+        stats.currentHealth -= stats.GetMitigatedDamage(damage);
 
         EventManager.Instance.InvokeOnTakingDamage();
         if (stats.currentHealth <= 0)

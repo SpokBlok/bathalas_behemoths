@@ -122,7 +122,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 5805298659962145714}
-        m_TargetAssemblyTypeName: MandayanganSkillsUIPanel, Assembly-CSharp
+        m_TargetAssemblyTypeName: MarkupoSkillsUIPanel, Assembly-CSharp
         m_MethodName: SkillWithEquipPurchase
         m_Mode: 1
         m_Arguments:
@@ -465,7 +465,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 3207430252677308404}
-        m_TargetAssemblyTypeName: MandayanganSkillsUIPanel, Assembly-CSharp
+        m_TargetAssemblyTypeName: TambanokanoSkillsUIPanel, Assembly-CSharp
         m_MethodName: DisplaySkill
         m_Mode: 1
         m_Arguments:
@@ -1324,7 +1324,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Tornado Punch
+  m_text: Poison Breath
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2100000, guid: e73a58f6e2794ae7b1b7e50b7fb811b0, type: 2}
@@ -2625,7 +2625,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 445212514228778918}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9c7599663d91dbd4dbdee7f1cb8940d7, type: 3}
+  m_Script: {fileID: 11500000, guid: a9b495865c25fb04fa80ffc4af982fe6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   uiList: []
@@ -2633,20 +2633,20 @@ MonoBehaviour:
   purchaseMudfling: {fileID: 3102502525636012459}
   equip1Mudfling: {fileID: 5094446277238008838}
   equip2Mudfling: {fileID: 7818160617094170139}
-  skill1: {fileID: 0}
-  skill2: {fileID: 0}
-  skill4: {fileID: 0}
-  skill5: {fileID: 0}
+  skill1: {fileID: 7326374362142127996}
+  skill2: {fileID: 4797062755241448795}
+  skill4: {fileID: 8813751940656562148}
+  skill5: {fileID: 3088303343895688812}
   purchaseButton: {fileID: 0}
-  rightPanel: {fileID: 0}
-  Skill1TextQ: {fileID: 0}
-  Skill1TextE: {fileID: 0}
-  Skill2TextQ: {fileID: 0}
-  Skill2TextE: {fileID: 0}
-  Skill4TextQ: {fileID: 0}
-  Skill4TextE: {fileID: 0}
-  Skill5TextQ: {fileID: 0}
-  Skill5TextE: {fileID: 0}
+  rightPanel: {fileID: 2893200159544404554}
+  Skill1TextQ: {fileID: 3814502148612909157}
+  Skill1TextE: {fileID: 6423850909593679156}
+  Skill2TextQ: {fileID: 6449042640076402290}
+  Skill2TextE: {fileID: 5014765379760531964}
+  Skill4TextQ: {fileID: 8349009785203112785}
+  Skill4TextE: {fileID: 7371714662512506879}
+  Skill5TextQ: {fileID: 6682852269561147535}
+  Skill5TextE: {fileID: 5522112445477893021}
   hud: {fileID: 0}
   originalHUDPos: {x: 0, y: 0, z: 0}
   obtainedOGPos: 0
@@ -2875,7 +2875,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Texture: {fileID: 2800000, guid: 4918b594066df814381206d6bcb4de35, type: 3}
+  m_Texture: {fileID: 2800000, guid: a4ba206ee39396c4db533784ca15a7e7, type: 3}
   m_UVRect:
     serializedVersion: 2
     x: 0
@@ -3559,7 +3559,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Mud Armor
+  m_text: Tail Slap
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2100000, guid: e73a58f6e2794ae7b1b7e50b7fb811b0, type: 2}
@@ -4227,7 +4227,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 3207430252677308404}
-        m_TargetAssemblyTypeName: MandayanganSkillsUIPanel, Assembly-CSharp
+        m_TargetAssemblyTypeName: TambanokanoSkillsUIPanel, Assembly-CSharp
         m_MethodName: SkillWithEquipPurchase
         m_Mode: 1
         m_Arguments:
@@ -4349,7 +4349,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 125, y: -400}
+  m_AnchoredPosition: {x: 122, y: -400}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &468108880023831970
@@ -4435,7 +4435,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 5805298659962145714}
-        m_TargetAssemblyTypeName: MandayanganSkillsUIPanel, Assembly-CSharp
+        m_TargetAssemblyTypeName: MarkupoSkillsUIPanel, Assembly-CSharp
         m_MethodName: Skill1Equip
         m_Mode: 1
         m_Arguments:
@@ -5023,7 +5023,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 125, y: -400}
+  m_AnchoredPosition: {x: 120, y: -400}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4563234959407962703
@@ -5109,7 +5109,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 3207430252677308404}
-        m_TargetAssemblyTypeName: MandayanganSkillsUIPanel, Assembly-CSharp
+        m_TargetAssemblyTypeName: TambanokanoSkillsUIPanel, Assembly-CSharp
         m_MethodName: Skill4Equip
         m_Mode: 1
         m_Arguments:
@@ -5627,7 +5627,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Texture: {fileID: 2800000, guid: d6697b5999f680e40bdf0f0656bc99d8, type: 3}
+  m_Texture: {fileID: 2800000, guid: 56ec27ff1da465b4abfcbaf105c2ff9f, type: 3}
   m_UVRect:
     serializedVersion: 2
     x: 0
@@ -5699,7 +5699,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Mudfling
+  m_text: Lightning
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -6702,7 +6702,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -125, y: -400}
+  m_AnchoredPosition: {x: -103, y: -400}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5973574409090178574
@@ -6788,7 +6788,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 3207430252677308404}
-        m_TargetAssemblyTypeName: MandayanganSkillsUIPanel, Assembly-CSharp
+        m_TargetAssemblyTypeName: TambanokanoSkillsUIPanel, Assembly-CSharp
         m_MethodName: Skill4Equip
         m_Mode: 1
         m_Arguments:
@@ -7173,7 +7173,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Mudfling
+  m_text: Hypnotize
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -7853,7 +7853,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 5805298659962145714}
-        m_TargetAssemblyTypeName: MandayanganSkillsUIPanel, Assembly-CSharp
+        m_TargetAssemblyTypeName: MarkupoSkillsUIPanel, Assembly-CSharp
         m_MethodName: DisplaySkill
         m_Mode: 1
         m_Arguments:
@@ -8033,7 +8033,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -125, y: -400}
+  m_AnchoredPosition: {x: -104, y: -400}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8590071257581645864
@@ -8119,7 +8119,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 5805298659962145714}
-        m_TargetAssemblyTypeName: MandayanganSkillsUIPanel, Assembly-CSharp
+        m_TargetAssemblyTypeName: MarkupoSkillsUIPanel, Assembly-CSharp
         m_MethodName: Skill5Equip
         m_Mode: 1
         m_Arguments:
@@ -8253,7 +8253,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 5805298659962145714}
-        m_TargetAssemblyTypeName: MandayanganSkillsUIPanel, Assembly-CSharp
+        m_TargetAssemblyTypeName: MarkupoSkillsUIPanel, Assembly-CSharp
         m_MethodName: DisplaySkill
         m_Mode: 1
         m_Arguments:
@@ -8618,7 +8618,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -125, y: -400}
+  m_AnchoredPosition: {x: -96, y: -400}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4890817477502366970
@@ -10074,7 +10074,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 3207430252677308404}
-        m_TargetAssemblyTypeName: MandayanganSkillsUIPanel, Assembly-CSharp
+        m_TargetAssemblyTypeName: TambanokanoSkillsUIPanel, Assembly-CSharp
         m_MethodName: DisplaySkill
         m_Mode: 1
         m_Arguments:
@@ -10793,14 +10793,13 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Gather some mud and toss it a short distance towards your cursor! Stuns
-    the enemy for 2 seconds and deals basic attack damage.
+  m_text: 'Use Markupo''s illusory powers to put nearby enemies into a trance
 
 
-    Charges: 1
+    Charges:
+    1
 
-    Cooldown:
-    8 Seconds
+    Cooldown: 8 Seconds
 
 
     Cost: 5 Kapre Cigars'
@@ -10937,7 +10936,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Mud Armor
+  m_text: Rocky Shell
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2100000, guid: e73a58f6e2794ae7b1b7e50b7fb811b0, type: 2}
@@ -11338,7 +11337,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Manny the Mandayangan
+  m_text: 'Markupo
 
     Skills and Passives'
   m_isRightToLeft: 0
@@ -12008,7 +12007,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 3207430252677308404}
-        m_TargetAssemblyTypeName: MandayanganSkillsUIPanel, Assembly-CSharp
+        m_TargetAssemblyTypeName: TambanokanoSkillsUIPanel, Assembly-CSharp
         m_MethodName: DisplaySkill
         m_Mode: 1
         m_Arguments:
@@ -12290,7 +12289,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 3207430252677308404}
-        m_TargetAssemblyTypeName: MandayanganSkillsUIPanel, Assembly-CSharp
+        m_TargetAssemblyTypeName: TambanokanoSkillsUIPanel, Assembly-CSharp
         m_MethodName: SkillWithEquipPurchase
         m_Mode: 1
         m_Arguments:
@@ -12615,7 +12614,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Texture: {fileID: 2800000, guid: d6697b5999f680e40bdf0f0656bc99d8, type: 3}
+  m_Texture: {fileID: 2800000, guid: 57d3759da6dce5e419bafbe804bab294, type: 3}
   m_UVRect:
     serializedVersion: 2
     x: 0
@@ -13787,7 +13786,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -125, y: -400}
+  m_AnchoredPosition: {x: -99, y: -400}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1624755808713996190
@@ -13873,7 +13872,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 5805298659962145714}
-        m_TargetAssemblyTypeName: MandayanganSkillsUIPanel, Assembly-CSharp
+        m_TargetAssemblyTypeName: MarkupoSkillsUIPanel, Assembly-CSharp
         m_MethodName: Skill1Equip
         m_Mode: 1
         m_Arguments:
@@ -14293,7 +14292,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Dash
+  m_text: Slither
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -14709,13 +14708,13 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Move a short distance towards the direction your cursor is pointing, 
-    and gain invulnerability for 0.6 seconds.
+  m_text: 'Tambanokano''s go-to close quarters move. Swipe with ferocity all around
+    you in a very wide area
 
 
-    Charges: 3
+    Charges: 1
 
-    Cooldown: 6 Seconds
+    Cooldown: 10 Seconds
 
 
     Cost:
@@ -16041,7 +16040,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: 'Cover yourself with mud gathered from the ground to protect yourself!
-    Reduce damage taken by 50% for 20 seconds.
+    Reduce damage taken by 30% for 20 seconds.
 
 
     Charges: 1
@@ -16423,7 +16422,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 125, y: -400}
+  m_AnchoredPosition: {x: 127, y: -400}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8226860210773653088
@@ -17874,7 +17873,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 125, y: -400}
+  m_AnchoredPosition: {x: 124, y: -400}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6279725167657891001
@@ -17960,7 +17959,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 3207430252677308404}
-        m_TargetAssemblyTypeName: MandayanganSkillsUIPanel, Assembly-CSharp
+        m_TargetAssemblyTypeName: TambanokanoSkillsUIPanel, Assembly-CSharp
         m_MethodName: Skill2Equip
         m_Mode: 1
         m_Arguments:
@@ -18562,7 +18561,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -125, y: -400}
+  m_AnchoredPosition: {x: -103, y: -400}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1984001149416072809
@@ -18648,7 +18647,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 3207430252677308404}
-        m_TargetAssemblyTypeName: MandayanganSkillsUIPanel, Assembly-CSharp
+        m_TargetAssemblyTypeName: TambanokanoSkillsUIPanel, Assembly-CSharp
         m_MethodName: Skill1Equip
         m_Mode: 1
         m_Arguments:
@@ -19034,7 +19033,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: d6a18e51791419744b567619c87b00f5, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 2a58cc2b98323e845ba3bd3791f327d5, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -19269,7 +19268,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 125, y: -400}
+  m_AnchoredPosition: {x: 117, y: -400}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3845214028723902618
@@ -19622,7 +19621,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 3207430252677308404}
-        m_TargetAssemblyTypeName: MandayanganSkillsUIPanel, Assembly-CSharp
+        m_TargetAssemblyTypeName: TambanokanoSkillsUIPanel, Assembly-CSharp
         m_MethodName: SkillWithEquipPurchase
         m_Mode: 1
         m_Arguments:
@@ -19669,7 +19668,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 125, y: -400}
+  m_AnchoredPosition: {x: 117, y: -400}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1712821280598062655
@@ -19755,7 +19754,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 5805298659962145714}
-        m_TargetAssemblyTypeName: MandayanganSkillsUIPanel, Assembly-CSharp
+        m_TargetAssemblyTypeName: MarkupoSkillsUIPanel, Assembly-CSharp
         m_MethodName: Skill4Equip
         m_Mode: 1
         m_Arguments:
@@ -20405,7 +20404,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -125, y: -400}
+  m_AnchoredPosition: {x: -99, y: -400}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3008430586097931089
@@ -20491,7 +20490,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 3207430252677308404}
-        m_TargetAssemblyTypeName: MandayanganSkillsUIPanel, Assembly-CSharp
+        m_TargetAssemblyTypeName: TambanokanoSkillsUIPanel, Assembly-CSharp
         m_MethodName: Skill5Equip
         m_Mode: 1
         m_Arguments:
@@ -20567,7 +20566,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Mudfling
+  m_text: Lightning
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2100000, guid: e73a58f6e2794ae7b1b7e50b7fb811b0, type: 2}
@@ -21740,14 +21739,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Cover yourself with mud gathered from the ground to protect yourself!
-    Reduce damage taken by 50% for 20 seconds.
+  m_text: 'Form a rocky layer of shell on top of Tammy! Reduce all damage taken by
+    10%.
 
-
-    Charges: 1
-
-    Cooldown: 40
-    Seconds
 
 
     Cost: 5 Kapre Cigars'
@@ -22354,7 +22348,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 5805298659962145714}
-        m_TargetAssemblyTypeName: MandayanganSkillsUIPanel, Assembly-CSharp
+        m_TargetAssemblyTypeName: MarkupoSkillsUIPanel, Assembly-CSharp
         m_MethodName: SkillWithEquipPurchase
         m_Mode: 1
         m_Arguments:
@@ -22722,7 +22716,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 125, y: -400}
+  m_AnchoredPosition: {x: 109, y: -400}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5869007978832528590
@@ -22808,7 +22802,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 3207430252677308404}
-        m_TargetAssemblyTypeName: MandayanganSkillsUIPanel, Assembly-CSharp
+        m_TargetAssemblyTypeName: TambanokanoSkillsUIPanel, Assembly-CSharp
         m_MethodName: Skill5Equip
         m_Mode: 1
         m_Arguments:
@@ -23548,7 +23542,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 5805298659962145714}
-        m_TargetAssemblyTypeName: MandayanganSkillsUIPanel, Assembly-CSharp
+        m_TargetAssemblyTypeName: MarkupoSkillsUIPanel, Assembly-CSharp
         m_MethodName: SkillWithEquipPurchase
         m_Mode: 1
         m_Arguments:
@@ -23815,7 +23809,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 3207430252677308404}
-        m_TargetAssemblyTypeName: MandayanganSkillsUIPanel, Assembly-CSharp
+        m_TargetAssemblyTypeName: TambanokanoSkillsUIPanel, Assembly-CSharp
         m_MethodName: SkillWithEquipPurchase
         m_Mode: 1
         m_Arguments:
@@ -24134,7 +24128,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -125, y: -400}
+  m_AnchoredPosition: {x: -104, y: -400}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2850238715211280228
@@ -24854,8 +24848,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Charges for 1 second to unleash an AoE spinning punch and deals basic
-    attack damage.
+  m_text: 'Unleashes deadly venom forward that deals damage and inflicts damage over
+    time.
 
 
     Charges: 1
@@ -24863,8 +24857,7 @@ MonoBehaviour:
     Cooldown: 10 Seconds
 
 
-    Cost: 5 Kapre
-    Cigars'
+    Cost: 5 Kapre Cigars'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2100000, guid: e73a58f6e2794ae7b1b7e50b7fb811b0, type: 2}
@@ -25811,6 +25804,14 @@ MonoBehaviour:
   mudArmor: {fileID: 5785735585929535622}
   mudfling: {fileID: 7289518831220798899}
   tornadoPunch: {fileID: 7994093838827548076}
+  hypnotize: {fileID: 106133036933654520}
+  poisonBreath: {fileID: 7478222387705055316}
+  slither: {fileID: 4037357070185482282}
+  tailSlap: {fileID: 2710391514108348709}
+  lightningStrike: {fileID: 6886872816569651737}
+  protect: {fileID: 4793915406904663093}
+  swipe: {fileID: 964900871419657238}
+  rockyShell: {fileID: 1271578983665669735}
   blank: {fileID: 8226747704139560567}
   blankReady: {fileID: 1951264999365902244}
   dashSound: {fileID: 8300000, guid: c91fcf414acc0344cb03b13996f1bf3b, type: 3}
@@ -26747,7 +26748,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 125, y: -400}
+  m_AnchoredPosition: {x: 122, y: -400}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5403257424167693681
@@ -26880,7 +26881,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -125, y: -400}
+  m_AnchoredPosition: {x: -94, y: -400}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4943857080422759190
@@ -28610,17 +28611,16 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Move a short distance towards the direction your cursor is pointing, 
-    and gain invulnerability for 0.6 seconds.
+  m_text: 'Gain increased movement speed for a short duration
 
 
-    Charges: 3
+    Charges: 2
 
-    Cooldown: 6 Seconds
+    Cooldown:
+    15 Seconds
 
 
-    Cost:
-    5 Kapre Cigars'
+    Cost: 5 Kapre Cigars'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -29125,7 +29125,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 5805298659962145714}
-        m_TargetAssemblyTypeName: MandayanganSkillsUIPanel, Assembly-CSharp
+        m_TargetAssemblyTypeName: MarkupoSkillsUIPanel, Assembly-CSharp
         m_MethodName: SkillWithEquipPurchase
         m_Mode: 1
         m_Arguments:
@@ -29440,7 +29440,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -125, y: -400}
+  m_AnchoredPosition: {x: -104, y: -400}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8618118163482048555
@@ -29602,7 +29602,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Mud Armor
+  m_text: Rocky Shell
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -29736,7 +29736,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 6d13b30880196b343b479bd28ee1ae77, type: 3}
+  m_Sprite: {fileID: 21300000, guid: dfe3ad76734cdf442ad28750630e2cbb, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -32004,14 +32004,14 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Gather some mud and toss it a short distance towards your cursor! Stuns
-    the enemy for 2 seconds and deals basic attack damage.
+  m_text: 'Tambanokano''s dominion over lightning. Summons a bolt of lightning in
+    a small area of effect in front of the Tambanokano that stuns enemies.
 
 
-    Charges: 1
+    Charges:
+    1
 
-    Cooldown:
-    8 Seconds
+    Cooldown: 10 Seconds
 
 
     Cost: 5 Kapre Cigars'
@@ -33353,7 +33353,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Dash
+  m_text: Swipe
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2100000, guid: e73a58f6e2794ae7b1b7e50b7fb811b0, type: 2}
@@ -33893,8 +33893,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Give the Mandayangan better quality punching bags. Increase it''s basic
-    attack damage by 25%
+  m_text: 'Give the Markupo more physical training. Increases base attack damage
+    by 25%
 
 
     Cost: 5 Kapre Cigars'
@@ -34868,7 +34868,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 5805298659962145714}
-        m_TargetAssemblyTypeName: MandayanganSkillsUIPanel, Assembly-CSharp
+        m_TargetAssemblyTypeName: MarkupoSkillsUIPanel, Assembly-CSharp
         m_MethodName: DisplaySkill
         m_Mode: 1
         m_Arguments:
@@ -36414,7 +36414,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Texture: {fileID: 2800000, guid: 38f5a58f83b7a2a419efa9208e9ecd6b, type: 3}
+  m_Texture: {fileID: 2800000, guid: 8d69e6c888deec040bdffa97cd782ddf, type: 3}
   m_UVRect:
     serializedVersion: 2
     x: 0
@@ -36932,7 +36932,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 125, y: -400}
+  m_AnchoredPosition: {x: 121, y: -400}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7113394603111333880
@@ -37018,7 +37018,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 5805298659962145714}
-        m_TargetAssemblyTypeName: MandayanganSkillsUIPanel, Assembly-CSharp
+        m_TargetAssemblyTypeName: MarkupoSkillsUIPanel, Assembly-CSharp
         m_MethodName: Skill2Equip
         m_Mode: 1
         m_Arguments:
@@ -37094,7 +37094,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Mudfling
+  m_text: Hypnotize
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2100000, guid: e73a58f6e2794ae7b1b7e50b7fb811b0, type: 2}
@@ -37285,7 +37285,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 5805298659962145714}
-        m_TargetAssemblyTypeName: MandayanganSkillsUIPanel, Assembly-CSharp
+        m_TargetAssemblyTypeName: MarkupoSkillsUIPanel, Assembly-CSharp
         m_MethodName: Skill3Purchase
         m_Mode: 1
         m_Arguments:
@@ -37912,7 +37912,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 3207430252677308404}
-        m_TargetAssemblyTypeName: MandayanganSkillsUIPanel, Assembly-CSharp
+        m_TargetAssemblyTypeName: TambanokanoSkillsUIPanel, Assembly-CSharp
         m_MethodName: DisplaySkill
         m_Mode: 1
         m_Arguments:
@@ -39622,7 +39622,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 5443803581650900420}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9c7599663d91dbd4dbdee7f1cb8940d7, type: 3}
+  m_Script: {fileID: 11500000, guid: c1699343e1280514784776aa61f0b442, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   uiList: []
@@ -39630,20 +39630,20 @@ MonoBehaviour:
   purchaseMudfling: {fileID: 3196488110397687411}
   equip1Mudfling: {fileID: 2343409269307753155}
   equip2Mudfling: {fileID: 5718596644480069524}
-  skill1: {fileID: 0}
-  skill2: {fileID: 0}
-  skill4: {fileID: 0}
-  skill5: {fileID: 0}
+  skill1: {fileID: 3675030743336282633}
+  skill2: {fileID: 321100807757199327}
+  skill4: {fileID: 1190653743330241167}
+  skill5: {fileID: 8411866386017400925}
   purchaseButton: {fileID: 0}
-  rightPanel: {fileID: 0}
-  Skill1TextQ: {fileID: 0}
-  Skill1TextE: {fileID: 0}
-  Skill2TextQ: {fileID: 0}
-  Skill2TextE: {fileID: 0}
-  Skill4TextQ: {fileID: 0}
-  Skill4TextE: {fileID: 0}
-  Skill5TextQ: {fileID: 0}
-  Skill5TextE: {fileID: 0}
+  rightPanel: {fileID: 6863233937521959396}
+  Skill1TextQ: {fileID: 2858825674812201296}
+  Skill1TextE: {fileID: 4110833141398051504}
+  Skill2TextQ: {fileID: 823819847734096161}
+  Skill2TextE: {fileID: 5266864765057200129}
+  Skill4TextQ: {fileID: 5416418076097620289}
+  Skill4TextE: {fileID: 2851519816765508702}
+  Skill5TextQ: {fileID: 4265784447031214245}
+  Skill5TextE: {fileID: 2372386682944340531}
   hud: {fileID: 0}
   originalHUDPos: {x: 0, y: 0, z: 0}
   obtainedOGPos: 0
@@ -40230,7 +40230,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Mud Armor
+  m_text: Tail Slap
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -41182,7 +41182,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: c10fd55777fc1ae4ba62d9ddd4c4c325, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 56ec27ff1da465b4abfcbaf105c2ff9f, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -41642,17 +41642,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Charges for 1 second to unleash an AoE spinning punch and deals basic
-    attack damage.
-
-
-    Charges: 1
-
-    Cooldown: 10 Seconds
-
-
-    Cost: 5 Kapre
-    Cigars'
+  m_text: "Tambanokano braces for impact. Reduces damage taken by 50% for \n\nCharges:
+    1\nCooldown: 25 Seconds\n\nCost: 5 Kapre Cigars"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2100000, guid: e73a58f6e2794ae7b1b7e50b7fb811b0, type: 2}
@@ -41757,7 +41748,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -125, y: -400}
+  m_AnchoredPosition: {x: -105, y: -400}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7901468669600342219
@@ -41843,7 +41834,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 3207430252677308404}
-        m_TargetAssemblyTypeName: MandayanganSkillsUIPanel, Assembly-CSharp
+        m_TargetAssemblyTypeName: TambanokanoSkillsUIPanel, Assembly-CSharp
         m_MethodName: Skill2Equip
         m_Mode: 1
         m_Arguments:
@@ -42187,7 +42178,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Tornado Punch
+  m_text: Protect
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2100000, guid: e73a58f6e2794ae7b1b7e50b7fb811b0, type: 2}
@@ -42644,7 +42635,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Texture: {fileID: 2800000, guid: f94c7112499bd1d45a14fcb1cfb64a63, type: 3}
+  m_Texture: {fileID: 2800000, guid: 58655cb7375ab6d4bb7c415915ae1af4, type: 3}
   m_UVRect:
     serializedVersion: 2
     x: 0
@@ -43319,20 +43310,20 @@ MonoBehaviour:
   purchaseMudfling: {fileID: 2767295343320028270}
   equip1Mudfling: {fileID: 7553505140941774699}
   equip2Mudfling: {fileID: 1202575212603363267}
-  skill1: {fileID: 0}
-  skill2: {fileID: 0}
-  skill4: {fileID: 0}
-  skill5: {fileID: 0}
+  skill1: {fileID: 2788587424629998061}
+  skill2: {fileID: 5010543512525063442}
+  skill4: {fileID: 8420290314439219300}
+  skill5: {fileID: 7881012385740079358}
   purchaseButton: {fileID: 0}
-  rightPanel: {fileID: 0}
-  Skill1TextQ: {fileID: 0}
-  Skill1TextE: {fileID: 0}
-  Skill2TextQ: {fileID: 0}
-  Skill2TextE: {fileID: 0}
-  Skill4TextQ: {fileID: 0}
-  Skill4TextE: {fileID: 0}
-  Skill5TextQ: {fileID: 0}
-  Skill5TextE: {fileID: 0}
+  rightPanel: {fileID: 4832579349764590580}
+  Skill1TextQ: {fileID: 1551512874042979582}
+  Skill1TextE: {fileID: 9108439288931986881}
+  Skill2TextQ: {fileID: 7932563480332655174}
+  Skill2TextE: {fileID: 7403372461102522603}
+  Skill4TextQ: {fileID: 4174187687893104786}
+  Skill4TextE: {fileID: 3766496155004971733}
+  Skill5TextQ: {fileID: 7159083850498546548}
+  Skill5TextE: {fileID: 3440063339794015947}
   hud: {fileID: 0}
   originalHUDPos: {x: 0, y: 0, z: 0}
   obtainedOGPos: 0
@@ -45581,8 +45572,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Move a short distance towards the direction your cursor is pointing, 
-    and gain invulnerability for 0.6 seconds.
+  m_text: 'Move a short distance towards the direction Manny is facing,  and gain
+    invulnerability for 0.6 seconds.
 
 
     Charges: 3
@@ -46966,7 +46957,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -125, y: -400}
+  m_AnchoredPosition: {x: -101, y: -400}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1552142100035554759
@@ -47052,7 +47043,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 5805298659962145714}
-        m_TargetAssemblyTypeName: MandayanganSkillsUIPanel, Assembly-CSharp
+        m_TargetAssemblyTypeName: MarkupoSkillsUIPanel, Assembly-CSharp
         m_MethodName: Skill4Equip
         m_Mode: 1
         m_Arguments:
@@ -47749,7 +47740,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Tornado Punch
+  m_text: Protect
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -47883,7 +47874,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Manny the Mandayangan
+  m_text: 'Tambanokano
 
     Skills and Passives'
   m_isRightToLeft: 0
@@ -48240,6 +48231,14 @@ MonoBehaviour:
   mudArmor: {fileID: 282717508127411570}
   mudfling: {fileID: 4124468830594031893}
   tornadoPunch: {fileID: 260605795118720747}
+  hypnotize: {fileID: 2754738865968532680}
+  poisonBreath: {fileID: 863338527637723822}
+  slither: {fileID: 7698087978897265586}
+  tailSlap: {fileID: 4006105112723703321}
+  lightningStrike: {fileID: 5173604420920647144}
+  protect: {fileID: 806297750113094759}
+  swipe: {fileID: 266707970741414868}
+  rockyShell: {fileID: 8375440189958633958}
   blank: {fileID: 5562833219158327522}
   blankReady: {fileID: 1530428261197439550}
   dashSound: {fileID: 8300000, guid: c91fcf414acc0344cb03b13996f1bf3b, type: 3}
@@ -49728,8 +49727,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Cover yourself with mud gathered from the ground to protect yourself!
-    Reduce damage taken by 50% for 20 seconds.
+  m_text: 'Use your tail to hit enemies in front of you in a cone for massive damage.
+    Long cooldown and charge time, big damage.
 
 
     Charges: 1
@@ -50806,7 +50805,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 3207430252677308404}
-        m_TargetAssemblyTypeName: MandayanganSkillsUIPanel, Assembly-CSharp
+        m_TargetAssemblyTypeName: TambanokanoSkillsUIPanel, Assembly-CSharp
         m_MethodName: Skill3Purchase
         m_Mode: 1
         m_Arguments:
@@ -53430,7 +53429,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 5805298659962145714}
-        m_TargetAssemblyTypeName: MandayanganSkillsUIPanel, Assembly-CSharp
+        m_TargetAssemblyTypeName: MarkupoSkillsUIPanel, Assembly-CSharp
         m_MethodName: DisplaySkill
         m_Mode: 1
         m_Arguments:
@@ -53506,7 +53505,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Texture: {fileID: 2800000, guid: f94c7112499bd1d45a14fcb1cfb64a63, type: 3}
+  m_Texture: {fileID: 2800000, guid: dfe3ad76734cdf442ad28750630e2cbb, type: 3}
   m_UVRect:
     serializedVersion: 2
     x: 0
@@ -53848,7 +53847,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: c10fd55777fc1ae4ba62d9ddd4c4c325, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 57d3759da6dce5e419bafbe804bab294, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -53894,7 +53893,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 125, y: -400}
+  m_AnchoredPosition: {x: 119, y: -400}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6998323699461882268
@@ -54407,7 +54406,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 125, y: -400}
+  m_AnchoredPosition: {x: 126, y: -400}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5675955002927025868
@@ -54493,7 +54492,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 3207430252677308404}
-        m_TargetAssemblyTypeName: MandayanganSkillsUIPanel, Assembly-CSharp
+        m_TargetAssemblyTypeName: TambanokanoSkillsUIPanel, Assembly-CSharp
         m_MethodName: Skill1Equip
         m_Mode: 1
         m_Arguments:
@@ -55841,7 +55840,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -125, y: -400}
+  m_AnchoredPosition: {x: -101, y: -400}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &446978294109641376
@@ -55927,7 +55926,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 5805298659962145714}
-        m_TargetAssemblyTypeName: MandayanganSkillsUIPanel, Assembly-CSharp
+        m_TargetAssemblyTypeName: MarkupoSkillsUIPanel, Assembly-CSharp
         m_MethodName: Skill2Equip
         m_Mode: 1
         m_Arguments:
@@ -57154,7 +57153,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Dash
+  m_text: Slither
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2100000, guid: e73a58f6e2794ae7b1b7e50b7fb811b0, type: 2}
@@ -58424,7 +58423,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 125, y: -400}
+  m_AnchoredPosition: {x: 123, y: -400}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1553389797146066940
@@ -58510,7 +58509,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 5805298659962145714}
-        m_TargetAssemblyTypeName: MandayanganSkillsUIPanel, Assembly-CSharp
+        m_TargetAssemblyTypeName: MarkupoSkillsUIPanel, Assembly-CSharp
         m_MethodName: Skill5Equip
         m_Mode: 1
         m_Arguments:
@@ -58586,7 +58585,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Tornado Punch
+  m_text: Poison Breath
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -60138,7 +60137,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Texture: {fileID: 2800000, guid: 38f5a58f83b7a2a419efa9208e9ecd6b, type: 3}
+  m_Texture: {fileID: 2800000, guid: 2a58cc2b98323e845ba3bd3791f327d5, type: 3}
   m_UVRect:
     serializedVersion: 2
     x: 0
@@ -61604,7 +61603,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 8a76ae9a6cc1fbf41991f63444539b5d, type: 3}
+  m_Sprite: {fileID: 21300000, guid: a4ba206ee39396c4db533784ca15a7e7, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -62867,7 +62866,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Dash
+  m_text: Swipe
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -63944,7 +63943,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 5805298659962145714}
-        m_TargetAssemblyTypeName: MandayanganSkillsUIPanel, Assembly-CSharp
+        m_TargetAssemblyTypeName: MarkupoSkillsUIPanel, Assembly-CSharp
         m_MethodName: DisplaySkill
         m_Mode: 1
         m_Arguments:
@@ -64020,7 +64019,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Texture: {fileID: 2800000, guid: 4918b594066df814381206d6bcb4de35, type: 3}
+  m_Texture: {fileID: 2800000, guid: 781989c828e77f54d97b00f2000285ce, type: 3}
   m_UVRect:
     serializedVersion: 2
     x: 0
@@ -64092,7 +64091,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: d6a18e51791419744b567619c87b00f5, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 8d69e6c888deec040bdffa97cd782ddf, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -64204,7 +64203,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 6d13b30880196b343b479bd28ee1ae77, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 58655cb7375ab6d4bb7c415915ae1af4, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -64279,7 +64278,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 8a76ae9a6cc1fbf41991f63444539b5d, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 781989c828e77f54d97b00f2000285ce, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -64961,7 +64960,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 3207430252677308404}
-        m_TargetAssemblyTypeName: MandayanganSkillsUIPanel, Assembly-CSharp
+        m_TargetAssemblyTypeName: TambanokanoSkillsUIPanel, Assembly-CSharp
         m_MethodName: DisplaySkill
         m_Mode: 1
         m_Arguments:

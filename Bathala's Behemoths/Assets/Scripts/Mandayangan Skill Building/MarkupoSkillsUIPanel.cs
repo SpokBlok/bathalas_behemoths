@@ -14,13 +14,11 @@ public class MarkupoSkillsUIPanel : MonoBehaviour
     public GameObject equip1Mudfling;
     public GameObject equip2Mudfling;
 
-
-    //Purchased bools
-    private bool DashPurchased;
-    private bool MudflingPurchased;
+    private bool SlitherPurchased;
+    private bool HypnotizePurchased;
     private bool AtkUpPurchased;
-    private bool TornadoPurchased;
-    private bool MudArmorPurchased;
+    private bool PoisonBreathPurchased;
+    private bool TailSlapPurchased;
 
     public Transform skill1;
     public Transform skill2;
@@ -31,7 +29,6 @@ public class MarkupoSkillsUIPanel : MonoBehaviour
     [SerializeField]
     private Transform rightPanel;
 
-    //Texts for purchase buttons
     [SerializeField]
     private TextMeshProUGUI Skill1TextQ;
     [SerializeField]
@@ -49,8 +46,8 @@ public class MarkupoSkillsUIPanel : MonoBehaviour
     [SerializeField]
     private TextMeshProUGUI Skill5TextE;
 
-    private List<TextMeshProUGUI> textListQ = new List<TextMeshProUGUI>();
-    private List<TextMeshProUGUI> textListE = new List<TextMeshProUGUI>();
+    private readonly List<TextMeshProUGUI> textListQ = new List<TextMeshProUGUI>();
+    private readonly List<TextMeshProUGUI> textListE = new List<TextMeshProUGUI>();
 
     private PlayerStats playerStats;
     private PlayerSkills playerSkills;
@@ -61,7 +58,6 @@ public class MarkupoSkillsUIPanel : MonoBehaviour
 
     private bool initialized;
 
-    // Start is called before the first frame update
     void Start()
     {
         Initialize();
@@ -81,15 +77,14 @@ public class MarkupoSkillsUIPanel : MonoBehaviour
 
         if (PlayerStats.Instance.clue1)
         {
-            MudflingPurchased = true;
-            PlayerStats.Instance.MudflingPurchased = true;
+            HypnotizePurchased = true;
+            PlayerStats.Instance.MarkyHypnotizePurchased = true;
             purchaseMudfling.SetActive(false);
             equip1Mudfling.SetActive(true);
             equip2Mudfling.SetActive(true);
         }
 
-        // Auto-unlock any skills that are already purchased
-        if (DashPurchased)
+        if (SlitherPurchased)
         {
             if (skill1 == null)
             {
@@ -110,7 +105,7 @@ public class MarkupoSkillsUIPanel : MonoBehaviour
             }
         }
 
-        if (MudflingPurchased)
+        if (HypnotizePurchased)
         {
             if (skill2 == null)
             {
@@ -150,7 +145,7 @@ public class MarkupoSkillsUIPanel : MonoBehaviour
             }
         }
 
-        if (TornadoPurchased)
+        if (PoisonBreathPurchased)
         {
             if (skill4 == null)
             {
@@ -171,7 +166,7 @@ public class MarkupoSkillsUIPanel : MonoBehaviour
             }
         }
 
-        if (MudArmorPurchased)
+        if (TailSlapPurchased)
         {
             if (skill5 == null)
             {
@@ -200,11 +195,11 @@ public class MarkupoSkillsUIPanel : MonoBehaviour
             return;
         }
 
-        DashPurchased = PlayerStats.Instance.DashPurchased;
-        MudflingPurchased = PlayerStats.Instance.MudflingPurchased;
+        SlitherPurchased = PlayerStats.Instance.MarkySlitherPurchased;
+        HypnotizePurchased = PlayerStats.Instance.MarkyHypnotizePurchased;
         AtkUpPurchased = PlayerStats.Instance.AtkUpPurchased;
-        TornadoPurchased = PlayerStats.Instance.TornadoPurchased;
-        MudArmorPurchased = PlayerStats.Instance.MudArmorPurchased;
+        PoisonBreathPurchased = PlayerStats.Instance.MarkyPoisonBreathPurchased;
+        TailSlapPurchased = PlayerStats.Instance.MarkyTailSlapPurchased;
 
         if (rightPanel == null)
         {
@@ -229,14 +224,14 @@ public class MarkupoSkillsUIPanel : MonoBehaviour
 
         if (textListQ.Count == 0)
         {
-            textListQ.Add(Skill1TextQ);
-            textListE.Add(Skill1TextE);
-            textListQ.Add(Skill2TextQ);
-            textListE.Add(Skill2TextE);
-            textListQ.Add(Skill4TextQ);
-            textListE.Add(Skill4TextE);
-            textListQ.Add(Skill5TextQ);
-            textListE.Add(Skill5TextE);
+            AddTextIfFound(textListQ, Skill1TextQ);
+            AddTextIfFound(textListE, Skill1TextE);
+            AddTextIfFound(textListQ, Skill2TextQ);
+            AddTextIfFound(textListE, Skill2TextE);
+            AddTextIfFound(textListQ, Skill4TextQ);
+            AddTextIfFound(textListE, Skill4TextE);
+            AddTextIfFound(textListQ, Skill5TextQ);
+            AddTextIfFound(textListE, Skill5TextE);
         }
 
         playerStats = PlayerStats.Instance;
@@ -307,7 +302,10 @@ public class MarkupoSkillsUIPanel : MonoBehaviour
     {
         foreach (TextMeshProUGUI text in textListQ)
         {
-            text.text = "Equip";
+            if (text != null)
+            {
+                text.text = "Equip";
+            }
         }
     }
 
@@ -315,7 +313,10 @@ public class MarkupoSkillsUIPanel : MonoBehaviour
     {
         foreach (TextMeshProUGUI text in textListE)
         {
-            text.text = "Equip";
+            if (text != null)
+            {
+                text.text = "Equip";
+            }
         }
     }
 
@@ -323,36 +324,37 @@ public class MarkupoSkillsUIPanel : MonoBehaviour
     {
         if (playerStats.kapreCigars < 5)
         {
-            //message that not enough cigars
             return;
         }
-        playerStats.AddKapreCigars(-5);
 
         GameObject selectedButton = EventSystem.current.currentSelectedGameObject;
         Transform parent = selectedButton.GetComponent<Transform>().parent;
-        EnableAllButtons(parent);
-        selectedButton.SetActive(false);
 
-        // Track which skill was purchased based on the parent container's name
         switch (parent.name)
         {
             case "Skill 1":
-                DashPurchased = true;
-                PlayerStats.Instance.DashPurchased = true;
+                SlitherPurchased = true;
+                PlayerStats.Instance.MarkySlitherPurchased = true;
                 break;
             case "Skill 2":
-                MudflingPurchased = true;
-                PlayerStats.Instance.MudflingPurchased = true;
+                HypnotizePurchased = true;
+                PlayerStats.Instance.MarkyHypnotizePurchased = true;
                 break;
             case "Skill 4":
-                TornadoPurchased = true;
-                PlayerStats.Instance.TornadoPurchased = true;
+                PoisonBreathPurchased = true;
+                PlayerStats.Instance.MarkyPoisonBreathPurchased = true;
                 break;
             case "Skill 5":
-                MudArmorPurchased = true;
-                PlayerStats.Instance.MudArmorPurchased = true;
+                TailSlapPurchased = true;
+                PlayerStats.Instance.MarkyTailSlapPurchased = true;
                 break;
+            default:
+                return;
         }
+
+        playerStats.AddKapreCigars(-5);
+        EnableAllButtons(parent);
+        selectedButton.SetActive(false);
     }
 
     public void Skill3Purchase()
@@ -361,7 +363,6 @@ public class MarkupoSkillsUIPanel : MonoBehaviour
         {
             if (playerStats.kapreCigars < 5)
             {
-                //message that not enough cigars
                 return;
             }
             playerStats.AddKapreCigars(-5);
@@ -370,6 +371,14 @@ public class MarkupoSkillsUIPanel : MonoBehaviour
             TextMeshProUGUI text = EventSystem.current.currentSelectedGameObject.GetComponentInChildren<TextMeshProUGUI>();
             text.text = "Purchased";
             playerStats.basicAttackDamage *= 1.25f;
+        }
+    }
+
+    private void AddTextIfFound(List<TextMeshProUGUI> textList, TextMeshProUGUI text)
+    {
+        if (text != null)
+        {
+            textList.Add(text);
         }
     }
 
@@ -399,12 +408,28 @@ public class MarkupoSkillsUIPanel : MonoBehaviour
         return result;
     }
 
+    private T GetBehemothSkill<T>(string skillName) where T : BaseSkill
+    {
+        T skill = playerSkills.GetComponentInChildren<T>();
+        if (skill == null)
+        {
+            Debug.LogError($"MarkupoSkillsUIPanel: Could not find {skillName} on PlayerSkills.");
+        }
+
+        return skill;
+    }
+
     public void Skill1Equip()
     {
+        Slither slither = GetBehemothSkill<Slither>(nameof(Slither));
+        if (slither == null)
+        {
+            return;
+        }
+
         if (EventSystem.current.currentSelectedGameObject.CompareTag("Q Button"))
         {
-            Dash dash = playerSkills.GetComponentInChildren<Dash>();
-            playerSkills.BehemothSkillQChange(dash);
+            playerSkills.BehemothSkillQChange(slither);
             UnequipAllSkillQ();
             Skill1TextQ.text = "Equipped";
             if (Skill1TextE.text == "Equipped")
@@ -412,11 +437,10 @@ public class MarkupoSkillsUIPanel : MonoBehaviour
                 Skill1TextE.text = "Equip";
                 playerSkills.RemoveBehemothSkillE();
             }
-        } 
+        }
         else
         {
-            Dash dash = playerSkills.GetComponentInChildren<Dash>();
-            playerSkills.BehemothSkillEChange(dash);
+            playerSkills.BehemothSkillEChange(slither);
             UnequipAllSkillE();
             Skill1TextE.text = "Equipped";
             if (Skill1TextQ.text == "Equipped")
@@ -429,10 +453,15 @@ public class MarkupoSkillsUIPanel : MonoBehaviour
 
     public void Skill2Equip()
     {
+        Hypnotize hypnotize = GetBehemothSkill<Hypnotize>(nameof(Hypnotize));
+        if (hypnotize == null)
+        {
+            return;
+        }
+
         if (EventSystem.current.currentSelectedGameObject.CompareTag("Q Button"))
         {
-            Mudfling mudFling = playerSkills.GetComponentInChildren<Mudfling>();
-            playerSkills.BehemothSkillQChange(mudFling);
+            playerSkills.BehemothSkillQChange(hypnotize);
             UnequipAllSkillQ();
             Skill2TextQ.text = "Equipped";
             if (Skill2TextE.text == "Equipped")
@@ -443,8 +472,7 @@ public class MarkupoSkillsUIPanel : MonoBehaviour
         }
         else
         {
-            Mudfling mudFling = playerSkills.GetComponentInChildren<Mudfling>();
-            playerSkills.BehemothSkillEChange(mudFling);
+            playerSkills.BehemothSkillEChange(hypnotize);
             UnequipAllSkillE();
             Skill2TextE.text = "Equipped";
             if (Skill2TextQ.text == "Equipped")
@@ -457,10 +485,15 @@ public class MarkupoSkillsUIPanel : MonoBehaviour
 
     public void Skill4Equip()
     {
+        Poisonbreath poisonBreath = GetBehemothSkill<Poisonbreath>(nameof(Poisonbreath));
+        if (poisonBreath == null)
+        {
+            return;
+        }
+
         if (EventSystem.current.currentSelectedGameObject.CompareTag("Q Button"))
         {
-            TornadoPunch tornadoPunch = playerSkills.GetComponentInChildren<TornadoPunch>();
-            playerSkills.BehemothSkillQChange(tornadoPunch);
+            playerSkills.BehemothSkillQChange(poisonBreath);
             UnequipAllSkillQ();
             Skill4TextQ.text = "Equipped";
             if (Skill4TextE.text == "Equipped")
@@ -471,8 +504,7 @@ public class MarkupoSkillsUIPanel : MonoBehaviour
         }
         else
         {
-            TornadoPunch tornadoPunch = playerSkills.GetComponentInChildren<TornadoPunch>();
-            playerSkills.BehemothSkillEChange(tornadoPunch);
+            playerSkills.BehemothSkillEChange(poisonBreath);
             UnequipAllSkillE();
             Skill4TextE.text = "Equipped";
             if (Skill4TextQ.text == "Equipped")
@@ -485,10 +517,15 @@ public class MarkupoSkillsUIPanel : MonoBehaviour
 
     public void Skill5Equip()
     {
+        TailSlap tailSlap = GetBehemothSkill<TailSlap>(nameof(TailSlap));
+        if (tailSlap == null)
+        {
+            return;
+        }
+
         if (EventSystem.current.currentSelectedGameObject.CompareTag("Q Button"))
         {
-            MudArmor mudArmor = playerSkills.GetComponentInChildren<MudArmor>();
-            playerSkills.BehemothSkillQChange(mudArmor);
+            playerSkills.BehemothSkillQChange(tailSlap);
             UnequipAllSkillQ();
             Skill5TextQ.text = "Equipped";
             if (Skill5TextE.text == "Equipped")
@@ -499,8 +536,7 @@ public class MarkupoSkillsUIPanel : MonoBehaviour
         }
         else
         {
-            MudArmor mudArmor = playerSkills.GetComponentInChildren<MudArmor>();
-            playerSkills.BehemothSkillEChange(mudArmor);
+            playerSkills.BehemothSkillEChange(tailSlap);
             UnequipAllSkillE();
             Skill5TextE.text = "Equipped";
             if (Skill5TextQ.text == "Equipped")

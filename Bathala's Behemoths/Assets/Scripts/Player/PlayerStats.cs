@@ -63,6 +63,13 @@ public class PlayerStats : MonoBehaviour
     public bool RegenPurchased;
     public bool BBPurchased;
     public bool RockyShellPurchased;
+    public bool TammySwipePurchased;
+    public bool TammyLightningPurchased;
+    public bool TammyProtectPurchased;
+    public bool MarkySlitherPurchased;
+    public bool MarkyHypnotizePurchased;
+    public bool MarkyPoisonBreathPurchased;
+    public bool MarkyTailSlapPurchased;
 
     public GameObject player;
     public Vector3 playerSavePosition;
@@ -167,6 +174,27 @@ public class PlayerStats : MonoBehaviour
         kapreCigars += addedCigars;
     }
 
+    public float GetMitigatedDamage(float damage)
+    {
+        float mitigatedDamage = damage;
+
+        if (hasMudArmor)
+        {
+            mitigatedDamage /= 1.7f;
+        }
+        else if (hasProtect && playerModelIndex == 2)
+        {
+            mitigatedDamage /= 1.5f;
+        }
+
+        if (RockyShellPurchased)
+        {
+            mitigatedDamage *= 0.9f;
+        }
+
+        return Mathf.Max(0f, mitigatedDamage);
+    }
+
     public bool IsMaxHealth()
     {
         return (currentHealth == maxHealth);
@@ -234,6 +262,13 @@ public class PlayerStats : MonoBehaviour
         data.MudflingPurchased = MudflingPurchased;
         data.AtkUpPurchased = AtkUpPurchased;
         data.RockyShellPurchased = RockyShellPurchased;
+        data.TammySwipePurchased = TammySwipePurchased;
+        data.TammyLightningPurchased = TammyLightningPurchased;
+        data.TammyProtectPurchased = TammyProtectPurchased;
+        data.MarkySlitherPurchased = MarkySlitherPurchased;
+        data.MarkyHypnotizePurchased = MarkyHypnotizePurchased;
+        data.MarkyPoisonBreathPurchased = MarkyPoisonBreathPurchased;
+        data.MarkyTailSlapPurchased = MarkyTailSlapPurchased;
         data.TornadoPurchased = TornadoPurchased;
         data.MudArmorPurchased = MudArmorPurchased;
         data.FirstAidPurchased = FirstAidPurchased;
@@ -299,6 +334,13 @@ public class PlayerStats : MonoBehaviour
         MudflingPurchased = data.MudflingPurchased;
         AtkUpPurchased = data.AtkUpPurchased;
         RockyShellPurchased = data.RockyShellPurchased;
+        TammySwipePurchased = data.TammySwipePurchased;
+        TammyLightningPurchased = data.TammyLightningPurchased;
+        TammyProtectPurchased = data.TammyProtectPurchased;
+        MarkySlitherPurchased = data.MarkySlitherPurchased;
+        MarkyHypnotizePurchased = data.MarkyHypnotizePurchased;
+        MarkyPoisonBreathPurchased = data.MarkyPoisonBreathPurchased;
+        MarkyTailSlapPurchased = data.MarkyTailSlapPurchased;
         TornadoPurchased = data.TornadoPurchased;
         MudArmorPurchased = data.MudArmorPurchased;
         FirstAidPurchased = data.FirstAidPurchased;
@@ -382,6 +424,13 @@ public class PlayerStats : MonoBehaviour
         MudflingPurchased = false;
         AtkUpPurchased = false;
         RockyShellPurchased = false;
+        TammySwipePurchased = false;
+        TammyLightningPurchased = false;
+        TammyProtectPurchased = false;
+        MarkySlitherPurchased = false;
+        MarkyHypnotizePurchased = false;
+        MarkyPoisonBreathPurchased = false;
+        MarkyTailSlapPurchased = false;
         TornadoPurchased = false;
         MudArmorPurchased = false;
         FirstAidPurchased = false;
@@ -487,6 +536,13 @@ public struct PlayerStatsSaveData
     public bool MudflingPurchased;
     public bool AtkUpPurchased;
     public bool RockyShellPurchased;
+    public bool TammySwipePurchased;
+    public bool TammyLightningPurchased;
+    public bool TammyProtectPurchased;
+    public bool MarkySlitherPurchased;
+    public bool MarkyHypnotizePurchased;
+    public bool MarkyPoisonBreathPurchased;
+    public bool MarkyTailSlapPurchased;
     public bool TornadoPurchased;
     public bool MudArmorPurchased;
     public bool FirstAidPurchased;

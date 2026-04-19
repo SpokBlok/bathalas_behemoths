@@ -28,6 +28,7 @@ public class SkillQHUD : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        InitializeSkillImages();
         ChangeSkill();
     }
 
@@ -70,6 +71,112 @@ public class SkillQHUD : MonoBehaviour
         }
     }
 
+    private void InitializeSkillImages()
+    {
+        TryAssignSkillImage("Dash", ref dash);
+        TryAssignSkillImage("MudArmor", ref mudArmor);
+        TryAssignSkillImage("Mudfling", ref mudfling);
+        TryAssignSkillImage("TornadoPunch", ref tornadoPunch);
+        TryAssignSkillImage("Hypnotize", ref hypnotize);
+        TryAssignSkillImage("PoisonBreath", ref poisonBreath);
+        TryAssignSkillImage("Slither", ref slither);
+        TryAssignSkillImage("TailSlap", ref tailSlap);
+        TryAssignSkillImage("LightningStrike", ref lightningStrike);
+        TryAssignSkillImage("Protect", ref protect);
+        TryAssignSkillImage("Swipe", ref swipe);
+        TryAssignSkillImage("RockyShell", ref rockyShell);
+
+        RectTransform referenceRect = blank != null ? blank.rectTransform : GetComponent<RectTransform>();
+        NormalizeSkillImage(dash, referenceRect);
+        NormalizeSkillImage(mudArmor, referenceRect);
+        NormalizeSkillImage(mudfling, referenceRect);
+        NormalizeSkillImage(tornadoPunch, referenceRect);
+        NormalizeSkillImage(hypnotize, referenceRect);
+        NormalizeSkillImage(poisonBreath, referenceRect);
+        NormalizeSkillImage(slither, referenceRect);
+        NormalizeSkillImage(tailSlap, referenceRect);
+        NormalizeSkillImage(lightningStrike, referenceRect);
+        NormalizeSkillImage(protect, referenceRect);
+        NormalizeSkillImage(swipe, referenceRect);
+        NormalizeSkillImage(rockyShell, referenceRect);
+    }
+
+    private void TryAssignSkillImage(string skillName, ref Image imageField)
+    {
+        if (imageField == null)
+        {
+            Transform existingChild = transform.Find(skillName);
+            if (existingChild != null)
+            {
+                imageField = existingChild.GetComponent<Image>();
+            }
+        }
+
+        if (imageField != null)
+        {
+            return;
+        }
+
+        Image sourceImage = FindSceneImage(skillName);
+        if (sourceImage == null)
+        {
+            return;
+        }
+
+        GameObject clone = Instantiate(sourceImage.gameObject, transform, false);
+        clone.name = skillName;
+        clone.SetActive(false);
+        imageField = clone.GetComponent<Image>();
+    }
+
+    private Image FindSceneImage(string skillName)
+    {
+        Image[] sceneImages = Resources.FindObjectsOfTypeAll<Image>();
+
+        foreach (Image candidate in sceneImages)
+        {
+            if (candidate == null || candidate.gameObject == null)
+            {
+                continue;
+            }
+
+            if (!candidate.gameObject.scene.IsValid())
+            {
+                continue;
+            }
+
+            if (candidate.transform.IsChildOf(transform))
+            {
+                continue;
+            }
+
+            if (candidate.gameObject.name != skillName || candidate.sprite == null)
+            {
+                continue;
+            }
+
+            return candidate;
+        }
+
+        return null;
+    }
+
+    private void NormalizeSkillImage(Image image, RectTransform referenceRect)
+    {
+        if (image == null || referenceRect == null)
+        {
+            return;
+        }
+
+        RectTransform imageRect = image.rectTransform;
+        imageRect.anchorMin = referenceRect.anchorMin;
+        imageRect.anchorMax = referenceRect.anchorMax;
+        imageRect.pivot = referenceRect.pivot;
+        imageRect.anchoredPosition = referenceRect.anchoredPosition;
+        imageRect.localRotation = Quaternion.identity;
+        imageRect.localScale = Vector3.one;
+    }
+
     public void ClearSkillQHUD()
     {
         SetImageActive(blank, false);
@@ -89,6 +196,8 @@ public class SkillQHUD : MonoBehaviour
 
     public void ChangeSkill()
     {
+        InitializeSkillImages();
+
         BaseSkill equippedSkill = PlayerSkills.Instance.behemothSkillQ;
 
         if (equippedSkill == null)

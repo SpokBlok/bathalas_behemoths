@@ -14,13 +14,11 @@ public class TambanokanoSkillsUIPanel : MonoBehaviour
     public GameObject equip1Mudfling;
     public GameObject equip2Mudfling;
 
-
-    //Purchased bools
-    private bool DashPurchased;
-    private bool MudflingPurchased;
+    private bool SwipePurchased;
+    private bool LightningPurchased;
     private bool AtkUpPurchased;
-    private bool TornadoPurchased;
-    private bool MudArmorPurchased;
+    private bool RockyShellPurchased;
+    private bool ProtectPurchased;
 
     public Transform skill1;
     public Transform skill2;
@@ -31,7 +29,6 @@ public class TambanokanoSkillsUIPanel : MonoBehaviour
     [SerializeField]
     private Transform rightPanel;
 
-    //Texts for purchase buttons
     [SerializeField]
     private TextMeshProUGUI Skill1TextQ;
     [SerializeField]
@@ -49,8 +46,8 @@ public class TambanokanoSkillsUIPanel : MonoBehaviour
     [SerializeField]
     private TextMeshProUGUI Skill5TextE;
 
-    private List<TextMeshProUGUI> textListQ = new List<TextMeshProUGUI>();
-    private List<TextMeshProUGUI> textListE = new List<TextMeshProUGUI>();
+    private readonly List<TextMeshProUGUI> textListQ = new List<TextMeshProUGUI>();
+    private readonly List<TextMeshProUGUI> textListE = new List<TextMeshProUGUI>();
 
     private PlayerStats playerStats;
     private PlayerSkills playerSkills;
@@ -61,7 +58,6 @@ public class TambanokanoSkillsUIPanel : MonoBehaviour
 
     private bool initialized;
 
-    // Start is called before the first frame update
     void Start()
     {
         Initialize();
@@ -81,15 +77,14 @@ public class TambanokanoSkillsUIPanel : MonoBehaviour
 
         if (PlayerStats.Instance.clue1)
         {
-            MudflingPurchased = true;
-            PlayerStats.Instance.MudflingPurchased = true;
+            LightningPurchased = true;
+            PlayerStats.Instance.TammyLightningPurchased = true;
             purchaseMudfling.SetActive(false);
             equip1Mudfling.SetActive(true);
             equip2Mudfling.SetActive(true);
         }
 
-        // Auto-unlock any skills that are already purchased
-        if (DashPurchased)
+        if (SwipePurchased)
         {
             if (skill1 == null)
             {
@@ -110,7 +105,7 @@ public class TambanokanoSkillsUIPanel : MonoBehaviour
             }
         }
 
-        if (MudflingPurchased)
+        if (LightningPurchased)
         {
             if (skill2 == null)
             {
@@ -133,24 +128,10 @@ public class TambanokanoSkillsUIPanel : MonoBehaviour
 
         if (AtkUpPurchased)
         {
-            Transform skill3Purchase = rightPanel != null ?
-                rightPanel.Find("Skill 3/Skill 3 Purchase Button") :
-                transform.Find("RightPanel/Skill 3/Skill 3 Purchase Button");
-            if (skill3Purchase != null)
-            {
-                TextMeshProUGUI text = skill3Purchase.GetComponentInChildren<TextMeshProUGUI>();
-                if (text != null)
-                {
-                    text.text = "Purchased";
-                }
-            }
-            else
-            {
-                Debug.LogError("TambanokanoSkillsUIPanel: Skill 3 purchase button not found.");
-            }
+            MarkPassiveSkillPurchased("Skill 3");
         }
 
-        if (TornadoPurchased)
+        if (ProtectPurchased)
         {
             if (skill4 == null)
             {
@@ -171,25 +152,9 @@ public class TambanokanoSkillsUIPanel : MonoBehaviour
             }
         }
 
-        if (MudArmorPurchased)
+        if (RockyShellPurchased)
         {
-            if (skill5 == null)
-            {
-                skill5 = rightPanel != null ? rightPanel.Find("Skill 5") : transform.Find("RightPanel/Skill 5");
-            }
-            if (skill5 != null)
-            {
-                EnableAllButtons(skill5);
-                purchaseButton = skill5.Find("Skill 5 Purchase Button");
-                if (purchaseButton != null)
-                {
-                    purchaseButton.gameObject.SetActive(false);
-                }
-            }
-            else
-            {
-                Debug.LogError("TambanokanoSkillsUIPanel: Skill 5 container not found. Please assign 'skill5' in the inspector.");
-            }
+            MarkPassiveSkillPurchased("Skill 5");
         }
     }
 
@@ -200,11 +165,11 @@ public class TambanokanoSkillsUIPanel : MonoBehaviour
             return;
         }
 
-        DashPurchased = PlayerStats.Instance.DashPurchased;
-        MudflingPurchased = PlayerStats.Instance.MudflingPurchased;
+        SwipePurchased = PlayerStats.Instance.TammySwipePurchased;
+        LightningPurchased = PlayerStats.Instance.TammyLightningPurchased;
         AtkUpPurchased = PlayerStats.Instance.AtkUpPurchased;
-        TornadoPurchased = PlayerStats.Instance.TornadoPurchased;
-        MudArmorPurchased = PlayerStats.Instance.MudArmorPurchased;
+        RockyShellPurchased = PlayerStats.Instance.RockyShellPurchased;
+        ProtectPurchased = PlayerStats.Instance.TammyProtectPurchased;
 
         if (rightPanel == null)
         {
@@ -214,6 +179,17 @@ public class TambanokanoSkillsUIPanel : MonoBehaviour
                 Debug.LogError("TambanokanoSkillsUIPanel: RightPanel not found. Please assign it in the inspector.");
             }
         }
+
+        ResolveSkillContainers();
+        ConfigurePassiveSkillPresentation(
+            "Skill 3",
+            "Attack Up",
+            "Increase Tambanokano's base attack damage by 25%.\n\n\nCost: 5 Kapre Cigars");
+        ConfigurePassiveSkillPresentation(
+            "Skill 5",
+            "Rocky Shell",
+            "Harden yourself with a rocky shell to permanently reduce damage taken by 10%.\n\n\nCost: 5 Kapre Cigars");
+        ConfigureRockyShellVisuals();
 
         Skill1TextQ = ResolveTextIfNull(Skill1TextQ, "Skill 1/Skill 1 Equip 1", nameof(Skill1TextQ));
         Skill1TextE = ResolveTextIfNull(Skill1TextE, "Skill 1/Skill 1 Equip 2", nameof(Skill1TextE));
@@ -229,14 +205,14 @@ public class TambanokanoSkillsUIPanel : MonoBehaviour
 
         if (textListQ.Count == 0)
         {
-            textListQ.Add(Skill1TextQ);
-            textListE.Add(Skill1TextE);
-            textListQ.Add(Skill2TextQ);
-            textListE.Add(Skill2TextE);
-            textListQ.Add(Skill4TextQ);
-            textListE.Add(Skill4TextE);
-            textListQ.Add(Skill5TextQ);
-            textListE.Add(Skill5TextE);
+            AddTextIfFound(textListQ, Skill1TextQ);
+            AddTextIfFound(textListE, Skill1TextE);
+            AddTextIfFound(textListQ, Skill2TextQ);
+            AddTextIfFound(textListE, Skill2TextE);
+            AddTextIfFound(textListQ, Skill4TextQ);
+            AddTextIfFound(textListE, Skill4TextE);
+            AddTextIfFound(textListQ, Skill5TextQ);
+            AddTextIfFound(textListE, Skill5TextE);
         }
 
         playerStats = PlayerStats.Instance;
@@ -307,7 +283,10 @@ public class TambanokanoSkillsUIPanel : MonoBehaviour
     {
         foreach (TextMeshProUGUI text in textListQ)
         {
-            text.text = "Equip";
+            if (text != null)
+            {
+                text.text = "Equip";
+            }
         }
     }
 
@@ -315,7 +294,10 @@ public class TambanokanoSkillsUIPanel : MonoBehaviour
     {
         foreach (TextMeshProUGUI text in textListE)
         {
-            text.text = "Equip";
+            if (text != null)
+            {
+                text.text = "Equip";
+            }
         }
     }
 
@@ -323,36 +305,44 @@ public class TambanokanoSkillsUIPanel : MonoBehaviour
     {
         if (playerStats.kapreCigars < 5)
         {
-            //message that not enough cigars
             return;
         }
-        playerStats.AddKapreCigars(-5);
 
         GameObject selectedButton = EventSystem.current.currentSelectedGameObject;
         Transform parent = selectedButton.GetComponent<Transform>().parent;
-        EnableAllButtons(parent);
-        selectedButton.SetActive(false);
 
-        // Track which skill was purchased based on the parent container's name
         switch (parent.name)
         {
             case "Skill 1":
-                DashPurchased = true;
-                PlayerStats.Instance.DashPurchased = true;
+                SwipePurchased = true;
+                PlayerStats.Instance.TammySwipePurchased = true;
                 break;
             case "Skill 2":
-                MudflingPurchased = true;
-                PlayerStats.Instance.MudflingPurchased = true;
+                LightningPurchased = true;
+                PlayerStats.Instance.TammyLightningPurchased = true;
                 break;
             case "Skill 4":
-                TornadoPurchased = true;
-                PlayerStats.Instance.TornadoPurchased = true;
+                ProtectPurchased = true;
+                PlayerStats.Instance.TammyProtectPurchased = true;
                 break;
             case "Skill 5":
-                MudArmorPurchased = true;
-                PlayerStats.Instance.MudArmorPurchased = true;
+                RockyShellPurchased = true;
+                PlayerStats.Instance.RockyShellPurchased = true;
                 break;
+            default:
+                return;
         }
+
+        playerStats.AddKapreCigars(-5);
+
+        if (parent.name == "Skill 5")
+        {
+            MarkPassiveSkillPurchased("Skill 5");
+            return;
+        }
+
+        EnableAllButtons(parent);
+        selectedButton.SetActive(false);
     }
 
     public void Skill3Purchase()
@@ -361,15 +351,155 @@ public class TambanokanoSkillsUIPanel : MonoBehaviour
         {
             if (playerStats.kapreCigars < 5)
             {
-                //message that not enough cigars
                 return;
             }
+
             playerStats.AddKapreCigars(-5);
             AtkUpPurchased = true;
             PlayerStats.Instance.AtkUpPurchased = true;
             TextMeshProUGUI text = EventSystem.current.currentSelectedGameObject.GetComponentInChildren<TextMeshProUGUI>();
             text.text = "Purchased";
             playerStats.basicAttackDamage *= 1.25f;
+        }
+    }
+
+    private void MarkPassiveSkillPurchased(string skillName)
+    {
+        Transform skillRoot = rightPanel != null ? rightPanel.Find(skillName) : transform.Find($"RightPanel/{skillName}");
+        if (skillRoot == null)
+        {
+            Debug.LogError($"TambanokanoSkillsUIPanel: {skillName} container not found.");
+            return;
+        }
+
+        Transform passivePurchaseButton = skillRoot.Find($"{skillName} Purchase Button");
+        if (passivePurchaseButton == null)
+        {
+            Debug.LogError($"TambanokanoSkillsUIPanel: {skillName} purchase button not found.");
+            return;
+        }
+
+        Button button = passivePurchaseButton.GetComponent<Button>();
+        if (button != null)
+        {
+            button.interactable = false;
+        }
+
+        TextMeshProUGUI text = passivePurchaseButton.GetComponentInChildren<TextMeshProUGUI>();
+        if (text != null)
+        {
+            text.text = "Purchased";
+        }
+
+        foreach (Transform child in skillRoot)
+        {
+            if (child == passivePurchaseButton)
+            {
+                continue;
+            }
+
+            if (child.GetComponent<Button>() != null)
+            {
+                child.gameObject.SetActive(false);
+            }
+        }
+    }
+
+    private void ResolveSkillContainers()
+    {
+        if (rightPanel == null)
+        {
+            return;
+        }
+
+        skill1 = rightPanel.Find("Skill 1");
+        skill2 = rightPanel.Find("Skill 2");
+        skill4 = rightPanel.Find("Skill 4");
+        skill5 = rightPanel.Find("Skill 5");
+    }
+
+    private void ConfigurePassiveSkillPresentation(string skillName, string displayName, string description)
+    {
+        Transform skillRoot = rightPanel != null ? rightPanel.Find(skillName) : transform.Find($"RightPanel/{skillName}");
+        if (skillRoot == null)
+        {
+            return;
+        }
+
+        SetTextOnChild(skillRoot, $"{skillName} Name", displayName);
+        SetTextOnChild(skillRoot, $"{skillName} Info", description);
+        HideButton(skillRoot.Find($"{skillName} Equip 1"));
+        HideButton(skillRoot.Find($"{skillName} Equip 2"));
+    }
+
+    private void ConfigureRockyShellVisuals()
+    {
+        Transform skillRoot = rightPanel != null ? rightPanel.Find("Skill 5") : transform.Find("RightPanel/Skill 5");
+        if (skillRoot == null)
+        {
+            return;
+        }
+
+        Transform rockyShellGraphic = FindDescendantByName(skillRoot, "RockyShell");
+        if (rockyShellGraphic != null)
+        {
+            rockyShellGraphic.gameObject.SetActive(true);
+        }
+
+        Transform protectGraphic = FindDescendantByName(skillRoot, "Protect");
+        if (protectGraphic != null)
+        {
+            protectGraphic.gameObject.SetActive(false);
+        }
+    }
+
+    private void SetTextOnChild(Transform parent, string childName, string value)
+    {
+        Transform child = parent.Find(childName);
+        if (child == null)
+        {
+            return;
+        }
+
+        TextMeshProUGUI text = child.GetComponentInChildren<TextMeshProUGUI>();
+        if (text != null)
+        {
+            text.text = value;
+        }
+    }
+
+    private void HideButton(Transform buttonTransform)
+    {
+        if (buttonTransform != null)
+        {
+            buttonTransform.gameObject.SetActive(false);
+        }
+    }
+
+    private Transform FindDescendantByName(Transform parent, string name)
+    {
+        foreach (Transform child in parent)
+        {
+            if (child.name == name)
+            {
+                return child;
+            }
+
+            Transform nested = FindDescendantByName(child, name);
+            if (nested != null)
+            {
+                return nested;
+            }
+        }
+
+        return null;
+    }
+
+    private void AddTextIfFound(List<TextMeshProUGUI> textList, TextMeshProUGUI text)
+    {
+        if (text != null)
+        {
+            textList.Add(text);
         }
     }
 
@@ -399,12 +529,28 @@ public class TambanokanoSkillsUIPanel : MonoBehaviour
         return result;
     }
 
+    private T GetBehemothSkill<T>(string skillName) where T : BaseSkill
+    {
+        T skill = playerSkills.GetComponentInChildren<T>();
+        if (skill == null)
+        {
+            Debug.LogError($"TambanokanoSkillsUIPanel: Could not find {skillName} on PlayerSkills.");
+        }
+
+        return skill;
+    }
+
     public void Skill1Equip()
     {
+        Swipe swipe = GetBehemothSkill<Swipe>(nameof(Swipe));
+        if (swipe == null)
+        {
+            return;
+        }
+
         if (EventSystem.current.currentSelectedGameObject.CompareTag("Q Button"))
         {
-            Dash dash = playerSkills.GetComponentInChildren<Dash>();
-            playerSkills.BehemothSkillQChange(dash);
+            playerSkills.BehemothSkillQChange(swipe);
             UnequipAllSkillQ();
             Skill1TextQ.text = "Equipped";
             if (Skill1TextE.text == "Equipped")
@@ -412,11 +558,10 @@ public class TambanokanoSkillsUIPanel : MonoBehaviour
                 Skill1TextE.text = "Equip";
                 playerSkills.RemoveBehemothSkillE();
             }
-        } 
+        }
         else
         {
-            Dash dash = playerSkills.GetComponentInChildren<Dash>();
-            playerSkills.BehemothSkillEChange(dash);
+            playerSkills.BehemothSkillEChange(swipe);
             UnequipAllSkillE();
             Skill1TextE.text = "Equipped";
             if (Skill1TextQ.text == "Equipped")
@@ -429,10 +574,15 @@ public class TambanokanoSkillsUIPanel : MonoBehaviour
 
     public void Skill2Equip()
     {
+        Lightning lightning = GetBehemothSkill<Lightning>(nameof(Lightning));
+        if (lightning == null)
+        {
+            return;
+        }
+
         if (EventSystem.current.currentSelectedGameObject.CompareTag("Q Button"))
         {
-            Mudfling mudFling = playerSkills.GetComponentInChildren<Mudfling>();
-            playerSkills.BehemothSkillQChange(mudFling);
+            playerSkills.BehemothSkillQChange(lightning);
             UnequipAllSkillQ();
             Skill2TextQ.text = "Equipped";
             if (Skill2TextE.text == "Equipped")
@@ -443,8 +593,7 @@ public class TambanokanoSkillsUIPanel : MonoBehaviour
         }
         else
         {
-            Mudfling mudFling = playerSkills.GetComponentInChildren<Mudfling>();
-            playerSkills.BehemothSkillEChange(mudFling);
+            playerSkills.BehemothSkillEChange(lightning);
             UnequipAllSkillE();
             Skill2TextE.text = "Equipped";
             if (Skill2TextQ.text == "Equipped")
@@ -457,10 +606,15 @@ public class TambanokanoSkillsUIPanel : MonoBehaviour
 
     public void Skill4Equip()
     {
+        Protect protect = GetBehemothSkill<Protect>(nameof(Protect));
+        if (protect == null)
+        {
+            return;
+        }
+
         if (EventSystem.current.currentSelectedGameObject.CompareTag("Q Button"))
         {
-            TornadoPunch tornadoPunch = playerSkills.GetComponentInChildren<TornadoPunch>();
-            playerSkills.BehemothSkillQChange(tornadoPunch);
+            playerSkills.BehemothSkillQChange(protect);
             UnequipAllSkillQ();
             Skill4TextQ.text = "Equipped";
             if (Skill4TextE.text == "Equipped")
@@ -471,8 +625,7 @@ public class TambanokanoSkillsUIPanel : MonoBehaviour
         }
         else
         {
-            TornadoPunch tornadoPunch = playerSkills.GetComponentInChildren<TornadoPunch>();
-            playerSkills.BehemothSkillEChange(tornadoPunch);
+            playerSkills.BehemothSkillEChange(protect);
             UnequipAllSkillE();
             Skill4TextE.text = "Equipped";
             if (Skill4TextQ.text == "Equipped")
@@ -485,29 +638,6 @@ public class TambanokanoSkillsUIPanel : MonoBehaviour
 
     public void Skill5Equip()
     {
-        if (EventSystem.current.currentSelectedGameObject.CompareTag("Q Button"))
-        {
-            MudArmor mudArmor = playerSkills.GetComponentInChildren<MudArmor>();
-            playerSkills.BehemothSkillQChange(mudArmor);
-            UnequipAllSkillQ();
-            Skill5TextQ.text = "Equipped";
-            if (Skill5TextE.text == "Equipped")
-            {
-                Skill5TextE.text = "Equip";
-                playerSkills.RemoveBehemothSkillE();
-            }
-        }
-        else
-        {
-            MudArmor mudArmor = playerSkills.GetComponentInChildren<MudArmor>();
-            playerSkills.BehemothSkillEChange(mudArmor);
-            UnequipAllSkillE();
-            Skill5TextE.text = "Equipped";
-            if (Skill5TextQ.text == "Equipped")
-            {
-                Skill5TextQ.text = "Equip";
-                playerSkills.RemoveBehemothSkillQ();
-            }
-        }
+        Debug.Log("TambanokanoSkillsUIPanel: Rocky Shell is passive and cannot be equipped.");
     }
 }

@@ -21,8 +21,8 @@ public class Slither : BaseSkill
 
         isSlitheringHash = Animator.StringToHash("isSlithering");
 
-        maxCharges = 3;
-        cooldown = 6;
+        maxCharges = 2;
+        cooldown = 15;
         skillCode = 1;
     }
 

@@ -5,6 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class DeathScreen : MonoBehaviour
 {
+    private const string RuinsSceneName = "RuinsScene Movement";
+
     // Start is called before the first frame update
     void Start()
     {
@@ -25,19 +27,34 @@ public class DeathScreen : MonoBehaviour
 
     public void PressContinue()
     {
-        PlayerStats.Instance.tammyScene = false;
-        PlayerStats.Instance.markyScene = false;
-        PlayerStats.Instance.outdoorsScene = false;
-        PlayerStats.Instance.ruinsScene = true;
-        PlayerStats.Instance.currentHealth = PlayerStats.Instance.maxHealth;
-        PlayerStats.Instance.speedMultiplier = 1;
-        QuestState.Instance.pausedForDialogue = false;
-        QuestState.Instance.menuActive = false;
+        if (PlayerStats.Instance != null)
+        {
+            PlayerStats.Instance.dead = false;
+            PlayerStats.Instance.tammyScene = false;
+            PlayerStats.Instance.markyScene = false;
+            PlayerStats.Instance.apolakiScene = false;
+            PlayerStats.Instance.outdoorsScene = false;
+            PlayerStats.Instance.ruinsScene = true;
+            PlayerStats.Instance.currentHealth = PlayerStats.Instance.maxHealth;
+            PlayerStats.Instance.speedMultiplier = 1;
+            PlayerStats.Instance.SetScenePosition();
+        }
+
+        if (QuestState.Instance != null)
+        {
+            QuestState.Instance.pausedForDialogue = false;
+            QuestState.Instance.menuActive = false;
+            QuestState.Instance.pauseActive = false;
+        }
+
         HUDHider.Reset();
         BathalasBlessing bbSkill = FindObjectOfType<BathalasBlessing>();
-        bbSkill.RechargeUsages();
-        PlayerStats.Instance.SetScenePosition();
-        SceneManager.LoadScene(3);
+        if (bbSkill != null)
+        {
+            bbSkill.RechargeUsages();
+        }
+
+        SceneManager.LoadScene(RuinsSceneName);
     }
 
     public void PressQuitToDesktop()

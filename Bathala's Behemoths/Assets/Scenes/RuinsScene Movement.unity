@@ -458,7 +458,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -847.66, y: -531.22}
+  m_AnchoredPosition: {x: -846.5, y: -528.21}
   m_SizeDelta: {x: 20, y: 5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &93754580
@@ -481,7 +481,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Purchase and Equip Skills for Manny
+  m_text: Purchase and Equip Skills for the Behemoth
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2100000, guid: e73a58f6e2794ae7b1b7e50b7fb811b0, type: 2}
@@ -5889,7 +5889,7 @@ MonoBehaviour:
   oneTimeUseAvailable: 0
   skillCode: 0
   animator: {fileID: 0}
-  mannyBody: {fileID: 0}
+  tambanokanoBody: {fileID: 0}
   normalManny: {fileID: 0}
   armoredManny: {fileID: 0}
   armoredGruntSound: {fileID: 0}
@@ -12279,7 +12279,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1974376648}
   m_LocalRotation: {x: 0.010751646, y: 0.20204091, z: 0.0074253147, w: 0.97929}
-  m_LocalPosition: {x: 0, y: 0, z: 56.42}
+  m_LocalPosition: {x: 0, y: 0, z: 56.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -12287,7 +12287,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 1.035, y: 23.324, z: 1.082}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -944.61, y: -534.19}
+  m_AnchoredPosition: {x: -944.64, y: -532.53}
   m_SizeDelta: {x: 20, y: 5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1974376650
@@ -13233,7 +13233,7 @@ PrefabInstance:
     - target: {fileID: 398346621586898921, guid: 1386be20f236ee44d9a89475913cbd88,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 817613642672016744, guid: 1386be20f236ee44d9a89475913cbd88,
         type: 3}
@@ -13433,7 +13433,7 @@ PrefabInstance:
     - target: {fileID: 7778881663954530467, guid: 1386be20f236ee44d9a89475913cbd88,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 10.3
+      value: 9.9
       objectReference: {fileID: 0}
     - target: {fileID: 7778881663954530467, guid: 1386be20f236ee44d9a89475913cbd88,
         type: 3}
@@ -13458,12 +13458,12 @@ PrefabInstance:
     - target: {fileID: 7778881663954530467, guid: 1386be20f236ee44d9a89475913cbd88,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -934.58
+      value: -932.43
       objectReference: {fileID: 0}
     - target: {fileID: 7778881663954530467, guid: 1386be20f236ee44d9a89475913cbd88,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -530.72
+      value: -529.84
       objectReference: {fileID: 0}
     - target: {fileID: 7778881663954530467, guid: 1386be20f236ee44d9a89475913cbd88,
         type: 3}
@@ -13666,7 +13666,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6561847659477991489}
   m_LocalRotation: {x: 0.008733552, y: -0.15383236, z: -0.0037927842, w: 0.98805106}
-  m_LocalPosition: {x: 0, y: 0, z: 25.37}
+  m_LocalPosition: {x: 0, y: 0, z: 25.45}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -13674,7 +13674,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0.922, y: -17.704, z: -0.583}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -981.58, y: -534.34}
+  m_AnchoredPosition: {x: -981.56, y: -532.05}
   m_SizeDelta: {x: 20, y: 5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1001 &4551848169642371369

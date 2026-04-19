@@ -8,9 +8,12 @@ public class KapreAnimController : MonoBehaviour
     public bool moving;
     public bool attacking;
     public bool stunned;
+    public bool dead;
+    public bool dying;
     int isMovingHash;
     int isAttackingHash;
     int isStunnedHash;
+    int isDeadHash;
 
     // Start is called before the first frame update
     void Start()
@@ -19,11 +22,24 @@ public class KapreAnimController : MonoBehaviour
         isMovingHash = Animator.StringToHash("isMoving");
         isAttackingHash = Animator.StringToHash("isAttacking");
         isStunnedHash = Animator.StringToHash("isStunned");
+        isDeadHash = Animator.StringToHash("isDead");
     }
 
     // Update is called once per frame
     void Update()
     {
+        if(dead && !dying)
+        {
+            resetAnimations();
+            animator.SetBool(isDeadHash, true);
+            dying = true;
+            return;
+        }
+        else if(dead && dying)
+        {
+            return;
+        }
+
         if(moving)
         {
             animator.SetBool(isMovingHash, true);
@@ -41,6 +57,7 @@ public class KapreAnimController : MonoBehaviour
         {
             animator.SetBool(isAttackingHash, false);
         }
+
         if(stunned)
         {
             animator.SetBool(isStunnedHash, true);
@@ -49,6 +66,13 @@ public class KapreAnimController : MonoBehaviour
         {
             animator.SetBool(isStunnedHash, false);
         }
+    }
+
+    public void resetAnimations()
+    {
+        animator.SetBool(isMovingHash, false);
+        animator.SetBool(isAttackingHash, false);
+        animator.SetBool(isStunnedHash, false);
     }
 
     public void setAttacking(bool attackStatus)
@@ -64,5 +88,10 @@ public class KapreAnimController : MonoBehaviour
     public void setStunned(bool stunStatus)
     {
         stunned = stunStatus;
+    }
+
+    public void setDead(bool deadStatus)
+    {
+        dead = deadStatus;
     }
 }

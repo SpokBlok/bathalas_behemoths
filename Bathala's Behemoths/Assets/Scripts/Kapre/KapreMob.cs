@@ -43,6 +43,7 @@ public class KapreMob : EnemyMob
     public KapreState kapreState;
 
     private bool isAttacking = false;
+    private bool dying = false;
     public KapreAnimController kapreModel;
 
     private KapreRadiusTrigger radius;
@@ -100,6 +101,12 @@ public class KapreMob : EnemyMob
     void Update()
     {
         if(QuestState.Instance.pausedForDialogue){return;}
+        if (dying)
+        {
+            moveDirection = Vector3.zero;
+            terrainMoveDirection = Vector3.zero;
+            return;
+        }
 
         switch (kapreState)
         {
@@ -208,6 +215,11 @@ public class KapreMob : EnemyMob
 
     public override void TakeDamage(float damage)
     {
+        if (dying)
+        {
+            return;
+        }
+
         if(takingDamage == null)
         {
             takingDamage = StartCoroutine(SwitchToDamagedTex());
@@ -219,8 +231,9 @@ public class KapreMob : EnemyMob
         }
 
         health -= damage;
-        if (health <= 0)
+        if (health <= 0 && !dying)
         {
+            dying = true;
             PlayerStats.Instance.AddKapreCigars(1);
             //Disabled for now in lieu of having kapre cigar currency
             //Might need in for intro kill quest anyway?
@@ -230,8 +243,22 @@ public class KapreMob : EnemyMob
             //}
             EventManager.OnDashComplete -= radius.TriggerCheck;
             Debug.Log("Enemy killed!");
-            Destroy(gameObject);
+            StartCoroutine(Death());
         }
+    }
+
+    IEnumerator Death()
+    {
+        if(basicAttackCoroutine != null)
+        {
+            StopCoroutine(basicAttackCoroutine);
+            basicAttackCoroutine = null;
+        }
+
+        ChangeState(KapreState.Idle);
+        kapreModel.setDead(true);
+        yield return new WaitForSeconds(2.5f);
+        Destroy(gameObject);
     }
 
     public override IEnumerator Stun(float duration)
@@ -265,6 +292,11 @@ public class KapreMob : EnemyMob
 
     public void ChangeState(KapreState newState) //Logic for entering states (e.g. playing animations)
     {
+        if (dying && newState != KapreState.Idle)
+        {
+            return;
+        }
+
         kapreState = newState;
 
         switch (newState)

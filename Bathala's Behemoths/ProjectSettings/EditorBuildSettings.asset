@@ -48,6 +48,9 @@ EditorBuildSettings:
     path: Assets/Scenes/ApolakiDefeatScene.unity
     guid: bb0fca897821949cf9675fdd2c00f3c6
   - enabled: 1
+    path: Assets/Scenes/ApolakiDefeatBadEndScene.unity
+    guid: 53f2756ddc2d046f4b34de6a4c4492dc
+  - enabled: 1
     path: Assets/Scenes/MarkyIntroCutscene.unity
     guid: dafbd94705fda452fa26246bb7a248e5
   - enabled: 1

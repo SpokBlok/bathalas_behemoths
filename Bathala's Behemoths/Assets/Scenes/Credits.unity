@@ -726,7 +726,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 1
-  m_BoundingSphereOverride: {x: 0, y: 5.38e-43, z: 0, w: 0}
+  m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
   m_UseBoundingSphereOverride: 0
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
@@ -953,7 +953,34 @@ MonoBehaviour:
 
     Mixamo.com
 
-'
+
+
+
+
+    Actors
+
+
+
+    Strange
+    Chicken: MK
+
+    Moon Goddess: MDG
+
+    Every Kapre: MKDPA
+
+    Every Dwende:
+    APDB
+
+    Manny: MKDPA
+
+    Markupo: MLAA
+
+    Tambanokano: JAY
+
+    Apolaki:
+    ???
+
+    Steve: Steve'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2100000, guid: e73a58f6e2794ae7b1b7e50b7fb811b0, type: 2}

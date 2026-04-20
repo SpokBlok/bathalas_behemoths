@@ -180,11 +180,11 @@ public class PlayerStats : MonoBehaviour
 
         if (hasMudArmor)
         {
-            mitigatedDamage /= 1.7f;
+            mitigatedDamage *= 0.7f;
         }
         else if (hasProtect && playerModelIndex == 2)
         {
-            mitigatedDamage /= 1.5f;
+            mitigatedDamage *= 0.5f; 
         }
 
         if (RockyShellPurchased)
